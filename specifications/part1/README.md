@@ -1,5 +1,6 @@
 # Project specifications, Part 1
 
+* A supprimer
 ## Introduction
 
 The first part of the project has two objectives. The first objective is to apply the technologies, techniques and design patterns presented during the course. The second objective is to implement the foundation of the gamification platform that will evolve during the semester.
