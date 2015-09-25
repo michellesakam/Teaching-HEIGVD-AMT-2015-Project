@@ -8,7 +8,6 @@ package ch.heigvd.amt.gamification.services;
 import javax.ejb.Stateless;
 
 import ch.heigvd.amt.gamification.model.Account;
-import ch.heigvd.amt.gamification.model.DAOAccount;
 
 /**
  *
@@ -17,9 +16,8 @@ import ch.heigvd.amt.gamification.model.DAOAccount;
 @Stateless
 public class LoginService implements LoginServiceLocal {
 
-    @Override
-    public Account retrieveAccount(String email, String password) {
-        
-    }
-    
+  public Account login(String email, String password) {
+    return null;
+  }
+
 }
