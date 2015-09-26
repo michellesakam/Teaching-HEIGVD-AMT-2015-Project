@@ -8,6 +8,6 @@ import ch.heigvd.amt.gamification.model.Account;
  * @author Raphaël Racine
  */
 @Local
-public interface LoginManagerLocal {    
+public interface AccountsManagerLocal {    
     public Account login(String email, String password);            
 }

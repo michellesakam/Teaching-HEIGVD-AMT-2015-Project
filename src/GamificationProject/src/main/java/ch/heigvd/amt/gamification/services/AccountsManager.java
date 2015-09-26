@@ -14,7 +14,7 @@ import ch.heigvd.amt.gamification.model.Account;
  * @author Raphaël Racine
  */
 @Stateless
-public class LoginManager implements LoginManagerLocal {
+public class AccountsManager implements AccountsManagerLocal {
 
     @Override
     public Account login(String email, String password) {

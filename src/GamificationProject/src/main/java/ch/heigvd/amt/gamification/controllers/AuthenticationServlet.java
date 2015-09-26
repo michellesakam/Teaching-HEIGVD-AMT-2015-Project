@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import ch.heigvd.amt.gamification.services.LoginManagerLocal;
+import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 
 /**
  * This servlet illustrates various aspects of the Servlet API.
@@ -41,7 +41,7 @@ import ch.heigvd.amt.gamification.services.LoginManagerLocal;
 public class AuthenticationServlet extends HttpServlet {
 
     @EJB
-    private LoginManagerLocal loginManager;
+    private AccountsManagerLocal accountsManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -80,7 +80,7 @@ public class AuthenticationServlet extends HttpServlet {
         targetUrl = request.getContextPath() + targetUrl;
 
         if ("login".equals(action)) {
-            Account a = loginManager.login(email, password);
+            Account a = accountsManager.login(email, password);
 
             if (a != null) { // The users exists and can connect
                 request.getSession().setAttribute("principal", a.getEmail());
