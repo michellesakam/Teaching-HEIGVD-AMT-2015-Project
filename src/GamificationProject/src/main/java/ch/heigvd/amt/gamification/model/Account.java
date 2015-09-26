@@ -1,9 +1,10 @@
 package ch.heigvd.amt.gamification.model;
 
 /**
- *
- * @author Olivier Liechti
+ * 
+ * @author Raphaël Racine
  */
+
 public class Account {
   
   private String firstName;
@@ -35,10 +36,6 @@ public class Account {
 
   public String getPassword() {
     return password;
-  }
-  
-  
-  
-  
+  }  
 
 }

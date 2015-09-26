@@ -1,9 +1,10 @@
 package ch.heigvd.amt.gamification.model;
 
 /**
- *
- * @author Olivier Liechti
+ * 
+ * @author Raphaël Racine
  */
+
 public class Role {
 
 }

@@ -1,9 +1,10 @@
 package ch.heigvd.amt.gamification.model;
 
 /**
- *
- * @author Olivier Liechti
+ * 
+ * @author Raphaël Racine
  */
+
 public class Application {
   
   private String name;
@@ -37,10 +38,6 @@ public class Application {
 
   public long getNumberOfUsers() {
     return numberOfUsers;
-  }
-  
-  
-  
-  
+  } 
 
 }
