@@ -12,6 +12,6 @@
         <title>Edit your account details</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Edit your account details...</h1>
     </body>
 </html>

@@ -12,6 +12,6 @@
         <title>App details</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Application details...</h1>
     </body>
 </html>

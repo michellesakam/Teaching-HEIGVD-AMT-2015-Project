@@ -16,6 +16,6 @@
         
         <%@include file="includes/logout.jsp" %>
         
-        <h1>Hello World!</h1>
+        <h1>List for users for an application...</h1>
     </body>
 </html>

@@ -12,6 +12,6 @@
         <title>Your apps</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Your apps...</h1>
     </body>
 </html>
