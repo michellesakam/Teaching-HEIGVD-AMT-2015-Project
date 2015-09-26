@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,9 @@
         <title>List for users for an application</title>
     </head>
     <body>
+        
+        <%@include file="includes/logout.jsp" %>
+        
         <h1>Hello World!</h1>
     </body>
 </html>

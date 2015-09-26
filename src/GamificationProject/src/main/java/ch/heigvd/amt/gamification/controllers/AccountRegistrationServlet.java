@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Samira Kouchali
  */
-public class WelcomeServlet extends HttpServlet {
+public class AccountRegistrationServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -30,7 +30,14 @@ public class WelcomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+    
+    
 
 }

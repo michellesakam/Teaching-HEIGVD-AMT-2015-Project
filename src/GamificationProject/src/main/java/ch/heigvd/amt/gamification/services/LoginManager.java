@@ -19,7 +19,11 @@ public class LoginManager implements LoginManagerLocal {
     @Override
     public Account login(String email, String password) {
         // TODO: return an Account if he existe with this email and this password, else return null
-        return null;
+        return generateFakeAccount();
+    }
+    
+    private Account generateFakeAccount() {
+        return new Account("raphael", "racine", "raphael.racine@heig-vd.ch", "amt");
     }
 
 }
