@@ -1,43 +1,42 @@
 package ch.heigvd.amt.gamification.model;
 
 /**
- * 
+ *
  * @author Raphaël Racine
  */
-
 public class Application {
-  
-  private String name;
-  private String state;
-  private String description;
-  private ApiKey apiKey;
-  private long numberOfUsers;
 
-  public Application(String name, String state, String description, ApiKey apiKey) {
-    this.name = name;
-    this.state = state;
-    this.description = description;
-    this.apiKey = apiKey;
-  }
+    private String name;
+    private String state;
+    private String description;
+    private ApiKey apiKey;
+    private long numberOfUsers;
 
-  public String getName() {
-    return name;
-  }
+    public Application(String name, String state, String description, ApiKey apiKey) {
+        this.name = name;
+        this.state = state;
+        this.description = description;
+        this.apiKey = apiKey;
+    }
 
-  public String getState() {
-    return state;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getState() {
+        return state;
+    }
 
-  public ApiKey getApiKey() {
-    return apiKey;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public long getNumberOfUsers() {
-    return numberOfUsers;
-  } 
+    public ApiKey getApiKey() {
+        return apiKey;
+    }
+
+    public long getNumberOfUsers() {
+        return numberOfUsers;
+    }
 
 }
