@@ -11,13 +11,15 @@ import ch.heigvd.amt.gamification.model.Account;
 
 /**
  *
- * @author raphaelracineRES
+ * @author Raphaël Racine
  */
 @Stateless
-public class LoginService implements LoginServiceLocal {
+public class LoginManager implements LoginManagerLocal {
 
-  public Account login(String email, String password) {
-    return null;
-  }
+    @Override
+    public Account login(String email, String password) {
+        // TODO: return an Account if he existe with this email and this password, else return null
+        return null;
+    }
 
 }

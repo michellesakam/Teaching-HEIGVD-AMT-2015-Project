@@ -6,11 +6,11 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ * @author Raphaël Racine
  */
 @Local
 public interface ApplicationsManagerLocal {
-
-  List<Application> findAll();
-  
+    
+    public List<Application> findAll();
+    
 }
