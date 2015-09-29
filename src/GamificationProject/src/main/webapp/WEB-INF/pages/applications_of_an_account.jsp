@@ -12,6 +12,9 @@
         <title>Your apps</title>
     </head>
     <body>
+        
+        <%@include file="includes/logout.jsp" %>
+        
         <h1>Your apps...</h1>
     </body>
 </html>

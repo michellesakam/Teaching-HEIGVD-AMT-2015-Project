@@ -8,6 +8,8 @@ package ch.heigvd.amt.gamification.services;
 import javax.ejb.Stateless;
 
 import ch.heigvd.amt.gamification.model.Account;
+import ch.heigvd.amt.gamification.model.Application;
+import java.util.List;
 
 /**
  *
@@ -23,7 +25,29 @@ public class AccountsManager implements AccountsManagerLocal {
     }
     
     private Account generateFakeAccount() {
-        return new Account("raphael", "racine", "raphael.racine@heig-vd.ch", "amt");
+        Account a = new Account();
+        a.setEmail("raphael.racine@heig-vd.ch");
+        return new Account();
+    }
+
+    @Override
+    public long numbersOfAccount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void createAccount(String email, String firstName, String lastName, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Application> getAccountApps(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void editAccount(String email, String newEmail, String newPassword, String newFirstName, String newLastName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -49,7 +49,10 @@ The minimum domain model that you will implement is shown in the following diagr
 
 * Every user of the gamification platform has an **account**. Most of the users are application developers (e.g. the stackoverflow developer using the gamification platform). However, the people running the gamification platform (the IT staff, the business people, etc.) are also users.
 
-* For this reason, you will need to manage **roles** to differentiate the types of users and give access to the appropriate features (authorization). Every account can be assigned one or more roles.
+* For this reason, you will need to manage **
+* 
+* s** to differentiate the types of users and give access to the appropriate features (authorization). Every account can be assigned one or more 
+* .
 
 * Every developer with an account on the platform can register one or more applications. Every application has an API key automatically assigned by the platform.
 
