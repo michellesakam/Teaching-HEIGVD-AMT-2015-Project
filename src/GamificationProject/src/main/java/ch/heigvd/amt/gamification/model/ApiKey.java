@@ -6,5 +6,6 @@ package ch.heigvd.amt.gamification.model;
  */
 
 public class ApiKey {
-
+private Application appl;
+private String key;
 }
