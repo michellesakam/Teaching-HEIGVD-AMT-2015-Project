@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * @author Raphaël Racine
  */
 
-public class Account {
+public class Account implements Serializable {
   
   private String firstName;
   private String lastName;

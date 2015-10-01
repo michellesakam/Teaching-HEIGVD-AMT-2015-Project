@@ -1,12 +1,13 @@
 package ch.heigvd.amt.gamification.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Raphaël Racine
  */
-public class Application {
+public class Application implements Serializable {
 
     private String name;
     private String state;
