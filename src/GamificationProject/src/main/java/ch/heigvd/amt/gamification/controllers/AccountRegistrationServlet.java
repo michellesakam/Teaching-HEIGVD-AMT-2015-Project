@@ -6,11 +6,12 @@
 package ch.heigvd.amt.gamification.controllers;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletException;;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
+import javax.ejb.EJB;
 
 /**
  *
@@ -18,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AccountRegistrationServlet extends HttpServlet {
 
+    @EJB
+    private AccountsManagerLocal accountsManager;
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -29,7 +33,7 @@ public class AccountRegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
     }
 
