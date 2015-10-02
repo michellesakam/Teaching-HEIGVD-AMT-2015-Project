@@ -24,8 +24,6 @@ public class Account implements Serializable {
         this.password = password;
     }
   
-  
-
   public String getFirstName() {
     return firstName;
   }

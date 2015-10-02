@@ -26,9 +26,8 @@ public class AccountsManager implements AccountsManagerLocal {
     }
     
     private Account generateFakeAccount() {
-        Account a = new Account();
-        a.setEmail("raphael.racine@heig-vd.ch");
-        return new Account();
+        Account a = new Account("Raphael", "Racine", "raphael.racine@heig-vd.ch", "fdjlkfs");
+        return a;
     }
 
     @Override
@@ -40,6 +39,10 @@ public class AccountsManager implements AccountsManagerLocal {
     @Override
     public void createAccount(Account newAccount) {
         // TODO: A implémenter
+    }
+    
+    public boolean accountExists(Account account) {
+        return true;
     }
 
     @Override
