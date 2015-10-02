@@ -48,10 +48,10 @@
                         <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Password" required>
                     </form>
                     <div class ="col-md-3">
-                       <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
+                       <button id="blogin" class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
                                        <!--Demander à liechti si OK-->
                         <form method="POST" action="pages/accountRegistration" class="form-signin">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Create account</button>
+                            <button id="bcreatAccount" class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Create account</button>
                         </form>
                     </div>
                     
