@@ -38,7 +38,7 @@ public class AccountsManager implements AccountsManagerLocal {
     }
 
     @Override
-    public void createAccount(String email, String firstName, String lastName, String password) {
+    public void createAccount(Account newAccount) {
         // TODO: A implémenter
     }
 
