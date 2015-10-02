@@ -1,6 +1,8 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -13,6 +15,26 @@ import javax.ejb.Stateless;
 public class ApplicationsManager implements ApplicationsManagerLocal {
 
     @Override
+    public long numberOfApplicationsManaged() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void registerNewApplication(String email, String name, String description, ApiKey apiKey, boolean isEnable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void editApplicationDetails(long id, String newName, String newDescription, ApiKey newApiKey, boolean isEnable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<EndUser> endUsersOfApplication(long idApplication) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /*@Override
     public List<Application> findAll() {
         // TODO: replace dummy data with real data from DB
         return generateDummyData();
@@ -27,6 +49,6 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
         result.add(app2);
         result.add(app3);
         return result;
-    }
+    }*/
 
 }
