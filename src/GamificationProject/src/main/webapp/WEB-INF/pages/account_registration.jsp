@@ -33,7 +33,7 @@
 
    <body class="my_background">
     <div ng-app="sample" class = label>
-     <form method="POST" action="/pages/accountRegistration" class="form-horizontal" name="registerForm">
+     <form method="POST" class="form-horizontal" name="registerForm">
      <div class="form-group">
         <label class="col-md-3 control-label" for="Email">Email</label>
         <div class="col-md-4">
