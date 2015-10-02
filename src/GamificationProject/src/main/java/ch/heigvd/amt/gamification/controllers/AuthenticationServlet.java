@@ -74,7 +74,7 @@ public class AuthenticationServlet extends HttpServlet {
          */
         String targetUrl = (String) request.getAttribute("targetUrl");
         if (targetUrl == null) {
-            targetUrl = "/pages/yourApps";
+            targetUrl = "/pages/welcome";
         }
 
         targetUrl = request.getContextPath() + targetUrl;
@@ -83,13 +83,13 @@ public class AuthenticationServlet extends HttpServlet {
             Account a = accountsManager.login(email, password);
 
             if (a != null) { // The users exists and can connect
-                request.getSession().setAttribute("principal", a.getEmail());
-                response.sendRedirect(targetUrl);
+                request.getSession().setAttribute("principal", a);
+                response.sendRedirect(request.getContextPath() + "/pages/yourApps");
             }
         }
         else if ("logout".equals(action)) {
             request.getSession().invalidate();
-            response.sendRedirect(request.getContextPath());
+            response.sendRedirect(targetUrl);
         } else {
             response.sendRedirect(targetUrl);
         }

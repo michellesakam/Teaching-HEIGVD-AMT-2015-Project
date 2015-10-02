@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import javax.ejb.EJB;
 
 /**
@@ -45,25 +46,24 @@ public class AccountRegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String email = req.getParameter("Email");
-        String first_name = req.getParameter("First_name");
-        String last_name = req.getParameter("Last_name");
+        String firstName = req.getParameter("First_name");
+        String lastName = req.getParameter("Last_name");
         String password = req.getParameter("Password");
         String confirm = req.getParameter("Confirm");
-        String targetUrl = "/pages/yourApps";
 
         if (confirm != password) {
-            System.out.println("Les mots de passe ne sont identiques");
+            System.out.println("Les mots de passe ne sont pas identiques");
         }
 
-        Account a = new Account(first_name, last_name, email, password);
-        boolean accountExits = accountsManager.accountExists(a);
+        Account a = new Account(firstName, lastName, email, password);
+        boolean accountAlreadyExists = accountsManager.accountExists(a);
         
-        if (!accountExits) {
+        if (accountAlreadyExists) {
             System.out.println("Ce Compte dejà utilisé");
         } else {
             accountsManager.createAccount(a);
             req.getSession().setAttribute("principal", a);
-            resp.sendRedirect(targetUrl);
+            resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
         }
 
     }

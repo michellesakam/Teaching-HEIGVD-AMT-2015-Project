@@ -85,6 +85,7 @@ public class SecurityFilter implements Filter {
        * we display the login page (and interrupt the request processing pipeline).
        */
       request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
+      
     } else {
       /*
        * We authorize the access, so we can tell the request processing pipeline to

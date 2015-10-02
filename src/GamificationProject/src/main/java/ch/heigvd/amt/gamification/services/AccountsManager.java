@@ -41,8 +41,9 @@ public class AccountsManager implements AccountsManagerLocal {
         // TODO: A implémenter
     }
     
+    @Override
     public boolean accountExists(Account account) {
-        return true;
+        return false;
     }
 
     @Override

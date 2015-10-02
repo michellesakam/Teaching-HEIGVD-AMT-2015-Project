@@ -6,11 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register new app</title>
-    </head>
+    
+    <%@include file="includes/header.jsp" %>
+    
     <body>
         <h1>Register new application...</h1>
     </body>

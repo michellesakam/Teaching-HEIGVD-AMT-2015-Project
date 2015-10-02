@@ -6,14 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Your apps</title>
-    </head>
+    
+    <%@include file="includes/header.jsp" %>
+    
     <body>
         
-        <%@include file="includes/logout.jsp" %>
+        <%@include file="includes/login.jsp" %>
         
         <h1>Your apps...</h1>
     </body>
