@@ -1,5 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+
+
+
+
+/* To change this license header, choose License Headers in Project Properties.
+ /*
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -23,7 +27,7 @@ public class AccountsManager implements AccountsManagerLocal {
     }
     
     private Account generateFakeAccount() {
-        return new Account("raphael", "racine", "raphael.racine@heig-vd.ch", "amt");
+        return new Account();
     }
 
 }
