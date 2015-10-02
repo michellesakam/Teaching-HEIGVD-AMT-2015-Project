@@ -33,7 +33,7 @@
 
    <body class="my_background">
     <div ng-app="sample" class = label>
-     <form class="form-horizontal" name="registerForm">
+     <form method="POST" action="/pages/accountRegistration" class="form-horizontal" name="registerForm">
      <div class="form-group">
         <label class="col-md-3 control-label" for="Email">Email</label>
         <div class="col-md-4">
@@ -43,13 +43,13 @@
      <div class="form-group">
         <label class="col-md-3 control-label" for="First name">First name</label>
         <div class="col-md-4">
-            <input id="Email" type="First name" class="form-control" name="First name" ng-model="First name" />
+            <input id="First_name" type="First name" class="form-control" name="First_name" ng-model="First name" />
         </div>
      </div>
       <div class="form-group">
         <label class="col-md-3 control-label" for="Last name">Last name</label>
         <div class="col-md-4">
-          <input id="Email" type="Last name" class="form-control" name="Last name" ng-model="Last name" />
+          <input id="Last_name" type="Last name" class="form-control" name="Last_name" ng-model="Last name" />
         </div>
      </div>
      <div class="form-group">
