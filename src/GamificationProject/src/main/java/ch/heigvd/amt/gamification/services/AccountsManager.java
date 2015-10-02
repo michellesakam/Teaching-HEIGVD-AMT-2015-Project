@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -36,17 +37,20 @@ public class AccountsManager implements AccountsManagerLocal {
 
     @Override
     public long numbersOfAccount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO: Implémenter avec la base de données
+        return 852;
     }
 
     @Override
     public void createAccount(String email, String firstName, String lastName, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO: A implémenter
     }
 
     @Override
     public List<Application> getAccountApps(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO : Données fake...
+        List<Application> apps = new LinkedList<>();   
+        return apps;
     }
 
     @Override
