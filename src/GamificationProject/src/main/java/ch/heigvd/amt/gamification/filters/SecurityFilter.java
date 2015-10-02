@@ -1,5 +1,6 @@
-package ch.heigvd.amt.mvcdemo.web.filters;
+package ch.heigvd.amt.gamification.filters;
 
+import ch.heigvd.amt.gamification.model.Account;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -77,8 +78,8 @@ public class SecurityFilter implements Filter {
      * If the user has been authenticated before, then the AuthenticationServlet has placed
      * an object (in this case a String) in the HTTP session. We can retrieve it.
      */
-    String principal = (String) httpRequest.getSession().getAttribute("principal");
-    if (principal == null && isTargetUrlProtected) {
+    Account connectedAccount = (Account) httpRequest.getSession().getAttribute("principal");
+    if (connectedAccount == null && isTargetUrlProtected) {
       /*
        * The user has not been authenticated and tries to access a protected resource,
        * we display the login page (and interrupt the request processing pipeline).
