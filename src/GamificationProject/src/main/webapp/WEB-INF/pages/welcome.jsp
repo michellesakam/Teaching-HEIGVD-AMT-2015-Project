@@ -27,6 +27,8 @@
     <!-- Custom styles for this template -->
     <link href="static/css/signin.css" rel="stylesheet">
 
+    <!-- button editor -->
+    <link href="static/css/button_edit.css" rel="stylesheet">
   </head>
 
   <body>
@@ -37,7 +39,7 @@
          <!--ajout de ma part -->
          <div class = "container">
              <div class ="row">
-                <div class ="col-md-3">
+                <div class ="col-md-3" id="button_edito">
                     <form method = "post"> 
                         <label for="login" class="sr-only">Email address</label> 
                         <input type="hidden" name="action" value="login">
@@ -45,16 +47,16 @@
                          <label for="inputPassword" class="sr-only">Password</label>
                         <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Password" required>
                     </form>
-                </div>
-                <div class ="col-md-3">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
+                    <div class ="col-md-3">
+                       <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
+                                       <!--Demander à liechti si OK-->
+                        <form method="POST" action="pages/accountRegistration" class="form-signin">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Create account</button>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
-             
-             <!--Demander à liechti si OK-->
-             <form method="POST" action="pages/accountRegistration" class="form-signin">
-                 <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Create account</button>
-             </form>
              
              <br/>
              <br/>
