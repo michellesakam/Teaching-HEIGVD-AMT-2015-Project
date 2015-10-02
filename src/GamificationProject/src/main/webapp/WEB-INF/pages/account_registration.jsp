@@ -28,10 +28,10 @@
     <link href="static/css/signin.css" rel="stylesheet">
 
     <!-- for alignment of blocks  -->
-    <link href="static/css/alignement.css" rel="stylesheet">
+    <link href="static/css/button-edit.css" rel="stylesheet">
   </head>
 
-   <body class="my_background">
+   <body class=>
     <div ng-app="sample" class = label>
      <form class="form-horizontal" name="registerForm">
      <div class="form-group">
