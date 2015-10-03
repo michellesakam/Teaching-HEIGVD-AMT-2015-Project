@@ -37,6 +37,12 @@
 
     <!--fin de l'ajout-->
 </form>
+
+<form method="GET" action="pages/accountRegistration" class="form-signin">
+    <button type="submit" class="btn-primary">Create account</button>
+</form>
+
+
 <% }%>
 </div> <!--container-->
 

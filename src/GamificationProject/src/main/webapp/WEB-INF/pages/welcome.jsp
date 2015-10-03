@@ -11,7 +11,9 @@
 
 <html lang="en">
     
-    <%@include file="includes/header.jsp" %>
+    <head>
+        <%@include file="includes/header.jsp" %>
+    </head>
 
   <body>
       <%@include file="includes/login.jsp" %>
