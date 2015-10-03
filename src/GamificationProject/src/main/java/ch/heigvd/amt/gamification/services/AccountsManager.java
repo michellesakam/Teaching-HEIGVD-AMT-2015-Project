@@ -15,6 +15,8 @@ import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -22,6 +24,9 @@ import java.util.List;
  */
 @Stateless
 public class AccountsManager implements AccountsManagerLocal {
+  
+  @PersistenceContext
+  EntityManager em;
 
     @Override
     public Account login(String email, String password) {
