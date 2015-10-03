@@ -13,8 +13,7 @@
     
 
     <%@include file="includes/header.jsp" %>
-
-
+    
    <body>
     <div ng-app="sample" class = label>
      <form method="POST" class="form-horizontal" name="registerForm">
