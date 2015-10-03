@@ -6,6 +6,8 @@ import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -14,9 +16,13 @@ import javax.ejb.Stateless;
 @Stateless
 public class ApplicationsManager implements ApplicationsManagerLocal {
 
+    @PersistenceContext
+    EntityManager em;
+    
     @Override
     public long numberOfApplicationsManaged() {
-        return 300;
+        return em.createQuery("SELECT a FROM Application a")
+                .getResultList().size();
     }
 
     @Override
