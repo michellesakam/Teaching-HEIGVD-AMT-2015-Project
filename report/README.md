@@ -28,6 +28,21 @@ En collaboration avec Samira Kouchali (les autres ayant un travail en dehors des
 <li>Création d'un filtre qui permet de vérifier pour certaines pages qu'il y aie
     un utilisateur connecté
 
+29.09.2015
+
+<li>Scéance de discussion avec les membres du groupe
+
+En collaboration avec Parfait plaisir de Pâques :
+<li>Commencement de la réalisation des entités JPA
+
+02.10.2015
+<li>Résolution d'un bug lié au manque de la balise <base href="..."> qui posait
+des problèmes CSS et des problèmes de redirection
+
+03.10.2015
+<li>Création d'un compte possible <b><font color="red">(il manque juste les cas d'erreurs)</font></b>
+<li>Alignement correcte du formulaire du login (sauf le bouton créer un compte)
+<li>Début de l'implémentation des services DAO
 
 
 ####Samira Kouchali
