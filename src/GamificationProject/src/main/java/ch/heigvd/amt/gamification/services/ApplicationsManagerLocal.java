@@ -15,7 +15,7 @@ import javax.ejb.Local;
 public interface ApplicationsManagerLocal {
     
     public long numberOfApplicationsManaged();
-    public void registerNewApplication(String email, String name, String description, ApiKey apiKey, boolean isEnable);
-    public void editApplicationDetails(long id, String newName, String newDescription, ApiKey newApiKey, boolean isEnable);
+    public void registerNewApplication(Application newApplication);
+    public void editApplicationDetails(Application application);
     public List<EndUser> endUsersOfApplication(long idApplication);
 }

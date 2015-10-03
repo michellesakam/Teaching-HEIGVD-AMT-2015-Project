@@ -49,12 +49,12 @@ public class AccountsManager implements AccountsManagerLocal {
     }
 
     @Override
-    public List<Application> getAccountApps(String email) {
+    public List<Application> getAccountApps(Account a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void editAccount(String email, String newEmail, String newPassword, String newFirstName, String newLastName) {
+    public void editAccount(Account a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
