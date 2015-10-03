@@ -11,9 +11,9 @@
 
 <html lang="en">
     
-   <head>
-        <%@include file="includes/header.jsp" %>
-    </head>
+
+    <%@include file="includes/header.jsp" %>
+
 
    <body>
     <div ng-app="sample" class = label>

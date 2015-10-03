@@ -16,7 +16,7 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
 
     @Override
     public long numberOfApplicationsManaged() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 300;
     }
 
     @Override

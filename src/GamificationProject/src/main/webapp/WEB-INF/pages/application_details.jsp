@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <%@include file="includes/header.jsp" %>
-    </head>
+
+    <%@include file="includes/header.jsp" %>
+
     
     <body>
         <h1>Application details...</h1>

@@ -4,12 +4,10 @@
 <div class="container">
     <%if (session.getAttribute("principal") != null) { %>
 
-    <form method="POST" action="./auth?action=logout" class="form-signin">
-        Logged as ${principal.email}
-        <div class="container">            
-            <div class ="col-md-3">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Logout</button>
-            </div>
+    <form method="POST" action="./auth?action=logout" class="form-inline">
+        <div class="form-group">    
+            Logged as ${principal.email}
+            <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Logout</button>
         </div>
 
 </div>
@@ -19,31 +17,23 @@
 
 <% } else { %>
 
-<form method="POST" action="auth" class="form-signin">
-    
-    ${ERROR_CANT_LOGIN}
-    
-    <div class="container">
-        <div class ="col-md-3" id="button_edito">
-            <form method = "post"> 
-                <label for="login" class="sr-only">Email address</label> 
-                <input type="hidden" name="action" value="login">
-                <input type="login" name="email" id="login" class="form-control" placeholder="Enter your login" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            </form>
-            <div class ="col-md-3">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
-            </div>
-        </div>
+<form method="POST" action="auth" class="form-inline " align="center">
 
+    ${ERROR_CANT_LOGIN}
+
+    <div class="form-group">
+        <label for="login" class="sr-only">Email address</label> 
+        <input type="hidden" name="action" value="login">
+        <input type="login" name="email" id="login" class="form-control" placeholder="Enter your login" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-primary" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
     </div>
 
-    <!--fin de l'ajout-->
 </form>
-
-<form method="GET" action="pages/accountRegistration" class="form-signin">
-    <button type="submit" class="btn-primary">Create account</button>
+    
+<form method="GET" action="pages/accountRegistration" class="form-inline">
+    <button type="submit" class="btn btn-primary">Create account</button>
 </form>
 
 
