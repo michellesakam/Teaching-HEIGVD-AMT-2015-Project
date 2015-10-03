@@ -14,9 +14,7 @@ public interface AccountsManagerLocal {
     public Account login(String email, String password);  
     public long numbersOfAccount();
     public boolean accountExists(Account account);
-    public void createAccount(Account newAccount);
+    public long createAccount(Account newAccount);
     public List<Application> getAccountApps(String email); // Voir paramètre avec le prof
     public void editAccount(String email, String newEmail, String newPassword, String newFirstName, String newLastName);
-    
-    // TODO: Demander au prof pour le paramètre e-mail
 }

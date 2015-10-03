@@ -2,19 +2,42 @@ package ch.heigvd.amt.gamification.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Raphaël Racine
  */
+@Entity
 public class Application implements Serializable {
 
     private String name;
     private String description;
+   
+    @OneToOne
     private ApiKey apiKey;
+    
+    @ManyToOne
     private Account acount;
     private boolean isAnable;
+    
+    @OneToMany
     private List <EndUser> user;   
+    
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private Long id;
+
+  public Application() {
+  }
+   
+   
 
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isAnable) {
         this.name = name;
@@ -71,6 +94,14 @@ public class Application implements Serializable {
     public void setUser(List<EndUser> user) {
         this.user = user;
     }
+
+   public Long getId() {
+      return id;
+   }
+
+   public void setId(Long id) {
+      this.id = id;
+   }
     
     
 

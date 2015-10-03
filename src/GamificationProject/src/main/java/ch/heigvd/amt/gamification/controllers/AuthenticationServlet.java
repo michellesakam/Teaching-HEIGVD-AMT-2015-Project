@@ -80,6 +80,7 @@ public class AuthenticationServlet extends HttpServlet {
         targetUrl = request.getContextPath() + targetUrl;
 
         if ("login".equals(action)) {
+           //@Parfait il faut faut passer uniquement l'email. pas les deux
             Account a = accountsManager.login(email, password);
 
             if (a != null) { // The users exists and can connect

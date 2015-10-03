@@ -1,5 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+/* To change this license header, choose License Headers in Project Properties.
+ /*
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -11,6 +11,8 @@ import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -19,12 +21,15 @@ import java.util.List;
 @Stateless
 public class AccountsManager implements AccountsManagerLocal {
 
+    @PersistenceContext
+    EntityManager em;
+
     @Override
     public Account login(String email, String password) {
         // TODO: return an Account if he existe with this email and this password, else return null
         return generateFakeAccount();
     }
-    
+
     private Account generateFakeAccount() {
         Account a = new Account("Raphael", "Racine", "raphael.racine@heig-vd.ch", "fdjlkfs");
         return a;
@@ -37,10 +42,12 @@ public class AccountsManager implements AccountsManagerLocal {
     }
 
     @Override
-    public void createAccount(Account newAccount) {
-        // TODO: A implémenter
+    public long createAccount(Account newAccount) {
+        em.persist(newAccount);
+        em.flush();
+        return newAccount.getId();
     }
-    
+
     @Override
     public boolean accountExists(Account account) {
         return false;
@@ -49,7 +56,7 @@ public class AccountsManager implements AccountsManagerLocal {
     @Override
     public List<Application> getAccountApps(String email) {
         // TODO : Données fake...
-        List<Application> apps = new LinkedList<>();   
+        List<Application> apps = new LinkedList<>();
         return apps;
     }
 
