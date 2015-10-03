@@ -45,6 +45,8 @@ public class AccountsManager implements AccountsManagerLocal {
         // TODO: Implémenter avec la base de données
         return 852;
     }
+    
+    
 
     @Override
     public void createAccount(String email, String firstName, String lastName, String password) {
@@ -62,5 +64,12 @@ public class AccountsManager implements AccountsManagerLocal {
     public void editAccount(String email, String newEmail, String newPassword, String newFirstName, String newLastName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+  @Override
+  public long createAccount(Account account) {
+    em.persist(account);
+    em.flush();
+    return account.getId();
+  }
 
 }

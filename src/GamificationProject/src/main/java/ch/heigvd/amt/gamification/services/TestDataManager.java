@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.model.Account;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -16,7 +17,12 @@ public class TestDataManager implements TestDataManagerLocal {
 
   @Override
   public void generateTestData() {
-    accountsManager.createAccount("jdoe@acme.com", "John", "Doe", "passw0rd");
+    Account account = new Account();
+    account.setFirstName("John");
+    account.setLastName("Doe");
+    account.setPassword("passw0rd");
+    account.setEmail("jdoe@acme.com");
+    accountsManager.createAccount(account);
   }
   
   

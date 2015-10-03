@@ -7,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
@@ -21,7 +22,10 @@ public class EndUser implements Serializable {
    
    @ManyToOne
    private Application apps;
+   
    private String  userID;
+   
+   @Temporal(TemporalType.TIMESTAMP)
    private Date  regDate;
 
    public Long getId() {

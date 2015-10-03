@@ -34,6 +34,11 @@ public class Application implements Serializable {
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
 
+  public Application() {
+  }
+   
+   
+
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isAnable) {
         this.name = name;
         this.description = description;

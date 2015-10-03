@@ -18,4 +18,6 @@ public interface AccountsManagerLocal {
     public void editAccount(String email, String newEmail, String newPassword, String newFirstName, String newLastName);
     
     // TODO: Demander au prof pour le paramètre e-mail
+
+  long createAccount(Account account);
 }
