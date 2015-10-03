@@ -2,19 +2,46 @@ package ch.heigvd.amt.gamification.model;
 
 import java.io.Serializable;
 import java.util.List;
+import static javax.ws.rs.client.Entity.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import static javax.ws.rs.client.Entity.entity;
 /**
  * 
  * @author Raphaël Racine
  */
-
+@Entity
 public class Account implements Serializable {
+   
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private Long id;
   
+   
   private String firstName;
   private String lastName;
+  
+  @Column(nullable = false, unique = true)
   private String email;
+  
+  // l'utilisateur doit avoir une adresse email valide 
+  @Column(nullable = false)
   private String password;
+  
+  @ManyToMany // relation plusieurs à plusieurs
   private List<Role> roles;
+  
+  @OneToMany
   private List<Application> apps;
 
   public String getFirstName() {
@@ -82,4 +109,11 @@ public class Account implements Serializable {
         return apps;
     } 
 
+   public Long getId() {
+      return id;
+   }
+
+   public void setId(Long id) {
+      this.id = id;
+   }
 }
