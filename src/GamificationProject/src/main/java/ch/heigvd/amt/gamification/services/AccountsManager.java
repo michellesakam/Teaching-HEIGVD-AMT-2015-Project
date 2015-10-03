@@ -25,14 +25,14 @@ public class AccountsManager implements AccountsManagerLocal {
     EntityManager em;
 
     @Override
-    public Account login(String email, String password) {
-        // TODO: return an Account if he existe with this email and this password, else return null
-        return generateFakeAccount();
-    }
-
-    private Account generateFakeAccount() {
-        Account a = new Account("Raphael", "Racine", "raphael.racine@heig-vd.ch", "fdjlkfs");
-        return a;
+    public Account login(String email) {
+        List<Account> tmp = em.createQuery(
+                "SELECT a FROM Account a WHERE a.email= :email")
+                .setParameter("email", email)
+                .setMaxResults(1)
+                .getResultList();
+        
+        return tmp.size() > 0 ? tmp.get(0) : null;
     }
 
     @Override
@@ -46,11 +46,6 @@ public class AccountsManager implements AccountsManagerLocal {
         em.persist(newAccount);
         em.flush();
         return newAccount.getId();
-    }
-
-    @Override
-    public boolean accountExists(Account account) {
-        return false;
     }
 
     @Override

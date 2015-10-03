@@ -18,7 +18,11 @@
 </form>
 
 <% } else { %>
+
 <form method="POST" action="auth" class="form-signin">
+    
+    ${ERROR_CANT_LOGIN}
+    
     <div class="container">
         <div class ="col-md-3" id="button_edito">
             <form method = "post"> 

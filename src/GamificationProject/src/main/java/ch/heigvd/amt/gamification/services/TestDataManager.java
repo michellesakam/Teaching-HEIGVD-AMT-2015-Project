@@ -17,12 +17,12 @@ public class TestDataManager implements TestDataManagerLocal {
 
   @Override
   public void generateTestData() {
-    Account account = new Account();
-    account.setFirstName("John");
-    account.setLastName("Doe");
-    account.setPassword("passw0rd");
-    account.setEmail("jdoe@acme.com");
-    accountsManager.createAccount(account);
+        Account account = new Account();
+        account.setFirstName("John");
+        account.setLastName("Doe");
+        account.setPassword("passw0rd");
+        account.setEmail("jdoe@acme.com");
+        accountsManager.createAccount(account);
   } 
 
 }

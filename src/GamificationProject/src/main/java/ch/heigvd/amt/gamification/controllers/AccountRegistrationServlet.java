@@ -50,21 +50,16 @@ public class AccountRegistrationServlet extends HttpServlet {
         String lastName = req.getParameter("Last_name");
         String password = req.getParameter("Password");
         String confirm = req.getParameter("Confirm");
-
-        if (confirm != password) {
-            System.out.println("Les mots de passe ne sont pas identiques");
-        }
-
-        Account a = new Account(firstName, lastName, email, password);
-        boolean accountAlreadyExists = accountsManager.accountExists(a);
         
-        if (accountAlreadyExists) {
-            System.out.println("Ce Compte dejà utilisé");
-        } else {
-            accountsManager.createAccount(a);
-            req.getSession().setAttribute("principal", a);
-            resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
-        }
+        Account a = new Account();
+        a.setEmail(email);
+        a.setFirstName(firstName);
+        a.setLastName(lastName);
+        a.setPassword(password);
+        
+        System.out.print(accountsManager.createAccount(a));
+        req.getSession().setAttribute("principal", a);
+        resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
 
     }
 

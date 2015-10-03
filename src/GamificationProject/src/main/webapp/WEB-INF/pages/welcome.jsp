@@ -13,11 +13,11 @@
     
     <head>
         <%@include file="includes/header.jsp" %>
+        <%@include file="includes/login.jsp" %>
     </head>
 
-  <body>
-      <%@include file="includes/login.jsp" %>
-  </body>
+    <body>
+    </body>
   
 </html>
 
