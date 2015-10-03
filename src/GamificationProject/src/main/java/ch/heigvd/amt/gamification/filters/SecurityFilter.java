@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class implements the Filter interface defined in the Servlet API. A
@@ -45,9 +46,21 @@ public class SecurityFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
     HttpServletRequest httpRequest = (HttpServletRequest) request;
+    HttpServletResponse httpResponse = (HttpServletResponse)response;
+    
     String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
 
     /*
+     * If the target URL is static content or if it is the authentication servlet, then we grant access event
+     * if the user has not been authenticated.
+     */
+    if ("".equals(path) || "/".equals(path) || "/index.html".equals(path) || "index.jsp".equals(path)) {
+      request.getRequestDispatcher("/pages/welcome").forward(request, response);
+      //httpResponse.sendRedirect(httpRequest.getContextPath() + "/pages/welcome");
+      //return;
+    }
+
+      /*
      * Let's apply a white list access policy. By default, we will authorize access to the target URI on
      * if the user has been authenticated.
      */
@@ -63,9 +76,9 @@ public class SecurityFilter implements Filter {
       isTargetUrlProtected = false;
     } else if ("/auth".equals(path)) {
       isTargetUrlProtected = false;
-    } else if ("/pages/accountRegistration".equals(path)) {
-        isTargetUrlProtected = false;
     } else if ("/pages/welcome".equals(path)) {
+      isTargetUrlProtected = false;
+    } else if ("/pages/accountRegistration".equals(path)) { // A VOIR AVEC LIECHTI SI OK
         isTargetUrlProtected = false;
     } else {
       /*
