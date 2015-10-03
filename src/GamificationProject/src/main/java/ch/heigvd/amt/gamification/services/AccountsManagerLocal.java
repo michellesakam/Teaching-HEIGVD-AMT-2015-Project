@@ -12,7 +12,7 @@ import java.util.List;
 @Local
 public interface AccountsManagerLocal {    
     public Account login(String email);  
-    public long numbersOfAccount();
+    public int numbersOfAccount();
     public long createAccount(Account newAccount);
     public List<Application> getAccountApps(String email); // Voir paramètre avec le prof
     public void editAccount(String email, String newEmail, String newPassword, String newFirstName, String newLastName);

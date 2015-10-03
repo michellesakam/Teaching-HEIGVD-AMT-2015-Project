@@ -36,9 +36,9 @@ public class AccountsManager implements AccountsManagerLocal {
     }
 
     @Override
-    public long numbersOfAccount() {
-        // TODO: Implémenter avec la base de données
-        return 852;
+    public int numbersOfAccount() {
+        return em.createQuery("SELECT a FROM Account a")
+                .getResultList().size();
     }
 
     @Override
@@ -50,9 +50,7 @@ public class AccountsManager implements AccountsManagerLocal {
 
     @Override
     public List<Application> getAccountApps(String email) {
-        // TODO : Données fake...
-        List<Application> apps = new LinkedList<>();
-        return apps;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
