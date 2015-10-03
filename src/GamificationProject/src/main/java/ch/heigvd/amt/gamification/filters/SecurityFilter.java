@@ -63,7 +63,9 @@ public class SecurityFilter implements Filter {
       isTargetUrlProtected = false;
     } else if ("/auth".equals(path)) {
       isTargetUrlProtected = false;
-    } else if ("/pages/accountRegistration".equals(path)) { // A VOIR AVEC LIECHTI SI OK
+    } else if ("/pages/accountRegistration".equals(path)) {
+        isTargetUrlProtected = false;
+    } else if ("/pages/welcome".equals(path)) {
         isTargetUrlProtected = false;
     } else {
       /*
