@@ -11,12 +11,20 @@
 
 <html lang="en">
     
-    <head>
-        <%@include file="includes/header.jsp" %>
-        <%@include file="includes/login.jsp" %>
-    </head>
+    <%@include file="includes/header.jsp" %>
+    <%@include file="includes/login.jsp" %>
 
     <body>
+        <div align="center">
+            <h1>Welcome to GaMy</h1>
+            <br>
+            <br>
+                ${nbAccounts} accounts created
+            <br>
+                ${nbApplications} applications managed
+        </div>
+        
+        
     </body>
   
 </html>

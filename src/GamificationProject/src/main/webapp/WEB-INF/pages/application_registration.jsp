@@ -9,10 +9,9 @@
 
 <html>
     
-    <head>
-        <%@include file="includes/header.jsp" %>
-    </head>
-    
+
+    <%@include file="includes/header.jsp" %>
+        
     <body>
         <h1>Register new application...</h1>
     </body>
