@@ -21,25 +21,25 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="Email">Email</label>
                     <div class="col-md-4">
-                        <input id="Email" type="email" class="form-control" name="Email"/>
+                        <input id="Email" type="email" class="form-control" name="Email" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="First name">First name</label>
                     <div class="col-md-4">
-                        <input id="First_name" type="First name" class="form-control" name="First_name"/>
+                        <input id="First_name" type="First name" class="form-control" name="First_name" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="Last name">Last name</label>
                     <div class="col-md-4">
-                        <input id="Last_name" type="Last name" class="form-control" name="Last_name"/>
+                        <input id="Last_name" type="Last name" class="form-control" name="Last_name" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="Password">Password</label>
                     <div class="col-md-4">
-                        <input id="Password" type="password" class="form-control" name="Password"/>
+                        <input id="Password" type="password" class="form-control" name="Password" required/>
                     </div> 
                 </div>
                 <div class="form-group">

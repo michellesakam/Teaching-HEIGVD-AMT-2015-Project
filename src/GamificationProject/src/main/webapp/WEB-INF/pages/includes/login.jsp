@@ -18,7 +18,7 @@
 
 <form method="POST" action="auth" class="form-inline " align="center">
 
-    ${ERROR_CANT_LOGIN}
+    ${errorLogin}
 
     <div class="form-group">
         <label for="login" class="sr-only">Email address</label> 

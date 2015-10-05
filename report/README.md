@@ -44,7 +44,10 @@ des problèmes CSS et des problèmes de redirection
 <li>Alignement correcte du formulaire du login (sauf le bouton créer un compte)
 <li>Début de l'implémentation des services DAO
 
+05.10.2015
 
+En collaboration avec Vanessa :
+<li>Affichage du nombre de enduser inscrit les 30 derniers jours (page Welcome)
 
 
 ####Samira Kouchali

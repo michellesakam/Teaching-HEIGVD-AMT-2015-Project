@@ -90,7 +90,7 @@ public class AuthenticationServlet extends HttpServlet {
             }
             else // The users can't connect
             {
-                request.setAttribute("ERROR_CANT_LOGIN", "Login failed !");
+                request.setAttribute("errorLogin", "Login failed !");
                 response.sendRedirect(request.getContextPath());
             }
         }
