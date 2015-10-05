@@ -13,5 +13,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface EndUsersManagerLocal {
-    public long numberOfEndUsers(int numberOfDay);
+    public int numberOfEndUsers(int numberOfDay);
 }

@@ -22,6 +22,9 @@
                 ${nbAccounts} accounts created
             <br>
                 ${nbApplications} applications managed
+            <br>
+            <br>
+                ${nbEndUser} users created by applications during the last ${nbLastDays} days
         </div>
         
         

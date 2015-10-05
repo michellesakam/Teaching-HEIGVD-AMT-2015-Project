@@ -7,6 +7,7 @@ package ch.heigvd.amt.gamification.controllers;
 
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,8 +24,13 @@ public class WelcomeServlet extends HttpServlet {
     
     @EJB
     private AccountsManagerLocal accountsManager;
+    
     @EJB
     private ApplicationsManagerLocal applicationsManager;
+    
+    @EJB
+    private EndUsersManagerLocal endUsersManager;
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -37,8 +43,13 @@ public class WelcomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {       
         
+        final int nbLastDayEndUsers = 30;
+        
         request.setAttribute("nbAccounts", accountsManager.numbersOfAccount());
         request.setAttribute("nbApplications", applicationsManager.numberOfApplicationsManaged());
+        request.setAttribute("nbEndUser", endUsersManager.numberOfEndUsers(nbLastDayEndUsers));
+        request.setAttribute("nbLastDays", nbLastDayEndUsers);
+        
         request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
     }
 

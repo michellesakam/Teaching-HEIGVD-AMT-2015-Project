@@ -26,7 +26,7 @@ public class EndUser implements Serializable {
    private String  userID;
    
    @Temporal(TemporalType.TIMESTAMP)
-   private Date  regDate;
+   private Date regDate;
 
    public Long getId() {
       return id;
