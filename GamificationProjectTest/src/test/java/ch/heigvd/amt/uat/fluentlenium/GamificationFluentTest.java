@@ -7,6 +7,7 @@ package ch.heigvd.amt.uat.fluentlenium;
 //import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationDetailsFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.fluentlenium.adapter.FluentTest;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -19,55 +20,54 @@ import org.fluentlenium.core.annotation.Page;
  */
 public class GamificationFluentTest extends FluentTest {
 
-  private final String baseUrl = "http://localhost:8080/GamificationProject/";
+    private final String baseUrl = "http://localhost:8080/GamificationProject/";
 
-  @Page
-  public LoginFluentPage loginPage;
+    @Page
+    public LoginFluentPage loginPage;
 
+    @Page
+    public ApplicationDetailsFluentPage yourAppPage;
 
-  @Page
-  public ApplicationDetailsFluentPage yourAppPage;
+    @Test
+    public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
+        goTo(baseUrl);
+        loginPage.isAt();
+        loginPage.typeEmailAddress("not a valid email");
+        loginPage.typePassword("any password");
+        loginPage.clickSignin();
+        assertThat(title().equals("Login Page"));
+    }
 
+    @Test
+    public void itShouldBeNotPossibleToAccessSecurePagesWithoutLogin() {
+        goTo(baseUrl);
+        yourAppPage.isAt();
+    }
+    /*
+     @Test
+     public void itShouldBePossibleToGetDetailsForACompanyAfterSignin() {
+     goTo(corporateInformationPage);
+     loginPage.isAt(); // we have not logged in, so we should be redirected
+     loginPage.typeEmailAddress("a@a.com");
+     loginPage.typePassword("any password");
+     loginPage.clickSignin();
+     corporateInformationPage.isAt(); // we should be redirected toward the original target after signin
+     corporateInformationPage.clickOnFirstCompanyLinkInCompaniesTable();
+     companyDetailsPage.isAt();
+     }
 
-  @Test
-  public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
-    goTo(baseUrl);
-    loginPage.isAt();
-    loginPage.typeEmailAddress("not a valid email");
-    loginPage.typePassword("any password");
-    loginPage.clickSignin();
-  }
+     */
 
-  @Test
-  public void itShouldBeNotPossibleToAccessSecurePagesWithoutLogin() {
-    goTo(baseUrl);
-    yourAppPage.isAt();
-    
-  }
-/*
-  @Test
-  public void itShouldBePossibleToGetDetailsForACompanyAfterSignin() {
-    goTo(corporateInformationPage);
-    loginPage.isAt(); // we have not logged in, so we should be redirected
-    loginPage.typeEmailAddress("a@a.com");
-    loginPage.typePassword("any password");
-    loginPage.clickSignin();
-    corporateInformationPage.isAt(); // we should be redirected toward the original target after signin
-    corporateInformationPage.clickOnFirstCompanyLinkInCompaniesTable();
-    companyDetailsPage.isAt();
-  }
-
-  */
-  @Override
-  public WebDriver getDefaultDriver() {
-    return new FirefoxDriver();
+    @Override
+    public WebDriver getDefaultDriver() {
+        return new FirefoxDriver();
     //System.setProperty("webdriver.chrome.driver", "/Users/admin/Downloads/chromedriver");
-    //return new ChromeDriver();
-  }
+        //return new ChromeDriver();
+    }
 
-  @Override
-  public String getDefaultBaseUrl() {
-    return baseUrl;
-  }
-  
+    @Override
+    public String getDefaultBaseUrl() {
+        return baseUrl;
+    }
+
 }

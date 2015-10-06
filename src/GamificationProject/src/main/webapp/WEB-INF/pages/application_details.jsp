@@ -10,9 +10,11 @@
 <html>
 
     <%@include file="includes/header.jsp" %>
-
+    
+    <title>App details</title>
     
     <body>
         <h1>Application details...</h1>
     </body>
+    
 </html>

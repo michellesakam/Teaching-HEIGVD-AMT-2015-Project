@@ -14,6 +14,8 @@
     <%@include file="includes/header.jsp" %>
     <%@include file="includes/login.jsp" %>
 
+    <title>Login Page</title>
+    
     <body>
         <div align="center">
             <h1>Welcome to GaMy</h1>

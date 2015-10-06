@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 
 /**
@@ -50,16 +51,26 @@ public class AccountRegistrationServlet extends HttpServlet {
         String lastName = req.getParameter("Last_name");
         String password = req.getParameter("Password");
         String confirm = req.getParameter("Confirm");
-        
-        Account a = new Account();
-        a.setEmail(email);
-        a.setFirstName(firstName);
-        a.setLastName(lastName);
-        a.setPassword(password);
-        
-        System.out.print(accountsManager.createAccount(a));
-        req.getSession().setAttribute("principal", a);
-        resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
+
+        if (password.equals(confirm)) {
+            Account a = new Account();
+            a.setEmail(email);
+            a.setFirstName(firstName);
+            a.setLastName(lastName);
+            a.setPassword(password);
+
+            accountsManager.createAccount(a);
+            req.getSession().setAttribute("principal", a);
+            resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
+
+        } else {
+            List<String> errors = new ArrayList<>();
+            errors.add("Les mots de passe ne sont pas les mêmes.");
+            req.setAttribute("errors", errors);
+            req.setAttribute("notSamePassword", "Les mots de passe ne correspondent pas");
+            
+            req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
+        }
 
     }
 

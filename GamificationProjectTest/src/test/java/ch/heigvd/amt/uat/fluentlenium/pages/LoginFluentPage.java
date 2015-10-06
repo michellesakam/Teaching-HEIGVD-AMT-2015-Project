@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class LoginFluentPage extends AbstractGamificationProjectFluentPage {
 
-  private final static String inputEmail = "#inputEmail"; // id in the html code
+  private final static String inputEmail = "#login"; // id in the html code
   private final static String inputPassword = "#inputPassword"; // id in the html code
-  private final static String buttonSignin = "#bSignIn"; // id in the html code
+  private final static String buttonSignin = "#blogin"; // id in the html code
 
   @Override
   public void isAt() {

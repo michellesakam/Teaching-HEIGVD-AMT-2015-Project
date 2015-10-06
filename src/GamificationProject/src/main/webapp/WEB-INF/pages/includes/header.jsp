@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gamification Project</title>
+        <!--<title>Gamification Project</title>-->
         <base href="${pageContext.request.contextPath}/"> <!--Important !!!!-->
 
         <!-- Bootstrap core CSS -->
