@@ -13,14 +13,15 @@ import javax.persistence.ManyToMany;
  * @author Raphaël Racine
  */
 @Entity
-public class Role implements Serializable {
-   
-   private String roleName;
-   
+public class Role implements Serializable {   
+   private String roleName;   
    @Id   
    @GeneratedValue(strategy = GenerationType.AUTO)
    private long id;
-   
+
+    public Role() {
+    }
+
    @ManyToMany
    private List<Account> listAccount;
 
