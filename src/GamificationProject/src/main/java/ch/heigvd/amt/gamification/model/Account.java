@@ -22,6 +22,13 @@ import static javax.ws.rs.client.Entity.entity;
  * @author Raphaël Racine
  */
 @Entity
+@NamedQueries({
+  // selectionner un account dont on connaît l'email
+  @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Company a WHERE a.email = :email"),
+
+  // selectionner tous les comptes de la base de données.
+  @NamedQuery(name = "Account.findAllAccount", query = "SELECT a FROM Account")  
+})
 public class Account implements Serializable {
 
     public Account() {

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -16,6 +18,13 @@ import javax.persistence.OneToOne;
  * @author Raphaël Racine
  */
 @Entity
+@NamedQueries({
+  // selectionner une Application dont on connaît  le nom
+  @NamedQuery(name = "Application.findByName", query = "SELECT a FROM Application a WHERE a.name = :name"),
+
+  // selectionner toutes les applications de la base de données.
+  @NamedQuery(name = "Application.findAllApplication", query = "SELECT a FROM Application")  
+})
 public class Application implements Serializable {
 
     public Application() {

@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,6 +17,14 @@ import javax.persistence.TemporalType;
  * @author Raphaël Racine
  */
 @Entity
+@NamedQueries({
+  // Selectionner user dont on connaît id ... 
+  @NamedQuery(name = "EndUser.findById", query = "SELECT u FROM EndUser u WHERE u.id = :id"),
+
+  // Selectionner tous les EndUser de la base de données.  
+  @NamedQuery(name = "EndUser.findAllUsers", query = "SELECT u FROM EndUser")  
+})
+
 public class EndUser implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)

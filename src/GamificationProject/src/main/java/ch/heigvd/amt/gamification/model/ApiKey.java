@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -12,6 +14,13 @@ import javax.persistence.OneToOne;
  * @author Raphaël Racine
  */
 @Entity
+@NamedQueries({
+  // Selectionner un ApiKey si on connait l'ID
+  @NamedQuery(name = "ApiKey.findById", query = "SELECT a FROM ApiKey a WHERE a.id = :id"),
+
+  // selectionner tous les ApiKey de la base de données 
+  @NamedQuery(name = "Account.findAllApiKey", query = "SELECT a FROM ApiKey")  
+})
 public class ApiKey implements Serializable {
 
    
