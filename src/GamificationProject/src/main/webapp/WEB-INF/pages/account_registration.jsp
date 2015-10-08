@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="ConfirmPassword">Confirm Password</label>
                 <div class="col-md-4">
-                    <input id="ConfirmPassword" type="password" class="form-control" name="ConfirmPassword"/>
+                    <input id="ConfirmPassword" type="password" class="form-control" name="Confirm"/>
                 </div>
             </div>
             <div class="form-group">

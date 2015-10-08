@@ -30,4 +30,8 @@ public class ApiKey implements Serializable {
    public void setId(Long id) {
       this.id = id;
    }
+   
+   public Long getUsers(){
+       return 0l;
+   }
 }
