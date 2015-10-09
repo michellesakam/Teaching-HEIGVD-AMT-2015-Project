@@ -21,8 +21,9 @@ public class EndUser implements Serializable {
    private Long id;
    
    @ManyToOne
-   private Application apps;
-   
+   private Application application;
+    public EndUser() {
+    } 
    private String  userID;
    
    @Temporal(TemporalType.TIMESTAMP)
@@ -31,7 +32,6 @@ public class EndUser implements Serializable {
    public Long getId() {
       return id;
    }
-
    public void setId(Long id) {
       this.id = id;
    }
