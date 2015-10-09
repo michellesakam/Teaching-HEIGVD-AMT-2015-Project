@@ -34,6 +34,12 @@ public class ApiKey implements Serializable {
       this.id = id;
    }
 
+   
+   public Long getUsers(){
+       return 0l;
+   }
+
+
     public Application getApplication() {
         return application;
     }
