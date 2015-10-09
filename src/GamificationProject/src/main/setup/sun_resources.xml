@@ -6,7 +6,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="projetAMT"/>
         <property name="User" value="root"/>
-        <property name="Password" value=""/>
+        <property name="Password" value="toor"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/projetAMT?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysqlocalhost:3306.jdbc.Driver"/>
     </jdbc-connection-pool>
