@@ -29,7 +29,7 @@
 </form>
     
 <form method="GET" action="pages/accountRegistration" class="form-inline">
-    <button type="submit" class="btn btn-primary">Create account</button>
+    <button id="bcreatAccount" type="submit" class="btn btn-primary">Create account</button>
 </form>
  
 

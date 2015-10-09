@@ -24,7 +24,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 
 public class GamificationProjectTest{
-private String baseUrl = "localhost:8080/MVCDemo/";
+private String baseUrl = "localhost:8080/GamificationProject/";
   private WebDriver driver;
 
   
@@ -33,8 +33,16 @@ private String baseUrl = "localhost:8080/MVCDemo/";
     driver = new FirefoxDriver();
   
   }
-  
   /*
+   @Test
+  public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
+    driver.get(baseUrl);
+    LoginPage loginPage = new LoginPage(driver);
+    loginPage.typeEmailAddress("this is not a valid email address");
+    loginPage.typePassword("any password");
+    loginPage.submitFormExpectingFailure();
+  }
+    
    @Test
   public void successfulSigninShouldBringUserToHomePage() {
     driver.get(baseUrl);
@@ -43,10 +51,20 @@ private String baseUrl = "localhost:8080/MVCDemo/";
     loginPage.typePassword("any password");
    YourAppPage yourapppage = (YourAppPage)loginPage.submitForm(YourAppPage.class);
   }
-  */
+  
+ @Test
+  public void ClickCreateAccountButtonShouldBringUserToAccountRegistrationPage() {
+    driver.get(baseUrl);
+    LoginPage loginPage = new LoginPage(driver);
+    
+   AccountRegistrationPage accountregistrationpage = (AccountRegistrationPage)loginPage.submitForm(AccountRegistrationPage.class);
+  }
+  
+  /*
+  
    @Test
   public void successfulCreatAccountShouldBringUserToyourAppPage() {
-    driver.get(baseUrl + "/pages/applicationRegistration");
+    driver.get(baseUrl + "/pages/yourApps");
     AccountRegistrationPage creatAccountPage = new AccountRegistrationPage(driver);
     creatAccountPage.typeEmailAddress("a@a.com");
     creatAccountPage.typeFirstname("any firstname");
@@ -56,5 +74,5 @@ private String baseUrl = "localhost:8080/MVCDemo/";
     creatAccountPage.typeConfirmPassword("any password");
     YourAppPage yourapppage = (YourAppPage)creatAccountPage.submitForm(YourAppPage.class);
   }
-
+*/
 }

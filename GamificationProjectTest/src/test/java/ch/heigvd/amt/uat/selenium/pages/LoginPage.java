@@ -16,7 +16,7 @@ public class LoginPage extends AbstractGamificationProject {
   By LoginLocator = By.id("login");
   By PasswordLocator = By.id("inputPassword");
   By BloginLocator = By.id("blogin");
-  By BcreatAccountLocator = By.id("blogin");
+  By BcreatAccountLocator = By.id("bcreatAccount");
 
   public LoginPage(WebDriver driver) {
     super(driver);
@@ -27,8 +27,8 @@ public class LoginPage extends AbstractGamificationProject {
     }
   }
 
-  public LoginPage typeEmailAddress(String email) {
-    driver.findElement(LoginLocator).sendKeys(email);
+  public LoginPage typeEmailAddress(String login) {
+    driver.findElement(LoginLocator).sendKeys(login);
     return this;
   }
 
@@ -39,7 +39,7 @@ public class LoginPage extends AbstractGamificationProject {
  
   
   public Page submitForm(Class<? extends Page> expectedPageClass) {
-    driver.findElement(BloginLocator).click();
+    driver.findElement(BcreatAccountLocator).click();
     Page targetPage = null;
     try {
       targetPage = expectedPageClass.getConstructor(WebDriver.class).newInstance(driver);
@@ -50,4 +50,10 @@ public class LoginPage extends AbstractGamificationProject {
     return targetPage;
   }
 
+  public LoginPage submitFormExpectingFailure() {
+    driver.findElement(BloginLocator).click();
+    return this; //new LoginPage(driver);
+  }
+  
+  
 }
