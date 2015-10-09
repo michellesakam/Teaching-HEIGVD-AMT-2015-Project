@@ -5,6 +5,7 @@ package ch.heigvd.amt.uat.fluentlenium;
 //import ch.heigvd.amt.uat.fluentlenium.pages.CorporateInformationFluentPage;
 //import ch.heigvd.amt.uat.fluentlenium.pages.HomeFluentPage;
 //import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
+import ch.heigvd.amt.uat.fluentlenium.pages.AccountRegistrationFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationDetailsFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +28,9 @@ public class GamificationFluentTest extends FluentTest {
 
     @Page
     public ApplicationDetailsFluentPage yourAppPage;
+    
+    @Page
+    public AccountRegistrationFluentPage RegistrationPage;
 
     @Test
     public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
@@ -34,14 +38,21 @@ public class GamificationFluentTest extends FluentTest {
         loginPage.isAt();
         loginPage.typeEmailAddress("not a valid email");
         loginPage.typePassword("any password");
-        loginPage.clickSignin();
-        assertThat(title().equals("Login Page"));
+        loginPage.clickLogin();
+       loginPage.isAt();
     }
 
     @Test
     public void itShouldBeNotPossibleToAccessSecurePagesWithoutLogin() {
+        goTo(baseUrl + "/pages/yourApps");
+        loginPage.isAt();
+    }
+    
+    @Test
+    public void itShouldBePossibleToAccessYourAppsPagesWithCreateAccountButton() {
         goTo(baseUrl);
-        yourAppPage.isAt();
+        loginPage.clickCreateAccount();
+        RegistrationPage.isAt();
     }
     /*
      @Test

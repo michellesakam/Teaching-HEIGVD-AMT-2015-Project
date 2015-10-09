@@ -13,7 +13,7 @@
 
 
     <%@include file="includes/header.jsp" %>
-
+    <title>Registration Page</title>
     <body>
         <h1 align="center">Registration</h1>
 
@@ -33,13 +33,13 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="First name">First name</label>
                 <div class="col-md-4">
-                    <input id="First_name" type="First name" class="form-control" name="First_name" required/>
+                    <input id="FirstName" type="First name" class="form-control" name="First_name" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Last name">Last name</label>
                 <div class="col-md-4">
-                    <input id="Last_name" type="Last name" class="form-control" name="Last_name" required/>
+                    <input id="LastName" type="Last name" class="form-control" name="Last_name" required/>
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-primary">Sign up</button>
+                    <button id="bSignUp" type="submit" class="btn btn-primary">Sign up</button>
                 </div>
             </div>
         </form>
