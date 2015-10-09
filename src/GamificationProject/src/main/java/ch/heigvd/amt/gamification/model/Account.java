@@ -24,6 +24,9 @@ import static javax.ws.rs.client.Entity.entity;
 @Entity
 public class Account implements Serializable {
 
+    public Account() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -44,7 +47,6 @@ public class Account implements Serializable {
     @OneToMany
     private List<Application> apps;
 
-    public Account() {}
     
     public Account(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

@@ -2,6 +2,7 @@ package ch.heigvd.amt.gamification.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,14 +18,25 @@ import javax.persistence.OneToOne;
 @Entity
 public class Application implements Serializable {
 
+    public Application() {
+    }
+    /**
+     * le nom de l'application ne doit pas être null en plus plus in doit être unique
+     */
+    @Column(nullable = false, unique = true) 
     private String name;
+    /**
+     * Chaque application doit avoir une description
+     */
+    @Column(nullable = false)
     private String description;
-   
+     
     @OneToOne
     private ApiKey apiKey;
     
     @ManyToOne
-    private Account acount;
+    private Account acount;   
+    // Permet de savoir si l'application est toujours disponible
     private boolean isAnable;
     
     @OneToMany
@@ -33,11 +45,6 @@ public class Application implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
-
-  public Application() {
-  }
-   
-   
 
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isAnable) {
         this.name = name;
@@ -102,7 +109,4 @@ public class Application implements Serializable {
    public void setId(Long id) {
       this.id = id;
    }
-    
-    
-
 }

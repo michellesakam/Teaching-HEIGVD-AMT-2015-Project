@@ -13,15 +13,18 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class ApiKey implements Serializable {
+
    
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
    
    @OneToOne
-    private Application appl;
+    private Application application;
    
     private String key;
+    public ApiKey() {
+    }
 
    public Long getId() {
       return id;
@@ -30,8 +33,26 @@ public class ApiKey implements Serializable {
    public void setId(Long id) {
       this.id = id;
    }
+
    
    public Long getUsers(){
        return 0l;
    }
+
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 }
