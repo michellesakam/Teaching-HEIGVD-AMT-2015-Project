@@ -80,7 +80,9 @@
     <body>
         
         <h1 align = "center">Your apps...</h1>
+        <form method="GET" action="pages/applicationRegistration">
         <h2 align = "center"><button class="btn btn-primary" type="submit">Register New App</button></h2>
+        </form>
         
           <table border="1" id="kids" align = "center">
             <tr>
@@ -92,16 +94,16 @@
             <tbody  >
                 <tr >
                     <td  >
-                        <input type="text" name="Name">
+                        <label width:100px></label>
                     </td>
                     <td>
-                        <input type="text" name="Description">
+                        <label width:100px></label>
                     </td>
                     <td>
-                        <input type="text" name="ApiKey">
+                        <label width:100px></label>
                     </td>
                     <td>
-                        <input type="text" name="Users">
+                       <label width:100px></label>
                     </td>
                     <td>
                          <button id="edit" class="btn btn-primary" type="submit">edit</button>
