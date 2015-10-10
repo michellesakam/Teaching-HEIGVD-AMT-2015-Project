@@ -27,7 +27,6 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Description">Description</label>
                 <div class="col-md-4">
-                    <!--<input id="Description" type="Description" class="form-control" name="Description" required/>-->
                     <TEXTAREA name="description" rows=4 cols=40 name="Description"></TEXTAREA>
                 </div>
             </div>
@@ -50,11 +49,10 @@
                 </div>
             </div>
             <div class="form-group" >
-
-                        <div class="col-md-offset-3 col-md-9">
-                           <button class="btn btn-primary" type="submit">Register</button>
-                           <button class="btn btn-primary" type="submit">Cancel</button>
-                        </div>
+                <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-primary" type="submit">Register</button>
+                    <button class="btn btn-primary" type="submit">Cancel</button>
+                </div>
             </div>
         </form>
     </body>

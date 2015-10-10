@@ -106,7 +106,7 @@
                        <label width:100px></label>
                     </td>
                     <td>
-                         <button id="edit" class="btn btn-primary" type="submit">edit</button>
+                         <button id="edit" class="btn" type="submit">edit</button>
                          <button id="enabled" class="butt" type="submit">enabled</button>
                     </td>
                 </tr>
