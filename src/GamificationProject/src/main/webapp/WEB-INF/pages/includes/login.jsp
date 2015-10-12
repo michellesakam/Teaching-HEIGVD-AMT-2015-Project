@@ -1,8 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-${errorLogin}
-
 <div class="container">
     <%if (session.getAttribute("principal") != null) { %>
     <form method="POST" action="./auth?action=logout" class="form-inline">

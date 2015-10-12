@@ -16,13 +16,6 @@
     <title>Edit your account details </title>
     <body>
         <h1 align="center">Edit your account details</h1>
-            <c:forEach var="error" items="${errors}">
-                <div class="panel panel-danger" >
-                    <div class="panel-heading">
-                        ${error}
-                    </div>
-                </div>
-            </c:forEach>
         
         <form method="POST" class="form-horizontal" name="registerForm">
             <div class="form-group">

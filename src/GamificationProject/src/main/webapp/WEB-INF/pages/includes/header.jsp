@@ -14,5 +14,7 @@
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
+    
+    <%@include file="errors.jsp"%>
 
   </head>
