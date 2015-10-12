@@ -49,9 +49,10 @@ des problèmes CSS et des problèmes de redirection
 En collaboration avec Vanessa :
 <li>Affichage du nombre de enduser inscrit les 30 derniers jours (page Welcome)
 
+12.10.2015
+<li>Création d'un fichier JSP pour afficher des erreurs (ce fichier est inclus dans header.jsp)
 
 ####Samira Kouchali
-
 26.09.2015
 
 En collaboration avec Raphaël Racine (voir ses tâches effectuées le même jour)
