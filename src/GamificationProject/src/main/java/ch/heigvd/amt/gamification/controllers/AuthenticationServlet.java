@@ -91,7 +91,7 @@ public class AuthenticationServlet extends HttpServlet {
             else // The users can't connect
             {
                 request.setAttribute("errorLogin", "Login failed !");
-                response.sendRedirect(request.getContextPath());
+                request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
             }
         }
         else if ("logout".equals(action)) {

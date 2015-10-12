@@ -9,33 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="${pageContext.request.contextPath}/">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>AMT Demo App</title>
+    <title>Gamification Project</title>
 
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
 
   </head>
-  <body>
-    <div class="container">
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default" >
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="pages/about">Apps</a></li>
-              <li><a href="pages/about">Account</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-    </div>
-  </body>
