@@ -66,9 +66,7 @@ public class AccountRegistrationServlet extends HttpServlet {
         } else {
             List<String> errors = new ArrayList<>();
             errors.add("Les mots de passe ne sont pas les mêmes.");
-            req.setAttribute("errors", errors);
-            req.setAttribute("notSamePassword", "Les mots de passe ne correspondent pas");
-            
+            req.setAttribute("errors", errors);            
             req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
         }
 

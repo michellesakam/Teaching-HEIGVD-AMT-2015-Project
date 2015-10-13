@@ -1,10 +1,6 @@
 package ch.heigvd.amt.uat.fluentlenium;
 
-//import ch.heigvd.amt.uat.fluentlenium.pages.BeersFluentPage;
-//import ch.heigvd.amt.uat.fluentlenium.pages.CompanyDetailsFluentPage;
-//import ch.heigvd.amt.uat.fluentlenium.pages.CorporateInformationFluentPage;
-//import ch.heigvd.amt.uat.fluentlenium.pages.HomeFluentPage;
-//import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
+
 import ch.heigvd.amt.uat.fluentlenium.pages.AccountRegistrationFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationDetailsFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
@@ -54,20 +50,24 @@ public class GamificationFluentTest extends FluentTest {
         loginPage.clickCreateAccount();
         RegistrationPage.isAt();
     }
-    /*
-     @Test
-     public void itShouldBePossibleToGetDetailsForACompanyAfterSignin() {
-     goTo(corporateInformationPage);
-     loginPage.isAt(); // we have not logged in, so we should be redirected
-     loginPage.typeEmailAddress("a@a.com");
-     loginPage.typePassword("any password");
-     loginPage.clickSignin();
-     corporateInformationPage.isAt(); // we should be redirected toward the original target after signin
-     corporateInformationPage.clickOnFirstCompanyLinkInCompaniesTable();
-     companyDetailsPage.isAt();
-     }
-
-     */
+    
+    
+    @Test
+    public void itShouldNotBePossibleToSignUpWithAnInvalidEmail() {
+        goTo(baseUrl + "pages/accountRegistration");
+        RegistrationPage.isAt();
+       
+        RegistrationPage.typeEmailAddress("not a valid email");
+        RegistrationPage.typeFirstname("FirstName");
+        RegistrationPage.typeLastname("LastName");
+        RegistrationPage.typePassword("any password");
+        RegistrationPage.typeConfirmPassword("any password");
+        RegistrationPage.clickSignUp();
+        RegistrationPage.isAt();
+        
+    }
+    
+   
 
     @Override
     public WebDriver getDefaultDriver() {

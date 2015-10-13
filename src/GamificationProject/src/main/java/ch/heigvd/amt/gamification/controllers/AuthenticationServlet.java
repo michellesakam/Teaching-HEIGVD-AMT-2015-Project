@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This servlet illustrates various aspects of the Servlet API.
@@ -90,8 +92,10 @@ public class AuthenticationServlet extends HttpServlet {
             }
             else // The users can't connect
             {
-                request.setAttribute("errorLogin", "Login failed !");
-                response.sendRedirect(request.getContextPath());
+                List<String> errors = new LinkedList<>();
+                errors.add("Login failed !");
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
             }
         }
         else if ("logout".equals(action)) {

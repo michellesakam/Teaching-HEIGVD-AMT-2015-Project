@@ -16,12 +16,6 @@
     <title>Registration Page</title>
     <body>
         <h1 align="center">Registration</h1>
-
-        <div class="panel panel-danger" >
-            <div class="panel-heading">
-                ${notSamePassword}
-            </div>
-        </div>
         
         <form method="POST" class="form-horizontal" name="registerForm">
             <div class="form-group">
