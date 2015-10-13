@@ -3,14 +3,8 @@ package ch.heigvd.amt.uat.fluentlenium.pages;
 import org.fluentlenium.core.FluentPage;
 import org.openqa.selenium.WebDriver;
 
-/**
- * Most pages served by the application have the same structure: they have the
- * same header (with a navigation menu) and the same footer. These elements, and
- * the WebDriver UI locators, are capture in this abstract class. This makes it
- * possible to issue "clicks" on the navigation menu via the API from any page,
- * without code duplication.
- *
- * @author Olivier Liechti
+/*
+ * @author Samira Kouchali
  */
 public abstract class AbstractGamificationProjectFluentPage extends FluentPage {
 

@@ -13,7 +13,7 @@ import org.fluentlenium.core.annotation.Page;
 
 /**
  *
- * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ * @author Samira Kouchali
  */
 public class GamificationFluentTest extends FluentTest {
 
