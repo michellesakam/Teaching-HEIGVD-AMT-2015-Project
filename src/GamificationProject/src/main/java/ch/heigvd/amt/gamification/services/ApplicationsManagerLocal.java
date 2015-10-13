@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
@@ -15,7 +16,7 @@ import javax.ejb.Local;
 public interface ApplicationsManagerLocal {
     
     public long numberOfApplicationsManaged();
-    public void registerNewApplication(Application newApplication);
+    public void assignApplicationToAccount(Application app, Account acc);
     public void editApplicationDetails(Application application);
     public List<EndUser> endUsersOfApplication(long idApplication);
 }

@@ -45,9 +45,8 @@ public class Account implements Serializable {
     @ManyToMany // relation plusieurs à plusieurs
     private List<Role> roles;
 
-    @OneToMany
+    @OneToMany(mappedBy = "acount")
     private List<Application> apps;
-
     
     public Account(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

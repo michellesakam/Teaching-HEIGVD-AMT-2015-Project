@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
@@ -26,8 +27,17 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
 
     @Override
-    public void registerNewApplication(Application newApplication) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void assignApplicationToAccount(Application app, Account acc) {       
+        app.setAcount(acc);
+        acc.getApps().add(app);
+        
+        ApiKey apikey = new ApiKey();
+        apikey.setKey("salutmonami"); // TODO: Generer une clé aléatoire
+        app.setApiKey(apikey);
+        apikey.setApplication(app);
+        
+        em.persist(app); 
+        em.flush();
     }
 
     @Override
