@@ -22,6 +22,7 @@ import static javax.ws.rs.client.Entity.entity;
  * @author Raphaël Racine
  */
 @Entity
+
 public class Account implements Serializable {
 
     public Account() {

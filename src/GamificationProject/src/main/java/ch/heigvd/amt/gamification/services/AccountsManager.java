@@ -37,7 +37,7 @@ public class AccountsManager implements AccountsManagerLocal {
 
     @Override
     public int numbersOfAccount() {
-        return em.createQuery("SELECT a FROM Account a")
+        return em.createQuery("SELECT c FROM Account a")
                 .getResultList().size();
     }
 
