@@ -5,20 +5,22 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
+import ch.heigvd.amt.gamification.model.EndUser;
+
 /**
  *
  * @author parfait
  */
 public interface EndUserDAOLocal {
-    public long create(Object object);	
+    public long create(EndUser endUser);	
   
 public void delete(long id);	
   
-boolean update(Object object);	
+boolean update(EndUser endUser);	
   
-public Object findById(long id);	
+public EndUser findById(long id);	
   
-public Object findAll();	
+public EndUser findAll();	
   
-public Object findByName(Object k);
+public EndUser findByName(EndUser endUser);
 }

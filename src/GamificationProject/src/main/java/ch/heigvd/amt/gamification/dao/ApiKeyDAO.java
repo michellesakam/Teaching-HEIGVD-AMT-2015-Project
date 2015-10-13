@@ -5,6 +5,9 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
+import ch.heigvd.amt.gamification.model.ApiKey;
+import java.util.List;
+
 /**
  *
  * @author parfait
@@ -12,7 +15,7 @@ package ch.heigvd.amt.gamification.dao;
 public class ApiKeyDAO implements ApiKeyDAOLocal{
 
     @Override
-    public long create(Object object) {
+    public long create(ApiKey apikey) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,22 +25,22 @@ public class ApiKeyDAO implements ApiKeyDAOLocal{
     }
 
     @Override
-    public boolean update(Object object) {
+    public boolean update(ApiKey object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findById(long id) {
+    public ApiKey findById(long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findAll() {
+    public List<ApiKey> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findByName(Object k) {
+    public ApiKey findByName(ApiKey k) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

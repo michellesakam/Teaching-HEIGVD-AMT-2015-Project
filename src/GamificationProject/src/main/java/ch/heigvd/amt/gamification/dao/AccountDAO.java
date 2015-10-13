@@ -39,7 +39,7 @@ public class AccountDAO implements AccountDAOLocal {
 
     @Override
     public Account findById(long id) {
-        Object result = null;
+        Account result = null;
         try {
             result = (Account) em.createNamedQuery("Account.findById").setParameter("id", id);
         } catch (NoResultException e) {

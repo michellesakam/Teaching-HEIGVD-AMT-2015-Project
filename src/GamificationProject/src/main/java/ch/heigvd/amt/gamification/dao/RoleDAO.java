@@ -5,6 +5,7 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
+import ch.heigvd.amt.gamification.model.Role;
 import javax.annotation.security.RolesAllowed;
 
 /**
@@ -14,7 +15,7 @@ import javax.annotation.security.RolesAllowed;
 public class RoleDAO implements RoleDAOLocal{
 
     @Override
-    public long create(Object object) {
+    public long create(Role role) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -24,22 +25,22 @@ public class RoleDAO implements RoleDAOLocal{
     }
 
     @Override
-    public boolean update(Object object) {
+    public boolean update(Role role) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findById(long id) {
+    public Role findById(long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findAll() {
+    public Role findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findByName(Object k) {
+    public Role findByName(Role role) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

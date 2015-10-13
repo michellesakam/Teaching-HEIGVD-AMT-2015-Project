@@ -5,6 +5,8 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
+import ch.heigvd.amt.gamification.model.EndUser;
+
 /**
  *
  * @author parfait
@@ -12,7 +14,7 @@ package ch.heigvd.amt.gamification.dao;
 public class EndUserDAO implements EndUserDAOLocal{
 
     @Override
-    public long create(Object object) {
+    public long create(EndUser endUser) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,22 +24,22 @@ public class EndUserDAO implements EndUserDAOLocal{
     }
 
     @Override
-    public boolean update(Object object) {
+    public boolean update(EndUser endUser) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findById(long id) {
+    public EndUser findById(long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findAll() {
+    public EndUser findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object findByName(Object k) {
+    public EndUser findByName(EndUser endUser) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
