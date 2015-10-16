@@ -1,6 +1,7 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class ApiKey implements Serializable {
    @OneToOne
     private Application application;
    
+   @Column(name = "kkey")
     private String key;
     public ApiKey() {
     }
