@@ -53,4 +53,11 @@ public class WelcomeServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+    
+    
+
 }

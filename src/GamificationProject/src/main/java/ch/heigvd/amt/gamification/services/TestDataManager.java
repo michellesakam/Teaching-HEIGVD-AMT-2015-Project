@@ -44,14 +44,43 @@ public class TestDataManager implements TestDataManagerLocal {
         Account createur = new Account();
         createur.setEmail("raphael.racine@heig-vd.ch");
         createur.setPassword("toor");
+        createur.setFirstName("Raphaël");
+        createur.setLastName("Racine");
         accountsManager.createAccount(createur);
         
-        Application app = new Application();
-        app.setIsEnable(true);
-        app.setName("Lego Creator");
-        app.setDescription("Construisez vos legos");
+        /* Création d'une première application */
+        Application app1 = new Application();
+        app1.setIsEnable(true);
+        app1.setName("Lego Creator");
+        app1.setDescription("Construisez vos legos");
         
-        applicationsManager.assignApplicationToAccount(app, createur);
+        applicationsManager.assignApplicationToAccount(app1, createur);
+        
+        /* Création d'une deuxième application */
+        Application app2 = new Application();
+        app2.setIsEnable(false);
+        app2.setName("The Elder Scroll's 5 : Skyrim");
+        app2.setDescription("Tuez votre cheval !");
+        
+        applicationsManager.assignApplicationToAccount(app2, createur);
+        
+        
+        Account createur2 = new Account();
+        createur2.setEmail("olivier.liechti@heig-vd.ch");
+        createur2.setPassword("toor");
+        createur.setFirstName("Olivier");
+        createur.setLastName("Liechti");
+        accountsManager.createAccount(createur2);        
+        
+        /* Création d'une troisième application (par un autre créateur) */
+        Application app3 = new Application();
+        app3.setIsEnable(true);
+        app3.setName("Google Chrome");
+        app3.setDescription("Surfez sur Internet !");
+        
+        applicationsManager.assignApplicationToAccount(app3, createur2);
+        
+        
   } 
 
 }

@@ -83,22 +83,21 @@ public class AuthenticationServlet extends HttpServlet {
 
         if ("login".equals(action)) {
            //@Parfait il faut faut passer uniquement l'email. pas les deux
-           // Corrigé par Raphaël
+            // Corrigé par Raphaël
             Account a = accountsManager.login(email);
 
             if (a != null && a.getPassword().equals(password)) { // The users exists and can connect
                 request.getSession().setAttribute("principal", a);
                 response.sendRedirect(request.getContextPath() + "/pages/yourApps");
-            }
-            else // The users can't connect
+            } else // The users can't connect
             {
                 List<String> errors = new LinkedList<>();
                 errors.add("Login failed !");
+                
                 request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
+                request.getRequestDispatcher("/pages/welcome").forward(request, response);
             }
-        }
-        else if ("logout".equals(action)) {
+        } else if ("logout".equals(action)) {
             request.getSession().invalidate();
             response.sendRedirect(targetUrl);
         } else {

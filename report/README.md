@@ -52,6 +52,9 @@ En collaboration avec Vanessa :
 12.10.2015
 <li>Création d'un fichier JSP pour afficher des erreurs (ce fichier est inclus dans header.jsp)
 
+16.10.2015
+<li>Avancement de la classe de génération de données de tests pour la persistence (TestDataManager.java)
+
 ####Samira Kouchali
 26.09.2015
 
