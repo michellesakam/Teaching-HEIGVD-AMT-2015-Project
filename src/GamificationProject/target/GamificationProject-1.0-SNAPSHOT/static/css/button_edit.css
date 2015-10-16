@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1 oct. 2015, 23:19:59
+    Author     : groupe projet AMT
+*/
+
+button_edito {
+    display: inline-block;
+    height: 25px;
+    width: 150px;
+    text-align: center;
+    padding-top: 3px;
+    margin-left: 150px;
+    font-weight: bold;
+    margin-top:10px;
+    padding-bottom:10px;
+     
+}

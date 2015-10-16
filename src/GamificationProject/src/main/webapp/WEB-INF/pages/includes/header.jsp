@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="${pageContext.request.contextPath}/">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Gamification Project</title>
 
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <script src="static/js/jquery.min.js"></script>
