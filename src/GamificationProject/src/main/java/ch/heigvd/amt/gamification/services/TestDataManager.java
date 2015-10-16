@@ -28,7 +28,7 @@ public class TestDataManager implements TestDataManagerLocal {
         String nom;
         String prenom;
         
-        for(int i = 0; i < 20; ++i)
+        for(int i = 0; i < 10000; ++i)
         {
             Account a = new Account();
             nom = Chance.randomLastName();
