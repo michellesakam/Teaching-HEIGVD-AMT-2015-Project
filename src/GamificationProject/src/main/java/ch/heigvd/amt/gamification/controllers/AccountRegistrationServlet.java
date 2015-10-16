@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 
@@ -59,13 +60,23 @@ public class AccountRegistrationServlet extends HttpServlet {
             a.setLastName(lastName);
             a.setPassword(password);
 
-            accountsManager.createAccount(a);
+            try {
+                accountsManager.createAccount(a);
+            }
+            catch(Exception e) { // Exception si l'email existe déjà
+                List<String> errors = new LinkedList<>();
+                errors.add("Impossible to register an account, probably the email already exists !");
+                req.setAttribute("errors", errors);
+                req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
+                return; // Arrêt du code pour éviter qu'il continue                
+            }
+            
             req.getSession().setAttribute("principal", a);
             resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
 
         } else {
             List<String> errors = new ArrayList<>();
-            errors.add("Les mots de passe ne sont pas les mêmes.");
+            errors.add("The two passwords are not the same.");
             req.setAttribute("errors", errors);            
             req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
         }
