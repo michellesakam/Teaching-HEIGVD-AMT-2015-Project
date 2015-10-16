@@ -37,7 +37,7 @@ public class Application implements Serializable {
     @ManyToOne
     private Account acount;   
     // Permet de savoir si l'application est toujours disponible
-    private boolean isAnable;
+    private boolean isEnable;
     
     @OneToMany
     private List <EndUser> user;   
@@ -51,7 +51,7 @@ public class Application implements Serializable {
         this.description = description;
         this.apiKey = apiKey;
         this.acount = acount;
-        this.isAnable = isAnable;
+        this.isEnable = isAnable;
     }
 
     public String getName() {
@@ -86,12 +86,12 @@ public class Application implements Serializable {
         this.acount = acount;
     }
 
-    public boolean isIsAnable() {
-        return isAnable;
+    public boolean isIsEnable() {
+        return isEnable;
     }
 
-    public void setIsAnable(boolean isAnable) {
-        this.isAnable = isAnable;
+    public void setIsEnable(boolean isEnable) {
+        this.isEnable = isEnable;
     }
 
     public List<EndUser> getUser() {
