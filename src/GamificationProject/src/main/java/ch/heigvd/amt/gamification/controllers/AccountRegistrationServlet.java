@@ -6,6 +6,7 @@
 package ch.heigvd.amt.gamification.controllers;
 
 import ch.heigvd.amt.gamification.model.Account;
+import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 
@@ -53,6 +54,12 @@ public class AccountRegistrationServlet extends HttpServlet {
         String password = req.getParameter("Password");
         String confirm = req.getParameter("Confirm");
 
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setEmail(email);
+        accountDTO.setFirstName(firstName);
+        accountDTO.setLastName(lastName);
+        accountDTO.setPassword(password);
+
         if (password.equals(confirm)) {
             Account a = new Account();
             a.setEmail(email);
@@ -67,6 +74,8 @@ public class AccountRegistrationServlet extends HttpServlet {
                 List<String> errors = new LinkedList<>();
                 errors.add("Impossible to register an account, probably the email already exists !");
                 req.setAttribute("errors", errors);
+                req.setAttribute("accountDTO", accountDTO);
+                
                 req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
                 return; // Arrêt du code pour éviter qu'il continue                
             }
@@ -77,7 +86,8 @@ public class AccountRegistrationServlet extends HttpServlet {
         } else {
             List<String> errors = new ArrayList<>();
             errors.add("The two passwords are not the same.");
-            req.setAttribute("errors", errors);            
+            req.setAttribute("errors", errors); 
+            req.setAttribute("accountDTO", accountDTO);
             req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
         }
 
