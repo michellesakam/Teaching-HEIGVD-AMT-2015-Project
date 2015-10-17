@@ -58,6 +58,7 @@ En collaboration avec Vanessa :
 17.10.2015
 <li>Il est maintenant possible de créer une application et de lui assigner un Account, la clé de l'application est générée à ce moment là
 <li>Restruction des services au niveau des requêtes SQL (elle ont été déplacées dans les classes modèles pour créer des requêtes nommées)
+<li>Implémentation de la création d'une application dans le controleur ApplicationRegistration.java
 
 ####Samira Kouchali
 26.09.2015
