@@ -4,11 +4,12 @@ import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
-import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import java.util.UUID;
 
 /**
  *
@@ -26,16 +27,41 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
                 .getResultList().size();
     }
 
-    @Override
-    public void assignApplicationToAccount(Application app, Account acc, ApiKey apikey) {       
-        app.setAcount(acc);
-        acc.getApps().add(app);
-
-        app.setApiKey(apikey);
-        apikey.setApplication(app);
+    /**
+     * Get a new ApiKey which doesnt exists yet
+     * @return A new ApiKey
+     */
+    private ApiKey getNewApiKey() {
         
-        em.persist(app); 
-        em.flush();
+        String generated = UUID.randomUUID().toString();
+        
+        while(keyExists(generated)) {
+            generated = UUID.randomUUID().toString();
+        }
+        
+        ApiKey key = new ApiKey();
+        key.setKey(generated);
+        return key;
+    }
+    
+    private boolean keyExists(String newkey) {
+                        em.createQuery("SELECT a FROM ApiKey a WHERE a.key= :newkey")
+                .setParameter("newkey", newkey).getResultList();
+        
+        return false;
+    }
+
+    @Override
+    public void assignApplicationToAccount(Application app, Account acc) {       
+            app.setAcount(acc);
+            acc.getApps().add(app);
+            
+            ApiKey key = getNewApiKey();
+            app.setApiKey(key);
+            key.setApplication(app);
+            
+            em.persist(app);
+            em.flush();
     }
 
     @Override

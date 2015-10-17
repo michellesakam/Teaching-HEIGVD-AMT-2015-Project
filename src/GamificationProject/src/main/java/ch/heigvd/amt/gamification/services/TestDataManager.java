@@ -28,7 +28,7 @@ public class TestDataManager implements TestDataManagerLocal {
         String nom;
         String prenom;
         
-        for(int i = 0; i < 1000; ++i)
+        for(int i = 0; i < 10; ++i)
         {
             Account a = new Account();
             nom = Chance.randomLastName();
@@ -54,10 +54,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app1.setName("Lego Creator");
         app1.setDescription("Construisez vos legos");
         
-        ApiKey key1 = new ApiKey();
-        key1.setKey("fdsfsdfdsafsggegga");
-        
-        applicationsManager.assignApplicationToAccount(app1, createur, key1);
+        applicationsManager.assignApplicationToAccount(app1, createur);
         
         /* Création d'une deuxième application */
         Application app2 = new Application();
@@ -65,11 +62,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app2.setName("The Elder Scroll's 5 : Skyrim");
         app2.setDescription("Tuez votre cheval !");
         
-        ApiKey key2 = new ApiKey();
-        key2.setKey("fdshfalsdhfsjak");
-        
-        applicationsManager.assignApplicationToAccount(app2, createur, key2);
-        
+        applicationsManager.assignApplicationToAccount(app2, createur);
         
         Account createur2 = new Account();
         createur2.setEmail("olivier.liechti@heig-vd.ch");
@@ -84,10 +77,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setName("Google Chrome");
         app3.setDescription("Surfez sur Internet !");
         
-        ApiKey key3 = new ApiKey();
-        key3.setKey("sffdsduhfuhejkhd");
-        
-        applicationsManager.assignApplicationToAccount(app3, createur2, key3);        
+        applicationsManager.assignApplicationToAccount(app3, createur2);        
                
   } 
 
