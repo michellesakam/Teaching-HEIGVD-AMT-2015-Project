@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.Account;
-import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.util.Chance;
 import javax.ejb.EJB;
