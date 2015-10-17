@@ -55,6 +55,10 @@ En collaboration avec Vanessa :
 16.10.2015
 <li>Avancement de la classe de génération de données de tests pour la persistence (TestDataManager.java)
 
+17.10.2015
+<li>Il est maintenant possible de créer une application et de lui assigner un Account, la clé de l'application est générée à ce moment là
+<li>Restruction des services au niveau des requêtes SQL (elle ont été déplacées dans les classes modèles pour créer des requêtes nommées)
+
 ####Samira Kouchali
 26.09.2015
 

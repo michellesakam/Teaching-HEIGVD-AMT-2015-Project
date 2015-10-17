@@ -2,26 +2,28 @@ package ch.heigvd.amt.gamification.model;
 
 import java.io.Serializable;
 import java.util.List;
-import static javax.ws.rs.client.Entity.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import static javax.ws.rs.client.Entity.entity;
 
 /**
  *
  * @author Raphaël Racine
  */
 @Entity
+
+@NamedQueries({
+    @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Account a WHERE a.email = :email"),
+    @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a"),
+    @NamedQuery(name = "Account.numberOfAccounts", query = "SELECT COUNT(a) FROM Account a")
+})
 
 public class Account implements Serializable {
 

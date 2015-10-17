@@ -9,7 +9,6 @@ import javax.ejb.Stateless;
 
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,9 +24,8 @@ public class AccountsManager implements AccountsManagerLocal {
     EntityManager em;
 
     @Override
-    public Account login(String email) {
-        List<Account> tmp = em.createQuery(
-                "SELECT a FROM Account a WHERE a.email= :email")
+    public Account login(String email) {        
+        List<Account> tmp = em.createNamedQuery("Account.findByEmail")
                 .setParameter("email", email)
                 .setMaxResults(1)
                 .getResultList();
@@ -37,8 +35,9 @@ public class AccountsManager implements AccountsManagerLocal {
 
     @Override
     public int numbersOfAccount() {
-        return em.createQuery("SELECT a FROM Account a")
-                .getResultList().size();
+        return em.createNamedQuery("Account.findAll")
+                .getResultList()
+                .size();
     }
 
     @Override
