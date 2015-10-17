@@ -27,12 +27,10 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
 
     @Override
-    public void assignApplicationToAccount(Application app, Account acc) {       
+    public void assignApplicationToAccount(Application app, Account acc, ApiKey apikey) {       
         app.setAcount(acc);
         acc.getApps().add(app);
-        
-        ApiKey apikey = new ApiKey();
-        apikey.setKey("salutmonami"); // TODO: Generer une clé aléatoire
+
         app.setApiKey(apikey);
         apikey.setApplication(app);
         

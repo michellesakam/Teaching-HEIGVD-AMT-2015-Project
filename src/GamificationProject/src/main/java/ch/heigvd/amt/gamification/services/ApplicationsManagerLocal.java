@@ -16,7 +16,7 @@ import javax.ejb.Local;
 public interface ApplicationsManagerLocal {
     
     public long numberOfApplicationsManaged();
-    public void assignApplicationToAccount(Application app, Account acc);
+    public void assignApplicationToAccount(Application app, Account acc, ApiKey apikey);
     public void editApplicationDetails(Application application);
     public List<EndUser> endUsersOfApplication(long idApplication);
 }
