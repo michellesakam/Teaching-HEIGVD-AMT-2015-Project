@@ -3,7 +3,7 @@
 
 <div class="container">
     <%if (session.getAttribute("principal") != null) { %>
-    <form method="POST" action="./auth?action=logout" class="form-inline">
+    <form method="POST" action="./auth?action=logout" class="form-inline" align="center">
         <div class="form-group">    
             Logged as ${principal.email} <button class="btn btn-lg btn-primary btn-block" type="submit" style = 'width: 200px; heigth:50px'>Logout</button>
         </div>

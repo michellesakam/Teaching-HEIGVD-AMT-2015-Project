@@ -33,25 +33,25 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Key">API Key</label>
                 <div class="col-md-4">
-                    ${ApiKey}
+                    The ApiKey will be generated after the creation of application
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Users">Users</label>
                 <div class="col-md-4">
-                    <input id="Password" type="password" class="form-control" name="Password" required/>
+                    0
                 </div> 
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="State">State</label>
                 <div class="col-md-offset-3 col-md-9">
-                    <button class="btn btn-primary" type="submit" style="background-color: #1B4F08">Created</button>
+                    <span class="btn-primary" style="background-color: #1B4F08; border-radius: 5px">Created</span>
                 </div>
             </div>
             <div class="form-group" >
                 <div class="col-md-offset-3 col-md-9">
                     <button class="btn btn-primary" type="submit">Register</button>
-                    <button class="btn btn-primary" type="submit">Cancel</button>
+                    <button class="btn btn-default" type="button">Cancel</button>
                 </div>
             </div>
         </form>
