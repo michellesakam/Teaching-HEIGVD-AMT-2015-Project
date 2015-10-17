@@ -8,6 +8,7 @@ package ch.heigvd.amt.gamification.controllers;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.rest.dto.ApplicationDTO;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,6 +51,10 @@ public class ApplicationRegistrationServlet extends HttpServlet {
 
         String name = req.getParameter("Name");
         String description = req.getParameter("description");
+        
+        ApplicationDTO applicationDTO = new ApplicationDTO();
+        applicationDTO.setDescription(description);
+        applicationDTO.setName(name);
 
         Application application = new Application();
         application.setIsEnable(true);
@@ -62,6 +67,7 @@ public class ApplicationRegistrationServlet extends HttpServlet {
             List<String> errors = new LinkedList<>();
             errors.add("Impossible to register an application, probably the name already exists !");
             req.setAttribute("errors", errors);
+            req.setAttribute("applicationDTO", applicationDTO);
             req.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(req, resp);
             return; // Arrêt du code pour éviter qu'il continue
         }

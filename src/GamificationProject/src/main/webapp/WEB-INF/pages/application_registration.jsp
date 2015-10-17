@@ -21,13 +21,13 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Name" required>Name</label>
                 <div class="col-md-4">
-                    <input id="Name" type="Name" class="form-control" name="Name" required/>
+                    <input id="Name" type="Name" class="form-control" name="Name" value="${applicationDTO.name}" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Description">Description</label>
                 <div class="col-md-4">
-                    <TEXTAREA name="description" rows=4 cols=40></TEXTAREA>
+                    <TEXTAREA name="description" rows=4 cols=40>${applicationDTO.description}</TEXTAREA>
                 </div>
             </div>
             <div class="form-group">
