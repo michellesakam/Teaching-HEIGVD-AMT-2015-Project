@@ -23,8 +23,9 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     
     @Override
     public long numberOfApplicationsManaged() {
-        return em.createQuery("SELECT a FROM Application a")
-                .getResultList().size();
+        return em.createNamedQuery("Application.findAll")
+                .getResultList()
+                .size();
     }
 
     /**
@@ -45,8 +46,9 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
     
     private boolean keyExists(String newkey) {
-        return em.createQuery("SELECT a FROM ApiKey a WHERE a.key= :newkey")
-                .setParameter("newkey", newkey).getResultList().size() > 0;
+        return em.createNamedQuery("ApiKey.findByKey")
+                .setParameter("key", newkey)
+                .getResultList().size() > 0;
     }
 
     @Override

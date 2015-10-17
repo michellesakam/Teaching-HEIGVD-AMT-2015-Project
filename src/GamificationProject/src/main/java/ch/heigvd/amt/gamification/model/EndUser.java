@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,6 +17,11 @@ import javax.persistence.TemporalType;
  * @author Raphaël Racine
  */
 @Entity
+
+@NamedQueries({
+    @NamedQuery(name = "EndUser.findAllCreatedBetweenTwoDates", query = "SELECT e FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2")
+})
+
 public class EndUser implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)

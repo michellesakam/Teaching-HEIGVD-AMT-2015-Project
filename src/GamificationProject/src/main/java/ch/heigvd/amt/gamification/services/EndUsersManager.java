@@ -6,7 +6,6 @@
 package ch.heigvd.amt.gamification.services;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,7 +30,7 @@ public class EndUsersManager implements EndUsersManagerLocal {
         Calendar before = new GregorianCalendar();
         before.add(Calendar.DAY_OF_YEAR, -numberOfDay);
         
-        return em.createQuery("SELECT a FROM EndUser a WHERE a.regDate BETWEEN :date1 AND :date2")
+        return em.createNamedQuery("EndUser.findAllCreatedBetweenTwoDates")
                 .setParameter("date1", before.getTime())
                 .setParameter("date2", today.getTime())
                 .getResultList().size();

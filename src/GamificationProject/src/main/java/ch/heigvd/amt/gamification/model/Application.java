@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -17,6 +19,12 @@ import javax.persistence.OneToOne;
  * @author Raphaël Racine
  */
 @Entity
+
+@NamedQueries({
+    @NamedQuery(name = "Application.numberOfApplications", query = "SELECT COUNT(a) FROM Application a"),
+    @NamedQuery(name = "Application.findAll", query = "SELECT a FROM Application a")
+})
+
 public class Application implements Serializable {
 
     public Application() {
