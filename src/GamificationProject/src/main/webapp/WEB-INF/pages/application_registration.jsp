@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Description">Description</label>
                 <div class="col-md-4">
-                    <TEXTAREA name="description" rows=4 cols=40 name="Description"></TEXTAREA>
+                    <TEXTAREA name="description" rows=4 cols=40></TEXTAREA>
                 </div>
             </div>
             <div class="form-group">
