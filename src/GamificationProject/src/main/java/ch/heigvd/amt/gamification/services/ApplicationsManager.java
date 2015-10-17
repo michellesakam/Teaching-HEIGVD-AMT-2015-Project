@@ -45,18 +45,17 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
     
     private boolean keyExists(String newkey) {
-                        em.createQuery("SELECT a FROM ApiKey a WHERE a.key= :newkey")
-                .setParameter("newkey", newkey).getResultList();
-        
-        return false;
+        return em.createQuery("SELECT a FROM ApiKey a WHERE a.key= :newkey")
+                .setParameter("newkey", newkey).getResultList().size() > 0;
     }
 
     @Override
     public void assignApplicationToAccount(Application app, Account acc) {       
+            ApiKey key = getNewApiKey();
+        
             app.setAcount(acc);
             acc.getApps().add(app);
             
-            ApiKey key = getNewApiKey();
             app.setApiKey(key);
             key.setApplication(app);
             
