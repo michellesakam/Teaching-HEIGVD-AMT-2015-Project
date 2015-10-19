@@ -1,4 +1,4 @@
-﻿# Project Report
+# Project Report
 
 
 ## Administrative information
@@ -72,44 +72,8 @@ A compléter...
 
 ####Vanessa Michelle Meguep Sakam
 
-25.09.2015
-<li> lecture du code du MVC demo
-
 26.09.2015
-<li> Création de la vue welcome.jsp sans affichage des données dynamiques(nombre d’accounts create etc.)
-
-29.09.2015
-<li>Scéance de discussion avec les membres du groupe
-<li> Création de a vue « Registration »
-
-
-02.10.2015
-<li> resolution conflits git
-<li> création de la vue «Register new App », « app details »
-<li> Séance de discussion avec le prof et les autres membres du groupe
-
-05.10.2015
-En collaboration avec raphael:
-<li>Affichage du nombre de enduser inscrit les 30 derniers jours (page Welcome)
-
-06.10.2015
-<li>Création « edit your “account details” et “your apps”
-
-09.10.2015
-
-<li> lecture du code du project
-<li>Modification du code de la vue « register new app » pour l’affichage des champs APIKEY et users
-<li> comment créer la barre de navigation verticale.Debut de l’implémentation
-
-13.10.2015
-<li> séance de discussion : decision d’introduire des fenêtres modales.
-<li> debut de l’implémentation
-
-16.10.2015
-<li> code html pourri-> réorganisation du code.Ajout d’un fichier footer.jsp.
-<li>soucis avec l’affichage de la fenêtre modale.Application avec la vue « your apps ».Lorsque l’utilisateur appuye sur le bouton register « register new app » celui-ci devrait ouvrir la fenêtre modale « register new app » dont le code de la fenêtre avait déjà été crée. Au lieu de cela, il inclus directement le code de la page « register new app » dans celle de « your app ».
-
-
+<li> Création de la vue welcome.jsp
 
 ## Introduction
 
