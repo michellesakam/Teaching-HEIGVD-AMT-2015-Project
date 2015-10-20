@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ApplicationDetailsFluentPage extends AbstractGamificationProjectFluentPage {
     @Override
   public void isAt() {
-    assertThat(title()).isEqualTo("App details");
+    assertThat(title()).isEqualTo("App Details");
   }
 
   public String getUrl() {

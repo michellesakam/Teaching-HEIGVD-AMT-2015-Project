@@ -9,7 +9,7 @@
 
 <!DOCTYPE html>
 
-
+<title>Your Apps</title>
 <html>
  <head>
        <%@include file="includes/header.jsp" %>
@@ -81,7 +81,7 @@
         
         <h1 align = "center">Your apps...</h1>
         <form method="GET" action="pages/applicationRegistration">
-        <h2 align = "center"><button class="btn btn-primary" type="submit">Register New App</button></h2>
+        <h2 align = "center"><button id="bregisternewapp" class="btn btn-primary" type="submit">Register New App</button></h2>
         </form>
         
           <table border="1" id="kids" align = "center">

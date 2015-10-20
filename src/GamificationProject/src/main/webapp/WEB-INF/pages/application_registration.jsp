@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
+<title>Register New App</title>
 
     <%@include file="includes/header.jsp"%>
 
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Description">Description</label>
                 <div class="col-md-4">
-                    <TEXTAREA name="description" rows=4 cols=40>${applicationDTO.description}</TEXTAREA>
+                    <TEXTAREA id="Description" name="description" rows=4 cols=40>${applicationDTO.description}</TEXTAREA>
                 </div>
             </div>
             <div class="form-group">
@@ -50,8 +50,8 @@
             </div>
             <div class="form-group" >
                 <div class="col-md-offset-3 col-md-9">
-                    <button class="btn btn-primary" type="submit">Register</button>
-                    <button class="btn btn-default" type="button">Cancel</button>
+                    <button id="bregister" class="btn btn-primary" type="submit">Register</button>
+                    <button id ="bcancel" class="btn btn-default" type="button">Cancel</button>
                 </div>
             </div>
         </form>
