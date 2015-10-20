@@ -1,11 +1,9 @@
 package ch.heigvd.amt.uat.fluentlenium;
 
 import ch.heigvd.amt.uat.fluentlenium.pages.AccountRegistrationFluentPage;
-import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationDetailsFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationRegistrationFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationsOfAnAccountFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.fluentlenium.adapter.FluentTest;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
