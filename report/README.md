@@ -1,4 +1,4 @@
-﻿# Project Report
+# Project Report
 
 
 ## Administrative information
@@ -60,6 +60,13 @@ En collaboration avec Vanessa :
 <li>Restruction des services au niveau des requêtes SQL (elle ont été déplacées dans les classes modèles pour créer des requêtes nommées)
 <li>Implémentation de la création d'une application dans le controleur ApplicationRegistration.java
 <li>Reprise des données dans les formulaires en cas d'erreurs de saisie (Application et Account registration)
+
+20.10.2015
+<li>Injection des DAO dans les contrôleurs
+<li>Utilisation de GenericDAO dans les DAO
+<li>Adaptation des modèles avec la classe AbstractDomainModelEntity (classe de Olivier LIechti)
+<li>Implémentation du POST dans le contrôleur qui permet d'éditer un compte
+et adaptation de la vue
 
 ####Samira Kouchali
 26.09.2015
