@@ -5,7 +5,15 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
+import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.dao.GamificationDomainEntityNotFoundException;
+import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,22 +25,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AccountDetailsEditServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        request.getRequestDispatcher("/WEB-INF/pages/account_details_edit.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    @EJB
+    private AccountDAOLocal accountDAO;
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -44,7 +39,7 @@ public class AccountDetailsEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/account_details_edit.jsp").forward(request, response);
     }
 
     /**
@@ -58,17 +53,36 @@ public class AccountDetailsEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        
+        String firstName = request.getParameter("First_name");
+        String lastName = request.getParameter("Last_name");
+        String password = request.getParameter("Password");
+        String confirm = request.getParameter("Confirm");
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        if (password.equals(confirm)) {
+            
+            /* The account has to be modified is the account which is in
+            *  session variable called principal (which have an id in database)
+            */
+            Account currentAccount = (Account) request.getSession().getAttribute("principal");
+            currentAccount.setFirstName(firstName);
+            currentAccount.setLastName(lastName);
+            currentAccount.setPassword(password);
+            
+            try {
+                accountDAO.update(currentAccount);
+                response.sendRedirect(request.getContextPath() + "/pages/yourApps");
+            }
+            catch(GamificationDomainEntityNotFoundException e) {            
+ 
+            }
+
+        } else {
+            List<String> errors = new ArrayList<>();
+            errors.add("The two passwords are not the same.");
+            request.setAttribute("errors", errors); 
+            request.getRequestDispatcher("/WEB-INF/pages/account_details_edit.jsp").forward(request, response);
+        }
+    }
 
 }

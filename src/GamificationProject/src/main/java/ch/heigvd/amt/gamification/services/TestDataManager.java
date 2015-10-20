@@ -78,8 +78,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setName("Google Chrome");
         app3.setDescription("Surfez sur Internet !");
         
-        applicationDAO.assignApplicationToAccount(app3, createur2);        
-               
+        applicationDAO.assignApplicationToAccount(app3, createur2);               
   } 
 
 }
