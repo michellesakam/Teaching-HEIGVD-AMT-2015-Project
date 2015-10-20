@@ -9,6 +9,10 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author Olivier Liechti
+ * edit : Parfait
+
+ * @param <T>
+ * @param <PK>
  */
 public class GenericDAO<T extends AbstractDomainModelEntity<PK>, PK> implements IGenericDAO<T, PK> {
 
@@ -73,6 +77,4 @@ public class GenericDAO<T extends AbstractDomainModelEntity<PK>, PK> implements 
     return em.createQuery("Select t from " + jpaEntityClass.getSimpleName() + " t").setMaxResults(pageSize).setFirstResult(pageIndex*pageSize).getResultList();
   }
   
-  
-
 }

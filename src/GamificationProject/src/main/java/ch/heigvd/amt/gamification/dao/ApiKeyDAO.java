@@ -3,6 +3,8 @@ package ch.heigvd.amt.gamification.dao;
 import ch.heigvd.amt.gamification.model.entities.ApiKey;
 import java.util.UUID;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -11,6 +13,9 @@ import javax.ejb.Stateless;
 @Stateless
 public class ApiKeyDAO extends GenericDAO<ApiKey, Long> implements ApiKeyDAOLocal {
 
+    @PersistenceContext
+    private EntityManager em;
+    
     @Override
     public ApiKey getNewApiKey() {
 

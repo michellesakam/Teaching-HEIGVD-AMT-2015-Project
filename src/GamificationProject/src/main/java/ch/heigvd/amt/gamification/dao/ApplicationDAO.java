@@ -10,6 +10,8 @@ import ch.heigvd.amt.gamification.model.entities.ApiKey;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -18,6 +20,9 @@ import javax.ejb.Stateless;
 @Stateless
 public class ApplicationDAO extends GenericDAO<Application, Long> implements ApplicationDAOLocal {
 
+    @PersistenceContext
+    EntityManager em;
+    
     @EJB
     private ApiKeyDAOLocal apikeyDAO;
     

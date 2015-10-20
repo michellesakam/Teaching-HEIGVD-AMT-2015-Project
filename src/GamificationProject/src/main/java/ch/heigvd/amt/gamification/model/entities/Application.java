@@ -42,8 +42,8 @@ public class Application extends AbstractDomainModelEntity<Long> {
     private ApiKey apiKey;
     
     @ManyToOne
-    private Account acount;   
-    
+    private Account acount;    
+
 // Permet de savoir si l'application est toujours disponible
     private boolean isEnable;
     

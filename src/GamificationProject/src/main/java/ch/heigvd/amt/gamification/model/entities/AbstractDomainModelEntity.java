@@ -18,6 +18,7 @@ import javax.persistence.MappedSuperclass;
  * subclasses.
  *
  * @author Olivier Liechti
+ * modified by : Noubissi Parfait
  */
 @MappedSuperclass
 public abstract class AbstractDomainModelEntity<PK> implements Serializable {

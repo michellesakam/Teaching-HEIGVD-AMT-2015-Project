@@ -9,13 +9,17 @@ import ch.heigvd.amt.gamification.model.entities.EndUser;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.ejb.Stateless;
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 /**
  *
  * @author parfait
  */
 @Stateless
 public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOLocal{
+    
+    @PersistenceContext
+    EntityManager em;
     
     @Override
     public long numberOfEndUsers(int numberOfDay) {        
@@ -31,5 +35,4 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
                 .setParameter("date2", today.getTime())
                 .getSingleResult();
     }
-    
 }

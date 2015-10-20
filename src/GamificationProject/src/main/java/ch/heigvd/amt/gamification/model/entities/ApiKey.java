@@ -1,5 +1,6 @@
+
 package ch.heigvd.amt.gamification.model.entities;
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;

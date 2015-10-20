@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.dao;
 /**
  *
  * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ * @edit by Noubissi Parfait
  */
 public class GamificationDomainEntityNotFoundException extends Exception {
 

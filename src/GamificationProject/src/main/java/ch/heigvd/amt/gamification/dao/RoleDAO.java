@@ -14,5 +14,5 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class RoleDAO extends GenericDAO<Role, Long> implements RoleDAOLocal{   
-    
+
 }

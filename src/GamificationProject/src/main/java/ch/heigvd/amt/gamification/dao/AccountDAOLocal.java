@@ -6,12 +6,12 @@
 package ch.heigvd.amt.gamification.dao;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
-import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author parfait
+ * @author parfait new : exceptions, changement de la signature des méthodes.
+ * But : ici on implémentes les méthodes qui sont à la class Account
  */
 @Local
 public interface AccountDAOLocal extends IGenericDAO<Account, Long> {

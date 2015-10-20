@@ -12,8 +12,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
+ * This SLSB implements the DAO design pattern. This class implements the data
+ * access for the Company JPA entity. It extends the GenericDAO and with
+ * <Company, Long>, it declares that manages Company entities, which have a Long
+ * primary key.
  *
- * @author parfait
+ * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
  */
 
 @Stateless
@@ -36,5 +40,4 @@ public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOL
     public long numbersOfAccount() {
         return (long) em.createNamedQuery("Account.numberOfAccounts").getSingleResult();
     }
-
 }

@@ -14,5 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface RoleDAOLocal extends IGenericDAO<Role, Long> {
-    
+
 }

@@ -4,6 +4,7 @@ import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
+
 import ch.heigvd.amt.gamification.util.Chance;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -29,6 +30,7 @@ public class TestDataManager implements TestDataManagerLocal {
         String nom;
         String prenom;
         
+
         for(int i = 0; i < 1000; ++i)
         {
             Account a = new Account();
