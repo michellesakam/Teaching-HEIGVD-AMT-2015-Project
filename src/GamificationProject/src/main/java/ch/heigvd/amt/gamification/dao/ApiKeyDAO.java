@@ -1,20 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.dao;
 
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 import ch.heigvd.amt.gamification.model.entities.ApiKey;
+import java.util.UUID;
 import javax.ejb.Stateless;
-
 
 /**
  *
  * @author parfait
  */
 @Stateless
-public class ApiKeyDAO extends GenericDAO<ApiKey, Long> implements ApiKeyDAOLocal{
-    
+public class ApiKeyDAO extends GenericDAO<ApiKey, Long> implements ApiKeyDAOLocal {
+
+    @Override
+    public ApiKey getNewApiKey() {
+
+        String generated = UUID.randomUUID().toString();
+
+        while (keyExists(generated)) {
+            generated = UUID.randomUUID().toString();
+        }
+
+        ApiKey key = new ApiKey();
+        key.setKey(generated);
+        return key;
+    }
+
+    @Override
+    public boolean keyExists(String key) {
+        return em.createNamedQuery("ApiKey.findByKey")
+                .setParameter("key", key)
+                .getResultList().size() > 0;
+    }
 }

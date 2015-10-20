@@ -14,5 +14,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface ApiKeyDAOLocal extends IGenericDAO<ApiKey, Long> {
-    
+    public ApiKey getNewApiKey();
+    public boolean keyExists(String key);
 }
