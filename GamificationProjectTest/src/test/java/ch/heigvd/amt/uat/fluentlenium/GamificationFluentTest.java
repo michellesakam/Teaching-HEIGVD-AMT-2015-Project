@@ -148,7 +148,7 @@ public class GamificationFluentTest extends FluentTest {
     }
     
     @Test
-    public void itShouldNotBePossibleToRegisterAnApplicationWitchAlreadyExists() {
+    public void itShouldNotBePossibleToRegisterAnApplicationWhitchAlreadyExists() {
 
         goTo(baseUrl);
         loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
