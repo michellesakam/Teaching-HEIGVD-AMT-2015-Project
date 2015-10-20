@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
  * @author Raphaël Racine
  */
 @Entity
-public class EndUser implements Serializable {
+public class EndUser extends AbstractDomainModelEntity<Long>  implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;

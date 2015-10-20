@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
  * @author Raphaël Racine
  */
 @Entity
-public class Role implements Serializable {   
+public class Role extends AbstractDomainModelEntity<Long> implements Serializable {   
    private String roleName;   
    @Id   
    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,9 +25,10 @@ public class Role implements Serializable {
    @ManyToMany
    private List<Account> listAccount;
 
-   public long getId() {
-      return id;
-   }
+//   @Override
+//   public long getId() {
+//      return id;
+//   }
 
    public void setId(Long id) {
       this.id = id;

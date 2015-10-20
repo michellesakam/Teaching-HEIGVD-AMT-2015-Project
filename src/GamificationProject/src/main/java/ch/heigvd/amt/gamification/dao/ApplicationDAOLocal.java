@@ -4,6 +4,7 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
+import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
 import java.util.List;
 
@@ -11,19 +12,5 @@ import java.util.List;
  *
  * @author parfait
  */
-public interface ApplicationDAOLocal {
-
-public long create(Application application);	
-  
-public void delete(long id);	
-  
-boolean update(Application object);	
-  
-public Application findById(long id);	
-  
-public List<Application> findAll();	
-  
-public Application findByName(Application k);	
-  
-//public findByYYY(Object k);   
+public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> { 
 }

@@ -7,21 +7,16 @@ package ch.heigvd.amt.gamification.dao;
 
 import ch.heigvd.amt.gamification.model.Account;
 import java.util.List;
+import javax.ejb.Local;
+//     ch.heigvd.amt.gamification.model.;
 
 /**
  *
- * @author parfait
+ * @author parfait new : exceptions, changement de la signature des méthodes.
+ * But : ici on implémentes les méthodes qui sont à la class Account
  */
-public interface AccountDAOLocal {
-    public long create(Account account);	
-  
-public void delete(long id);	
-  
-boolean update(Account account);	
-  
-public Account findById(long id);	
-  
-public List<Account>  findAll();	
-  
-public Account findByName(Account account);
+@Local
+public interface AccountDAOLocal extends IGenericDAO<Account, Long> {
+    
+    public Account findByName(Long id);
 }

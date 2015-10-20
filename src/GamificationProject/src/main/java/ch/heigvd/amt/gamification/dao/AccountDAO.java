@@ -6,67 +6,30 @@
 package ch.heigvd.amt.gamification.dao;
 
 import ch.heigvd.amt.gamification.model.Account;
+//package ch.heigvd.amt.gamification.model;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 /**
+ * This SLSB implements the DAO design pattern. This class implements the data
+ * access for the Company JPA entity. It extends the GenericDAO and with
+ * <Company, Long>, it declares that manages Company entities, which have a Long
+ * primary key.
  *
- * @author parfait
+ * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
  */
-public class AccountDAO implements AccountDAOLocal {
-
-    @PersistenceContext
-    EntityManager em;
-
+@Stateless
+public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOLocal {
     @Override
-    public long create(Account account) {
+    public Account findByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public boolean update(Account object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Account findById(long id) {
-        Account result = null;
-        try {
-            result = (Account) em.createNamedQuery("Account.findById").setParameter("id", id);
-        } catch (NoResultException e) {
-            System.out.println("Erreur lors de l'acces à la database ");
-        }
-        return (Account)result;
-    }
-
-    @Override
-    public List<Account> findAll() {
-        Object result = null;
-        try {
-            result = (Account) em.createNamedQuery("Account.findByAll");
-        } catch (NoResultException e) {
-            System.out.println("Erreur lors de l'acces à la database ");
-        }
-        return (List<Account>)result;
-    }
-
-    @Override
-    public Account findByName(Account name) {
-        Object result = null;
-        try {
-            result = (Account) em.createNamedQuery("Account.findByName").setParameter("name", name.toString());
-        } catch (NoResultException e) {
-            System.out.println("Erreur lors de l'acces à la database ");
-        }
-        return (Account)result;
-    }
 }

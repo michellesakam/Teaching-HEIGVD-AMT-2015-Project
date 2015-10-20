@@ -22,9 +22,7 @@ import static javax.ws.rs.client.Entity.entity;
  * @author Raphaël Racine
  */
 @Entity
-
-public class Account implements Serializable {
-
+public class Account extends AbstractDomainModelEntity<Long> implements Serializable {
     public Account() {
     }
 
@@ -45,9 +43,8 @@ public class Account implements Serializable {
     @ManyToMany // relation plusieurs à plusieurs
     private List<Role> roles;
 
-    @OneToMany
+    @OneToMany(mappedBy = "acount")
     private List<Application> apps;
-
     
     public Account(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

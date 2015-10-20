@@ -6,22 +6,11 @@
 package ch.heigvd.amt.gamification.dao;
 
 import ch.heigvd.amt.gamification.model.Role;
+//import ch.heigvd.amt.gamification.model.Role;
 
 /**
  *
  * @author parfait
  */
-public interface RoleDAOLocal {
-   public long create(Role role);	
-  
-public void delete(long id);	
-  
-boolean update(Role object);	
-  
-public Role findById(long id);	
-  
-public Role findAll();	
-  
-public Role findByName(Role k); 
-    
+public interface RoleDAOLocal  extends IGenericDAO<Role, Long> {
 }
