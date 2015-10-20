@@ -66,8 +66,8 @@ public class TestDataManager implements TestDataManagerLocal {
         Account createur2 = new Account();
         createur2.setEmail("olivier.liechti@heig-vd.ch");
         createur2.setPassword("toor");
-        createur.setFirstName("Olivier");
-        createur.setLastName("Liechti");
+        createur2.setFirstName("Olivier");
+        createur2.setLastName("Liechti");
         accountsManager.createAccount(createur2);        
         
         /* Création d'une troisième application (par un autre créateur) */
