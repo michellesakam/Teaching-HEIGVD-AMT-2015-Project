@@ -7,6 +7,7 @@ package ch.heigvd.amt.gamification.dao;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,6 +15,8 @@ import javax.persistence.PersistenceContext;
  *
  * @author parfait
  */
+
+@Stateless
 public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOLocal {
 
     @PersistenceContext

@@ -9,11 +9,13 @@ import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.ApiKey;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import java.util.UUID;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author parfait
  */
+@Stateless
 public class ApplicationDAO extends GenericDAO<Application, Long> implements ApplicationDAOLocal {
 
     @Override

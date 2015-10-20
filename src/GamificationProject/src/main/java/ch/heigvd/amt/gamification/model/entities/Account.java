@@ -9,8 +9,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
-
 /**
  *
  * @author Raphaël Racine
