@@ -1,17 +1,15 @@
-package ch.heigvd.amt.gamification.model;
+package ch.heigvd.amt.gamification.model.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
+import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 
 /**
  *
@@ -25,14 +23,10 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "Account.numberOfAccounts", query = "SELECT COUNT(a) FROM Account a")
 })
 
-public class Account implements Serializable {
+public class Account extends AbstractDomainModelEntity<Long> {
 
     public Account() {
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
     private String firstName;
     private String lastName;
@@ -121,12 +115,5 @@ public class Account implements Serializable {
     public List<Application> getApps() {
         return apps;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 }

@@ -1,11 +1,7 @@
-package ch.heigvd.amt.gamification.model;
-
-import java.io.Serializable;
+package ch.heigvd.amt.gamification.model.entities;
+import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -20,12 +16,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "ApiKey.findByKey", query = "SELECT a FROM ApiKey a WHERE a.key = :key")
 })
 
-public class ApiKey implements Serializable {
-
-   
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
+public class ApiKey extends AbstractDomainModelEntity<Long> {
    
    @OneToOne
     private Application application;
@@ -34,14 +25,6 @@ public class ApiKey implements Serializable {
     private String key;
     public ApiKey() {
     }
-
-   public Long getId() {
-      return id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
-   }
 
    
    public Long getUsers(){

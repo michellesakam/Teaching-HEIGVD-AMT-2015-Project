@@ -1,13 +1,10 @@
-package ch.heigvd.amt.gamification.model;
+package ch.heigvd.amt.gamification.model.entities;
 
-import java.io.Serializable;
+import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +22,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "Application.findAll", query = "SELECT a FROM Application a")
 })
 
-public class Application implements Serializable {
+public class Application extends AbstractDomainModelEntity<Long> {
 
     public Application() {
     }
@@ -52,10 +49,6 @@ public class Application implements Serializable {
     
     @OneToMany
     private List <EndUser> user;   
-    
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
    
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isEnable) {
         this.name = name;
@@ -112,12 +105,5 @@ public class Application implements Serializable {
     public void setUser(List<EndUser> user) {
         this.user = user;
     }
-
-   public Long getId() {
-      return id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
-   }
+    
 }

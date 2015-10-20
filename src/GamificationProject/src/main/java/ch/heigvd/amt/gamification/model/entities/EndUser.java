@@ -1,11 +1,8 @@
-package ch.heigvd.amt.gamification.model;
+package ch.heigvd.amt.gamification.model.entities;
 
-import java.io.Serializable;
+import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,10 +19,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "EndUser.findAllCreatedBetweenTwoDates", query = "SELECT e FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2")
 })
 
-public class EndUser implements Serializable {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
+public class EndUser extends AbstractDomainModelEntity<Long> {
    
    @ManyToOne
    private Application application;
@@ -35,11 +29,4 @@ public class EndUser implements Serializable {
    
    @Temporal(TemporalType.TIMESTAMP)
    private Date regDate;
-
-   public Long getId() {
-      return id;
-   }
-   public void setId(Long id) {
-      this.id = id;
-   }
 }
