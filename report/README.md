@@ -63,8 +63,8 @@ En collaboration avec Vanessa :
 
 20.10.2015
 <li>Injection des DAO dans les contrôleurs
-<li>Utilisation de GenericDAO dans les DAO
-<li>Adaptation des modèles avec la classe AbstractDomainModelEntity (classe de Olivier LIechti)
+<li>Utilisation de GenericDAO dans les DAO (en collaboration avec Parfait)
+<li>Adaptation des modèles avec la classe AbstractDomainModelEntity (classe de Olivier LIechti) (en collaboration avec Parfait)
 <li>Implémentation du POST dans le contrôleur qui permet d'éditer un compte
 et adaptation de la vue
 
