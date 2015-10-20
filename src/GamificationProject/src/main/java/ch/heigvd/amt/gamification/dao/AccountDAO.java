@@ -34,9 +34,7 @@ public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOL
 
     @Override
     public long numbersOfAccount() {
-        return em.createNamedQuery("Account.findAll")
-                .getResultList()
-                .size();
+        return (long) em.createNamedQuery("Account.numberOfAccounts").getSingleResult();
     }
 
 }

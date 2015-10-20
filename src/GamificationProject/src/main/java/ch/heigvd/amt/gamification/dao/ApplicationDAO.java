@@ -36,9 +36,7 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public long numberOfApplicationsManaged() {
-        return em.createNamedQuery("Application.findAll")
-                .getResultList()
-                .size();
+        return (long) em.createNamedQuery("Application.numberOfApplications").getSingleResult();
     }
 
 }

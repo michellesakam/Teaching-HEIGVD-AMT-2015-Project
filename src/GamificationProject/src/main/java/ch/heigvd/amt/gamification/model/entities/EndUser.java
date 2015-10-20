@@ -10,23 +10,24 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * 
+ *
  * @author Raphaël Racine
  */
 @Entity
 
 @NamedQueries({
-    @NamedQuery(name = "EndUser.findAllCreatedBetweenTwoDates", query = "SELECT e FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2")
+    @NamedQuery(name = "EndUser.countEndUsersCreatedBetweenTwoDates", query = "SELECT COUNT(e) FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2")
 })
 
 public class EndUser extends AbstractDomainModelEntity<Long> {
-   
-   @ManyToOne
-   private Application application;
+
+    @ManyToOne
+    private Application application;
+
     public EndUser() {
-    } 
-   private String  userID;
-   
-   @Temporal(TemporalType.TIMESTAMP)
-   private Date regDate;
+    }
+    private String userID;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date regDate;
 }
