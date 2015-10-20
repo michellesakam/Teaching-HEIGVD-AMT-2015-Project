@@ -5,13 +5,12 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
+import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.dao.ApplicationDAOLocal;
+import ch.heigvd.amt.gamification.dao.EndUserDAOLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,13 +22,13 @@ import javax.servlet.http.HttpServletResponse;
 public class WelcomeServlet extends HttpServlet {
     
     @EJB
-    private AccountsManagerLocal accountsManager;
+    private AccountDAOLocal accountDAO;
     
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
+    private ApplicationDAOLocal applicationDAO;
     
     @EJB
-    private EndUsersManagerLocal endUsersManager;
+    private EndUserDAOLocal endUserDAO;
     
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -45,9 +44,9 @@ public class WelcomeServlet extends HttpServlet {
         
         final int nbLastDayEndUsers = 30;
         
-        request.setAttribute("nbAccounts", accountsManager.numbersOfAccount());
-        request.setAttribute("nbApplications", applicationsManager.numberOfApplicationsManaged());
-        request.setAttribute("nbEndUser", endUsersManager.numberOfEndUsers(nbLastDayEndUsers));
+        request.setAttribute("nbAccounts", accountDAO.numbersOfAccount());
+        request.setAttribute("nbApplications", applicationDAO.numberOfApplicationsManaged());
+        request.setAttribute("nbEndUser", endUserDAO.numberOfEndUsers(nbLastDayEndUsers));
         request.setAttribute("nbLastDays", nbLastDayEndUsers);
         
         request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);

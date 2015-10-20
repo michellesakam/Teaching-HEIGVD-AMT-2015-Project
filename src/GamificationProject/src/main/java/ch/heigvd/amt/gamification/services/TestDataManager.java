@@ -1,5 +1,7 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.util.Chance;
@@ -15,10 +17,10 @@ import javax.ejb.Stateless;
 public class TestDataManager implements TestDataManagerLocal {
   
   @EJB
-  private AccountsManagerLocal accountsManager;
+  private AccountDAOLocal accountDAO;
   
   @EJB
-  private ApplicationsManagerLocal applicationsManager;
+  private ApplicationDAOLocal applicationDAO;
 
   @Override
   public void generateTestData() {
@@ -36,7 +38,7 @@ public class TestDataManager implements TestDataManagerLocal {
             a.setPassword(password);
             a.setFirstName(prenom);
             a.setLastName(nom);
-            accountsManager.createAccount(a);
+            accountDAO.create(a);
         }
         
         
@@ -45,7 +47,7 @@ public class TestDataManager implements TestDataManagerLocal {
         createur.setPassword("toor");
         createur.setFirstName("Raphaël");
         createur.setLastName("Racine");
-        accountsManager.createAccount(createur);
+        accountDAO.create(createur);
         
         /* Création d'une première application */
         Application app1 = new Application();
@@ -53,7 +55,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app1.setName("Lego Creator");
         app1.setDescription("Construisez vos legos");
         
-        applicationsManager.assignApplicationToAccount(app1, createur);
+        applicationDAO.assignApplicationToAccount(app1, createur);
         
         /* Création d'une deuxième application */
         Application app2 = new Application();
@@ -61,14 +63,14 @@ public class TestDataManager implements TestDataManagerLocal {
         app2.setName("The Elder Scroll's 5 : Skyrim");
         app2.setDescription("Tuez votre cheval !");
         
-        applicationsManager.assignApplicationToAccount(app2, createur);
+        applicationDAO.assignApplicationToAccount(app2, createur);
         
         Account createur2 = new Account();
         createur2.setEmail("olivier.liechti@heig-vd.ch");
         createur2.setPassword("toor");
         createur2.setFirstName("Olivier");
         createur2.setLastName("Liechti");
-        accountsManager.createAccount(createur2);        
+        accountDAO.create(createur2);        
         
         /* Création d'une troisième application (par un autre créateur) */
         Application app3 = new Application();
@@ -76,7 +78,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setName("Google Chrome");
         app3.setDescription("Surfez sur Internet !");
         
-        applicationsManager.assignApplicationToAccount(app3, createur2);        
+        applicationDAO.assignApplicationToAccount(app3, createur2);        
                
   } 
 

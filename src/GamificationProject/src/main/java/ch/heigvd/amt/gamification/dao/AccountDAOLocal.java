@@ -13,5 +13,6 @@ import java.util.List;
  * @author parfait
  */
 public interface AccountDAOLocal extends IGenericDAO<Account, Long> {
-    
+    public Account login(String email);
+    public long numbersOfAccount();
 }

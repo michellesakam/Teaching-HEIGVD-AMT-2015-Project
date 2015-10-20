@@ -5,13 +5,11 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
+import ch.heigvd.amt.gamification.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
-import ch.heigvd.amt.gamification.model.entities.ApiKey;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.rest.dto.ApplicationDTO;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -28,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ApplicationRegistrationServlet extends HttpServlet {
 
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
+    private ApplicationDAOLocal applicationDAO;
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -62,7 +60,7 @@ public class ApplicationRegistrationServlet extends HttpServlet {
         application.setDescription(description);
 
         try {
-            applicationsManager.assignApplicationToAccount(application, currentAccount);
+            applicationDAO.assignApplicationToAccount(application, currentAccount);
         } catch (EJBException e) {
             List<String> errors = new LinkedList<>();
             errors.add("Impossible to register an application, probably the name already exists !");

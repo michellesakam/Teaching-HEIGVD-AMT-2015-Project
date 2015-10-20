@@ -6,6 +6,7 @@
 package ch.heigvd.amt.gamification.dao;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,6 +17,23 @@ import javax.persistence.PersistenceContext;
 public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOLocal {
 
     @PersistenceContext
-    EntityManager em;  
-    
+    EntityManager em;
+
+    @Override
+    public Account login(String email) {
+        List<Account> tmp = em.createNamedQuery("Account.findByEmail")
+                .setParameter("email", email)
+                .setMaxResults(1)
+                .getResultList();
+
+        return tmp.size() > 0 ? tmp.get(0) : null;
+    }
+
+    @Override
+    public long numbersOfAccount() {
+        return em.createNamedQuery("Account.findAll")
+                .getResultList()
+                .size();
+    }
+
 }

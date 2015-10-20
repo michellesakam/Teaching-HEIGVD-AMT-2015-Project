@@ -12,5 +12,5 @@ import ch.heigvd.amt.gamification.model.entities.EndUser;
  * @author parfait
  */
 public interface EndUserDAOLocal extends IGenericDAO<EndUser, Long> {
-    
+    public long numberOfEndUsers(int numberOfDay);
 }
