@@ -15,13 +15,13 @@ public interface IGenericDAO<T extends AbstractDomainModelEntity, PK> {
 
     public T createAndReturnManagedEntity(T t);
 
-    public void update(T t) throws BusinessDomainEntityNotFoundException;
+    public void update(T t) throws GamificationDomainEntityNotFoundException;
 
-    public void delete(T t) throws BusinessDomainEntityNotFoundException;
+    public void delete(T t) throws GamificationDomainEntityNotFoundException;
 
     public long count();
 
-    public T findById(PK id) throws BusinessDomainEntityNotFoundException;
+    public T findById(PK id) throws GamificationDomainEntityNotFoundException;
 
     public List<T> findAll();
 

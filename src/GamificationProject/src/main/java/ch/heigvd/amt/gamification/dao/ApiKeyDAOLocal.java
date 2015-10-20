@@ -5,24 +5,12 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
-import ch.heigvd.amt.gamification.model.ApiKey;
-import ch.heigvd.amt.gamification.model.Application;
-import java.util.List;
+import ch.heigvd.amt.gamification.model.entities.ApiKey;
 
 /**
  *
  * @author parfait
  */
-public interface ApiKeyDAOLocal {
-    public long create(ApiKey apikey);	
-  
-public void delete(long id);	
-  
-boolean update(ApiKey apikey);	
-  
-public ApiKey findById(long id);	
-  
-public List<ApiKey> findAll();	
-  
-public ApiKey findByName(ApiKey k);
+public interface ApiKeyDAOLocal extends IGenericDAO<ApiKey, Long> {
+    
 }

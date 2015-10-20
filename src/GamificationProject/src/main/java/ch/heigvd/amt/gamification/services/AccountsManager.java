@@ -7,8 +7,8 @@ package ch.heigvd.amt.gamification.services;
 
 import javax.ejb.Stateless;
 
-import ch.heigvd.amt.gamification.model.Account;
-import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.entities.Application;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -5,44 +5,12 @@
  */
 package ch.heigvd.amt.gamification.dao;
 
-import ch.heigvd.amt.gamification.model.Application;
-import java.util.List;
+import ch.heigvd.amt.gamification.model.entities.Application;
 
 /**
  *
  * @author parfait
  */
-public class ApplicationDAO implements ApplicationDAOLocal {
-
-    @Override
-    public long create(Application application) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean update(Application application) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Application findById(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Application> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Application findByName(Application k) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
+public class ApplicationDAO extends GenericDAO<Application, Long>implements ApplicationDAOLocal {
+    
 }

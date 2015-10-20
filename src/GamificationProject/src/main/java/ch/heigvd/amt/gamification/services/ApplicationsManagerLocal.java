@@ -1,9 +1,9 @@
 package ch.heigvd.amt.gamification.services;
 
-import ch.heigvd.amt.gamification.model.Account;
-import ch.heigvd.amt.gamification.model.ApiKey;
-import ch.heigvd.amt.gamification.model.Application;
-import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.entities.ApiKey;
+import ch.heigvd.amt.gamification.model.entities.Application;
+import ch.heigvd.amt.gamification.model.entities.EndUser;
 import java.util.List;
 import javax.ejb.Local;
 

@@ -5,7 +5,7 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.model.Account;
+import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
 import java.io.IOException;
 import javax.servlet.ServletException;

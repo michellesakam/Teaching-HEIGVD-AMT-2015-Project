@@ -5,9 +5,9 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.model.Account;
-import ch.heigvd.amt.gamification.model.ApiKey;
-import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.entities.ApiKey;
+import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.rest.dto.ApplicationDTO;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import java.io.IOException;
