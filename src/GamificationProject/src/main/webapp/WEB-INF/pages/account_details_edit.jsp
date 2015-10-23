@@ -11,8 +11,10 @@
 
 <html lang="en">
 
-
+    
     <%@include file="includes/header.jsp" %>
+    <%@include file="includes/startSideBarWrapper.jsp" %>
+    <%@include file="includes/login.jsp" %>
     <title>Edit your account details</title>
     <body>
         <h1 align="center">Edit your account details</h1>
@@ -54,6 +56,8 @@
                 </div>
             </div>
         </form>
+                
+        <%@include file="includes/endSideBarWrapper.jsp" %>
     </body>
 </html>
 

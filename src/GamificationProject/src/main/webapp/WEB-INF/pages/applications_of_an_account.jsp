@@ -41,11 +41,12 @@
 <title>Your Apps</title>
 <html>
     <%@include file="includes/header.jsp" %>
+    <%@include file="includes/startSideBarWrapper.jsp" %>
     <%@include file="includes/login.jsp" %>
 
 
     <body>
-
+        
         <h1 align = "center">Your apps...</h1>
         <form method="GET" action="pages/applicationRegistration">
             <h2 align = "center"><button id="bregisternewapp" class="btn btn-primary" type="submit">Register New App</button></h2>
@@ -98,5 +99,7 @@
             </c:forEach>
         </table>
 
+        <%@include file="includes/endSideBarWrapper.jsp" %>
+        
     </body>    
 </html>
