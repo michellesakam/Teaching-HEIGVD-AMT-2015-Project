@@ -11,8 +11,8 @@
 
 <title>Your Apps</title>
 <html>
-        <%@include file="includes/header.jsp" %>
-        <%@include file="includes/login.jsp" %>
+    <%@include file="includes/header.jsp" %>
+    <%@include file="includes/login.jsp" %>
 
 
     <body>
@@ -36,22 +36,43 @@
                     <td>${appli[0].name}</td>
                     <td>${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
-                    <td>${appli[1]}</td>
-                    
+                    <td>
+                        <c:choose>
+                            <c:when test="${appli[1] > 0}">
+                                ${appli[1]}
+                            </c:when>
+
+                            <c:otherwise>
+                                no user
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+
                     <td>                        
                         <form method="GET" action="pages/applicationDetails">
                             <input type="hidden" name="idApplication" value=${appli[0].id}>
-                            <button id="edit" class="btn btn-default" type="submit">edit</button>
+                            <button id="edit" class="btn btn-default" type="submit">Edit</button>
                         </form>                    
                     </td>
-                    
                     <td>
-                        <!-- voir pour les actions des boutons-->
-                        <button id="edit" class="btn">enabled... A FAIRE</button>
+                        <form method="GET">
+                            
+                            <input type="hidden" name="idApplication" value =${appli[0].id}>
+                            
+                            <c:choose>
+                                <c:when test="${appli[0].isEnable == true}">
+                                    <button name="btnIsEnabled" class="btn btn-success" type="submit" value="enabled">Enabled</button>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <button name="btnIsEnabled" class="btn btn-danger" type="submit" value="disabled">Disabled</button>
+                                </c:otherwise>
+                            </c:choose>    
+                        </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
 
-    </body>
+    </body>    
 </html>

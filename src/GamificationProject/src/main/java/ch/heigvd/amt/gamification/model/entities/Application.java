@@ -94,7 +94,7 @@ public class Application extends AbstractDomainModelEntity<Long> {
         this.acount = acount;
     }
 
-    public boolean isEnable() {
+    public boolean getIsEnable() {
         return isEnable;
     }
 
