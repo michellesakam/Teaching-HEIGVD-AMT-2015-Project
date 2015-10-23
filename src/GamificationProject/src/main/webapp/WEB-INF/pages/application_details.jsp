@@ -15,7 +15,7 @@
     <%@include file="includes/header.jsp"%>
 
     <body>
-        <h1 align="center">Register new app </h1>
+        <h1 align="center">App Details</h1>
         
         <form method="POST" class="form-horizontal" name="registerForm">
             <div class="form-group">
@@ -33,19 +33,19 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Key">API Key</label>
                 <div class="col-md-4">
-                    The ApiKey will be generated after the creation of application
+                    A FAIRE
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Users">Users</label>
                 <div class="col-md-4">
-                    0
+                    A FAIRE
                 </div> 
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="State">State</label>
                 <div class="col-md-offset-3 col-md-9">
-                    <span class="btn-primary" style="background-color: #1B4F08; border-radius: 5px">Created</span>
+                    <span class="btn-primary" style="background-color: #1B4F08; border-radius: 5px">A FAIRE</span>
                 </div>
             </div>
             <div class="form-group" >

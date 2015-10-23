@@ -38,9 +38,14 @@
                     <td>${appli[1]}</td>
                     
                     <td>                        
+                        <form method="GET" action="pages/applicationDetails?idApplication=${appli[0].name}">
+                            <button id="edit" class="btn">edit</button>
+                        </form>                    
+                    </td>
+                    
+                    <td>
                         <!-- voir pour les actions des boutons-->
                         <button id="edit" class="btn">edit</button>
-                        <button id="enabled" class="butt">enabled</button>                        
                     </td>
                 </tr>
             </c:forEach>
