@@ -5,9 +5,9 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
-import ch.heigvd.amt.gamification.dao.ApplicationDAOLocal;
-import ch.heigvd.amt.gamification.dao.EndUserDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.EndUserDAOLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

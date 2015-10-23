@@ -1,7 +1,7 @@
 package ch.heigvd.amt.gamification.services;
 
-import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
-import ch.heigvd.amt.gamification.dao.ApplicationDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
 

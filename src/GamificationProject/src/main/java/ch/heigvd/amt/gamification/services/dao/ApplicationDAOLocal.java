@@ -2,7 +2,7 @@
  * Cette interface met à disposition toutes les méthodes nécessaires pour 
  * la gestion CRUD des Applications
  */
-package ch.heigvd.amt.gamification.dao;
+package ch.heigvd.amt.gamification.services.dao;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;

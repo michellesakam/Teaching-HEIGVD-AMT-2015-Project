@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.dao;
+package ch.heigvd.amt.gamification.services.dao;
 
 /**
  *

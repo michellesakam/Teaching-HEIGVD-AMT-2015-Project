@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.heigvd.amt.gamification.dao;
+package ch.heigvd.amt.gamification.services.dao;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
 import javax.ejb.Local;

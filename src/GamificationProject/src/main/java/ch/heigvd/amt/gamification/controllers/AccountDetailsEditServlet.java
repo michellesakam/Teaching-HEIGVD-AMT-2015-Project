@@ -5,8 +5,8 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.dao.AccountDAOLocal;
-import ch.heigvd.amt.gamification.dao.GamificationDomainEntityNotFoundException;
+import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import java.io.IOException;
 import java.util.ArrayList;
