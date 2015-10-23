@@ -2,6 +2,7 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
+import ch.heigvd.amt.gamification.model.entities.EndUser;
 import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -25,6 +26,10 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public long numberOfApplicationsManaged() {
         return applicationDAO.numberOfApplicationsManaged();
     }    
-    
+
+    @Override
+    public void assignApplicationToAnEndUser(Application application, EndUser endUser) {
+        applicationDAO.assignApplicationToEndUser(application, endUser);
+    }   
 
 }

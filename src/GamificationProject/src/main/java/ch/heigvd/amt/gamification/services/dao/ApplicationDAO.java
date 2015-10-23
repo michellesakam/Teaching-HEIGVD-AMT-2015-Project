@@ -8,6 +8,9 @@ package ch.heigvd.amt.gamification.services.dao;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.ApiKey;
 import ch.heigvd.amt.gamification.model.entities.Application;
+import ch.heigvd.amt.gamification.model.entities.EndUser;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -43,5 +46,17 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     public long numberOfApplicationsManaged() {
         return (long) em.createNamedQuery("Application.numberOfApplications").getSingleResult();
     }
+
+    @Override
+    public void assignApplicationToEndUser(Application application, EndUser endUser) {
+        application.getEndUsers().add(endUser);
+        endUser.setApplication(application);        
+        
+        try {
+            update(application);
+        } catch (GamificationDomainEntityNotFoundException ex) {
+            Logger.getLogger(ApplicationDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }   
 
 }

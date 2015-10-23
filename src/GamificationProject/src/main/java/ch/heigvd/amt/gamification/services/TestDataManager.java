@@ -2,8 +2,10 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
+import ch.heigvd.amt.gamification.model.entities.EndUser;
 
 import ch.heigvd.amt.gamification.util.Chance;
+import java.sql.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -78,7 +80,24 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setName("Google Chrome");
         app3.setDescription("Surfez sur Internet !");
         
-        applicationsManager.assignApplicationToAccount(app3, createur2);               
+        applicationsManager.assignApplicationToAccount(app3, createur2); 
+        
+        /* Association de EndUsers aux applications... */
+        EndUser user1 = new EndUser();
+        user1.setRegDate(new Date(System.currentTimeMillis()));
+        user1.setUserID("UK1928J28k");
+        
+        EndUser user2 = new EndUser();
+        user2.setRegDate(new Date(2015, 1, 25));
+        user2.setUserID("PKZ927J28k");
+        
+        EndUser user3 = new EndUser();
+        user3.setRegDate(new Date(System.currentTimeMillis()));
+        user3.setUserID("FJFKDJFFSD5f");
+        
+        applicationsManager.assignApplicationToAnEndUser(app1, user1);
+        applicationsManager.assignApplicationToAnEndUser(app1, user2);
+        applicationsManager.assignApplicationToAnEndUser(app3, user3);
   } 
 
 }

@@ -1,6 +1,5 @@
 package ch.heigvd.amt.gamification.model.entities;
 
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -26,8 +25,35 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
 
     public EndUser() {
     }
+    
     private String userID;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date regDate;
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
+    
+    
 }

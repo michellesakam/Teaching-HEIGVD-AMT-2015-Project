@@ -1,6 +1,5 @@
 package ch.heigvd.amt.gamification.model.entities;
 
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,8 +46,8 @@ public class Application extends AbstractDomainModelEntity<Long> {
 // Permet de savoir si l'application est toujours disponible
     private boolean isEnable;
     
-    @OneToMany
-    private List <EndUser> user;   
+    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
+    private List <EndUser> endUsers;   
    
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isEnable) {
         this.name = name;
@@ -98,12 +97,12 @@ public class Application extends AbstractDomainModelEntity<Long> {
         this.isEnable = isEnable;
     }
 
-    public List<EndUser> getUser() {
-        return user;
+    public List<EndUser> getEndUsers() {
+        return endUsers;
     }
 
-    public void setUser(List<EndUser> user) {
-        this.user = user;
+    public void setUser(List<EndUser> endUsers) {
+        this.endUsers = endUsers;
     }
     
 }
