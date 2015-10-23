@@ -5,9 +5,9 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
+import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import java.io.IOException;
 import javax.servlet.ServletException;
 
@@ -28,7 +28,7 @@ import javax.ejb.EJB;
 public class AccountRegistrationServlet extends HttpServlet {
 
     @EJB
-    private AccountDAOLocal accountDAO;
+    private AccountsManagerLocal accountsManager;
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -68,7 +68,7 @@ public class AccountRegistrationServlet extends HttpServlet {
             a.setPassword(password);
 
             try {
-                accountDAO.create(a);
+                accountsManager.createAccount(a);
             }
             catch(Exception e) { // Exception si l'email existe déjà
                 List<String> errors = new LinkedList<>();

@@ -1,6 +1,5 @@
 package ch.heigvd.amt.gamification.services;
 
-import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
@@ -18,7 +17,7 @@ import javax.ejb.Stateless;
 public class TestDataManager implements TestDataManagerLocal {
   
   @EJB
-  private AccountDAOLocal accountDAO;
+  private AccountsManagerLocal accountsManager;
   
   @EJB
   private ApplicationDAOLocal applicationDAO;
@@ -40,7 +39,7 @@ public class TestDataManager implements TestDataManagerLocal {
             a.setPassword(password);
             a.setFirstName(prenom);
             a.setLastName(nom);
-            accountDAO.create(a);
+            accountsManager.createAccount(a);
         }
         
         
@@ -49,7 +48,7 @@ public class TestDataManager implements TestDataManagerLocal {
         createur.setPassword("toor");
         createur.setFirstName("Raphaël");
         createur.setLastName("Racine");
-        accountDAO.create(createur);
+        accountsManager.createAccount(createur);
         
         /* Création d'une première application */
         Application app1 = new Application();
@@ -72,7 +71,7 @@ public class TestDataManager implements TestDataManagerLocal {
         createur2.setPassword("toor");
         createur2.setFirstName("Olivier");
         createur2.setLastName("Liechti");
-        accountDAO.create(createur2);        
+        accountsManager.createAccount(createur2);        
         
         /* Création d'une troisième application (par un autre créateur) */
         Application app3 = new Application();

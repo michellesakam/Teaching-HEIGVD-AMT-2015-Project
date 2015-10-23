@@ -27,7 +27,7 @@ public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOL
     EntityManager em;
 
     @Override
-    public Account login(String email) {
+    public Account findByEmail(String email) {
         List<Account> tmp = em.createNamedQuery("Account.findByEmail")
                 .setParameter("email", email)
                 .setMaxResults(1)

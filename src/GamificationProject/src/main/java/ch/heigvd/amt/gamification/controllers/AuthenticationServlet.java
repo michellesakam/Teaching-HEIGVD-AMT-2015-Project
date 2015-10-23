@@ -1,8 +1,7 @@
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.services.dao.AccountDAO;
-import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -44,7 +43,7 @@ import java.util.List;
 public class AuthenticationServlet extends HttpServlet {
 
     @EJB
-    private AccountDAOLocal accountDAO;
+    private AccountsManagerLocal accountsManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -85,7 +84,7 @@ public class AuthenticationServlet extends HttpServlet {
         if ("login".equals(action)) {
            //@Parfait il faut faut passer uniquement l'email. pas les deux
             // Corrigé par Raphaël
-            Account a = accountDAO.login(email);
+            Account a = accountsManager.retrieveAccount(email);
 
             if (a != null && a.getPassword().equals(password)) { // The users exists and can connect
                 request.getSession().setAttribute("principal", a);

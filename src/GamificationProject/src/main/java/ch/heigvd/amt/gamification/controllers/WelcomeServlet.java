@@ -5,7 +5,7 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
+import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.EndUserDAOLocal;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class WelcomeServlet extends HttpServlet {
     
     @EJB
-    private AccountDAOLocal accountDAO;
+    private AccountsManagerLocal accountsManager;
     
     @EJB
     private ApplicationDAOLocal applicationDAO;
@@ -44,7 +44,7 @@ public class WelcomeServlet extends HttpServlet {
         
         final int nbLastDayEndUsers = 30;
         
-        request.setAttribute("nbAccounts", accountDAO.numbersOfAccount());
+        request.setAttribute("nbAccounts", accountsManager.numbersOfAccount());
         request.setAttribute("nbApplications", applicationDAO.numberOfApplicationsManaged());
         request.setAttribute("nbEndUser", endUserDAO.numberOfEndUsers(nbLastDayEndUsers));
         request.setAttribute("nbLastDays", nbLastDayEndUsers);

@@ -5,9 +5,9 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AccountDetailsEditServlet extends HttpServlet {
 
     @EJB
-    private AccountDAOLocal accountDAO;
+    private AccountsManagerLocal accountsManager;
     
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -69,7 +69,7 @@ public class AccountDetailsEditServlet extends HttpServlet {
             currentAccount.setPassword(password);
             
             try {
-                accountDAO.update(currentAccount);
+                accountsManager.updateAccount(currentAccount);
                 response.sendRedirect(request.getContextPath() + "/pages/yourApps");
             }
             catch(GamificationDomainEntityNotFoundException e) {            
