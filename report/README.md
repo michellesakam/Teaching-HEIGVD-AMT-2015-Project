@@ -71,6 +71,7 @@ et adaptation de la vue
 23.10.2015
 <li>Implémentation d'une méthode dans ApplicationsManager qui permet de lui ajouter un 
 end-user
+<li>Avancement des JSP
 
 ####Samira Kouchali
 26.09.2015
