@@ -22,7 +22,8 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "Application.findByAccountWithEndUsersNumber",
             query = "SELECT a, COUNT(e) "
                     + "FROM Application a LEFT JOIN a.endUsers e "
-                    + "WHERE a.acount.id = :idAccount GROUP BY a.id")
+                    + "WHERE a.acount.id = :idAccount GROUP BY a.id"),
+    @NamedQuery(name = "Application.nbEndUsersOfApplication", query= "SELECT COUNT(e) FROM EndUser e WHERE e.application.id = :idApplication")
 })
 
 public class Application extends AbstractDomainModelEntity<Long> {

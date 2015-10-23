@@ -66,4 +66,13 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .setParameter("idAccount", account.getId()).getResultList();
     }
 
+    @Override
+    public long nbEndUsersOfApplication(Application application) {
+        return (long) em.createNamedQuery("Application.nbEndUsersOfApplication")
+                .setParameter("idApplication", application.getId())
+                .getSingleResult();
+    }
+    
+    
+
 }

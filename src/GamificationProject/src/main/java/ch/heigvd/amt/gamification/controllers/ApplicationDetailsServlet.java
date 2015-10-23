@@ -34,6 +34,7 @@ public class ApplicationDetailsServlet extends HttpServlet {
             
             Application application = applicationsManager.findById(idApp);
             
+            req.setAttribute("nbEndUsers", applicationsManager.nbEndUsersOfApplication(application));
             req.setAttribute("application", application);
             req.getRequestDispatcher("/WEB-INF/pages/application_details.jsp").forward(req, resp);
         } catch (GamificationDomainEntityNotFoundException ex) {

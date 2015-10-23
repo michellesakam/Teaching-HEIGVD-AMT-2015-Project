@@ -19,5 +19,6 @@ public interface ApplicationsManagerLocal {
     public void assignApplicationToAnEndUser(Application application, EndUser endUser);
     public List<Application> applicationsOfAnAccountWithEndUsersNumber(Account account);
     public Application findById(Long id) throws GamificationDomainEntityNotFoundException;
+    public long nbEndUsersOfApplication(Application application);
     
 }

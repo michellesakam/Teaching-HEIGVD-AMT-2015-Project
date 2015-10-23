@@ -43,5 +43,10 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public Application findById(Long id) throws GamificationDomainEntityNotFoundException {
         return applicationDAO.findById(id);
     }  
+
+    @Override
+    public long nbEndUsersOfApplication(Application application) {
+        return applicationDAO.nbEndUsersOfApplication(application);
+    }
     
 }

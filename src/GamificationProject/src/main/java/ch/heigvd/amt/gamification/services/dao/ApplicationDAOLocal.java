@@ -20,4 +20,5 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
     public long numberOfApplicationsManaged();
     public void assignApplicationToEndUser(Application application, EndUser endUser);
     public List<Application> applicationsOfAnAccountWithEndUsersNumber(Account account);
+    public long nbEndUsersOfApplication(Application application);
 }

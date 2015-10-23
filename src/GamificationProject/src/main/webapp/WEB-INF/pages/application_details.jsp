@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Users">Users</label>
                 <div class="col-md-4">
-                    A FAIRE
+                    ${nbEndUsers}
                 </div> 
             </div>
             <div class="form-group">
