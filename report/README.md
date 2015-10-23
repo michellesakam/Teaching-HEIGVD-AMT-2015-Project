@@ -68,6 +68,10 @@ En collaboration avec Vanessa :
 <li>Implémentation du POST dans le contrôleur qui permet d'éditer un compte
 et adaptation de la vue
 
+23.10.2015
+<li>Implémentation d'une méthode dans ApplicationsManager qui permet de lui ajouter un 
+end-user
+
 ####Samira Kouchali
 26.09.2015
 
