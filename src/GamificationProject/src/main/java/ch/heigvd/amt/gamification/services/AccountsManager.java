@@ -1,7 +1,7 @@
 package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
-import ch.heigvd.amt.gamification.services.dao.AccountDAO;
+import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -13,7 +13,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class AccountsManager implements AccountsManagerLocal {
     @EJB
-    private AccountDAO accountDAO;
+    private AccountDAOLocal accountDAO;
 
     @Override
     public void updateAccount(Account a) throws GamificationDomainEntityNotFoundException {

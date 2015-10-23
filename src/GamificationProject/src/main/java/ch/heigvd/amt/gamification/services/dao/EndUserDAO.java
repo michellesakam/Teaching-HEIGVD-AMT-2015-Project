@@ -22,7 +22,7 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
     EntityManager em;
     
     @Override
-    public long numberOfEndUsers(int numberOfDay) {        
+    public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay) {        
         
         Calendar today = new GregorianCalendar();
         today.getTime();

@@ -9,5 +9,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface EndUserDAOLocal extends IGenericDAO<EndUser, Long> {
-    public long numberOfEndUsers(int numberOfDay);
+    public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay);
 }

@@ -1,6 +1,5 @@
 package ch.heigvd.amt.gamification.services;
 
-import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
 
@@ -20,7 +19,7 @@ public class TestDataManager implements TestDataManagerLocal {
   private AccountsManagerLocal accountsManager;
   
   @EJB
-  private ApplicationDAOLocal applicationDAO;
+  private ApplicationsManagerLocal applicationsManager;
 
   @Override
   public void generateTestData() {
@@ -30,7 +29,7 @@ public class TestDataManager implements TestDataManagerLocal {
         String prenom;
         
 
-        for(int i = 0; i < 1000; ++i)
+        for(int i = 0; i < 20; ++i)
         {
             Account a = new Account();
             nom = Chance.randomLastName();
@@ -56,7 +55,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app1.setName("Lego Creator");
         app1.setDescription("Construisez vos legos");
         
-        applicationDAO.assignApplicationToAccount(app1, createur);
+        applicationsManager.assignApplicationToAccount(app1, createur);
         
         /* Création d'une deuxième application */
         Application app2 = new Application();
@@ -64,7 +63,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app2.setName("The Elder Scroll's 5 : Skyrim");
         app2.setDescription("Tuez votre cheval !");
         
-        applicationDAO.assignApplicationToAccount(app2, createur);
+        applicationsManager.assignApplicationToAccount(app2, createur);
         
         Account createur2 = new Account();
         createur2.setEmail("olivier.liechti@heig-vd.ch");
@@ -79,7 +78,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setName("Google Chrome");
         app3.setDescription("Surfez sur Internet !");
         
-        applicationDAO.assignApplicationToAccount(app3, createur2);               
+        applicationsManager.assignApplicationToAccount(app3, createur2);               
   } 
 
 }
