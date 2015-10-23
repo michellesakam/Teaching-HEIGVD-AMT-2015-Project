@@ -30,6 +30,8 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     @Override
     public void assignApplicationToAnEndUser(Application application, EndUser endUser) {
         applicationDAO.assignApplicationToEndUser(application, endUser);
-    }   
+    }
+    
+    
 
 }

@@ -14,5 +14,5 @@ public interface ApplicationsManagerLocal {
 
     public void assignApplicationToAccount(Application application, Account account);
     public long numberOfApplicationsManaged();    
-    public void assignApplicationToAnEndUser(Application application, EndUser endUser);    
+    public void assignApplicationToAnEndUser(Application application, EndUser endUser);
 }
