@@ -9,6 +9,7 @@ import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.ApiKey;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.model.entities.EndUser;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -58,5 +59,11 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
             Logger.getLogger(ApplicationDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }   
+
+    @Override
+    public List<Application> applicationsOfAnAccountWithEndUsersNumber(Account account) {
+        return em.createNamedQuery("Application.findByAccountWithEndUsersNumber")
+                .setParameter("idAccount", account.getId()).getResultList();
+    }
 
 }
