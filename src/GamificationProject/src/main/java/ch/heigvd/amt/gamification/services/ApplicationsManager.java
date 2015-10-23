@@ -4,6 +4,7 @@ import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.model.entities.EndUser;
 import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
+import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -37,4 +38,10 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public List<Application> applicationsOfAnAccountWithEndUsersNumber(Account account) {
         return applicationDAO.applicationsOfAnAccountWithEndUsersNumber(account);
     }
+
+    @Override
+    public Application findById(Long id) throws GamificationDomainEntityNotFoundException {
+        return applicationDAO.findById(id);
+    }  
+    
 }

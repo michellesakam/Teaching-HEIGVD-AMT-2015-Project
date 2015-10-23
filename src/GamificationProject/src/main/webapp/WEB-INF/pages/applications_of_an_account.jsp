@@ -29,6 +29,7 @@
                 <th>ApiKey</th>
                 <th>#End users</th>
                 <th></th>
+                <th></th>
             </tr>
             <c:forEach var="appli" items="${applications}">
                 <tr>
@@ -38,14 +39,15 @@
                     <td>${appli[1]}</td>
                     
                     <td>                        
-                        <form method="GET" action="pages/applicationDetails?idApplication=${appli[0].name}">
-                            <button id="edit" class="btn">edit</button>
+                        <form method="GET" action="pages/applicationDetails">
+                            <input type="hidden" name="idApplication" value=${appli[0].id}>
+                            <button id="edit" class="btn btn-default" type="submit">edit</button>
                         </form>                    
                     </td>
                     
                     <td>
                         <!-- voir pour les actions des boutons-->
-                        <button id="edit" class="btn">edit</button>
+                        <button id="edit" class="btn">enabled... A FAIRE</button>
                     </td>
                 </tr>
             </c:forEach>

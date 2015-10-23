@@ -14,6 +14,8 @@
 
     <%@include file="includes/header.jsp"%>
 
+    <title>App Details Page</title>
+    
     <body>
         <h1 align="center">App Details</h1>
         
@@ -21,19 +23,19 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Name" required>Name</label>
                 <div class="col-md-4">
-                    <input id="Name" type="Name" class="form-control" name="Name" value="${applicationDTO.name}" required/>
+                    <input id="Name" type="Name" class="form-control" name="Name" value="${application.name}" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Description">Description</label>
                 <div class="col-md-4">
-                    <TEXTAREA name="description" rows=4 cols=40>${applicationDTO.description}</TEXTAREA>
+                    <TEXTAREA name="description" rows=4 cols=40>${application.description}</TEXTAREA>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Key">API Key</label>
                 <div class="col-md-4">
-                    A FAIRE
+                    ${application.apiKey.key}
                 </div>
             </div>
             <div class="form-group">
@@ -50,11 +52,12 @@
             </div>
             <div class="form-group" >
                 <div class="col-md-offset-3 col-md-9">
-                    <button class="btn btn-primary" type="submit">Register</button>
+                    <button class="btn btn-primary" type="submit">(A FAIRE !!!) Register</button>
                     <button class="btn btn-default" type="button">Cancel</button>
                 </div>
             </div>
-        </form>
+        </form>               
     </body>
+ 
 </html>
 
