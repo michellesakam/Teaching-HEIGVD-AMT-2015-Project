@@ -9,6 +9,35 @@
 
 <!DOCTYPE html>
 
+<script type="text/javascript">
+    function enableOrDisableApplication(id, enable) {
+
+        var action = enable ? "enableApplication" : "disableApplication";
+        var newState = enable ? "Enabled" : "Disabled";
+        var newStyle = enable ? "btn btn-success" : "btn btn-danger";
+
+        var buttonClicked = $("#btnEnable" + id);
+
+        $.ajax({
+            type: "POST",
+            data: "action=" + action + "&idApplication=" + id,
+            beforeSend: function () {
+                buttonClicked.html("En cours...");
+                buttonClicked.attr('class', 'btn btn-warning');
+            },
+            success: function () {
+                buttonClicked.html(newState);
+                buttonClicked.attr('class', newStyle);
+                buttonClicked.attr('onClick', enable ? "enableOrDisableApplication(" + id + ", false)" : "enableOrDisableApplication(" + id + ", true)");
+            },
+            error: function () {
+                buttonClicked.html("Erreur :(");
+            }
+
+        });
+    }
+</script>
+
 <title>Your Apps</title>
 <html>
     <%@include file="includes/header.jsp" %>
@@ -55,20 +84,15 @@
                         </form>                    
                     </td>
                     <td>
-                        <form method="GET">
-                            
-                            <input type="hidden" name="idApplication" value =${appli[0].id}>
-                            
-                            <c:choose>
-                                <c:when test="${appli[0].isEnable == true}">
-                                    <button name="btnIsEnabled" class="btn btn-success" type="submit" value="enabled">Enabled</button>
-                                </c:when>
+                        <c:choose>
+                            <c:when test="${appli[0].isEnable == true}">
+                                <button id="btnEnable${appli[0].id}" class="btn btn-success" onclick="enableOrDisableApplication(${appli[0].id}, false)">Enabled</button>
+                            </c:when>
 
-                                <c:otherwise>
-                                    <button name="btnIsEnabled" class="btn btn-danger" type="submit" value="disabled">Disabled</button>
-                                </c:otherwise>
-                            </c:choose>    
-                        </form>
+                            <c:otherwise>
+                                <button id="btnEnable${appli[0].id}" class="btn btn-danger" onclick="enableOrDisableApplication(${appli[0].id}, true)">Disabled</button>
+                            </c:otherwise>
+                        </c:choose>
                     </td>
                 </tr>
             </c:forEach>

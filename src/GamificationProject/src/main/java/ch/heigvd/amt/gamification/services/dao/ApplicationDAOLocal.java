@@ -21,4 +21,8 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
     public void assignApplicationToEndUser(Application application, EndUser endUser);
     public List<Application> applicationsOfAnAccountWithEndUsersNumber(Account account);
     public long nbEndUsersOfApplication(Application application);
+
+    public void enableApplication(Application app) throws GamificationDomainEntityNotFoundException;
+
+    public void disableApplication(Application app) throws GamificationDomainEntityNotFoundException;
 }

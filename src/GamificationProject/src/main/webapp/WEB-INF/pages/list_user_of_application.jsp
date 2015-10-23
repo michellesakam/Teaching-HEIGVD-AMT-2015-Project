@@ -14,12 +14,12 @@
     
 
     <%@include file="includes/header.jsp" %>
-
     
     <body>
         
         <%@include file="includes/login.jsp" %>
         
         <h1>List for users for an application...</h1>
+        
     </body>
 </html>

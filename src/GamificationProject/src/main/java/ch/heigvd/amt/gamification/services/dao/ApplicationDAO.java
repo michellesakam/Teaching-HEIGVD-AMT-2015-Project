@@ -72,6 +72,20 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .setParameter("idApplication", application.getId())
                 .getSingleResult();
     }
+
+    @Override
+    public void enableApplication(Application app) throws GamificationDomainEntityNotFoundException {
+        app.setIsEnable(true);
+        update(app);
+    }
+
+    @Override
+    public void disableApplication(Application app) throws GamificationDomainEntityNotFoundException {
+        app.setIsEnable(false);
+        update(app);
+    }
+    
+    
     
     
 

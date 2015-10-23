@@ -48,5 +48,17 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public long nbEndUsersOfApplication(Application application) {
         return applicationDAO.nbEndUsersOfApplication(application);
     }
+
+    @Override
+    public void enableApplication(Application app) throws GamificationDomainEntityNotFoundException {
+        applicationDAO.enableApplication(app);
+    }
+
+    @Override
+    public void disableApplication(Application app) throws GamificationDomainEntityNotFoundException {
+        applicationDAO.disableApplication(app);
+    }
+    
+    
     
 }
