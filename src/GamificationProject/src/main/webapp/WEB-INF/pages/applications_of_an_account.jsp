@@ -37,9 +37,10 @@
                     <td>${appli[0].apiKey.key}</td>
                     <td>${appli[1]}</td>
                     
-                    <td>
-                        <button id="edit" class="btn" type="submit">edit</button>
-                        <button id="enabled" class="butt" type="submit">enabled</button>
+                    <td>                        
+                        <!-- voir pour les actions des boutons-->
+                        <button id="edit" class="btn">edit</button>
+                        <button id="enabled" class="butt">enabled</button>                        
                     </td>
                 </tr>
             </c:forEach>
