@@ -98,6 +98,15 @@ public class TestDataManager implements TestDataManagerLocal {
         applicationsManager.assignApplicationToAnEndUser(app1, user1);
         applicationsManager.assignApplicationToAnEndUser(app1, user2);
         applicationsManager.assignApplicationToAnEndUser(app3, user3);
+        
+        /* Création de beaucoup de End USers pour l'application 1 */
+        for(int i = 0; i < 50; ++i) {
+            EndUser user = new EndUser();
+            user.setRegDate(new Date(System.currentTimeMillis()));
+            user.setUserID("GaGAee23" + i);
+            
+            applicationsManager.assignApplicationToAnEndUser(app1, user);
+        }
   } 
 
 }

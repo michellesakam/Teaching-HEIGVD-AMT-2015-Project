@@ -89,7 +89,7 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     public List<EndUser> findEndUsersAndPaginate(Application app, int index, int limit) throws GamificationDomainEntityNotFoundException {
         return em.createNamedQuery("Application.findEndUsers")
                 .setParameter("idApplication", app.getId())
-                .setFirstResult(index)
+                .setFirstResult(index * limit)
                 .setMaxResults(limit)
                 .getResultList();
     }
