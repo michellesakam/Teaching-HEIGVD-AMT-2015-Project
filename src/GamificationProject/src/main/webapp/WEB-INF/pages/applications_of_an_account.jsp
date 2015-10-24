@@ -46,7 +46,7 @@
 
 
     <body>
-        
+
         <h1 align = "center">Your apps...</h1>
         <form method="GET" action="pages/applicationRegistration">
             <h2 align = "center"><button id="bregisternewapp" class="btn btn-primary" type="submit">Register New App</button></h2>
@@ -67,15 +67,17 @@
                     <td>${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
                     <td>
-                        <c:choose>
-                            <c:when test="${appli[1] > 0}">
-                                ${appli[1]}
-                            </c:when>
+                        <a href="pages/listUsersApp?idApplication=${appli[0].id}">
+                            <c:choose>
+                                <c:when test="${appli[1] > 0}">
+                                    ${appli[1]}
+                                </c:when>
 
-                            <c:otherwise>
-                                no user
-                            </c:otherwise>
-                        </c:choose>
+                                <c:otherwise>
+                                    no user
+                                </c:otherwise>
+                            </c:choose>
+                        </a>
                     </td>
 
                     <td>                        
@@ -100,6 +102,6 @@
         </table>
 
         <%@include file="includes/endSideBarWrapper.jsp" %>
-        
+
     </body>    
 </html>
