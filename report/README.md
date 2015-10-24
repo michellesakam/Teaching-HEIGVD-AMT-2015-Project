@@ -73,6 +73,9 @@ et adaptation de la vue
 end-user
 <li>Avancement des JSP (liste des applications de l'utilisateur courant et programmation des boutons)
 
+24.10.2015
+<li>Implémentation de la page JSP qui affiche les EndUSers de l'application (controleurs, services) et traitement de la pagination
+
 ####Samira Kouchali
 26.09.2015
 
