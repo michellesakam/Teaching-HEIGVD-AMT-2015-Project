@@ -20,7 +20,7 @@
         <%@include file="includes/startSideBarWrapper.jsp" %>
         <%@include file="includes/login.jsp" %>
         
-        <h1>List for users for an application...</h1>
+        <h1>List for users for "${application.name}"</h1>     
         
         <%@include file="includes/endSideBarWrapper.jsp" %>
     </body>

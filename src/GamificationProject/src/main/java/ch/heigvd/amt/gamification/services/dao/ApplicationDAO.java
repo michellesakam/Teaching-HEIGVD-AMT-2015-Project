@@ -84,6 +84,17 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
         app.setIsEnable(false);
         update(app);
     }
+
+    @Override
+    public List<EndUser> findEndUsersAndPaginate(Application app, int index, int limit) throws GamificationDomainEntityNotFoundException {
+        return em.createNamedQuery("Application.findEndUsers")
+                .setParameter("idApplication", app.getId())
+                .setFirstResult(index)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+    
+    
     
     
     

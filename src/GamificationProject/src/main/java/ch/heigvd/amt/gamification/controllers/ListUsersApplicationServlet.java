@@ -5,7 +5,13 @@
  */
 package ch.heigvd.amt.gamification.controllers;
 
+import ch.heigvd.amt.gamification.model.entities.Application;
+import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,56 +23,38 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ListUsersApplicationServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/list_user_of_application.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    @EJB
+    private ApplicationsManagerLocal applicationsManager;
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        // We need to get parameter for pagination
+        int currentNumPage = 1; // Default value
+        int nbEndUSersPerPage = 10; // Default value
+        
+        String parameterCurrentNumPage = req.getParameter("currentNumPage");
+        String parameterNbEndUsersPerPage = req.getParameter("nbEndUsersPerPage");
+        
+        if(parameterCurrentNumPage != null && parameterNbEndUsersPerPage != null) {
+            currentNumPage = Integer.parseInt(parameterCurrentNumPage);
+            nbEndUSersPerPage = Integer.parseInt(parameterNbEndUsersPerPage);
+        }
+        
+        // Weed need to get the application with id
+        long idApplication = Long.parseLong(req.getParameter("idApplication"));
+        
+        try {
+            Application app = applicationsManager.findById(idApplication);
+            
+            // We need to get EndUsers of this application
+            applicationsManager.findEndUsersAndPaginate(app, currentNumPage - 1, nbEndUSersPerPage);
+            
+        } catch (GamificationDomainEntityNotFoundException ex) {
+            Logger.getLogger(ListUsersApplicationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        req.getRequestDispatcher("/WEB-INF/pages/list_user_of_application.jsp").forward(req, resp);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+        
 }
