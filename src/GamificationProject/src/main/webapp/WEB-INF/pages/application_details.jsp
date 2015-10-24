@@ -15,10 +15,10 @@
     <%@include file="includes/header.jsp"%>
 
     <title>App Details Page</title>
-    
+
     <body>
         <h1 align="center">App Details</h1>
-        
+
         <form method="POST" class="form-horizontal" name="registerForm">
             <div class="form-group">
                 <label class="col-md-3 control-label" for="Name" required>Name</label>
@@ -47,7 +47,20 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="State">State</label>
                 <div class="col-md-offset-3 col-md-9">
-                    <span class="btn-primary" style="background-color: #1B4F08; border-radius: 5px">A FAIRE</span>
+                    
+                    <c:choose>
+                        
+                        <c:when test="${application.isEnable == true}">
+                            <button class="btn btn-success" type="button">Enabled</button>
+                        </c:when>
+                        
+                            <c:otherwise>
+                            <button class="btn btn-danger" type="button">Disabled</button>
+                        </c:otherwise>
+                            
+                    </c:choose>
+
+                    
                 </div>
             </div>
             <div class="form-group" >
