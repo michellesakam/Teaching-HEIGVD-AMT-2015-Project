@@ -48,18 +48,21 @@ public class ListUsersApplicationServlet extends HttpServlet {
         long idApplication = Long.parseLong(req.getParameter("idApplication"));
         
         try {
-            Application app = applicationsManager.findById(idApplication);
             
-            currentNumPage = currentNumPage < 1 ? 1 : currentNumPage;
+            Application app = applicationsManager.findById(idApplication);
+            long nbEndUsers = applicationsManager.nbEndUsersOfApplication(app);            
+            
             nbEndUSersPerPage = nbEndUSersPerPage < 1 ? 1 : nbEndUSersPerPage;
+            int nbPages = (int) Math.ceil((double) nbEndUsers / nbEndUSersPerPage);
+            
+            currentNumPage = currentNumPage < 1 ? 1 : (currentNumPage > nbPages ? nbPages : currentNumPage);            
             
             // We need to get EndUsers of this application
-            List<EndUser> endUsers = applicationsManager.findEndUsersAndPaginate(app, currentNumPage - 1, nbEndUSersPerPage);
-            
+            List<EndUser> endUsers = applicationsManager.findEndUsersAndPaginate(app, currentNumPage - 1, nbEndUSersPerPage);            
             req.setAttribute("application", app);
             req.setAttribute("endUsersPaginated", endUsers);
             req.setAttribute("numPage", currentNumPage);
-            req.setAttribute("nbPages", (long) Math.ceil((double) applicationsManager.nbEndUsersOfApplication(app) / nbEndUSersPerPage));
+            req.setAttribute("nbPages", nbPages);
             req.setAttribute("nbEndUsersPerPage", nbEndUSersPerPage);
             
         } catch (GamificationDomainEntityNotFoundException ex) {
