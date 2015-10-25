@@ -76,6 +76,9 @@ end-user
 24.10.2015
 <li>Implémentation de la page JSP qui affiche les EndUSers de l'application (controleurs, services) et traitement de la pagination
 
+25.10.2015
+<li>Factorisation création compte et modification compte au niveau JSP
+
 ####Samira Kouchali
 26.09.2015
 
