@@ -26,7 +26,7 @@ public class AccountDetailsEditServlet extends HttpServlet {
 
     @EJB
     private AccountsManagerLocal accountsManager;
-    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -38,7 +38,9 @@ public class AccountDetailsEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/account_details_edit.jsp").forward(request, response);
+        request.setAttribute("edit", true);
+        request.setAttribute("title", "Edit your account details");
+        request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
     }
 
     /**
@@ -52,35 +54,35 @@ public class AccountDetailsEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        request.setAttribute("edit", true);
         String firstName = request.getParameter("First_name");
         String lastName = request.getParameter("Last_name");
         String password = request.getParameter("Password");
         String confirm = request.getParameter("Confirm");
 
         if (password.equals(confirm)) {
-            
+
             /* The account has to be modified is the account which is in
-            *  session variable called principal (which have an id in database)
-            */
+             *  session variable called principal (which have an id in database)
+             */
             Account currentAccount = (Account) request.getSession().getAttribute("principal");
             currentAccount.setFirstName(firstName);
             currentAccount.setLastName(lastName);
             currentAccount.setPassword(password);
-            
+
             try {
                 accountsManager.updateAccount(currentAccount);
                 response.sendRedirect(request.getContextPath() + "/pages/yourApps");
-            }
-            catch(GamificationDomainEntityNotFoundException e) {            
- 
+            } catch (GamificationDomainEntityNotFoundException e) {
+
             }
 
         } else {
             List<String> errors = new ArrayList<>();
             errors.add("The two passwords are not the same.");
-            request.setAttribute("errors", errors); 
-            request.getRequestDispatcher("/WEB-INF/pages/account_details_edit.jsp").forward(request, response);
+            request.setAttribute("errors", errors);
+            request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
         }
     }
 

@@ -21,7 +21,7 @@ import javax.ejb.EJB;
 
 /**
  *
- * @author Samira Kouchali
+ * @author Raphaël Racine
  */
 
 
