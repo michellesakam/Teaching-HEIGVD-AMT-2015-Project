@@ -24,6 +24,8 @@ public class ListApplicationsAccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {       
         
+        request.setAttribute("title", "Your Apps");
+        
         Account currentAccount = (Account) request.getSession().getAttribute("principal");
         
         List<Application> applicationsOfCurrentAccount 
@@ -35,6 +37,8 @@ public class ListApplicationsAccountServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        req.setAttribute("title", "Your Apps");
         
         // Disable or Enable application
         String action = req.getParameter("action");

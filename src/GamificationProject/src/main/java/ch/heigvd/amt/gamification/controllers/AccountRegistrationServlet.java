@@ -41,7 +41,8 @@ public class AccountRegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        request.setAttribute("title", "Registration Page");
         request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
     }
 
@@ -59,6 +60,8 @@ public class AccountRegistrationServlet extends HttpServlet {
         accountDTO.setFirstName(firstName);
         accountDTO.setLastName(lastName);
         accountDTO.setPassword(password);
+        
+        req.setAttribute("title", "Registration Page");
 
         if (password.equals(confirm)) {
             Account a = new Account();
@@ -75,7 +78,6 @@ public class AccountRegistrationServlet extends HttpServlet {
                 errors.add("Impossible to register an account, probably the email already exists !");
                 req.setAttribute("errors", errors);
                 req.setAttribute("accountDTO", accountDTO);
-                
                 req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
                 return; // Arrêt du code pour éviter qu'il continue                
             }

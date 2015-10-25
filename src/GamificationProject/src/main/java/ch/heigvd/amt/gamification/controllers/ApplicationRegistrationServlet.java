@@ -40,11 +40,14 @@ public class ApplicationRegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setAttribute("title", "Register New App");
         request.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        req.setAttribute("title", "Register New App");
         Account currentAccount = (Account) req.getSession().getAttribute("principal");
 
         String name = req.getParameter("Name");

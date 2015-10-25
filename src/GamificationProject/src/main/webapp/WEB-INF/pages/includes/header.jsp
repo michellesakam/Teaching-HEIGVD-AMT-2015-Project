@@ -10,6 +10,7 @@
     <base href="${pageContext.request.contextPath}/">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   
+    <title>${title}</title>
 
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <script src="static/js/jquery.min.js"></script>

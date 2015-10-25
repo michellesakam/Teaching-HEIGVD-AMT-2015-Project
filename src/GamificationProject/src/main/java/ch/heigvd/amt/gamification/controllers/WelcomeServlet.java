@@ -44,6 +44,7 @@ public class WelcomeServlet extends HttpServlet {
         
         final int nbLastDayEndUsers = 30;
         
+        request.setAttribute("title", "Login Page");
         request.setAttribute("nbAccounts", accountsManager.numbersOfAccount());
         request.setAttribute("nbApplications", applicationsManager.numberOfApplicationsManaged());
         request.setAttribute("nbEndUser", endUsersManager.numberOfEndUsersCreatedDuringLastNbDays(nbLastDayEndUsers));
