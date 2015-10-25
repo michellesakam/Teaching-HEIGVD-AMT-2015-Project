@@ -4,10 +4,6 @@
     Author     : michelle meguep
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html>
 
 <script type="text/javascript">
     function enableOrDisableApplication(id, enable) {
@@ -38,14 +34,9 @@
     }
 </script>
 
-<title>Your Apps</title>
-<html>
     <%@include file="includes/header.jsp" %>
     <%@include file="includes/startSideBarWrapper.jsp" %>
     <%@include file="includes/login.jsp" %>
-
-
-    <body>
 
         <h1 align = "center">Your apps...</h1>
         <form method="GET" action="pages/applicationRegistration">
@@ -102,6 +93,4 @@
         </table>
 
         <%@include file="includes/endSideBarWrapper.jsp" %>
-
-    </body>    
-</html>
+        <%@include file="includes/footer.jsp"%>

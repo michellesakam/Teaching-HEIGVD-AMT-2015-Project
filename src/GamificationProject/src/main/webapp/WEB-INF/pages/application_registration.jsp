@@ -4,17 +4,9 @@
     Author     : michelle meguep
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html>
-
-<html lang="en">
-<title>Register New App</title>
 
     <%@include file="includes/header.jsp"%>
-
-    <body>
+   <%@include file="includes/startSideBarWrapper.jsp"%>
         <h1 align="center">Register new app </h1>
         
         <form method="POST" class="form-horizontal" name="registerForm">
@@ -55,6 +47,5 @@
                 </div>
             </div>
         </form>
-    </body>
-</html>
-
+ <%@include file="includes/endSideBarWrapper.jsp"%>
+<%@include file="includes/footer.jsp"%>

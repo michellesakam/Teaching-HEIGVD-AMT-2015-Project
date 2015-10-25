@@ -1,20 +1,11 @@
 <%-- 
     Document   : Registration
     Created on : Sep 9, 2015, 11:37:49 AM
-    Author     : Olivier Liechti (olivier.liechti@heig-vd.ch)
+    Author     : michelle meguep
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-
     <%@include file="includes/header.jsp" %>
-    <title>Registration Page</title>
-    <body>
+ 
         <h1 align="center">Registration</h1>
         
         <form method="POST" class="form-horizontal" name="registerForm">
@@ -54,6 +45,4 @@
                 </div>
             </div>
         </form>
-    </body>
-</html>
-
+    <%@include file="includes/footer.jsp"%>

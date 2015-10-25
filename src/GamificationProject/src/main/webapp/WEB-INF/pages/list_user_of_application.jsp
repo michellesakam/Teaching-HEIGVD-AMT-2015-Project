@@ -4,14 +4,9 @@
     Author     : Raphaël Racine
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html>
 
     <%@include file="includes/header.jsp" %>
 
-    <body>
 
         <%@include file="includes/startSideBarWrapper.jsp" %>
         <%@include file="includes/login.jsp" %>
@@ -44,5 +39,4 @@
         <a href="pages/listUsersApp?idApplication=${application.id}&currentNumPage=${nbPages}&nbEndUsersPerPage=${nbEndUsersPerPage}">Last Page</a>
 
         <%@include file="includes/endSideBarWrapper.jsp" %>
-    </body>
-</html>
+        <%@include file="includes/footer.jsp"%>

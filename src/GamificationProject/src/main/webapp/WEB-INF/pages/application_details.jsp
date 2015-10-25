@@ -4,19 +4,9 @@
     Author     : michelle meguep
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-
     <%@include file="includes/header.jsp"%>
-
-    <title>App Details Page</title>
-
-    <body>
+    <%@include file="includes/startSideBarWrapper.jsp"%>
+ 
         <h1 align="center">App Details</h1>
 
         <form method="POST" class="form-horizontal" name="registerForm">
@@ -69,8 +59,6 @@
                     <button class="btn btn-default" type="button">Cancel</button>
                 </div>
             </div>
-        </form>               
-    </body>
- 
-</html>
-
+        </form>    
+    <%@include file="includes/endSideBarWrapper.jsp"%>
+    <%@include file="includes/footer.jsp"%>

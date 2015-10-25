@@ -17,3 +17,4 @@
     
     <%@include file="errors.jsp"%>
   </head>
+  <body>
