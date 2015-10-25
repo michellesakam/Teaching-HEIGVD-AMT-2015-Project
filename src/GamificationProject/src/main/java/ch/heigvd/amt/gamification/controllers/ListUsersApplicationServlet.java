@@ -9,6 +9,7 @@ import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.model.entities.EndUser;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
+import ch.heigvd.amt.gamification.util.Pagination;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -53,9 +54,9 @@ public class ListUsersApplicationServlet extends HttpServlet {
             long nbEndUsers = applicationsManager.nbEndUsersOfApplication(app);            
             
             nbEndUSersPerPage = nbEndUSersPerPage < 1 ? 1 : nbEndUSersPerPage;
-            int nbPages = (int) Math.ceil((double) nbEndUsers / nbEndUSersPerPage);
+            long nbPages = Pagination.computeTotalNbPages(nbEndUsers, nbEndUSersPerPage);
             
-            currentNumPage = currentNumPage < 1 ? 1 : (currentNumPage > nbPages ? nbPages : currentNumPage);            
+            currentNumPage = currentNumPage < 1 ? 1 : (currentNumPage > (int) nbPages ? (int) nbPages : currentNumPage);            
             
             // We need to get EndUsers of this application
             List<EndUser> endUsers = applicationsManager.findEndUsersAndPaginate(app, currentNumPage - 1, nbEndUSersPerPage);            
@@ -65,8 +66,7 @@ public class ListUsersApplicationServlet extends HttpServlet {
             req.setAttribute("nbPages", nbPages);
             req.setAttribute("nbEndUsersPerPage", nbEndUSersPerPage);
             
-        } catch (GamificationDomainEntityNotFoundException ex) {
-            
+        } catch (GamificationDomainEntityNotFoundException ex) {            
             List<String> errors = new LinkedList<>();
             errors.add("Application has not be found");
             req.setAttribute("errors", errors);
