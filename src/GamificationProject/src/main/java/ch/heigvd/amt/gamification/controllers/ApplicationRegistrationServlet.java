@@ -52,13 +52,15 @@ public class ApplicationRegistrationServlet extends HttpServlet {
 
         String name = req.getParameter("Name");
         String description = req.getParameter("description");
+        boolean isEnable = Boolean.parseBoolean(req.getParameter("isEnable"));
         
         ApplicationDTO applicationDTO = new ApplicationDTO();
         applicationDTO.setDescription(description);
         applicationDTO.setName(name);
+        applicationDTO.setIsAnable(isEnable);
 
         Application application = new Application();
-        application.setIsEnable(true);
+        application.setIsEnable(isEnable);
         application.setName(name);
         application.setDescription(description);
 

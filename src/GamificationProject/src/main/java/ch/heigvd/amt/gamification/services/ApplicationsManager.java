@@ -63,5 +63,12 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public List<EndUser> findEndUsersAndPaginate(Application app, int index, int limit) throws GamificationDomainEntityNotFoundException {
         return applicationDAO.findEndUsersAndPaginate(app, index, limit);
     }   
+
+    @Override
+    public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException {
+        applicationDAO.updateApplication(app);
+    }
+    
+    
     
 }

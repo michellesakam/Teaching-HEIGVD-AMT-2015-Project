@@ -93,6 +93,14 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .setMaxResults(limit)
                 .getResultList();
     }
+
+    @Override
+    public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException {
+        update(app);
+    }
+
+    
+    
     
     
     

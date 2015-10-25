@@ -24,4 +24,6 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
     public void enableApplication(Application app) throws GamificationDomainEntityNotFoundException;
     public void disableApplication(Application app) throws GamificationDomainEntityNotFoundException;
     public List<EndUser> findEndUsersAndPaginate(Application app, int index, int limit) throws GamificationDomainEntityNotFoundException;
+
+    public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException;
 }
