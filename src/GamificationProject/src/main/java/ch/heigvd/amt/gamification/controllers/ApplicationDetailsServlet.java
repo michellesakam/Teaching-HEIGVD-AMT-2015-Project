@@ -10,9 +10,12 @@ import ch.heigvd.amt.gamification.rest.dto.ApplicationDTO;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,21 +59,26 @@ public class ApplicationDetailsServlet extends HttpServlet {
         boolean isEnable = Boolean.parseBoolean(req.getParameter("isEnable"));
         long idApplication = Long.parseLong(req.getParameter("idApplication"));
 
-        ApplicationDTO applicationDTO = new ApplicationDTO();
-        applicationDTO.setId(idApplication);
-        applicationDTO.setName(name);
-        applicationDTO.setIsEnable(isEnable);
-        applicationDTO.setDescription(description);
-
+        Application application = null;
+        List<String> errors = new LinkedList<>();
+        
         try {
-            Application application = applicationsManager.findById(idApplication);
+            application = applicationsManager.findById(idApplication);
             application.setDescription(description);
             application.setIsEnable(isEnable);
             application.setName(name);
             applicationsManager.updateApplication(application);
+            resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
+        } catch(EJBException e) {
+            errors.add("Impossible to update an application, probably the name already exists !");            
+            req.setAttribute("application", application);
+            req.setAttribute("errors", errors);
+            req.setAttribute("nbEndUsers", applicationsManager.nbEndUsersOfApplication(application));
+            req.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(req, resp);
         } catch (GamificationDomainEntityNotFoundException ex) {
-            req.setAttribute("application", applicationDTO);
-            req.getRequestDispatcher("WEB-INF/pages/application_registration.jsp").forward(req, resp);
+            errors.add("Application has not be founded, impossible to update !");
+            req.setAttribute("errors", errors);
+            resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
         }
     }
 
