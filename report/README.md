@@ -79,6 +79,9 @@ end-user
 25.10.2015
 <li>Factorisation création compte et modification compte au niveau JSP
 
+27.10.2015
+<li>Ecriture du code pour mettre à jour une application et factorisation création application et édition application au niveau JSP
+
 ####Samira Kouchali
 26.09.2015
 
