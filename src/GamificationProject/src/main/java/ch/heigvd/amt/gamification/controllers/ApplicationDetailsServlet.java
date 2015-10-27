@@ -10,12 +10,9 @@ import ch.heigvd.amt.gamification.rest.dto.ApplicationDTO;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.ejb.EJBException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +40,7 @@ public class ApplicationDetailsServlet extends HttpServlet {
             req.setAttribute("nbEndUsers", applicationsManager.nbEndUsersOfApplication(application));
             req.setAttribute("application", application);
             req.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(req, resp);
-            
+
         } catch (GamificationDomainEntityNotFoundException ex) {
             Logger.getLogger(ApplicationDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,7 +49,29 @@ public class ApplicationDetailsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("edit", true);
-        req.setAttribute("title", "App details");       
+        req.setAttribute("title", "App details");
+
+        String name = req.getParameter("Name");
+        String description = req.getParameter("description");
+        boolean isEnable = Boolean.parseBoolean(req.getParameter("isEnable"));
+        long idApplication = Long.parseLong(req.getParameter("idApplication"));
+
+        ApplicationDTO applicationDTO = new ApplicationDTO();
+        applicationDTO.setId(idApplication);
+        applicationDTO.setName(name);
+        applicationDTO.setIsEnable(isEnable);
+        applicationDTO.setDescription(description);
+
+        try {
+            Application application = applicationsManager.findById(idApplication);
+            application.setDescription(description);
+            application.setIsEnable(isEnable);
+            application.setName(name);
+            applicationsManager.updateApplication(application);
+        } catch (GamificationDomainEntityNotFoundException ex) {
+            req.setAttribute("application", applicationDTO);
+            req.getRequestDispatcher("WEB-INF/pages/application_registration.jsp").forward(req, resp);
+        }
     }
 
 }

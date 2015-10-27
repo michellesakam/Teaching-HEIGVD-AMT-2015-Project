@@ -67,7 +67,7 @@
                 <label class="col-md-3 control-label" for="State">State</label>
                 <div class="col-md-offset-3 col-md-9">
                     <input id="isEnable" type="hidden" name="isEnable" value="${application.isEnable == null ? true : application.isEnable}"/>                    
-                    <input type="hidden" name="application" value="${application}" />
+                    <input type="hidden" name="idApplication" value="${application.id}" />
             <c:choose>
                 <c:when test="${application.isEnable == false}">
                     <button id="btnIsEnable" type="button" onclick="enableOrDisableApplication()" class="btn btn-danger">Disabled</button>

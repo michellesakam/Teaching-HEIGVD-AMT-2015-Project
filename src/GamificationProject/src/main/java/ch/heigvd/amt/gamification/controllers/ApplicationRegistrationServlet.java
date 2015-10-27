@@ -57,7 +57,7 @@ public class ApplicationRegistrationServlet extends HttpServlet {
         ApplicationDTO applicationDTO = new ApplicationDTO();
         applicationDTO.setDescription(description);
         applicationDTO.setName(name);
-        applicationDTO.setIsAnable(isEnable);
+        applicationDTO.setIsEnable(isEnable);
 
         Application application = new Application();
         application.setIsEnable(isEnable);

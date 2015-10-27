@@ -11,14 +11,25 @@ package ch.heigvd.amt.gamification.rest.dto;
  */
 public class ApplicationDTO {
 
-    // nom de l'application
+    // id de l'application
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+// nom de l'application
     private String name;
  
     // description de l'application
     private String description;
 
     // l'application est-elle toujours disponible ?
-    private boolean isAnable;
+    private boolean isEnable;
 
     public String getName() {
         return name;
@@ -36,12 +47,12 @@ public class ApplicationDTO {
         this.description = description;
     }
 
-    public boolean isIsAnable() {
-        return isAnable;
+    public boolean getIsEnable() {
+        return isEnable;
     }
 
-    public void setIsAnable(boolean isAnable) {
-        this.isAnable = isAnable;
+    public void setIsEnable(boolean isEnable) {
+        this.isEnable = isEnable;
     }
 
 }
