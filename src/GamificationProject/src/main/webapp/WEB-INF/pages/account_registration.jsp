@@ -9,7 +9,7 @@
 <c:if test="${edit != null}">
     <%@include file="includes/startSideBarWrapper.jsp" %>
 </c:if>
-
+<link href="static/css/presentation.css" rel="stylesheet">
 <h1 align="center">${title}</h1>
 
 <form method="POST" class="form-horizontal" name="registerForm">

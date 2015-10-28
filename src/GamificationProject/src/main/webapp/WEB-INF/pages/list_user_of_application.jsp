@@ -10,6 +10,7 @@
 
         <%@include file="includes/startSideBarWrapper.jsp" %>
         <%@include file="includes/login.jsp" %>
+        
 
         <h1>List of users for "${application.name}"</h1>
 
