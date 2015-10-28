@@ -160,9 +160,30 @@ En collaboration avec raphael:
 ## Testing and validation
 
 ### Test strategy
+
+??? Demander à l'assistant (voir pour expliquer /generate)
+
 ### Tools
+
+Les outils utilisés sont :
+<li>JMeter --> Tests de performances (taux d'erreur, temps de réponse, graphiques)
+<li>Fluentlenium --> Tests fonctionnels avec navigation automatique sur les pages de l'application
+
 ### Procedures
+
+JMeter
+
+Fluentlenium
+
+Pour chaque tests :
+<li>Expliquer le but du test
+<li>Expliquer comment démarrer le test
+
+
 ### Results
+
+Mettre les résultats des tests Fluent et JMeter
+
 
 
 ## Known Issues
