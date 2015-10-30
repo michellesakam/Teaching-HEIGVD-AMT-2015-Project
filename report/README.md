@@ -40,7 +40,7 @@ En collaboration avec Parfait plaisir de Pâques :
 des problèmes CSS et des problèmes de redirection
 
 03.10.2015
-<li>Création d'un compte possible <b><font color="red">(il manque juste les cas d'erreurs)</font></b>
+<li>Création d'un compte possible
 <li>Alignement correcte du formulaire du login (sauf le bouton créer un compte)
 <li>Début de l'implémentation des services DAO
 
@@ -81,6 +81,10 @@ end-user
 
 27.10.2015
 <li>Ecriture du code pour mettre à jour une application et factorisation création application et édition application au niveau JSP
+
+30.10.2015
+<li>Mise en place d'une politique de mots de passe pour les comptes utilisateur
+<li>Commencement de la documentation pour la partie 1
 
 ####Samira Kouchali
 26.09.2015
@@ -160,9 +164,30 @@ En collaboration avec raphael:
 ## Testing and validation
 
 ### Test strategy
+
+??? Demander à l'assistant (voir pour expliquer /generate)
+
 ### Tools
+
+Les outils utilisés sont :
+<li>JMeter --> Tests de performances (taux d'erreur, temps de réponse, graphiques)
+<li>Fluentlenium --> Tests fonctionnels avec navigation automatique sur les pages de l'application
+
 ### Procedures
+
+JMeter
+
+Fluentlenium
+
+Pour chaque tests :
+<li>Expliquer le but du test
+<li>Expliquer comment démarrer le test
+
+
 ### Results
+
+Mettre les résultats des tests Fluent et JMeter
+
 
 
 ## Known Issues

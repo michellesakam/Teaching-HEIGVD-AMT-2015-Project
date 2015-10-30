@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.controllers;
 
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
@@ -18,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Samira Kouchali
+ *         Edited by Raphaël Racine
  */
 public class WelcomeServlet extends HttpServlet {
     

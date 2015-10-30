@@ -12,10 +12,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Samira
  */
 public class ApplicationDetailsFluentPage extends AbstractGamificationProjectFluentPage {
+    
+    
+    
     @Override
   public void isAt() {
-    assertThat(title()).isEqualTo("App Details");
+    assertThat(title()).isEqualTo("App details");
   }
+  
+  
 
   public String getUrl() {
     return "/pages/applicationDetails";

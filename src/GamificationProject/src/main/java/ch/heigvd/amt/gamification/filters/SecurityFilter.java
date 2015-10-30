@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  * verification. Any password will be accepted in this illustrative scenario.
  *
  * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ *         Edited by Raphaël Racine
  */
 public class SecurityFilter implements Filter {
 

@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.controllers;
 
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
+import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 
@@ -18,6 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 
 /**
  *
@@ -73,13 +70,20 @@ public class AccountRegistrationServlet extends HttpServlet {
             try {
                 accountsManager.createAccount(a);
             }
-            catch(Exception e) { // Exception si l'email existe déjà
+            catch(EJBException e) { // Exception si l'email existe déjà
                 List<String> errors = new LinkedList<>();
                 errors.add("Impossible to register an account, probably the email already exists !");
                 req.setAttribute("errors", errors);
                 req.setAttribute("accountDTO", accountDTO);
                 req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
                 return; // Arrêt du code pour éviter qu'il continue                
+            } catch (BadPasswordException ex) {
+                List<String> errors = new LinkedList<>();
+                errors.add(ex.getMessage());
+                req.setAttribute("errors", errors);
+                req.setAttribute("accountDTO", accountDTO);
+                req.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(req, resp);
+                return; // Arrêt du code pour éviter qu'il continue
             }
             
             req.getSession().setAttribute("principal", a);

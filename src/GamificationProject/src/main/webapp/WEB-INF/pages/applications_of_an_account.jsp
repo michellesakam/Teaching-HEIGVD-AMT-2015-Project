@@ -58,7 +58,7 @@
                     <td>${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
                     <td>
-                        <a href="pages/listUsersApp?idApplication=${appli[0].id}">
+                        <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">
                             <c:choose>
                                 <c:when test="${appli[1] > 0}">
                                     ${appli[1]}
@@ -74,7 +74,7 @@
                     <td>                        
                         <form method="GET" action="pages/applicationDetails">
                             <input type="hidden" name="idApplication" value=${appli[0].id}>
-                            <button id="edit" class="btn btn-default" type="submit">Edit</button>
+                            <button id="edit${appli[0].id}" class="btn btn-default" type="submit">Edit</button>
                         </form>                    
                     </td>
                     <td>

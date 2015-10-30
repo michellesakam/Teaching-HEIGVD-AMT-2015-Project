@@ -3,6 +3,7 @@ package ch.heigvd.amt.uat.fluentlenium;
 import ch.heigvd.amt.uat.fluentlenium.pages.AccountRegistrationFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationRegistrationFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationsOfAnAccountFluentPage;
+import ch.heigvd.amt.uat.fluentlenium.pages.ApplicationDetailsFluentPage;
 import ch.heigvd.amt.uat.fluentlenium.pages.LoginFluentPage;
 import org.fluentlenium.adapter.FluentTest;
 import org.junit.Test;
@@ -25,11 +26,11 @@ public class GamificationFluentTest extends FluentTest {
         goTo(baseUrl);
         loginPage.isAt();
         loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-        loginPage.typePassword("toor");
+        loginPage.typePassword("toortoor");
         loginPage.clickLogin();
         yourAppPage.isAt();
     }
-
+    
     @Page
     public LoginFluentPage loginPage;
 
@@ -41,7 +42,10 @@ public class GamificationFluentTest extends FluentTest {
 
     @Page
     public ApplicationRegistrationFluentPage ApplicationRegistrationPage;
-
+    
+    @Page
+    public ApplicationDetailsFluentPage ApplicationDetailsPage;
+/*
     @Test
     public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
         goTo(baseUrl);
@@ -59,7 +63,7 @@ public class GamificationFluentTest extends FluentTest {
     }
 
     @Test
-    public void itShouldBePossibleToAccessRegistrationPagesWithCreateAccountButton() {
+    public void itShouldBePossibleToAccessRegistrationPagesWithClickSurCreateAccountButton() {
         goTo(baseUrl);
         loginPage.clickCreateAccount();
         RegistrationPage.isAt();
@@ -68,7 +72,6 @@ public class GamificationFluentTest extends FluentTest {
     @Test
     public void itShouldNotBePossibleToSignUpWithAnInvalidEmail() {
         goTo(baseUrl + "pages/accountRegistration");
-        RegistrationPage.isAt();
 
         RegistrationPage.typeEmailAddress("not a valid email");
         RegistrationPage.typeFirstname("FirstName");
@@ -81,9 +84,8 @@ public class GamificationFluentTest extends FluentTest {
     }
 
     @Test
-    public void itShouldBePossibleToAccessYoutAppsPagesWithCreateAnAccount() {
+    public void itShouldBePossibleToAccessYourAppsPagesWithCreateAnAccount() {
         goTo(baseUrl + "pages/accountRegistration");
-        RegistrationPage.isAt();
 
         RegistrationPage.typeEmailAddress(newEmailId + "sara.kouch@gmail.ch");
         RegistrationPage.typeFirstname("Sara");
@@ -92,7 +94,7 @@ public class GamificationFluentTest extends FluentTest {
         RegistrationPage.typeConfirmPassword("1234");
         RegistrationPage.clickSignUp();
         yourAppPage.isAt();
-     // yourAppPage.clickLogout();
+        // yourAppPage.clickLogout();
 
     }
 
@@ -100,16 +102,16 @@ public class GamificationFluentTest extends FluentTest {
     public void itShouldBePossibleToSigninWithAnvalidEmail() {
         goTo(baseUrl);
         loginPage.isAt();
-        loginPage.typeEmailAddress("0sara.kouch@gmail.ch");
-        loginPage.typePassword("1234");
+        loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
+        loginPage.typePassword("toor");
         loginPage.clickLogin();
         yourAppPage.isAt();
-     //   yourAppPage.clickLogout();
+        //   yourAppPage.clickLogout();
 
     }
 
     @Test
-    public void itShouldNotBePossibleToSignUpWithEmailThatIsNotUnique() {
+    public void itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists() {
         goTo(baseUrl + "pages/accountRegistration");
 
         RegistrationPage.typeEmailAddress("raphael.racine@heig-vd.ch");
@@ -125,24 +127,16 @@ public class GamificationFluentTest extends FluentTest {
     @Test
     public void itShouldAllowTheUsersToRegisterNewApplication() {
         goTo(baseUrl);
-
-        loginPage.typeEmailAddress(newEmailId + "sara.kouch@gmail.ch");
-        loginPage.typePassword("1234");
-        loginPage.clickLogin();
+        simulateLogin();
         yourAppPage.clickRegisterNewApp();
-
         ApplicationRegistrationPage.isAt();
     }
 
     @Test
     public void itShouldBePossibleToRegisterNewAppWithSubmitNecessaryInformations() {
 
-        goTo(baseUrl);
-        loginPage.typeEmailAddress(newEmailId + "sara.kouch@gmail.ch");
-        loginPage.typePassword("1234");
-        loginPage.clickLogin();
+        simulateLogin();
         yourAppPage.clickRegisterNewApp();
-
         ApplicationRegistrationPage.typeNameApp("Name of application");
         ApplicationRegistrationPage.typeDescriptionApp("This is a short description of the application");
         ApplicationRegistrationPage.clickRegister();
@@ -153,15 +147,20 @@ public class GamificationFluentTest extends FluentTest {
     public void itShouldNotBePossibleToRegisterAnApplicationWhitchAlreadyExists() {
 
         simulateLogin();
-        
         yourAppPage.clickRegisterNewApp();
-
         ApplicationRegistrationPage.typeNameApp("Lego Creator");
         ApplicationRegistrationPage.typeDescriptionApp("This is a short description of the application");
         ApplicationRegistrationPage.clickRegister();
         ApplicationRegistrationPage.isAt();
     }
+    */
+ @Test
+    public void itShouldBePossibleToEditAnApplication() {
 
+        simulateLogin();
+       // yourAppPage.clickEdit();
+        ApplicationDetailsPage.isAt();
+    }
     @Override
     public WebDriver getDefaultDriver() {
         return new FirefoxDriver();

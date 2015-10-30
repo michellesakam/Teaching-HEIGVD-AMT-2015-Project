@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.controllers;
 
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
+import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +71,15 @@ public class AccountDetailsEditServlet extends HttpServlet {
                 accountsManager.updateAccount(currentAccount);
                 response.sendRedirect(request.getContextPath() + "/pages/yourApps");
             } catch (GamificationDomainEntityNotFoundException e) {
-
+                List<String> errors = new ArrayList<>();
+                errors.add(e.getMessage());
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
+            } catch (BadPasswordException ex) {
+                List<String> errors = new ArrayList<>();
+                errors.add(ex.getMessage());
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
             }
 
         } else {

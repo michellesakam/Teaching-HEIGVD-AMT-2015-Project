@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.controllers;
 
 import ch.heigvd.amt.gamification.model.entities.Application;
@@ -58,7 +53,7 @@ public class ListUsersApplicationServlet extends HttpServlet {
             
             currentNumPage = currentNumPage < 1 ? 1 : (currentNumPage > (int) nbPages ? (int) nbPages : currentNumPage);            
             
-            // We need to get EndUsers of this application
+            // We need to get EndUsers of this application (with pagination request)
             List<EndUser> endUsers = applicationsManager.findEndUsersAndPaginate(app, currentNumPage - 1, nbEndUSersPerPage);            
             req.setAttribute("application", app);
             req.setAttribute("endUsersPaginated", endUsers);
