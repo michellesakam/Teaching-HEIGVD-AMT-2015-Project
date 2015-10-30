@@ -3,7 +3,7 @@ package ch.heigvd.amt.gamification.controllers;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
-import ch.heigvd.amt.gamification.services.BadPasswordException;
+import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

@@ -25,7 +25,7 @@ public class GamificationFluentTest extends FluentTest {
         goTo(baseUrl);
         loginPage.isAt();
         loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-        loginPage.typePassword("toor");
+        loginPage.typePassword("toortoor");
         loginPage.clickLogin();
         yourAppPage.isAt();
     }
