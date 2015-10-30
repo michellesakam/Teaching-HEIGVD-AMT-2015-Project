@@ -79,7 +79,7 @@ public class SecurityFilter implements Filter {
       isTargetUrlProtected = false;
     } else if ("/pages/welcome".equals(path)) {
       isTargetUrlProtected = false;
-    } else if ("/pages/account?edit=false".equals(path)) {
+    } else if ("/pages/account".equals(path) && request.getParameter("edit") != null && request.getParameter("edit").equals("false")) {
         isTargetUrlProtected = false;
     } else {
       /*
