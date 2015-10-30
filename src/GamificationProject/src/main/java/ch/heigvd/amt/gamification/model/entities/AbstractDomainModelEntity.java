@@ -18,7 +18,8 @@ import javax.persistence.MappedSuperclass;
  * subclasses.
  *
  * @author Olivier Liechti
- * modified by : Noubissi Parfait
+ * @param <PK>
+ * @edited by : Noubissi Parfait (parfait.noubissi@heig-vd.ch)
  */
 @MappedSuperclass
 public abstract class AbstractDomainModelEntity<PK> implements Serializable {
@@ -46,5 +47,4 @@ public abstract class AbstractDomainModelEntity<PK> implements Serializable {
   public String toString() {
     return getClass().getCanonicalName() + "[ id=" + id + " ]";
   }
-
 }

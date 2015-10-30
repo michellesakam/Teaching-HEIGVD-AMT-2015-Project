@@ -6,6 +6,7 @@ import javax.ejb.Local;
 /**
  *
  * @author parfait
+ * But : generate new apiKey
  */
 @Local
 public interface ApiKeyDAOLocal extends IGenericDAO<ApiKey, Long> {

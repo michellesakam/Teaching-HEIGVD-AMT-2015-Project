@@ -9,9 +9,11 @@ import javax.ejb.Local;
 /**
  *
  * @author parfait
+ * But : defines methods that are only needed in this class
  */
 @Local
 public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
+    
     public void assignApplicationToAccount(Application app, Account acc);
     public long numberOfApplicationsManaged();
     public void assignApplicationToEndUser(Application application, EndUser endUser);

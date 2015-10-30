@@ -9,10 +9,9 @@ import javax.persistence.OneToOne;
 
 /**
  * 
- * @author Raphaël Racine
+ * @author Parfait Noubissi
  */
 @Entity
-
 @NamedQueries({
     @NamedQuery(name = "ApiKey.findByKey", query = "SELECT a FROM ApiKey a WHERE a.key = :key")
 })
