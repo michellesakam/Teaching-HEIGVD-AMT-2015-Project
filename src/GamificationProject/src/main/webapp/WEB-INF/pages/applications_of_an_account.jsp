@@ -74,7 +74,7 @@
                     <td>                        
                         <form method="GET" action="pages/applicationDetails">
                             <input type="hidden" name="idApplication" value=${appli[0].id}>
-                            <button id="edit" class="btn btn-default" type="submit">Edit</button>
+                            <button id="edit${appli[0].id}" class="btn btn-default" type="submit">Edit</button>
                         </form>                    
                     </td>
                     <td>
