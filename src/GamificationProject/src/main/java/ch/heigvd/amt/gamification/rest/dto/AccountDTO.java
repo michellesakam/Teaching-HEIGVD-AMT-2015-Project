@@ -7,7 +7,7 @@ package ch.heigvd.amt.gamification.rest.dto;
  * champs. 
  */
 public class AccountDTO {
-    // 
+    
     private String firstName;
     private String lastName;
     private String email;

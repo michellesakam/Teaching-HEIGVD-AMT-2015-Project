@@ -6,7 +6,7 @@ import javax.persistence.ManyToMany;
 
 /**
  * 
- * @author Raphaël Racine
+ * @author Parfait Noubissi
  */
 @Entity
 public class Role extends AbstractDomainModelEntity<Long> {   

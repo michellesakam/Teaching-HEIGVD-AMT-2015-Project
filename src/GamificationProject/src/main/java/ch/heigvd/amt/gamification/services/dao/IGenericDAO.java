@@ -7,8 +7,10 @@ import javax.ejb.Local;
 /**
  *
  * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
- * edit : Parfait Noubissi (parfait.noubissi@heig-vd.ch)
- * But : permettre de définir les méthodes communes à toutes les entitées.
+ * @Edit by : Parfait Noubissi (parfait.noubissi@heig-vd.ch)
+ * But  : permettre de définir les méthodes communes à toutes les entitées.
+ * @param <T>
+ * @param <PK>
  */
 @Local
 public interface IGenericDAO<T extends AbstractDomainModelEntity, PK> {
@@ -56,13 +58,13 @@ public interface IGenericDAO<T extends AbstractDomainModelEntity, PK> {
     public T findById(PK id) throws GamificationDomainEntityNotFoundException;
 
     /**
-     * But : permet de retourner toute les entitées 
+     * But : return all entities 
      * @return 
      */
     public List<T> findAll();
 
     /**
-     * But : permet de mettre chercher les entités par pages.
+     * But : .
      * @param pageSize
      * @param pageIndex
      * @return 
