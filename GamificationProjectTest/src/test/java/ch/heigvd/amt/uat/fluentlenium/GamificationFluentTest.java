@@ -22,6 +22,15 @@ public class GamificationFluentTest extends FluentTest {
 
     private static int newEmailId = 0;
 
+    private void simulateLogin() {
+        goTo(baseUrl);
+        loginPage.isAt();
+        loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
+        loginPage.typePassword("toortoor");
+        loginPage.clickLogin();
+        yourAppPage.isAt();
+    }
+    
     @Page
     public LoginFluentPage loginPage;
 
@@ -36,14 +45,6 @@ public class GamificationFluentTest extends FluentTest {
     
     @Page
     public ApplicationDetailsFluentPage ApplicationDetailsPage;
-
-    private void simulateLogin() {
-        goTo(baseUrl);
-        loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-        loginPage.typePassword("toortoor");
-        loginPage.clickLogin();
-        yourAppPage.isAt();
-    }
 /*
     @Test
     public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {

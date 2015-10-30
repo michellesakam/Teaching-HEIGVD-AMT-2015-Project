@@ -15,7 +15,7 @@ public class ApplicationsOfAnAccountFluentPage extends AbstractGamificationProje
 
     private final static String buttonLogout = "#blogout"; // 
     private final static String buttonRegisterNewApp = "#bregisternewapp"; 
-    private final static String buttonEdit = "#edit";  
+    private final static String buttonEdit = "#edit1";  
     
     @Override
     public void isAt() {

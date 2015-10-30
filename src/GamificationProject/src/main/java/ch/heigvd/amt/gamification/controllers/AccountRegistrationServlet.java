@@ -3,7 +3,7 @@ package ch.heigvd.amt.gamification.controllers;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
-import ch.heigvd.amt.gamification.services.BadPasswordException;
+import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 
@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 
