@@ -24,7 +24,7 @@
 <%@include file="includes/startSideBarWrapper.jsp"%>
 <h1 align="center">${title}</h1>
 
-<form method="POST" class="form-horizontal" name="registerForm">
+<form method="${edit != null ? "PUT" : "POST"}" class="form-horizontal" name="registerForm">
     <div class="form-group">
         <label class="col-md-3 control-label" for="Name" required>Name</label>
         <div class="col-md-4">

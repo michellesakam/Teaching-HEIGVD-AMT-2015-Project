@@ -39,7 +39,7 @@
     <%@include file="includes/login.jsp" %>
 
         <h1 align = "center">Your apps...</h1>
-        <form method="GET" action="pages/applicationRegistration">
+        <form method="GET" action="pages/application?edit=false">
             <h2 align = "center"><button id="bregisternewapp" class="btn btn-primary" type="submit">Register New App</button></h2>
         </form>
 
@@ -72,7 +72,7 @@
                     </td>
 
                     <td>                        
-                        <form method="GET" action="pages/applicationDetails">
+                        <form method="GET" action="pages/application?edit=true">
                             <input type="hidden" name="idApplication" value=${appli[0].id}>
                             <button id="edit${appli[0].id}" class="btn btn-default" type="submit">Edit</button>
                         </form>                    
