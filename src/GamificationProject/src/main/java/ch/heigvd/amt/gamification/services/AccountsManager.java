@@ -16,12 +16,16 @@ public class AccountsManager implements AccountsManagerLocal {
     private AccountDAOLocal accountDAO;
 
     @Override
-    public void updateAccount(Account a) throws GamificationDomainEntityNotFoundException {
+    public void updateAccount(Account a) 
+            throws GamificationDomainEntityNotFoundException, BadPasswordException
+    {
+        BadPasswordException.checkPasswordPolitic(a.getPassword());
         accountDAO.update(a);
     }    
 
     @Override
-    public void createAccount(Account a) {
+    public void createAccount(Account a) throws BadPasswordException {
+        BadPasswordException.checkPasswordPolitic(a.getPassword());
         accountDAO.create(a);
     }
 
@@ -33,8 +37,6 @@ public class AccountsManager implements AccountsManagerLocal {
     @Override
     public long numbersOfAccount() {
         return accountDAO.numbersOfAccount();
-    }
-    
-    
+    }   
     
 }
