@@ -9,16 +9,18 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author Olivier Liechti
- * edit : Parfait
+ * @Edited by : Parfait Noubissi (parfait.noubissi@heig-vd.ch)
 
  * @param <T>
  * @param <PK>
  */
 public class GenericDAO<T extends AbstractDomainModelEntity<PK>, PK> implements IGenericDAO<T, PK> {
 
+  // contexte de persistance : il permet de rendre les entités managable
   @PersistenceContext
   EntityManager em;
 
+  // 
   private final Class<T> jpaEntityClass;
 
   public GenericDAO() {
