@@ -83,6 +83,7 @@ end-user
 <li>Ecriture du code pour mettre à jour une application et factorisation création application et édition application au niveau JSP
 
 30.10.2015
+<li>Mise en place d'une politique de mots de passe pour les comptes utilisateur
 <li>Commencement de la documentation pour la partie 1
 
 ####Samira Kouchali
