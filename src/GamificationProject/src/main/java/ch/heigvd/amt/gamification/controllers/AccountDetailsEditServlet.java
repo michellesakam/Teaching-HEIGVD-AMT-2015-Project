@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Raphaël Racine
+ *
  */
 public class AccountDetailsEditServlet extends HttpServlet {
 

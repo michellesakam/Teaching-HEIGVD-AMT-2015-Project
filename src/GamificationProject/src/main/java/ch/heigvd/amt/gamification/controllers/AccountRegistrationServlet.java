@@ -20,8 +20,6 @@ import javax.ejb.EJBException;
  *
  * @author Raphaël Racine
  */
-
-
 public class AccountRegistrationServlet extends HttpServlet {
 
     @EJB
