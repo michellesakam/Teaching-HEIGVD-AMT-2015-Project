@@ -1,7 +1,5 @@
 package ch.heigvd.amt.gamification.model.entities;
 
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
