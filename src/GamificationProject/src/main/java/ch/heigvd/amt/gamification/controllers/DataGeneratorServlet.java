@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * This servlet is used to generate test data.
  * 
  * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ *         Edited by Raphaël Racine
  */
 @WebServlet(name = "DataGeneratorServlet", urlPatterns = {"/generate"})
 public class DataGeneratorServlet extends HttpServlet {

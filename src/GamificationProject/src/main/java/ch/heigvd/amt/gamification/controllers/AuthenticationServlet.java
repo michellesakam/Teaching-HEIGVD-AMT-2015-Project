@@ -12,33 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * This servlet illustrates various aspects of the Servlet API.
- *
- * Firstly, notice that GET and POST requests are supported and that the same
- * code is invoked in both cases. In this application, /auth is invoked at two
- * occasions:
- *
- * 1) when the user fills out the login form and presses the "Login" button.
- * This sends a POST request, with the content of the input fields transmitted
- * in parameters (there is also a HIDDEN field named 'action' with a value of
- * 'login').
- *
- * 2) when the user clicks the "Logout" link in the navigation header. This
- * sends a GET request, with the value of the 'action' parameter set to 'logout'
- * in the query string (/auth?action=logout).
- *
- * Secondly, it shows how to put an object (in this case a String, but it could
- * be a POJO) in the session. This object is then available to servlets and JSPs
- * as long as the session is active.
- *
- * Thirdly, it shows how to terminate the session (which is important not only
- * to make sure that the user is logged out, but also to preserve resources on
- * the server). Even if sessions are automatically terminated after a
- * configurable idle time (typically 30 minutes), it is better to free allocated
- * memory as soon as possible.
- *
- *
- * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ * 
+ * @author Raphaël Racine
  */
 public class AuthenticationServlet extends HttpServlet {
 
