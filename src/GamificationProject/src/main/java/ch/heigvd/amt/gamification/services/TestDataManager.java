@@ -30,17 +30,18 @@ public class TestDataManager implements TestDataManagerLocal {
     public void generateTestData() {
 
         String password = "toortoor";
-        String nom;
-        String prenom;
+        String firstName;
+        String lastName;
 
+        /* Create a list of endUsers */
         for (int i = 0; i < 20; ++i) {
             Account a = new Account();
-            nom = Chance.randomLastName();
-            prenom = Chance.randomLastName();
-            a.setEmail(nom + "." + prenom + i + "@google.ch");
+            lastName = Chance.randomLastName();
+            firstName = Chance.randomFirstName();
+            a.setEmail(firstName + "." + lastName + i + "@google.ch");
             a.setPassword(password);
-            a.setFirstName(prenom);
-            a.setLastName(nom);
+            a.setFirstName(firstName);
+            a.setLastName(lastName);
             try {
                 accountsManager.createAccount(a);
             } catch (BadPasswordException ex) {
@@ -48,32 +49,31 @@ public class TestDataManager implements TestDataManagerLocal {
             }
         }
 
-        Account createur = new Account();
-        createur.setEmail("raphael.racine@heig-vd.ch");
-        createur.setPassword(password);
-        createur.setFirstName("Raphaël");
-        createur.setLastName("Racine");
+        Account constantAccount = new Account();
+        constantAccount.setEmail("raphael.racine@heig-vd.ch");
+        constantAccount.setPassword(password);
+        constantAccount.setFirstName("Raphaël");
+        constantAccount.setLastName("Racine");
         try {
-            accountsManager.createAccount(createur);
+            accountsManager.createAccount(constantAccount);
         } catch (BadPasswordException ex) {
             Logger.getLogger(TestDataManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        /* Création d'une première application */
+        /* Create a first application */
         Application app1 = new Application();
         app1.setIsEnable(true);
         app1.setName("Lego Creator");
         app1.setDescription("Construisez vos legos");
 
-        applicationsManager.assignApplicationToAccount(app1, createur);
+        applicationsManager.assignApplicationToAccount(app1, constantAccount);
 
-        /* Création d'une deuxième application */
         Application app2 = new Application();
         app2.setIsEnable(false);
         app2.setName("The Elder Scroll's 5 : Skyrim");
         app2.setDescription("Tuez votre cheval !");
 
-        applicationsManager.assignApplicationToAccount(app2, createur);
+        applicationsManager.assignApplicationToAccount(app2, constantAccount);
 
         Account createur2 = new Account();
         createur2.setEmail("olivier.liechti@heig-vd.ch");
@@ -86,7 +86,6 @@ public class TestDataManager implements TestDataManagerLocal {
             Logger.getLogger(TestDataManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        /* Création d'une troisième application (par un autre créateur) */
         Application app3 = new Application();
         app3.setIsEnable(true);
         app3.setName("Google Chrome");
@@ -94,7 +93,7 @@ public class TestDataManager implements TestDataManagerLocal {
 
         applicationsManager.assignApplicationToAccount(app3, createur2);
 
-        /* Association de EndUsers aux applications... */
+        /* Associate EndUsers to an application */
         EndUser user1 = new EndUser();
         user1.setRegDate(new Date(System.currentTimeMillis()));
         user1.setUserID("UK1928J28k");
@@ -111,7 +110,6 @@ public class TestDataManager implements TestDataManagerLocal {
         applicationsManager.assignApplicationToAnEndUser(app1, user2);
         applicationsManager.assignApplicationToAnEndUser(app3, user3);
 
-        /* Création de beaucoup de End USers pour l'application 1 */
         for (int i = 0; i < 55; ++i) {
             EndUser user = new EndUser();
             user.setRegDate(new Date(System.currentTimeMillis()));
