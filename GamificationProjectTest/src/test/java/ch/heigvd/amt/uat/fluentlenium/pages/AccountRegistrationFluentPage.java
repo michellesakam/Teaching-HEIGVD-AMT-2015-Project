@@ -52,8 +52,9 @@ public void typeConfirmPassword(String password) {
   }
   
   
+  @Override
   public String getUrl() {
-    return "/pages/accountRegistration";
+    return "/pages/account";
   }
 
 }
