@@ -43,6 +43,13 @@ public abstract class AbstractDomainModelEntity<PK> implements Serializable {
     return hash;
   }
 
+    @Override
+    public boolean equals(Object obj) {
+        return id.equals(((AbstractDomainModelEntity)obj).id)
+                && this.getClass() == obj.getClass();
+    }
+  
+
   @Override
   public String toString() {
     return getClass().getCanonicalName() + "[ id=" + id + " ]";

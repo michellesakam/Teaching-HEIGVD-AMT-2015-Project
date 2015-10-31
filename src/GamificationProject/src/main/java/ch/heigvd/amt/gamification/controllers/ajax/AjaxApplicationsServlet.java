@@ -1,9 +1,12 @@
 package ch.heigvd.amt.gamification.controllers.ajax;
 
+import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +34,14 @@ public class AjaxApplicationsServlet extends HttpServlet {
 
             try {
                 Application app = applicationsManager.findById(Long.parseLong(idApplication));
+                
+                // Check if current user can edit application
+                Account account = (Account) req.getSession().getAttribute("principal");
+                
+                if (!app.getAcount().equals(account)) {
+                    resp.setStatus(500);
+                    return;
+                }
 
                 switch (action) {
                     case "enableApplication":

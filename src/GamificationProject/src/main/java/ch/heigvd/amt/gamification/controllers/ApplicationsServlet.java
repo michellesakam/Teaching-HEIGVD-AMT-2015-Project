@@ -42,6 +42,18 @@ public class ApplicationsServlet extends HttpServlet {
                 long idApp = Long.parseLong(req.getParameter("idApplication"));
 
                 Application application = applicationsManager.findById(idApp);
+
+                // Check if current user can edit application
+                Account account = (Account) req.getSession().getAttribute("principal");
+                
+                if (!application.getAcount().equals(account)) {
+                    List<String> errors = new LinkedList<>();
+                    errors.add("You can't edit this application, you are not the owner");
+                    req.setAttribute("errors", errors);
+                    req.getRequestDispatcher("/WEB-INF/pages/applications_of_an_account.jsp").forward(req, resp);
+                    return;
+                }
+
                 req.setAttribute("nbEndUsers", applicationsManager.nbEndUsersOfApplication(application));
                 req.setAttribute("application", application);
 
@@ -62,14 +74,15 @@ public class ApplicationsServlet extends HttpServlet {
 
     }
 
-        @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {        
-        if(req.getParameter("edit").equals("true"))
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getParameter("edit").equals("true")) {
             editApplication(req, resp);
-        else
+        } else {
             createApplication(req, resp);
-    } 
-    
+        }
+    }
+
     private void createApplication(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setAttribute("title", TITLE_ADD_APPLICATION);
@@ -101,8 +114,8 @@ public class ApplicationsServlet extends HttpServlet {
         }
 
         resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
-    }   
-    
+    }
+
     private void editApplication(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setAttribute("edit", true);
         req.setAttribute("title", TITLE_EDIT_APPLICATION);
@@ -116,11 +129,24 @@ public class ApplicationsServlet extends HttpServlet {
         List<String> errors = new LinkedList<>();
 
         try {
+
             application = applicationsManager.findById(idApplication);
+
+            // Check if the current account is the owner of the application                  
+            Account account = (Account) req.getSession().getAttribute("principal");
+
+            if (!application.getAcount().equals(account)) {
+                errors.add("You can't edit this application, you are not the owner");
+                req.setAttribute("errors", errors);
+                req.getRequestDispatcher("/WEB-INF/pages/applications_of_an_account.jsp").forward(req, resp);
+                return;
+            }
+
             application.setDescription(description);
             application.setIsEnable(isEnable);
             application.setName(name);
             applicationsManager.updateApplication(application);
+
             resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
         } catch (EJBException e) {
             errors.add("Impossible to update an application, probably the name already exists !");

@@ -121,7 +121,5 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException {
         applicationDAO.updateApplication(app);
     }
-    
-    
-    
+        
 }
