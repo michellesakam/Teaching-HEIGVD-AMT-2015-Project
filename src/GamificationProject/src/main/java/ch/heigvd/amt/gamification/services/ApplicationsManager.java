@@ -121,5 +121,16 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException {
         applicationDAO.updateApplication(app);
     }
+    
+    /**
+     * Check if an account is the owner of an application
+     * @param account The account (need an id)
+     * @param application The application (has to be managed)
+     * @return true if account is the owner of application, otherwise false
+     */
+    @Override    
+    public boolean checkAccountIsOwnerOfApplication(Account account, Application application) {
+        return account.equals(application.getAcount());
+    }
         
 }

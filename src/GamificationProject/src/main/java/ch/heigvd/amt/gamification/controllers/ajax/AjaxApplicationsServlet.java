@@ -38,7 +38,7 @@ public class AjaxApplicationsServlet extends HttpServlet {
                 // Check if current user can edit application
                 Account account = (Account) req.getSession().getAttribute("principal");
                 
-                if (!app.getAcount().equals(account)) {
+                if (!applicationsManager.checkAccountIsOwnerOfApplication(account, app)) {
                     resp.setStatus(500);
                     return;
                 }

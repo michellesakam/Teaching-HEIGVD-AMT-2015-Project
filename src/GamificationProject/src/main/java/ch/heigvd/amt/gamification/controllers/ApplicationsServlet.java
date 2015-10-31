@@ -46,7 +46,7 @@ public class ApplicationsServlet extends HttpServlet {
                 // Check if current user can edit application
                 Account account = (Account) req.getSession().getAttribute("principal");
                 
-                if (!application.getAcount().equals(account)) {
+                if (!applicationsManager.checkAccountIsOwnerOfApplication(account, application)) {
                     List<String> errors = new LinkedList<>();
                     errors.add("You can't edit this application, you are not the owner");
                     req.setAttribute("errors", errors);
@@ -135,7 +135,7 @@ public class ApplicationsServlet extends HttpServlet {
             // Check if the current account is the owner of the application                  
             Account account = (Account) req.getSession().getAttribute("principal");
 
-            if (!application.getAcount().equals(account)) {
+            if (!applicationsManager.checkAccountIsOwnerOfApplication(account, application)) {
                 errors.add("You can't edit this application, you are not the owner");
                 req.setAttribute("errors", errors);
                 req.getRequestDispatcher("/WEB-INF/pages/applications_of_an_account.jsp").forward(req, resp);
