@@ -1,6 +1,6 @@
 <%-- 
     Document   : Registration
-    Created on : Sept 9, 2015, 11:37:49 AM
+    Created on : Sept 19, 2015, 11:37:49 AM
     Author     : michelle meguep
 --%>
 
@@ -57,8 +57,8 @@
             </tr>
             <c:forEach var="appli" items="${applications}">
                 <tr>
-                    <td>${appli[0].name}</td>
-                    <td>${appli[0].description}</td>
+                    <td id="Name">${appli[0].name}</td>
+                    <td id="Description">${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
                     <td>                        
                             <c:choose>

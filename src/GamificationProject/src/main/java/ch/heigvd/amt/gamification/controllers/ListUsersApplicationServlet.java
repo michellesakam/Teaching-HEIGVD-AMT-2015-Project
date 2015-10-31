@@ -23,13 +23,16 @@ public class ListUsersApplicationServlet extends HttpServlet {
     @EJB
     private ApplicationsManagerLocal applicationsManager;
     
+    private final String TITLE = "List of user of Appilcation";
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         // We need to get parameter for pagination
         int currentNumPage = 1; // Default value
         int nbEndUSersPerPage = 10; // Default value
-        
+    
+        req.setAttribute("title", TITLE);
         String parameterCurrentNumPage = req.getParameter("currentNumPage");
         String parameterNbEndUsersPerPage = req.getParameter("nbEndUsersPerPage");
         
