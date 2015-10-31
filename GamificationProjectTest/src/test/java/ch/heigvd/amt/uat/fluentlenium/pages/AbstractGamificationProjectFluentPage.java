@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
  * @author Samira Kouchali
  */
 public abstract class AbstractGamificationProjectFluentPage extends FluentPage {
-private final static String Application = "#App";
-private final static String Account = "#Account";
+private final static String Application = "#linkApp";
+private final static String Account = "#linkAccount";
 
 public void clickApplication() {
         click(Application);

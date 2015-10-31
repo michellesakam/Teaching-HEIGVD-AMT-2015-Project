@@ -42,11 +42,14 @@ public class GamificationFluentTest extends FluentTest {
 
     @Page
     public ApplicationDetailsFluentPage ApplicationDetailsPage;
-    
-     @Page
+
+    @Page
     public EditAccountFlunetPage EditAccountPage;
 
-    
+    @Page
+    public ListUserApplicationFluentPage ListUserApplication;
+
+    /*
      @Test
      public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
      goTo(baseUrl);
@@ -172,110 +175,116 @@ public class GamificationFluentTest extends FluentTest {
     
  
     
-    @Test
-    public void itShouldBePossibleToEditTheNameOfApplicationByClickResiterButton() {
+     @Test
+     public void itShouldBePossibleToEditTheNameOfApplicationByClickResiterButton() {
 
-        simulateLogin();
-        yourAppPage.clickEdit();
-        ApplicationDetailsPage.isAt();
-        ApplicationDetailsPage.typeNameApp("LC version 2");
-        ApplicationDetailsPage.clickRegister();
-        yourAppPage.isAt();
-        yourAppPage.isEditedInTheNamePart("LC version 2");
-    }
+     simulateLogin();
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.typeNameApp("LC version 2");
+     ApplicationDetailsPage.clickRegister();
+     yourAppPage.isAt();
+     yourAppPage.isEditedInTheNamePart("LC version 2");
+     }
 
-    @Test
-    public void itShouldBePossibleToEditTheDescriptionOfAccountByClickResisterButton() {
+     @Test
+     public void itShouldBePossibleToEditTheDescriptionOfAccountByClickResisterButton() {
 
-        simulateLogin();
-        yourAppPage.clickEdit();
-        ApplicationDetailsPage.isAt();
-        ApplicationDetailsPage.typeDescriptionApp("This is a short edit description");
-        ApplicationDetailsPage.clickRegister();
-        yourAppPage.isAt();
-        yourAppPage.isEditedInTheDescriptionPart("This is a short edit description");
-    }
+     simulateLogin();
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.typeDescriptionApp("This is a short edit description");
+     ApplicationDetailsPage.clickRegister();
+     yourAppPage.isAt();
+     yourAppPage.isEditedInTheDescriptionPart("This is a short edit description");
+     }
     
-    @Test
-    public void itShouldBePossibleToNotSaveTheEditionInTheDescriptionPartByClickCancelButton() {
+     @Test
+     public void itShouldBePossibleToNotSaveTheEditionInTheDescriptionPartByClickCancelButton() {
 
-        simulateLogin();
-        yourAppPage.clickEdit();
-        ApplicationDetailsPage.isAt();
-        ApplicationDetailsPage.typeDescriptionApp("I don't want to save this description");
-        ApplicationDetailsPage.clickcancel();
-        yourAppPage.isAt();
-        yourAppPage.isNotSaveTheModificationInDescriptionPart("I don't want to save this description");
-    }
+     simulateLogin();
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.typeDescriptionApp("I don't want to save this description");
+     ApplicationDetailsPage.clickcancel();
+     yourAppPage.isAt();
+     yourAppPage.isNotSaveTheModificationInDescriptionPart("I don't want to save this description");
+     }
 
-    @Test
-    public void itShouldBePossibleToNotSaveTheEditionInTheNamePartByClickCancelButton() {
-        simulateLogin();
-        yourAppPage.clickEdit();
-        ApplicationDetailsPage.isAt();
-        ApplicationDetailsPage.typeNameApp("I don't want to save thid name");
-        ApplicationDetailsPage.clickcancel();
-        yourAppPage.isAt();
-        yourAppPage.isNotSaveTheModificationInNamePart("I don't want to save this name");
-    }
+     @Test
+     public void itShouldBePossibleToNotSaveTheEditionInTheNamePartByClickCancelButton() {
+     simulateLogin();
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.typeNameApp("I don't want to save thid name");
+     ApplicationDetailsPage.clickcancel();
+     yourAppPage.isAt();
+     yourAppPage.isNotSaveTheModificationInNamePart("I don't want to save this name");
+     }
      
       
-    @Test
-    public void itShouldBePossibleForUserToEditHisAccount() {
-        String password="11111111";
-        simulateLogin();
-        yourAppPage.clickAccount();
-        EditAccountPage.isAt();
-        EditAccountPage.typePassword(password);
-        EditAccountPage.typeConfirmPassword(password);
-        EditAccountPage.clickConfirm();
-        yourAppPage.clickLogout();
-        loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-        loginPage.typePassword(password);
-        loginPage.clickLogin();
-        yourAppPage.isAt(); // he succeed to login, now we change the password to the original password
-        yourAppPage.clickAccount();
-        EditAccountPage.typePassword("toortoor");
-        EditAccountPage.typeConfirmPassword("toortoor");
-        EditAccountPage.clickConfirm();
-        yourAppPage.clickLogout();
-    }
+     @Test
+     public void itShouldBePossibleForUserToEditHisAccount() {
+     String password="11111111";
+     simulateLogin();
+     yourAppPage.clickAccount();
+     EditAccountPage.isAt();
+     EditAccountPage.typePassword(password);
+     EditAccountPage.typeConfirmPassword(password);
+     EditAccountPage.clickConfirm();
+     yourAppPage.clickLogout();
+     loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
+     loginPage.typePassword(password);
+     loginPage.clickLogin();
+     yourAppPage.isAt(); // he succeed to login, now we change the password to the original password
+     yourAppPage.clickAccount();
+     EditAccountPage.typePassword("toortoor");
+     EditAccountPage.typeConfirmPassword("toortoor");
+     EditAccountPage.clickConfirm();
+     yourAppPage.clickLogout();
+     }
     
-    @Test
-    public void itShouldNotBeSaveTheEditionOnAccountByTheUserUserByClickCancelButton() {
-        String password="11111111";
-        simulateLogin();
-        yourAppPage.clickAccount();
-        EditAccountPage.isAt();
-        EditAccountPage.typePassword(password);
-        EditAccountPage.typeConfirmPassword(password);
-        EditAccountPage.clickCancel();
-        yourAppPage.clickLogout();
-        loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-        loginPage.typePassword(password);
-        loginPage.clickLogin();
-        loginPage.isAt(); 
+     @Test
+     public void itShouldNotBeSaveTheEditionOnAccountByTheUserUserByClickCancelButton() {
+     String password="11111111";
+     simulateLogin();
+     yourAppPage.clickAccount();
+     EditAccountPage.isAt();
+     EditAccountPage.typePassword(password);
+     EditAccountPage.typeConfirmPassword(password);
+     EditAccountPage.clickCancel();
+     yourAppPage.clickLogout();
+     loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
+     loginPage.typePassword(password);
+     loginPage.clickLogin();
+     loginPage.isAt(); 
         
-    }
+     }
     
     
-    @Test
-    public void itShouldBePossibleToLogoutWithClickLogoutButton() {
+     @Test
+     public void itShouldBePossibleToLogoutWithClickLogoutButton() {
 
-        simulateLogin();
-        yourAppPage.clickLogout();
-        loginPage.isAt();
-    }
+     simulateLogin();
+     yourAppPage.clickLogout();
+     loginPage.isAt();
+     }
     
+     @Test
+     public void itShouldBePossibleToAccessYourAppByClickApp() {
+     simulateLogin();
+     yourAppPage.clickEdit();
+     EditAccountPage.clickApplication();
+     yourAppPage.isAt();
+     }
+     */
     @Test
-    public void itShouldBePossibleToAccessYourAppByClickApp() {
+    public void itShouldBePossibleToAccessTheListOfUserOfApplication() {
         simulateLogin();
-        yourAppPage.clickEdit();
-        EditAccountPage.clickApplication();
-        yourAppPage.isAt();
+        yourAppPage.clickEndUser();
+        ListUserApplication.isAt();
+
     }
-    
-    
 
     @Override
     public WebDriver getDefaultDriver() {
