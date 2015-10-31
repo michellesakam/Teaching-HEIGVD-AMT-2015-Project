@@ -49,7 +49,7 @@ public class GamificationFluentTest extends FluentTest {
     @Page
     public ListUserApplicationFluentPage ListUserApplication;
 
-    /*
+    
      @Test
      public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
      goTo(baseUrl);
@@ -277,7 +277,7 @@ public class GamificationFluentTest extends FluentTest {
      EditAccountPage.clickApplication();
      yourAppPage.isAt();
      }
-     */
+
     @Test
     public void itShouldBePossibleToAccessTheListOfUserOfApplication() {
         simulateLogin();
@@ -289,8 +289,6 @@ public class GamificationFluentTest extends FluentTest {
     @Override
     public WebDriver getDefaultDriver() {
         return new FirefoxDriver();
-        //System.setProperty("webdriver.chrome.driver", "/Users/admin/Downloads/chromedriver");
-        //return new ChromeDriver();
     }
 
     @Override

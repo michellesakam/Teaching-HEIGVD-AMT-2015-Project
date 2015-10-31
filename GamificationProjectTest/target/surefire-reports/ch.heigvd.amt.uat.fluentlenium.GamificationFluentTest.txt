@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.876 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.044 sec
