@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
  * primary key.
  *
  * @author Olivier Liechti (olivier.liechti@heig-vd.ch)
+ * Edit : Parfait Noubissi (parfait.noubissi@heig-vd.ch)
  */
 
 @Stateless

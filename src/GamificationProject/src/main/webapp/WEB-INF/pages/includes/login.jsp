@@ -24,7 +24,7 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name ="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <button id="blogin" class="btn btn-primary" type="submit" style = 'width: 200px; heigth:50px'>Login</button>
-        <a href="pages/accountRegistration"><button id="bcreatAccount" type="button" class="btn btn-default">Create account</button></a>
+        <a href="pages/account?edit=false"><button id="bcreatAccount" type="button" class="btn btn-default">Create account</button></a>
     </div>
 </form>
  

@@ -9,16 +9,19 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author Olivier Liechti
- * edit : Parfait
+ * @Edited by : Parfait Noubissi (parfait.noubissi@heig-vd.ch)
 
  * @param <T>
  * @param <PK>
+ * But : implémenté les méthodes génériques
  */
 public class GenericDAO<T extends AbstractDomainModelEntity<PK>, PK> implements IGenericDAO<T, PK> {
 
+  
   @PersistenceContext
   EntityManager em;
 
+  // 
   private final Class<T> jpaEntityClass;
 
   public GenericDAO() {
@@ -32,6 +35,11 @@ public class GenericDAO<T extends AbstractDomainModelEntity<PK>, PK> implements 
     return id;
   }
 
+  /**
+   * But : returns corresponding managed entity
+   * @param t
+   * @return 
+   */
   @Override
   public T createAndReturnManagedEntity(T t) {
     em.persist(t);
@@ -39,14 +47,19 @@ public class GenericDAO<T extends AbstractDomainModelEntity<PK>, PK> implements 
     return t;
   }
 
+  /**
+   * @param t
+   * @throws GamificationDomainEntityNotFoundException 
+   */
   @Override
   public void update(T t) throws GamificationDomainEntityNotFoundException {
-    findById(t.getId());
-    em.merge(t);
+    findById(t.getId()); // find element
+    em.merge(t);         // use merge to update entity
   }
 
   @Override
   public void delete(T t) throws GamificationDomainEntityNotFoundException {
+      // find entity and delete it
     if (!em.contains(t)) {
       t = findById(t.getId());
     }

@@ -2,7 +2,9 @@ package ch.heigvd.amt.gamification.rest.dto;
 
 /**
  *
- * @author parfait
+ * @author parfait 
+ * But : Contient les Applications et les ascenseurs sur les
+ * champs.
  */
 public class ApplicationDTO {
 
@@ -17,18 +19,17 @@ public class ApplicationDTO {
         this.id = id;
     }
 
-// nom de l'application
     private String name;
- 
-    // description de l'application
+
     private String description;
 
-    // l'application est-elle toujours disponible ?
     private boolean isEnable;
+
 
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -38,16 +39,24 @@ public class ApplicationDTO {
         return description;
     }
 
+
     public void setDescription(String description) {
         this.description = description;
     }
 
+
     public boolean getIsEnable() {
-        return isEnable;
+        return isIsEnable();
     }
+
 
     public void setIsEnable(boolean isEnable) {
         this.isEnable = isEnable;
+    }
+
+
+    public boolean isIsEnable() {
+        return isEnable;
     }
 
 }

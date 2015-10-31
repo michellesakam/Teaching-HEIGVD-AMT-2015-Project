@@ -12,10 +12,9 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author Raphaël Racine
+ * @author Parfait Noubissi
  */
 @Entity
-
 @NamedQueries({
     @NamedQuery(name = "Application.numberOfApplications", query = "SELECT COUNT(a) FROM Application a"),
     @NamedQuery(name = "Application.findAll", query = "SELECT a FROM Application a"),
@@ -31,15 +30,11 @@ public class Application extends AbstractDomainModelEntity<Long> {
 
     public Application() {
     }
-    /**
-     * le nom de l'application ne doit pas être null en plus plus in doit être unique
-     */
+
     @Column(nullable = false, unique = true) 
     private String name;
     
-    /**
-     * Chaque application doit avoir une description
-     */
+
     @Column(nullable = false)
     private String description;
      
@@ -49,7 +44,7 @@ public class Application extends AbstractDomainModelEntity<Long> {
     @ManyToOne
     private Account acount;    
 
-// Permet de savoir si l'application est toujours disponible
+    
     private boolean isEnable;
     
     @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)

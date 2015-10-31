@@ -9,7 +9,7 @@
                     <a class="active" href="pages/yourApps">Apps</a>
                 </li>
                 <li>
-                    <a href="pages/accountEdit">Account</a>
+                    <a href="pages/account?edit=true">Account</a>
                 </li>
             </ul>
         </div>

@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author parfait
+ * But : implements ApplicationDOALocal 
  */
 @Stateless
 public class ApplicationDAO extends GenericDAO<Application, Long> implements ApplicationDAOLocal {
@@ -25,8 +26,14 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     @EJB
     private ApiKeyDAOLocal apikeyDAO;
     
+    /**
+     * But : add and application to an account
+     * @param app
+     * @param acc 
+     */
     @Override
     public void assignApplicationToAccount(Application app, Account acc) {
+        
         ApiKey key = apikeyDAO.getNewApiKey();
 
         app.setAcount(acc);
@@ -93,14 +100,5 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException {
         update(app);
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
 
 }
