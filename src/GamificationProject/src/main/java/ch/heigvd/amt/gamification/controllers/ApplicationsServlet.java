@@ -62,14 +62,17 @@ public class ApplicationsServlet extends HttpServlet {
 
     }
 
-    private void createApplication(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getParameter("edit").equals("true")) {
-            createApplication(req, resp);
-        } else {
+        @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {        
+        if(req.getParameter("edit").equals("true"))
             editApplication(req, resp);
-        }
+        else
+            createApplication(req, resp);
+    } 
+    
+    private void createApplication(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.setAttribute("title", "Register New App");
+        req.setAttribute("title", TITLE_ADD_APPLICATION);
         Account currentAccount = (Account) req.getSession().getAttribute("principal");
 
         String name = req.getParameter("Name");
@@ -98,11 +101,11 @@ public class ApplicationsServlet extends HttpServlet {
         }
 
         resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
-    }
-
+    }   
+    
     private void editApplication(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setAttribute("edit", true);
-        req.setAttribute("title", "App details");
+        req.setAttribute("title", TITLE_EDIT_APPLICATION);
 
         String name = req.getParameter("Name");
         String description = req.getParameter("description");
