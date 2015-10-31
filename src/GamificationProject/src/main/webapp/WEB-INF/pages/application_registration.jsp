@@ -58,7 +58,13 @@
                 <div class="col-md-4">
             <c:choose>
                 <c:when test="${edit != null}">
+                    <c:if test="${nbEndUsers != 0}">
+                        <a href="pages/listUsersApp?idApplication=${application.id}">
+                    </c:if>
                     ${nbEndUsers}
+                    <c:if test="${nbEndUsers != 0}">
+                        </a>
+                    </c:if>
                 </c:when>
                 <c:otherwise>
                     0

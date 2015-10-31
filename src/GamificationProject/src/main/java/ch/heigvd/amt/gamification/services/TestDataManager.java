@@ -112,7 +112,7 @@ public class TestDataManager implements TestDataManagerLocal {
         applicationsManager.assignApplicationToAnEndUser(app3, user3);
 
         /* Création de beaucoup de End USers pour l'application 1 */
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 55; ++i) {
             EndUser user = new EndUser();
             user.setRegDate(new Date(System.currentTimeMillis()));
             user.setUserID("GaGAee23" + i);

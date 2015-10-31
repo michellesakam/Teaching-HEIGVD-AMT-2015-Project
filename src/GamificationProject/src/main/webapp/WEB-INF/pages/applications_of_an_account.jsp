@@ -17,6 +17,9 @@
         $.ajax({
             type: "POST",
             data: "action=" + action + "&idApplication=" + id,
+            
+            url: "applicationsAjax",
+            
             beforeSend: function () {
                 buttonClicked.html("En cours...");
                 buttonClicked.attr('class', 'btn btn-warning');
@@ -57,18 +60,16 @@
                     <td>${appli[0].name}</td>
                     <td>${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
-                    <td>
-                        <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">
+                    <td>                        
                             <c:choose>
                                 <c:when test="${appli[1] > 0}">
-                                    ${appli[1]}
+                                    <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">${appli[1]}</a>
                                 </c:when>
 
                                 <c:otherwise>
                                     no user
                                 </c:otherwise>
                             </c:choose>
-                        </a>
                     </td>
 
                     <td>                        
