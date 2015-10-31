@@ -8,8 +8,6 @@ import ch.heigvd.amt.gamification.util.Pagination;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -65,7 +63,6 @@ public class ListUsersApplicationServlet extends HttpServlet {
             List<String> errors = new LinkedList<>();
             errors.add("Application has not be found");
             req.setAttribute("errors", errors);
-            Logger.getLogger(ListUsersApplicationServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         req.getRequestDispatcher("/WEB-INF/pages/list_user_of_application.jsp").forward(req, resp);

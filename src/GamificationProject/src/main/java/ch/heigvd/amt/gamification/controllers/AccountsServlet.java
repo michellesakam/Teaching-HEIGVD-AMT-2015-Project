@@ -26,7 +26,7 @@ public class AccountsServlet extends HttpServlet {
 
     @EJB
     private AccountsManagerLocal accountsManager;
-    
+
     private final String TITLE_ADD_ACCOUNT = "Registration Page";
     private final String TITLE_EDIT_ACCOUNT = "Edit your account details";
 
@@ -43,14 +43,13 @@ public class AccountsServlet extends HttpServlet {
             throws ServletException, IOException {
 
         boolean edit = Boolean.parseBoolean(request.getParameter("edit"));
+        String title = edit ? TITLE_EDIT_ACCOUNT : TITLE_ADD_ACCOUNT;
 
         if (edit) {
             request.setAttribute("edit", true);
-            request.setAttribute("title", TITLE_EDIT_ACCOUNT);
-        } else {
-            request.setAttribute("title", TITLE_ADD_ACCOUNT);
         }
-        
+
+        request.setAttribute("title", title);
         request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
 
     }
@@ -67,11 +66,52 @@ public class AccountsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if(request.getParameter("edit").equals("true")) {
-            doPut(request, response);
-            return;
+        if (request.getParameter("edit").equals("true")) { // If we have the URL /account?edit=true
+            editAccount(request, response);
+        } else { // If we have the URL /account?edit=false
+            createAccount(request, response);
         }
-        
+
+    }
+
+    private void editAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("edit", true);
+        String firstName = request.getParameter("First_name");
+        String lastName = request.getParameter("Last_name");
+        String password = request.getParameter("Password");
+        String confirm = request.getParameter("Confirm");
+
+        request.setAttribute("title", TITLE_EDIT_ACCOUNT);
+
+        if (password.equals(confirm)) {
+
+            /* The account has to be modified is the account which is in
+             *  session variable called principal (which have an id in database)
+             */
+            Account currentAccount = (Account) request.getSession().getAttribute("principal");
+            currentAccount.setFirstName(firstName);
+            currentAccount.setLastName(lastName);
+            currentAccount.setPassword(password);
+
+            try {
+                accountsManager.updateAccount(currentAccount);
+                response.sendRedirect(request.getContextPath() + "/pages/yourApps");
+            } catch (GamificationDomainEntityNotFoundException | BadPasswordException e) {
+                List<String> errors = new ArrayList<>();
+                errors.add(e.getMessage());
+                request.setAttribute("errors", errors);
+                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
+            }
+
+        } else {
+            List<String> errors = new ArrayList<>();
+            errors.add("The two passwords are not the same.");
+            request.setAttribute("errors", errors);
+            request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
+        }
+    }
+
+    private void createAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("Email");
         String firstName = request.getParameter("First_name");
         String lastName = request.getParameter("Last_name");
@@ -119,47 +159,6 @@ public class AccountsServlet extends HttpServlet {
             errors.add("The two passwords are not the same.");
             request.setAttribute("errors", errors);
             request.setAttribute("accountDTO", accountDTO);
-            request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
-        }
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("edit", true);
-        String firstName = request.getParameter("First_name");
-        String lastName = request.getParameter("Last_name");
-        String password = request.getParameter("Password");
-        String confirm = request.getParameter("Confirm");
-
-        if (password.equals(confirm)) {
-
-            /* The account has to be modified is the account which is in
-             *  session variable called principal (which have an id in database)
-             */
-            Account currentAccount = (Account) request.getSession().getAttribute("principal");
-            currentAccount.setFirstName(firstName);
-            currentAccount.setLastName(lastName);
-            currentAccount.setPassword(password);
-
-            try {
-                accountsManager.updateAccount(currentAccount);
-                response.sendRedirect(request.getContextPath() + "/pages/yourApps");
-            } catch (GamificationDomainEntityNotFoundException e) {
-                List<String> errors = new ArrayList<>();
-                errors.add(e.getMessage());
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
-            } catch (BadPasswordException ex) {
-                List<String> errors = new ArrayList<>();
-                errors.add(ex.getMessage());
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
-            }
-
-        } else {
-            List<String> errors = new ArrayList<>();
-            errors.add("The two passwords are not the same.");
-            request.setAttribute("errors", errors);
             request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
         }
     }
