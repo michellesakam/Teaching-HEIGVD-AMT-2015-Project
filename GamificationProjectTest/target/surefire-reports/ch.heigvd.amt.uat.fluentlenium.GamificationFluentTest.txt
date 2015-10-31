@@ -1,14 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.431 sec <<< FAILURE!
-itShouldBePossibleToEditAnApplication(ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest)  Time elapsed: 10.351 sec  <<< FAILURE!
-org.junit.ComparisonFailure: expected:<"[App detail]s"> but was:<"[Your App]s">
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.252 sec <<< FAILURE!
+itShouldNotBePossibleToSignUpWithAnInvalidEmail(ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest)  Time elapsed: 10.172 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<"[Registratio]n Page"> but was:<"[Logi]n Page">
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at ch.heigvd.amt.uat.fluentlenium.pages.ApplicationDetailsFluentPage.isAt(ApplicationDetailsFluentPage.java:20)
-	at ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest.itShouldBePossibleToEditAnApplication(GamificationFluentTest.java:161)
+	at ch.heigvd.amt.uat.fluentlenium.pages.AccountRegistrationFluentPage.isAt(AccountRegistrationFluentPage.java:25)
+	at ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest.itShouldNotBePossibleToSignUpWithAnInvalidEmail(GamificationFluentTest.java:75)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

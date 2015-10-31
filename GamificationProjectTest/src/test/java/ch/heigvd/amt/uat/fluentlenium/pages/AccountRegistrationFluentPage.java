@@ -53,7 +53,7 @@ public void typeConfirmPassword(String password) {
   
   
   public String getUrl() {
-    return "/pages/accountRegistration";
+    return "/pages/account";
   }
 
 }

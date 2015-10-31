@@ -33,7 +33,7 @@ public class ApplicationRegistrationFluentPage extends AbstractGamificationProje
 
     
     public String getUrl() {
-        return "/pages/applicationRegistration";
+        return "/pages/application";
     }
 
     public void clickRegister() {

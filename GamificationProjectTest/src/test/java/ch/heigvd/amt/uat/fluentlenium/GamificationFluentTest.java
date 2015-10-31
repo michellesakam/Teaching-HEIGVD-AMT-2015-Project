@@ -68,30 +68,45 @@ public class GamificationFluentTest extends FluentTest {
         loginPage.clickCreateAccount();
         RegistrationPage.isAt();
     }
-
+*/
     @Test
     public void itShouldNotBePossibleToSignUpWithAnInvalidEmail() {
-        goTo(baseUrl + "pages/accountRegistration");
-
+        goTo(baseUrl + "pages/account");
+        RegistrationPage.isAt();
+        /*
         RegistrationPage.typeEmailAddress("not a valid email");
         RegistrationPage.typeFirstname("FirstName");
         RegistrationPage.typeLastname("LastName");
-        RegistrationPage.typePassword("any password");
-        RegistrationPage.typeConfirmPassword("any password");
+        RegistrationPage.typePassword("11111111");
+        RegistrationPage.typeConfirmPassword("11111111");
+        RegistrationPage.clickSignUp();
+        RegistrationPage.isAt();
+*/
+    }
+/*
+     @Test
+    public void itShouldNotBePossibleToSignUpWithAnPasswordSmallerThan8Character() {
+        goTo(baseUrl + "pages/account");
+
+        RegistrationPage.typeEmailAddress("a@b.ch");
+        RegistrationPage.typeFirstname("FirstName");
+        RegistrationPage.typeLastname("LastName");
+        RegistrationPage.typePassword("toor");
+        RegistrationPage.typeConfirmPassword("toor");
         RegistrationPage.clickSignUp();
         RegistrationPage.isAt();
 
     }
-
+    
     @Test
     public void itShouldBePossibleToAccessYourAppsPagesWithCreateAnAccount() {
-        goTo(baseUrl + "pages/accountRegistration");
+        goTo(baseUrl + "pages/account");
 
         RegistrationPage.typeEmailAddress(newEmailId + "sara.kouch@gmail.ch");
         RegistrationPage.typeFirstname("Sara");
         RegistrationPage.typeLastname("Kouch");
-        RegistrationPage.typePassword("1234");
-        RegistrationPage.typeConfirmPassword("1234");
+        RegistrationPage.typePassword("12341234");
+        RegistrationPage.typeConfirmPassword("12341234");
         RegistrationPage.clickSignUp();
         yourAppPage.isAt();
         // yourAppPage.clickLogout();
@@ -103,7 +118,7 @@ public class GamificationFluentTest extends FluentTest {
         goTo(baseUrl);
         loginPage.isAt();
         loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-        loginPage.typePassword("toor");
+        loginPage.typePassword("toortoor");
         loginPage.clickLogin();
         yourAppPage.isAt();
         //   yourAppPage.clickLogout();
@@ -112,13 +127,13 @@ public class GamificationFluentTest extends FluentTest {
 
     @Test
     public void itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists() {
-        goTo(baseUrl + "pages/accountRegistration");
+        goTo(baseUrl + "pages/account");
 
         RegistrationPage.typeEmailAddress("raphael.racine@heig-vd.ch");
         RegistrationPage.typeFirstname("firstname");
         RegistrationPage.typeLastname("lastname");
-        RegistrationPage.typePassword("1234");
-        RegistrationPage.typeConfirmPassword("1234");
+        RegistrationPage.typePassword("12341234");
+        RegistrationPage.typeConfirmPassword("12341234");
         RegistrationPage.clickSignUp();
         RegistrationPage.isAt();
 
@@ -153,14 +168,26 @@ public class GamificationFluentTest extends FluentTest {
         ApplicationRegistrationPage.clickRegister();
         ApplicationRegistrationPage.isAt();
     }
-    */
+    
  @Test
     public void itShouldBePossibleToEditAnApplication() {
 
         simulateLogin();
-       // yourAppPage.clickEdit();
+        yourAppPage.clickEdit();
         ApplicationDetailsPage.isAt();
     }
+    
+     @Test
+    public void itShouldBePossibleToLogoutWithClickLogoutButton() {
+
+        simulateLogin();   
+        yourAppPage.clickLogout();
+        loginPage.isAt();
+        
+    }
+    
+    */
+    
     @Override
     public WebDriver getDefaultDriver() {
         return new FirefoxDriver();

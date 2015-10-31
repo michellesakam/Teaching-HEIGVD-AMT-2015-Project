@@ -23,7 +23,7 @@ public class ApplicationDetailsFluentPage extends AbstractGamificationProjectFlu
   
 
   public String getUrl() {
-    return "/pages/applicationDetails";
+    return "/pages/application";
   }
     
 }
