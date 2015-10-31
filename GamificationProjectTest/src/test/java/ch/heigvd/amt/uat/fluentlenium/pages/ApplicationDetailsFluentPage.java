@@ -12,7 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Samira
  */
 public class ApplicationDetailsFluentPage extends AbstractGamificationProjectFluentPage {
-    
+    private final static String inputName = "#Name"; // id in the html code
+    private final static String inputDescription = "#Description"; // id in the html code
+    private final static String buttonRegister = "#bregister"; // 
+    private final static String buttonCancel = "#bcancel";
     
     
     @Override
@@ -25,5 +28,22 @@ public class ApplicationDetailsFluentPage extends AbstractGamificationProjectFlu
   public String getUrl() {
     return "/pages/application?edit=true";
   }
+
+   public void typeNameApp(String name) {
+    fill(inputName).with(name);
+  }
+
+  public void typeDescriptionApp(String description) {
+    fill(inputDescription).with(description);
+  }
+  
+  
+    public void clickRegister() {
+        click(buttonRegister); 
+    }
+   
+    public void clickcancel() {
+        click(buttonCancel); 
+    }
     
 }

@@ -16,7 +16,8 @@ public class ApplicationRegistrationFluentPage extends AbstractGamificationProje
     private final static String inputName = "#Name"; // id in the html code
     private final static String inputDescription = "#Description"; // id in the html code
     private final static String buttonRegister = "#bregister"; // 
-    private final static String buttonCancel = "#bcancel"; // 
+    private final static String buttonCancel = "#bcancel";
+     
 
     @Override
     public void isAt() {

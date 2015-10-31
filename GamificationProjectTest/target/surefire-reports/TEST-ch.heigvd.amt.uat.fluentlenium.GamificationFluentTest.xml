@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" time="11.418" errors="0" skipped="0">
+<testsuite tests="19" failures="0" name="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" time="166.187" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_20\jre\bin"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="test" value="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest#itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists"/>
+    <property name="test" value="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Users\Samira\Desktop\S5\AMT\Teaching-HEIGVD-AMT-2015-Project\GamificationProjectTest"/>
     <property name="java.runtime.version" value="1.8.0_20-b26"/>
@@ -46,7 +46,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_20\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest#itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="fr"/>
     <property name="user.language.format" value="en"/>
@@ -64,5 +64,23 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists" time="11.324"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBePossibleToSignUpWithAnPasswordSmallerThan8Character" time="11.961"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists" time="8.495"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBePossibleToSigninWithAnInvalidEmail" time="7.089"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToAccessYourAppByClickApp" time="9.287"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToSigninWithAnvalidEmail" time="8.277"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToAccessRegistrationPagesWithClickSurCreateAccountButton" time="6.309"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBeNotPossibleToAccessSecurePagesWithoutLogin" time="6.396"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldAllowTheUsersToRegisterNewApplication" time="8.559"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleForUserToEditHisAccount" time="10.623"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToLogoutWithClickLogoutButton" time="7.903"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBePossibleToRegisterAnApplicationWhitchAlreadyExists" time="9.267"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBeSaveTheEditionOnAccountByTheUserUserByClickCancelButton" time="9.272"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToNotSaveTheEditionInTheNamePartByClickCancelButton" time="9.011"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToAccessYourAppsPagesWithCreateAnAccount" time="8.666"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToEditTheDescriptionOfAccountByClickResisterButton" time="9.113"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToEditTheNameOfApplicationByClickResiterButton" time="9.876"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldNotBePossibleToSignUpWithAnInvalidEmail" time="8.275"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToRegisterNewAppWithSubmitNecessaryInformations" time="8.73"/>
+  <testcase classname="ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest" name="itShouldBePossibleToNotSaveTheEditionInTheDescriptionPartByClickCancelButton" time="8.968"/>
 </testsuite>

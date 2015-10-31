@@ -54,8 +54,8 @@
             </tr>
             <c:forEach var="appli" items="${applications}">
                 <tr>
-                    <td>${appli[0].name}</td>
-                    <td>${appli[0].description}</td>
+                    <td id="Name">${appli[0].name}</td>
+                    <td id="Description">${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
                     <td>
                         <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">

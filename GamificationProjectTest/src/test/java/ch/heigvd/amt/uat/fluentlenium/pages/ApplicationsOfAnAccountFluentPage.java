@@ -15,7 +15,14 @@ public class ApplicationsOfAnAccountFluentPage extends AbstractGamificationProje
 
     private final static String buttonLogout = "#blogout"; // 
     private final static String buttonRegisterNewApp = "#bregisternewapp"; 
-    private final static String buttonEdit = "#edit1";  
+    private final static String buttonEdit = "#edit1"; 
+    private final static String button = "#edit1";
+    private final static String Account = "#Account";
+    private final static String Application = "#App";
+    private final static String Name = "#Name";
+    private final static String Description = "#Description";
+    
+    
     
     @Override
     public void isAt() {
@@ -36,5 +43,23 @@ public class ApplicationsOfAnAccountFluentPage extends AbstractGamificationProje
     public void clickEdit() {
     click(buttonEdit);
   }
+
+   public void isEditedInTheNamePart(String name) {
+    assertThat(findFirst(Name).getText()).isEqualTo(name);
+  }
+
+    public void isEditedInTheDescriptionPart(String description) {
+        assertThat(findFirst(Description).getText()).isEqualTo(description);
+    }
+
+    public void isNotSaveTheModificationInDescriptionPart(String description) {
+        assertThat(findFirst(Description).getText()).isNotEqualTo(description);
+    }
+
+    public void isNotSaveTheModificationInNamePart(String name) {
+        assertThat(findFirst(Name).getText()).isNotEqualTo(name);
+    }
+
+   
   
 }
