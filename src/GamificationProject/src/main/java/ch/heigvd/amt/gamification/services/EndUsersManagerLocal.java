@@ -9,6 +9,12 @@ import javax.ejb.Local;
 @Local
 public interface EndUsersManagerLocal {
 
+    /**
+     * Get the number of endUsers created during the last nbDays days
+     *
+     * @param nbDays
+     * @return The number of endUsers created during the last nbDays days
+     */
     public long numberOfEndUsersCreatedDuringLastNbDays(int nbDays);
-    
+
 }

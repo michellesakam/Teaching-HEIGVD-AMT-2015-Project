@@ -1,4 +1,3 @@
-
 package ch.heigvd.amt.gamification.services;
 
 import javax.ejb.Local;
@@ -10,6 +9,9 @@ import javax.ejb.Local;
 @Local
 public interface TestDataManagerLocal {
 
-  void generateTestData();
-  
+    /**
+     * Generate tests data
+     */
+    void generateTestData();
+
 }

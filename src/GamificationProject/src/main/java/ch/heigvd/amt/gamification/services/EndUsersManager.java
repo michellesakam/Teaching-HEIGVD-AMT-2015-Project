@@ -10,18 +10,13 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class EndUsersManager implements EndUsersManagerLocal {
-    
+
     @EJB
     private EndUserDAOLocal endUserDAO;
 
-    /**
-     * Get the number of endUsers created during the last nbDays days
-     * @param nbDays
-     * @return The number of endUsers created during the last nbDays days
-     */
     @Override
     public long numberOfEndUsersCreatedDuringLastNbDays(int nbDays) {
         return endUserDAO.numberOfEndUsersCreatedDuringLastNbDays(nbDays);
     }
-    
+
 }
