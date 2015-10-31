@@ -45,7 +45,7 @@ public class GamificationFluentTest extends FluentTest {
     
     @Page
     public ApplicationDetailsFluentPage ApplicationDetailsPage;
-/*
+
     @Test
     public void itShouldNotBePossibleToSigninWithAnInvalidEmail() {
         goTo(baseUrl);
@@ -68,12 +68,12 @@ public class GamificationFluentTest extends FluentTest {
         loginPage.clickCreateAccount();
         RegistrationPage.isAt();
     }
-*/
+
     @Test
     public void itShouldNotBePossibleToSignUpWithAnInvalidEmail() {
-        goTo(baseUrl + "pages/account");
+        goTo(baseUrl + "pages/account?edit=false");
         RegistrationPage.isAt();
-        /*
+        
         RegistrationPage.typeEmailAddress("not a valid email");
         RegistrationPage.typeFirstname("FirstName");
         RegistrationPage.typeLastname("LastName");
@@ -81,12 +81,12 @@ public class GamificationFluentTest extends FluentTest {
         RegistrationPage.typeConfirmPassword("11111111");
         RegistrationPage.clickSignUp();
         RegistrationPage.isAt();
-*/
+
     }
-/*
+
      @Test
     public void itShouldNotBePossibleToSignUpWithAnPasswordSmallerThan8Character() {
-        goTo(baseUrl + "pages/account");
+        goTo(baseUrl + "pages/account?edit=false");
 
         RegistrationPage.typeEmailAddress("a@b.ch");
         RegistrationPage.typeFirstname("FirstName");
@@ -100,7 +100,7 @@ public class GamificationFluentTest extends FluentTest {
     
     @Test
     public void itShouldBePossibleToAccessYourAppsPagesWithCreateAnAccount() {
-        goTo(baseUrl + "pages/account");
+        goTo(baseUrl + "pages/account?edit=false");
 
         RegistrationPage.typeEmailAddress(newEmailId + "sara.kouch@gmail.ch");
         RegistrationPage.typeFirstname("Sara");
@@ -127,7 +127,7 @@ public class GamificationFluentTest extends FluentTest {
 
     @Test
     public void itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists() {
-        goTo(baseUrl + "pages/account");
+        goTo(baseUrl + "pages/account?edit=false");
 
         RegistrationPage.typeEmailAddress("raphael.racine@heig-vd.ch");
         RegistrationPage.typeFirstname("firstname");
@@ -186,7 +186,7 @@ public class GamificationFluentTest extends FluentTest {
         
     }
     
-    */
+    
     
     @Override
     public WebDriver getDefaultDriver() {
