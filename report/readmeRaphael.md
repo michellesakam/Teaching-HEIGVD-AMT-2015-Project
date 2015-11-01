@@ -62,6 +62,8 @@ Les packages ont été organisés de la manière suivante :
 
 <li><b>services.passwordvalidation :</b> Ce package contient les services permettant de vérifier qu'un mot de passe d'un compte utilisateur respecte la politique des mots de passe (par exemple le nombre de caractères doit être plus grand ou égal à 8...)
 
+<li><b>forms :</b> Ce package contient des classes représentant des formulaires de saisie (afin de récupérer les données d'un formulaire et éventuellement les renvoyer)
+
 <li><b>util :</b> Ce package contient des classes utiles à l'application
 
 ### Selected aspects

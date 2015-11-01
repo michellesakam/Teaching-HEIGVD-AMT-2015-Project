@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.forms.account;
+package ch.heigvd.amt.gamification.forms.application;
 
 import javax.servlet.ServletRequest;
 

@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.forms.account.ApplicationForm;
+import ch.heigvd.amt.gamification.forms.application.ApplicationForm;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
