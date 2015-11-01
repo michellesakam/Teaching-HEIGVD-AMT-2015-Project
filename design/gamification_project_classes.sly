@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
+<classDiagram>
+  <diagramElements name="Gamification Project">
+    <entity entityType="CLASS" id="5411" isAbstract="false" name="AjaxApplicationsServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5410" isAbstract="false" name="WelcomeServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5409" isAbstract="false" name="ListUsersApplicationServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5408" isAbstract="false" name="ListApplicationsAccountServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5407" isAbstract="false" name="DataGeneratorServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5406" isAbstract="false" name="AuthenticationServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5405" isAbstract="false" name="ApplicationsServlet" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="5404" isAbstract="false" name="AccountServlet" visibility="PUBLIC"/>
+  </diagramElements>
+  <umlView grid="1" name="view no name">
+    <componentView color="-256" componentID="5404" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>101</x>
+        <y>146</y>
+        <w>123</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5405" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>87</x>
+        <y>86</y>
+        <w>150</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5406" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>84</x>
+        <y>205</y>
+        <w>155</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5407" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>87</x>
+        <y>265</y>
+        <w>150</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5408" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>57</x>
+        <y>328</y>
+        <w>230</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5409" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>55</x>
+        <y>389</y>
+        <w>225</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5410" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>88</x>
+        <y>450</y>
+        <w>150</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+    <componentView color="-256" componentID="5411" displayAttributes="true" displayDefault="true" displayMethods="false">
+      <geometry>
+        <x>69</x>
+        <y>506</y>
+        <w>192</w>
+        <h>45</h>
+      </geometry>
+    </componentView>
+  </umlView>
+</classDiagram>
