@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  *
  * @author parfait 
- * But : Contient les EndUser et les ascenseurs sur les champs.
+ * But : EndUser with getters and setters
  */
 public class EndUserDTO {
 
