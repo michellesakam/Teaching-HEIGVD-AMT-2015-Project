@@ -66,9 +66,10 @@ Les packages ont été organisés de la manière suivante :
 
 <li><b>util :</b> Ce package contient des classes utiles à l'application
 
+### Class diagrams
+Sera disponible prochainement.
 ### Selected aspects
-
-
+Sera disponible prochainement
 
 ## Appending A: Auto Evaluation
 On peut trouver l'auto-evalution [ici](evaluation/evaluation.docx).
