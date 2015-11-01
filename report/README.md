@@ -660,6 +660,26 @@ Ce service est appelé lorsque l'on accède à l'url /generate.
 
 #### Entités
 
+<li><b>AbstractDomainModelEntity.java</b>
+Cette classe permet d'éviter la redondance du code en regroupant tout ce qui est commun à toutes les entités dans cette classe. Elle
+permet au passage de redéfinir les méthodes telles que : <b>equals()))che ), toString(), hashCode()</b>. On peut également noter la presence
+de l'attribut id.
+
+<li><b>Account.java</b>
+Cette classe represente l'entity account. Qui est une réprésentation au niveau java de ce que contient notre base de donnée. Cette
+objet est en général managée: c'est-à-dire que le système "garde un oeil" sur cette objet et met automatiquement à jour toutes les
+modifications que le programmeur fait sur cet objet. Nous pouvons également noter la présentance des annonations <b>jpa</b>, qui permettent de
+faire certaines requêtes de façon automatiques, sans devoir écrire des requêtes soi-même. Il faut également noter que certaines
+la plus part des requêtes(insertion, insertion, ...) sont faites par le <b>jpa</b> tache du programmeur.
+
+<li><b>ApiKey.java</b>
+Est une représentation de l'entité  ApiKey 
+
+<li><b>Application.java</b>
+Est une représentation de l'entité  Application
+
+<li><b>EndUser.java</b>
+Est une représentation de l'entité  EndUser
 
 #### Formulaires
 
