@@ -264,7 +264,65 @@ Avec ce système, il est possible actuellement de :
 <li>Consulter la liste des utilisateurs finaux d'une application
 
 ### Interface utilisateur
-<font color=red>Mettre partie à Vanessa</font>
+
+Cette partie présente les différentes vues crées dans notre application et une description détaillée des différentes actions qui peuvent y être appliquées.
+
+#### Page d'accueil (welcome page)
+
+[](Capture.PNG)
+
+Cette page représente la page principale de l'application.
+
+L'utilisateur y accède directement lorsqu'il lance l'application.Elle lui permet de se *logger* en entrant un *login* et un *password* existant et d'accéder ainsi à la page de ses applications "your apps" en cliquant sur le bouton "Login"ou de créer un compte en cliquant sur le bouton "create account".Cette page affiche également les informations suivantes: 
+<li>Le message de bienvenu avec le nom de l'application(Welcome to GaMy),
+<li>Le nombre de comptes crées,
+<li>Le nombre d'applications managées,
+<li>Le nombre d'utilisateurs crées par les applications il  y a un nombre de temps donné.
+
+#### Créer un compte utilisateur(Create account)
+ 
+![](Capture1.PNG)
+
+Cette page permet à l'utilisateur de créer un compte utilisateur.L'utilisateur y accède en cliquant sur le bouton "Create account " de la page d'accueil.
+Cette page comprend un formulaire que l'utilisateur doit compléter afin de créer son compte.Celui-ci doit notamment indiquer: 
+<li>Un e-mail valide et pas encore utilisé par un autre utilisateur; sinon un message d'erreur est affiché pour lui indiquant que ce email est déjà utilisé afin qu'il en choisisse un autre
+<li>un nom et prénom,
+<li>un mot de passe d'au moins 8 caractères alpha-numérique qui doit confirmer en répétant le mot de passe
+ 
+Les boutons "cancel" et "register" permettent respectivement de supprimer le formulaire rempli ci-dessus en retournant à la page de *login*  et d'enrégistrer le formulaire en ajoutant le compte nouvellement crée à la base de donnée.Une fois le compte crée ,l'utilisateur est automatiquement dirigé vers la page des applications "your apps"
+
+#### Les applications d'un utilisateur(Your apps)
+ 
+![](Capture3.PNG)
+
+Cette page permet d'afficher les applications crées par un utilisateur.L'utilisateur y accède directement après s'être *logger* dans la page de connexion ou après la création d'un compte. Cette page comme d'autres pages ( l'utilisateur ne peut y accéder directement au travers de l'URL) comprend un barre de navigation sur la gauche qui permet d'accéder aux applications d'un utilisateur en cliquant sur "Apps" ou d'éditer un compte utilisateur en cliquant sur le bouton "Account". Elle comprend également les éléments suivants: 
+<li>Dans l'entête de la page, les informations sur l'utilisateur connecté; son email, son nom et prénom.
+<li>la liste des applications crées par l'utilisateur
+<li>Un bouton "logout"qui permet à l'utilisateur de se déconnecter et de retourner à la page connexion.
+<li>Un bouton "Register New App" qui permet de créer une nouvelle application.
+Il est possible d'éditer chaque application apparaissant dans la liste des applications en cliquant sur le bouton "edit".Aussi, en cliquand sur le nombre d'utilisateurs de chaque application, il est possible d'avoir la liste des utilisateurs associés à cette application.
+
+#### Enrégistrer une nouvelle application(register new app)
+ 
+![](Capture4.PNG)
+
+Cette page permet de créer une nouvelle application.L'utilisateur doit entrer un nom et une description à l'application.Une *api key * est générée et attribuée à la nouvelle application crée.Dans la page, il est également affiché le nombre d'utilisateurs associés à cette application ainsi que l'état de l'application(enabled ou disabled).En cliquant sur le bouton "cancel"l'utilisateur supprime toutes les informations entrées pour la création de la nouvelle application et retourne à la page des applications(your apps). Par contre, s'il clique sur le bouton "register" la nouvelle application est ajoutée à la liste de  ses applications et l'utilisateur est dirigé automatiquement à la page des applications(your apps).
+
+####Page de details d'une application
+ 
+![](Capture5.PNG)
+
+Cette page permet d'éditer une application.L'utilisateur peut modifier le nom et la description de l'application, changer son état(enabled ou disabled). En cliquant sur le bouton "register", l'utilisateur enregistre ses modifications; sinon il  les supprime  en cliquant sur le bouton "cancel".
+
+####Liste des utilisateurs associés à une application
+
+<font size=36>A FAIRE !!!!</font>
+
+####Edition d'un compte utilisateur
+ 
+Cette page permet à un utilisateur d'éditer son compte.Celui-ci peut modifier son nom, prénom, mot de passe qu'il doit confirmer en le répétant. Un utilisateur ne peut  pas modifier son email. En cliquant sur le bouton "Confirm" l'utilisateur décide d'enregistrer ses modifications et "cancel" pour supprimer toutes ses modifications.
+
+
 
 ### API Rest
 Les API Rest ne sont pas encore implémentées.
@@ -630,7 +688,7 @@ Les outils utilisés sont :
 ### Procedures
 
 
-####Fluentlenium
+#### Tests Fluentlenium
 <b>itShouldNotBePossibleToSigninWithAnInvalidEmail</b>
 
 <b>But:</b> vérifier qu'il n'est pas possible de se loger avec un email invalide.
