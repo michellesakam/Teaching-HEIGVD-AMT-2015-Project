@@ -3,8 +3,7 @@ package ch.heigvd.amt.gamification.rest.dto;
 /**
  *
  * @author parfait 
- * But : Contient les Applications et les ascenseurs sur les
- * champs.
+ * But : Application with getters and setters 
  */
 public class ApplicationDTO {
 

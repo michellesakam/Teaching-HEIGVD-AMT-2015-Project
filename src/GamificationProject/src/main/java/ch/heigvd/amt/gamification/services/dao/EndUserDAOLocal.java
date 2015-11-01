@@ -6,6 +6,7 @@ import javax.ejb.Local;
 /**
  *
  * @author parfait
+ * But : methods available just for this class
  */
 @Local
 public interface EndUserDAOLocal extends IGenericDAO<EndUser, Long> {

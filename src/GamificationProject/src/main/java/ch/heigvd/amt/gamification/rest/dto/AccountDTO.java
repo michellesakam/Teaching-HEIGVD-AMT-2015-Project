@@ -3,8 +3,7 @@ package ch.heigvd.amt.gamification.rest.dto;
 /**
  *
  * @author parfait
- * But : Contient les Accounts des utilisateurs et les ascenseurs sur les 
- * champs. 
+ * But : Account with getters and setters  
  */
 public class AccountDTO {
     

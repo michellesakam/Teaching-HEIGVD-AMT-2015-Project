@@ -25,6 +25,7 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
         Calendar before = new GregorianCalendar();
         before.add(Calendar.DAY_OF_YEAR, -numberOfDay);
         
+        // returns numbers of end users created within today and before
         return (long) em.createNamedQuery("EndUser.countEndUsersCreatedBetweenTwoDates")
                 .setParameter("date1", before.getTime())
                 .setParameter("date2", today.getTime())

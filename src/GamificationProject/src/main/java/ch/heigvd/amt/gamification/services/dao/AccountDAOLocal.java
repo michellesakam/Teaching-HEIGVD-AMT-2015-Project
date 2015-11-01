@@ -5,8 +5,9 @@ import javax.ejb.Local;
 
 /**
  *
- * @author parfait new : exceptions, changement de la signature des méthodes.
- * But : ici on implémentes les méthodes qui sont à la class Account
+ * @author parfait 
+ * 
+ * But : This methods are available just for Account
  */
 @Local
 public interface AccountDAOLocal extends IGenericDAO<Account, Long> {

@@ -3,7 +3,7 @@ package ch.heigvd.amt.gamification.rest.dto;
 /**
  *
  * @author parfait
- * But : contient les Roles et les ascenseurs.
+ * But : Role with getters and setters
  */
 public class RoleDTO {
     private String roleName;  
