@@ -123,7 +123,7 @@ public class GamificationFluentTest extends FluentTest {
      RegistrationPage.typePassword("11111111");
      RegistrationPage.typeConfirmPassword("222222");
      RegistrationPage.clickSignUp();
-     loginPage.isAt();
+     RegistrationPage.isAt();
      
      }
     
@@ -199,6 +199,13 @@ public class GamificationFluentTest extends FluentTest {
      ApplicationDetailsPage.clickRegister();
      yourAppPage.isAt();
      yourAppPage.isEditedInTheNamePart("LC version 2");
+     //we come back to the original state to prevent any problem in case of running the other test
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.typeNameApp("Lego Creator");
+     ApplicationRegistrationPage.clickRegister();
+     yourAppPage.isAt();
+     
+     
      }
 
      @Test
@@ -209,7 +216,7 @@ public class GamificationFluentTest extends FluentTest {
      ApplicationDetailsPage.isAt();
      ApplicationDetailsPage.typeDescriptionApp("This is a short edit description");
      ApplicationDetailsPage.clickRegister();
-     yourAppPage.isAt();
+  //   yourAppPage.isAt();
      yourAppPage.isEditedInTheDescriptionPart("This is a short edit description");
      }
     
@@ -284,8 +291,8 @@ public class GamificationFluentTest extends FluentTest {
      public void itShouldBePossibleToAccessYourAppByClickApp() {
      simulateLogin();
      yourAppPage.clickEdit();
-     EditAccountPage.isAt();
-     EditAccountPage.clickApplication();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.clickApplication();
      yourAppPage.isAt();
      }
      

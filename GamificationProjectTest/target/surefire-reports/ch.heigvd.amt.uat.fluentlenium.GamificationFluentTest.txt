@@ -1,14 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 21.162 sec <<< FAILURE!
-itShouldBePossibleToRegisterNewAppWithSubmitNecessaryInformations(ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest)  Time elapsed: 20.898 sec  <<< FAILURE!
-org.junit.ComparisonFailure: expected:<"[Name of application]"> but was:<"[Lego Creator]">
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 13.764 sec <<< FAILURE!
+itShouldBePossibleToEditTheDescriptionOfAccountByClickEditButton(ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest)  Time elapsed: 13.655 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<"[This is a short edit description]"> but was:<"[]">
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at ch.heigvd.amt.uat.fluentlenium.pages.ApplicationsOfAnAccountFluentPage.isCreated(ApplicationsOfAnAccountFluentPage.java:68)
-	at ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest.itShouldBePossibleToRegisterNewAppWithSubmitNecessaryInformations(GamificationFluentTest.java:162)
+	at ch.heigvd.amt.uat.fluentlenium.pages.ApplicationsOfAnAccountFluentPage.isEditedInTheDescriptionPart(ApplicationsOfAnAccountFluentPage.java:56)
+	at ch.heigvd.amt.uat.fluentlenium.GamificationFluentTest.itShouldBePossibleToEditTheDescriptionOfAccountByClickEditButton(GamificationFluentTest.java:220)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
