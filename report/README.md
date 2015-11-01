@@ -663,12 +663,27 @@ Ce service est appelé lorsque l'on accède à l'url /generate.
 
 #### Formulaires
 
+Ces classes qui se trouvent dans le package forms permettent de récupérer les données saisies par l'utilisateur dans les formulaires (respectivement account_registration.jsp et application_registration.jsp)
+
+Celle qui s'occupe du formulaire des comptes utilisateur (AccountForm) possède une méthode
+
+```
+public boolean checkEntry() throws NotSamePasswordException;
+```
+
+Qui vérifie si la saisie est correcte (pour l'instant elle vérifie que les mots de passes saisis sont les mêmes, si ça n'est pas le cas une exception est levée...).
 
 #### Classes utilitaires
 
+<li>Chance.java permet de générer des données de tests aléatoires
+<li>Util.java contient une fonction utile pour obtenir le nombre de page total lors d'une pagination, avec une formule assez complexe
+
 
 ### Diagramme de classes
-Sera disponible prochainement.
+
+![](pictures/Classes.PNG)
+
+Ce diagramme de classes sera complété au fur et à mesure du projet (seul les classes importantes sont représentées pour l'instant).
 
 ### Aspects sélectionnés
 Sera disponible prochainement
