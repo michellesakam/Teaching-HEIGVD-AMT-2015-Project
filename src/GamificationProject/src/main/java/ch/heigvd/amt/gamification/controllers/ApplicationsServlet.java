@@ -1,8 +1,8 @@
 package ch.heigvd.amt.gamification.controllers;
 
+import ch.heigvd.amt.gamification.forms.account.ApplicationForm;
 import ch.heigvd.amt.gamification.model.entities.Account;
 import ch.heigvd.amt.gamification.model.entities.Application;
-import ch.heigvd.amt.gamification.rest.dto.ApplicationDTO;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.io.IOException;
@@ -86,21 +86,15 @@ public class ApplicationsServlet extends HttpServlet {
     private void createApplication(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setAttribute("title", TITLE_ADD_APPLICATION);
+        
         Account currentAccount = (Account) req.getSession().getAttribute("principal");
-
-        String name = req.getParameter("Name");
-        String description = req.getParameter("description");
-        boolean isEnable = Boolean.parseBoolean(req.getParameter("isEnable"));
-
-        ApplicationDTO applicationDTO = new ApplicationDTO();
-        applicationDTO.setDescription(description);
-        applicationDTO.setName(name);
-        applicationDTO.setIsEnable(isEnable);
+        
+        ApplicationForm form = new ApplicationForm(req);
 
         Application application = new Application();
-        application.setIsEnable(isEnable);
-        application.setName(name);
-        application.setDescription(description);
+        application.setIsEnable(form.getIsEnable());
+        application.setName(form.getName());
+        application.setDescription(form.getDescription());
 
         try {
             applicationsManager.assignApplicationToAccount(application, currentAccount);
@@ -108,7 +102,7 @@ public class ApplicationsServlet extends HttpServlet {
             List<String> errors = new LinkedList<>();
             errors.add("Impossible to register an application, probably the name already exists !");
             req.setAttribute("errors", errors);
-            req.setAttribute("applicationDTO", applicationDTO);
+            req.setAttribute("application", form);
             req.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(req, resp);
             return; // Arrêt du code pour éviter qu'il continue
         }
@@ -117,12 +111,11 @@ public class ApplicationsServlet extends HttpServlet {
     }
 
     private void editApplication(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        
         req.setAttribute("edit", true);
         req.setAttribute("title", TITLE_EDIT_APPLICATION);
 
-        String name = req.getParameter("Name");
-        String description = req.getParameter("description");
-        boolean isEnable = Boolean.parseBoolean(req.getParameter("isEnable"));
+        ApplicationForm form = new ApplicationForm(req);        
         long idApplication = Long.parseLong(req.getParameter("idApplication"));
 
         Application application = null;
@@ -142,12 +135,13 @@ public class ApplicationsServlet extends HttpServlet {
                 return;
             }
 
-            application.setDescription(description);
-            application.setIsEnable(isEnable);
-            application.setName(name);
+            application.setDescription(form.getDescription());
+            application.setIsEnable(form.getIsEnable());
+            application.setName(form.getName());
             applicationsManager.updateApplication(application);
 
             resp.sendRedirect(req.getContextPath() + "/pages/yourApps");
+            
         } catch (EJBException e) {
             errors.add("Impossible to update an application, probably the name already exists !");
             req.setAttribute("application", application);

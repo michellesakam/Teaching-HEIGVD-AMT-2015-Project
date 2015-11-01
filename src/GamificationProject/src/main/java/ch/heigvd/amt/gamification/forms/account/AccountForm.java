@@ -10,8 +10,6 @@ import javax.servlet.ServletRequest;
  */
 public class AccountForm {
 
-    private final ServletRequest request;
-
     private final String firstName;
     private final String lastName;
     private final String email;
@@ -19,7 +17,6 @@ public class AccountForm {
     private final String confirmPassword;
 
     public AccountForm(ServletRequest request) {
-        this.request = request;
         this.firstName = request.getParameter("First_name");
         this.lastName = request.getParameter("Last_name");
         this.password = request.getParameter("Password");
@@ -30,10 +27,6 @@ public class AccountForm {
     public void checkEntry() throws NotSamePasswordException {
         if(!password.equals(confirmPassword))
             throw new NotSamePasswordException();
-    }
-
-    public ServletRequest getRequest() {
-        return request;
     }
 
     public String getFirstName() {
