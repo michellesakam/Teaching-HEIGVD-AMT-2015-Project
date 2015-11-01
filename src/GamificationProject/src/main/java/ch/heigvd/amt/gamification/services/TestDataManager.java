@@ -34,7 +34,7 @@ public class TestDataManager implements TestDataManagerLocal {
         String lastName;
 
         /* Create a list of endUsers */
-        for (int i = 0; i < 20; ++i) {
+        for (int i = 0; i < 1000; ++i) {
             Account a = new Account();
             lastName = Chance.randomLastName();
             firstName = Chance.randomFirstName();
@@ -110,7 +110,7 @@ public class TestDataManager implements TestDataManagerLocal {
         applicationsManager.assignApplicationToAnEndUser(app1, user2);
         applicationsManager.assignApplicationToAnEndUser(app3, user3);
 
-        for (int i = 0; i < 55; ++i) {
+        for (int i = 0; i < 5000; ++i) {
             EndUser user = new EndUser();
             user.setRegDate(new Date(System.currentTimeMillis()));
             user.setUserID("GaGAee23" + i);
