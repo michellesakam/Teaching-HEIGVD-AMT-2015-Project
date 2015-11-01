@@ -102,7 +102,7 @@ public class ApplicationsServlet extends HttpServlet {
             List<String> errors = new LinkedList<>();
             errors.add("Impossible to register an application, probably the name already exists !");
             req.setAttribute("errors", errors);
-            req.setAttribute("application", form);
+            req.setAttribute("applicationForm", form);
             req.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(req, resp);
             return; // Arrêt du code pour éviter qu'il continue
         }
@@ -145,6 +145,7 @@ public class ApplicationsServlet extends HttpServlet {
         } catch (EJBException e) {
             errors.add("Impossible to update an application, probably the name already exists !");
             req.setAttribute("application", application);
+            req.setAttribute("applicationForm", form);
             req.setAttribute("errors", errors);
             req.setAttribute("nbEndUsers", applicationsManager.nbEndUsersOfApplication(application));
             req.getRequestDispatcher("/WEB-INF/pages/application_registration.jsp").forward(req, resp);

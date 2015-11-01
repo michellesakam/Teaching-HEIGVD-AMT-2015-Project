@@ -31,13 +31,13 @@
     <div class="form-group">
         <label class="col-md-3 control-label" for="Name" required>Name</label>
         <div class="col-md-4">
-            <input id="Name" type="Name" class="form-control" name="Name" value="${application.name}" required/>
+            <input id="Name" type="Name" class="form-control" name="Name" value="${applicationForm.name}" required/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label" for="Description">Description</label>
         <div class="col-md-4">
-            <TEXTAREA id="Description" name="description" rows=4 cols=40>${application.description}</TEXTAREA>
+            <TEXTAREA id="Description" name="description" rows=4 cols=40>${applicationForm.description}</TEXTAREA>
                 </div>
             </div>
             <div class="form-group">
@@ -75,7 +75,7 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="State">State</label>
                 <div class="col-md-offset-3 col-md-9">
-                    <input id="isEnable" type="hidden" name="isEnable" value="${application.isEnable == null ? true : application.isEnable}"/>                    
+                    <input id="isEnable" type="hidden" name="isEnable" value="${applicationForm.isEnable == null ? true : application.isEnable}"/>                    
                     <input type="hidden" name="idApplication" value="${application.id}" />
             <c:choose>
                 <c:when test="${application.isEnable == false}">
