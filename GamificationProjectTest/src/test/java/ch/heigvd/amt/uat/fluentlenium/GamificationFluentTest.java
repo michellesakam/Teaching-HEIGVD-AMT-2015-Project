@@ -59,6 +59,17 @@ public class GamificationFluentTest extends FluentTest {
      loginPage.clickLogin();
      loginPage.isAt();
      }
+     
+     @Test
+     public void itShouldBePossibleToSigninWithAnvalidEmail() {
+     goTo(baseUrl);
+     loginPage.isAt();
+     loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
+     loginPage.typePassword("toortoor");
+     loginPage.clickLogin();
+     yourAppPage.isAt();
+
+     }
 
      @Test
      public void itShouldBeNotPossibleToAccessSecurePagesWithoutLogin() {
@@ -99,7 +110,21 @@ public class GamificationFluentTest extends FluentTest {
      RegistrationPage.typeConfirmPassword("toor");
      RegistrationPage.clickSignUp();
      RegistrationPage.isAt();
+     
+     }
+     
+     @Test
+     public void itShouldNotBePossibleToSignUpIfThePasswordAndConfirmPasswordAreNotIdentical() {
+     goTo(baseUrl + "pages/account?edit=false");
 
+     RegistrationPage.typeEmailAddress("b@b.ch");
+     RegistrationPage.typeFirstname("FirstName");
+     RegistrationPage.typeLastname("LastName");
+     RegistrationPage.typePassword("11111111");
+     RegistrationPage.typeConfirmPassword("222222");
+     RegistrationPage.clickSignUp();
+     loginPage.isAt();
+     
      }
     
      @Test
@@ -113,21 +138,10 @@ public class GamificationFluentTest extends FluentTest {
      RegistrationPage.typeConfirmPassword("12341234");
      RegistrationPage.clickSignUp();
      yourAppPage.isAt();
-     // yourAppPage.clickLogout();
-
+     
      }
 
-     @Test
-     public void itShouldBePossibleToSigninWithAnvalidEmail() {
-     goTo(baseUrl);
-     loginPage.isAt();
-     loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
-     loginPage.typePassword("toortoor");
-     loginPage.clickLogin();
-     yourAppPage.isAt();
-     //   yourAppPage.clickLogout();
-
-     }
+     
 
      @Test
      public void itShouldNotBePossibleToCreateAnAccountWithEmailWhitchAlreadyExists() {
@@ -145,7 +159,6 @@ public class GamificationFluentTest extends FluentTest {
 
      @Test
      public void itShouldAllowTheUsersToRegisterNewApplication() {
-     goTo(baseUrl);
      simulateLogin();
      yourAppPage.clickRegisterNewApp();
      ApplicationRegistrationPage.isAt();
@@ -160,6 +173,7 @@ public class GamificationFluentTest extends FluentTest {
      ApplicationRegistrationPage.typeDescriptionApp("This is a short description of the application");
      ApplicationRegistrationPage.clickRegister();
      yourAppPage.isAt();
+    
      }
 
      @Test
@@ -176,7 +190,7 @@ public class GamificationFluentTest extends FluentTest {
  
     
      @Test
-     public void itShouldBePossibleToEditTheNameOfApplicationByClickResiterButton() {
+     public void itShouldBePossibleToEditTheNameOfApplicationByClickEditButton() {
 
      simulateLogin();
      yourAppPage.clickEdit();
@@ -188,7 +202,7 @@ public class GamificationFluentTest extends FluentTest {
      }
 
      @Test
-     public void itShouldBePossibleToEditTheDescriptionOfAccountByClickResisterButton() {
+     public void itShouldBePossibleToEditTheDescriptionOfAccountByClickEditButton() {
 
      simulateLogin();
      yourAppPage.clickEdit();
@@ -199,6 +213,18 @@ public class GamificationFluentTest extends FluentTest {
      yourAppPage.isEditedInTheDescriptionPart("This is a short edit description");
      }
     
+      @Test
+     public void itShouldBePossibleToNotSaveTheEditionInTheNamePartByClickCancelButton() {
+     simulateLogin();
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.typeNameApp("I don't want to save thid name");
+     ApplicationDetailsPage.clickcancel();
+     yourAppPage.isAt();
+     yourAppPage.isNotSaveTheModificationInNamePart("I don't want to save this name");
+     }
+     
+     
      @Test
      public void itShouldBePossibleToNotSaveTheEditionInTheDescriptionPartByClickCancelButton() {
 
@@ -211,16 +237,7 @@ public class GamificationFluentTest extends FluentTest {
      yourAppPage.isNotSaveTheModificationInDescriptionPart("I don't want to save this description");
      }
 
-     @Test
-     public void itShouldBePossibleToNotSaveTheEditionInTheNamePartByClickCancelButton() {
-     simulateLogin();
-     yourAppPage.clickEdit();
-     ApplicationDetailsPage.isAt();
-     ApplicationDetailsPage.typeNameApp("I don't want to save thid name");
-     ApplicationDetailsPage.clickcancel();
-     yourAppPage.isAt();
-     yourAppPage.isNotSaveTheModificationInNamePart("I don't want to save this name");
-     }
+    
      
       
      @Test
@@ -233,10 +250,11 @@ public class GamificationFluentTest extends FluentTest {
      EditAccountPage.typeConfirmPassword(password);
      EditAccountPage.clickConfirm();
      yourAppPage.clickLogout();
+     loginPage.isAt();
      loginPage.typeEmailAddress("raphael.racine@heig-vd.ch");
      loginPage.typePassword(password);
      loginPage.clickLogin();
-     yourAppPage.isAt(); // he succeed to login, now we change the password to the original password
+     yourAppPage.isAt(); // he succeed to login, now we change the password to the original password for do the simulation fonction
      yourAppPage.clickAccount();
      EditAccountPage.typePassword("toortoor");
      EditAccountPage.typeConfirmPassword("toortoor");
@@ -262,6 +280,24 @@ public class GamificationFluentTest extends FluentTest {
      }
     
     
+      @Test
+     public void itShouldBePossibleToAccessYourAppByClickApp() {
+     simulateLogin();
+     yourAppPage.clickEdit();
+     EditAccountPage.isAt();
+     EditAccountPage.clickApplication();
+     yourAppPage.isAt();
+     }
+     
+      @Test
+    public void itShouldBePossibleToAccessTheListOfUserOfApplication() {
+        simulateLogin();
+        yourAppPage.clickEndUser();
+        ListUserApplication.isAt();
+
+    }
+     
+     
      @Test
      public void itShouldBePossibleToLogoutWithClickLogoutButton() {
 
@@ -269,22 +305,9 @@ public class GamificationFluentTest extends FluentTest {
      yourAppPage.clickLogout();
      loginPage.isAt();
      }
-    
-     @Test
-     public void itShouldBePossibleToAccessYourAppByClickApp() {
-     simulateLogin();
-     yourAppPage.clickEdit();
-     EditAccountPage.clickApplication();
-     yourAppPage.isAt();
-     }
 
-    @Test
-    public void itShouldBePossibleToAccessTheListOfUserOfApplication() {
-        simulateLogin();
-        yourAppPage.clickEndUser();
-        ListUserApplication.isAt();
 
-    }
+   
 
     @Override
     public WebDriver getDefaultDriver() {

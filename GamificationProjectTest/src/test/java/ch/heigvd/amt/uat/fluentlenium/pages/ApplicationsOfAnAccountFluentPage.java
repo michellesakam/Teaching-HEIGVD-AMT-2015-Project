@@ -63,5 +63,9 @@ public class ApplicationsOfAnAccountFluentPage extends AbstractGamificationProje
     public void isNotSaveTheModificationInNamePart(String name) {
         assertThat(findFirst(Name).getText()).isNotEqualTo(name);
     }
+    
+    public void isCreated(String name) {
+        assertThat(find(Name).getText()).isEqualTo(name);
+    }
 
 }
