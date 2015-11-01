@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author parfait
+ * 
  */
 @Stateless
 public class ApiKeyDAO extends GenericDAO<ApiKey, Long> implements ApiKeyDAOLocal {
