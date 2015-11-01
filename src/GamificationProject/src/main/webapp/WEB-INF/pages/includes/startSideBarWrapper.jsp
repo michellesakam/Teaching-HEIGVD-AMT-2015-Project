@@ -6,7 +6,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li>
-                    <a id="linkApp" class="active" href="pages/yourApps">Apps</a>
+                    <a id="linkApp" href="pages/yourApps">Apps</a>
                 </li>
                 <li>
                     <a id="linkAccount" href="pages/account?edit=true">Account</a>
