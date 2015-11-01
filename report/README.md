@@ -2,8 +2,7 @@
 
 <font color=red size=35>RESTE A FAIRE
 Diagramme de classes sans les méthodes
-Commenter classes modèles et formulaires
-Intégrer les tests et les vues</font>
+Commenter classes modèles et formulaires</font>
 
 ## Informations administratives
 
@@ -269,7 +268,7 @@ Cette partie présente les différentes vues crées dans notre application et un
 
 #### Page d'accueil (welcome page)
 
-![](Capture.PNG)
+![](pictures/Capture.PNG)
 
 Cette page représente la page principale de l'application.
 
@@ -281,7 +280,7 @@ L'utilisateur y accède directement lorsqu'il lance l'application.Elle lui perme
 
 #### Créer un compte utilisateur(Create account)
  
-![](Capture2.PNG)
+![](pictures/Capture2.PNG)
 
 Cette page permet à l'utilisateur de créer un compte utilisateur.L'utilisateur y accède en cliquant sur le bouton "Create account " de la page d'accueil.
 Cette page comprend un formulaire que l'utilisateur doit compléter afin de créer son compte.Celui-ci doit notamment indiquer: 
@@ -293,7 +292,7 @@ Les boutons "cancel" et "register" permettent respectivement de supprimer le for
 
 #### Les applications d'un utilisateur(Your apps)
  
-![](Capture6.PNG)
+![](pictures/Capture6.PNG)
 
 Cette page permet d'afficher les applications crées par un utilisateur.L'utilisateur y accède directement après s'être *logger* dans la page de connexion ou après la création d'un compte. Cette page comme d'autres pages ( l'utilisateur ne peut y accéder directement au travers de l'URL) comprend un barre de navigation sur la gauche qui permet d'accéder aux applications d'un utilisateur en cliquant sur "Apps" ou d'éditer un compte utilisateur en cliquant sur le bouton "Account". Elle comprend également les éléments suivants: 
 <li>Dans l'entête de la page, les informations sur l'utilisateur connecté; son email, son nom et prénom.
@@ -304,23 +303,31 @@ Il est possible d'éditer chaque application apparaissant dans la liste des appl
 
 #### Enrégistrer une nouvelle application(register new app)
  
-![](Capture5.PNG)
+![](pictures/Capture5.PNG)
 
 Cette page permet de créer une nouvelle application.L'utilisateur doit entrer un nom et une description à l'application.Une *api key * est générée et attribuée à la nouvelle application crée.Dans la page, il est également affiché le nombre d'utilisateurs associés à cette application ainsi que l'état de l'application(enabled ou disabled).En cliquant sur le bouton "cancel"l'utilisateur supprime toutes les informations entrées pour la création de la nouvelle application et retourne à la page des applications(your apps). Par contre, s'il clique sur le bouton "register" la nouvelle application est ajoutée à la liste de  ses applications et l'utilisateur est dirigé automatiquement à la page des applications(your apps).
 
 ####Page de details d'une application
  
-![](Capture7.PNG)
+![](pictures/Capture7.PNG)
 
 Cette page permet d'éditer une application.L'utilisateur peut modifier le nom et la description de l'application, changer son état(enabled ou disabled). En cliquant sur le bouton "register", l'utilisateur enregistre ses modifications; sinon il  les supprime  en cliquant sur le bouton "cancel".
 
-####Liste des utilisateurs associés à une application
+####Liste des utilisateurs finaux associés à une application
 
-<font size=36>A FAIRE !!!!</font>
+![](pictures/Capture8.PNG)
+
+Cette page affiche la liste des utilisateurs finaux d'une application.
+
+La list des utilisateurs est paginée de manière à ne pas charger tous les utilisateurs d'un coup, surtout s'il y en a 10000, pour des raisons de performances. On peut changer de page grâce aux liens qui se trouve sous la liste :
+<li>First Page --> Accès à la première page
+<li>Previous Page --> Accès à la page précédent
+<li>Next Page --> Accès à la page suivante
+<li>Last Page --> Accès à la dernière page
 
 ####Edition d'un compte utilisateur
  
-![](Capture4.PNG)
+![](pictures/Capture4.PNG)
 Cette page permet à un utilisateur d'éditer son compte.Celui-ci peut modifier son nom, prénom, mot de passe qu'il doit confirmer en le répétant. Un utilisateur ne peut  pas modifier son email. En cliquant sur le bouton "Confirm" l'utilisateur décide d'enregistrer ses modifications et "cancel" pour supprimer toutes ses modifications.
 
 
@@ -1008,7 +1015,7 @@ Les outils utilisés sont :
 
 Voici le resultats des tests. On voit que tous les 21 test s'est passé avec succès.
 
-![](ResultatFluentlenium.PNG)
+![](pictures/ResultatFluentlenium.PNG)
 
 
 
@@ -1027,13 +1034,13 @@ On vaut mesurer la performance  si il y avait plusieurs utilisateur qui veulent 
 A cet effet,  il faut préparer le Jmeter:
 <li>1.créer une group d'unités et  définir le nombre d'utilisateurs , durée de montée en charge et nombre d'itérations
 
-![GroupUnites.png](GroupUnites.png)
+![GroupUnites.png](pictures/GroupUnites.png)
 
 
 
 <li>2.Ajouter l'échantillon Requête HTTP pour envoyer les requête  HTTP et donner l'URL d'application  
 
-![RequetHTTP.png](RequetHTTP.png)
+![RequetHTTP.png](pictures/RequetHTTP.png)
 
 
 
@@ -1041,30 +1048,30 @@ A cet effet,  il faut préparer le Jmeter:
 <li>3.Ajouter les récepteurs pour voir les résultat de test comme :
 Graphique de résultats , Arbre de résultats, Graphique évolution temps de réponses,...
 
-![](AjouterRecepteurs.png)
+![](pictures/AjouterRecepteurs.png)
 
 maintenant tout est prête on peut lancer le test. On voit qu'on arrive à envoyer les requête et on a reçu les réponses.
 
-![](Test1_10user.png)
+![](pictures/Test1_10user.png)
 
 
 Maintenant on augment le nombre de compte à 1000 et nombre de user à 500 dans la base de donne d'application et on essaie de tester cette foie avec 500 utilisateur avec le nombre itération infinie pour vérofier le temps de réponses d'application sous la charge. On lance le test et voici les résultat:
 
 **Le temps de Réponse***
-![](tempsReponse500user.png)
+![](pictures/tempsReponse500user.png)
 
 
 **rapport sommaire***
-![](summeryReport500user.png)
+![](pictures/summeryReport500user.png)
 
 
 <li>Maintenant on répète le test pour 1000 utilisateur:
 
 **Le tempe de Réponse***
-![](tempsReponse1000user.png)
+![](pictures/tempsReponse1000user.png)
 
 **rapport sommaire***
-![](summaryReport1000user.png)
+![](pictures/summaryReport1000user.png)
 
 ### Conclusion
 
@@ -1088,22 +1095,22 @@ Puis nous avons évalué l'effet de ces requêtes sur la performance de l'applic
 ####Pour 10 utilisateur
 
 **Grafique du résultats***
-![](A_Welcome_NombreAccountCrees1000_10Threads_Partie1_SELECT_sans_count.png)
+![](pictures/A_Welcome_NombreAccountCrees1000_10Threads_Partie1_SELECT_sans_count.png)
 
 **Temps du réponse***
-![](A.png)
+![](pictures/A.png)
 
 
 
 ####Pour 1000 utilisateur
 **Grafique du résultats***
-![](B_Welcome_nombreAccount1000_1000thread_Partie1.PNG)
+![](pictures/B_Welcome_nombreAccount1000_1000thread_Partie1.PNG)
 
 **Temps du réponse**
-![](B.png)
+![](pictures/B.png)
 
 **Summary Report***
-![](Bsummeryreport.png)
+![](pictures/Bsummeryreport.png)
 
 
 
@@ -1111,28 +1118,28 @@ Puis nous avons évalué l'effet de ces requêtes sur la performance de l'applic
 
 ####Pour 10 utilisateur
 **Grafique du résultats***
-![](C_Welcome_Account1000_Threads10_Partie2_avec_count.PNG)
+![](pictures/C_Welcome_Account1000_Threads10_Partie2_avec_count.PNG)
 
 
 **Temps du réponse***
-![](C.png)
+![](pictures/C.png)
 
 
 **Summary Report***
-![](Csummaryreport.png)
+![](pictures/Csummaryreport.png)
 
 
 
 ####Pour 1000 utilisateur
 **Grafique du résultats***
-![](D.png)
+![](pictures/D.png)
 
 **Temps du réponse***
-![](Dtimedereponse.png)
+![](pictures/Dtimedereponse.png)
 
 
 **Summary Report***
-![](D_Welc_Account_1000_Thread_1000_aveccount.PNG)
+![](pictures/D_Welc_Account_1000_Thread_1000_aveccount.PNG)
 
 
 ### Conclusion
@@ -1152,9 +1159,9 @@ Comme nous n'avons pas réussi à exécuter ce test avec JMeter, à cause de pro
 
 Nous avons donc tester le temps de réponse avec l'outil de développement de Google Chrome et nous avons obtenu le résultat suivant :
 
-![](Test_Pagination_Performances_Avant_Test.PNG)
+![](pictures/Test_Pagination_Performances_Avant_Test.PNG)
 
-![](Test_performance_apres.PNG)
+![](pictures/Test_performance_apres.PNG)
 ### Conclusion
 On voit que le temps de réponse est très rapide malgré qu'il ait 5000 utilisateurs finaux dans la base de données.
 
@@ -1169,6 +1176,6 @@ Si on aurait fait la pagination en Java, cela aurait pris beaucoup plus de temps
 ###Partie 3
 
 ## Auto Evaluation
-Le fichier d'auto-évaluation se trouve [ici](evaluation/evaluation.xlsx)
+Le fichier d'auto-évaluation se trouve [ici](../evaluation/evaluation.xlsx)
 
 
