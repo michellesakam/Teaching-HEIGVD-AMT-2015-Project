@@ -25,7 +25,7 @@
                     <label>${principal.email}</label>
                 </c:when>
                 <c:otherwise>
-                    <input id="Email" type="email" class="form-control" name="Email" value="${accountDTO.email}" required/>
+                    <input id="Email" type="email" class="form-control" name="Email" value="${accountForm.email}" required/>
                 </c:otherwise>
             </c:choose>
 
@@ -34,19 +34,19 @@
     <div class="form-group">
         <label class="col-md-3 control-label" for="First name">First name</label>
         <div class="col-md-4">
-            <input id="FirstName" type="First name" class="form-control" name="First_name" value="${accountDTO.firstName}${principal.firstName}" required/>
+            <input id="FirstName" type="First name" class="form-control" name="First_name" value="${accountForm.firstName}" required/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label" for="Last name">Last name</label>
         <div class="col-md-4">
-            <input id="LastName" type="Last name" class="form-control" name="Last_name" value="${accountDTO.lastName}${principal.lastName}" required/>
+            <input id="LastName" type="Last name" class="form-control" name="Last_name" value="${accountForm.lastName}" required/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label" for="Password">Password</label>
         <div class="col-md-4">
-            <input id="Password" type="password" class="form-control" name="Password" value="${accountDTO.password}${principal.password}" required/>
+            <input id="Password" type="password" class="form-control" name="Password" value="${accountForm.password}" required/>
         </div> 
     </div>
     <div class="form-group">

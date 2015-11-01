@@ -1,8 +1,9 @@
 package ch.heigvd.amt.gamification.controllers;
 
+import ch.heigvd.amt.gamification.forms.account.AccountForm;
+import ch.heigvd.amt.gamification.forms.account.NotSamePasswordException;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.model.entities.Account;
-import ch.heigvd.amt.gamification.rest.dto.AccountDTO;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import java.io.IOException;
@@ -30,14 +31,6 @@ public class AccountsServlet extends HttpServlet {
     private final String TITLE_ADD_ACCOUNT = "Registration Page";
     private final String TITLE_EDIT_ACCOUNT = "Edit your account details";
 
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,6 +39,7 @@ public class AccountsServlet extends HttpServlet {
         String title = edit ? TITLE_EDIT_ACCOUNT : TITLE_ADD_ACCOUNT;
 
         if (edit) {
+            request.setAttribute("accountForm", request.getSession().getAttribute("principal"));
             request.setAttribute("edit", true);
         }
 
@@ -54,14 +48,6 @@ public class AccountsServlet extends HttpServlet {
 
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -75,92 +61,70 @@ public class AccountsServlet extends HttpServlet {
     }
 
     private void editAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("edit", true);
-        String firstName = request.getParameter("First_name");
-        String lastName = request.getParameter("Last_name");
-        String password = request.getParameter("Password");
-        String confirm = request.getParameter("Confirm");
 
+        request.setAttribute("edit", true);
         request.setAttribute("title", TITLE_EDIT_ACCOUNT);
 
-        if (password.equals(confirm)) {
+        AccountForm form = null;
 
-            /* The account has to be modified is the account which is in
-             *  session variable called principal (which have an id in database)
-             */
+        try {
+            form = new AccountForm(request);
+            form.checkEntry();
+
             Account currentAccount = (Account) request.getSession().getAttribute("principal");
-            currentAccount.setFirstName(firstName);
-            currentAccount.setLastName(lastName);
-            currentAccount.setPassword(password);
+            currentAccount.setFirstName(form.getFirstName());
+            currentAccount.setLastName(form.getLastName());
+            currentAccount.setPassword(form.getPassword());
 
-            try {
-                accountsManager.updateAccount(currentAccount);
-                response.sendRedirect(request.getContextPath() + "/pages/yourApps");
-            } catch (GamificationDomainEntityNotFoundException | BadPasswordException e) {
-                List<String> errors = new ArrayList<>();
-                errors.add(e.getMessage());
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
-            }
+            accountsManager.updateAccount(currentAccount);
 
-        } else {
+            response.sendRedirect(request.getContextPath() + "/pages/yourApps");
+
+        } catch (GamificationDomainEntityNotFoundException | BadPasswordException | NotSamePasswordException e) {
             List<String> errors = new ArrayList<>();
-            errors.add("The two passwords are not the same.");
+            errors.add(e.getMessage());
+            request.setAttribute("accountForm", form);
             request.setAttribute("errors", errors);
             request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
         }
     }
 
     private void createAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("Email");
-        String firstName = request.getParameter("First_name");
-        String lastName = request.getParameter("Last_name");
-        String password = request.getParameter("Password");
-        String confirm = request.getParameter("Confirm");
-
-        AccountDTO accountDTO = new AccountDTO();
-        accountDTO.setEmail(email);
-        accountDTO.setFirstName(firstName);
-        accountDTO.setLastName(lastName);
-        accountDTO.setPassword(password);
 
         request.setAttribute("title", TITLE_ADD_ACCOUNT);
 
-        if (password.equals(confirm)) {
-            Account a = new Account();
-            a.setEmail(email);
-            a.setFirstName(firstName);
-            a.setLastName(lastName);
-            a.setPassword(password);
+        AccountForm form = null;
+        List<String> errors = new LinkedList<>();
 
-            try {
-                accountsManager.createAccount(a);
-            } catch (EJBException e) { // Exception si l'email existe déjà
-                List<String> errors = new LinkedList<>();
-                errors.add("Impossible to register an account, probably the email already exists !");
-                request.setAttribute("errors", errors);
-                request.setAttribute("accountDTO", accountDTO);
-                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
-                return; // Arrêt du code pour éviter qu'il continue                
-            } catch (BadPasswordException ex) {
-                List<String> errors = new LinkedList<>();
-                errors.add(ex.getMessage());
-                request.setAttribute("errors", errors);
-                request.setAttribute("accountDTO", accountDTO);
-                request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
-                return; // Arrêt du code pour éviter qu'il continue
-            }
+        try {
+            form = new AccountForm(request);
+            form.checkEntry();
+
+            Account a = new Account();
+            a.setEmail(form.getEmail());
+            a.setFirstName(form.getFirstName());
+            a.setLastName(form.getLastName());
+            a.setPassword(form.getPassword());
+
+            accountsManager.createAccount(a);
 
             request.getSession().setAttribute("principal", a);
             response.sendRedirect(request.getContextPath() + "/pages/yourApps");
 
-        } else {
-            List<String> errors = new ArrayList<>();
-            errors.add("The two passwords are not the same.");
+        } catch (NotSamePasswordException 
+                | BadPasswordException
+                | EJBException ex) {
+            
+            if(ex instanceof EJBException)
+                errors.add(ex.getMessage());
+            else
+                errors.add("Impossible to register an account, probably the email already exists !");
+            
             request.setAttribute("errors", errors);
-            request.setAttribute("accountDTO", accountDTO);
+            request.setAttribute("accountForm", form);
             request.getRequestDispatcher("/WEB-INF/pages/account_registration.jsp").forward(request, response);
         }
+
     }
 
 }

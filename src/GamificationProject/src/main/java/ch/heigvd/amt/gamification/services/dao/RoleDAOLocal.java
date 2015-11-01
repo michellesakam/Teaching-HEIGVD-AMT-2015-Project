@@ -6,7 +6,7 @@ import javax.ejb.Local;
 /**
  *
  * @author parfait
- * Interface generic
+ * But : methods needed only for this entity
  */
 @Local
 public interface RoleDAOLocal extends IGenericDAO<Role, Long> {

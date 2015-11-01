@@ -3,8 +3,8 @@ package ch.heigvd.amt.gamification.rest.dto;
 /**
  *
  * @author parfait
- * But : Contient les ApiKeys et les ascenseurs sur les 
- * champs. 
+ * But : Apikey with getters and setters 
+ * 
  */
 public class ApiKeyDTO {
      private String key;

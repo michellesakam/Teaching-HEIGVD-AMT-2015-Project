@@ -29,7 +29,6 @@ En collaboration avec Samira Kouchali (les autres ayant un travail en dehors des
     un utilisateur connecté
 
 29.09.2015
-
 <li>Scéance de discussion avec les membres du groupe
 
 En collaboration avec Parfait plaisir de Pâques :
@@ -125,8 +124,22 @@ En collaboration avec Raphaël Racine
 <il>écrire le rapport sur la partie du test
  
 ####Parfait plaisir de Pâques Noubissi
+29.09.2015
+<li>Scéance de discussion avec les membres du groupe
 
-A compléter...
+<li>Commencement de la réalisation des entités JPA
+03.10.2015
+<li>creation des entités métier et implementation des annotations jpa
+<li>Collaboration avec le professeur pour résoudre les bugs sur les annotations jpa
+
+14.10.2015
+<li>create et implementation des DTOs
+
+20/21.10.2015
+<li>Implementation des DTO de façon générique et collaboration avec racine pour résoudre les bug
+
+26.10.2015
+<li>séance de discution sur le sur l'état d'avance du projet 
 
 ####Vanessa Michelle Meguep Sakam
 
