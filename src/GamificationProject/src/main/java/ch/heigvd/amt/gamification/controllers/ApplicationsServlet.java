@@ -56,6 +56,7 @@ public class ApplicationsServlet extends HttpServlet {
 
                 req.setAttribute("nbEndUsers", applicationsManager.nbEndUsersOfApplication(application));
                 req.setAttribute("application", application);
+                req.setAttribute("applicationForm", application);
 
             } catch (GamificationDomainEntityNotFoundException ex) {
 

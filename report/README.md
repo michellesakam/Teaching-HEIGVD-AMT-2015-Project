@@ -1,6 +1,6 @@
 # Rapport de projet
 
-<font size=35>RESTE A FAIRE
+<font color=red size=35>RESTE A FAIRE
 Diagramme de classes sans les méthodes
 Commenter classes modèles et formulaires
 Intégrer les tests et les vues</font>
