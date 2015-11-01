@@ -10,7 +10,7 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class EndUsersManager implements EndUsersManagerLocal {
-    
+
     @EJB
     private EndUserDAOLocal endUserDAO;
 
@@ -18,5 +18,5 @@ public class EndUsersManager implements EndUsersManagerLocal {
     public long numberOfEndUsersCreatedDuringLastNbDays(int nbDays) {
         return endUserDAO.numberOfEndUsersCreatedDuringLastNbDays(nbDays);
     }
-    
+
 }

@@ -14,31 +14,31 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class AccountsManager implements AccountsManagerLocal {
+
     @EJB
     private AccountDAOLocal accountDAO;
 
     @Override
-    public void updateAccount(Account a) 
-            throws GamificationDomainEntityNotFoundException, BadPasswordException
-    {
-        PasswordPoliticValidator.checkPassword(a.getPassword());
-        accountDAO.update(a);
-    }    
+    public void updateAccount(Account account)
+            throws GamificationDomainEntityNotFoundException, BadPasswordException {
+        PasswordPoliticValidator.checkPassword(account.getPassword());
+        accountDAO.update(account);
+    }
 
     @Override
-    public void createAccount(Account a) throws BadPasswordException {
-        PasswordPoliticValidator.checkPassword(a.getPassword());
-        accountDAO.create(a);
+    public void createAccount(Account account) throws BadPasswordException {
+        PasswordPoliticValidator.checkPassword(account.getPassword());
+        accountDAO.create(account);
     }
 
     @Override
     public Account retrieveAccount(String email) {
         return accountDAO.findByEmail(email);
-    }  
+    }
 
     @Override
     public long numbersOfAccount() {
         return accountDAO.numbersOfAccount();
-    }   
-    
+    }
+
 }

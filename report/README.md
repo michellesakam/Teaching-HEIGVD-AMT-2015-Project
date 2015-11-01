@@ -86,6 +86,9 @@ end-user
 <li>Mise en place d'une politique de mots de passe pour les comptes utilisateur
 <li>Commencement de la documentation pour la partie 1
 
+31.10.2015
+<li>Refactoring et commentaires du code
+
 ####Samira Kouchali
 26.09.2015
 

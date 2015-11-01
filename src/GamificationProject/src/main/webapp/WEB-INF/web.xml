@@ -32,8 +32,10 @@
         <servlet-name>ApplicationsServlet</servlet-name>
         <servlet-class>ch.heigvd.amt.gamification.controllers.ApplicationsServlet</servlet-class>
     </servlet>
-
-
+    <servlet>
+        <servlet-name>AjaxApplicationsServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.gamification.controllers.ajax.AjaxApplicationsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/pages/welcome</url-pattern>
@@ -54,10 +56,13 @@
         <servlet-name>ApplicationsServlet</servlet-name>
         <url-pattern>/pages/application</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>AccountsServlet</servlet-name>
         <url-pattern>/pages/account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjaxApplicationsServlet</servlet-name>
+        <url-pattern>/applicationsAjax</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

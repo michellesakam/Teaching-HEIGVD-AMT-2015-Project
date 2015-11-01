@@ -20,9 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DataGeneratorServlet extends HttpServlet {
   
   @EJB
-  private TestDataManagerLocal testDataManager;
-
-  
+  private TestDataManagerLocal testDataManager;  
   
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

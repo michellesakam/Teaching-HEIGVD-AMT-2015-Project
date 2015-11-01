@@ -18,7 +18,7 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
 
     @EJB
     private ApplicationDAOLocal applicationDAO;
-    
+
     @Override
     public void assignApplicationToAccount(Application application, Account account) {
         applicationDAO.assignApplicationToAccount(application, account);
@@ -27,7 +27,7 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     @Override
     public long numberOfApplicationsManaged() {
         return applicationDAO.numberOfApplicationsManaged();
-    }    
+    }
 
     @Override
     public void assignApplicationToAnEndUser(Application application, EndUser endUser) {
@@ -42,7 +42,7 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     @Override
     public Application findById(Long id) throws GamificationDomainEntityNotFoundException {
         return applicationDAO.findById(id);
-    }  
+    }
 
     @Override
     public long nbEndUsersOfApplication(Application application) {
@@ -60,15 +60,18 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
 
     @Override
-    public List<EndUser> findEndUsersAndPaginate(Application app, int index, int limit) throws GamificationDomainEntityNotFoundException {
-        return applicationDAO.findEndUsersAndPaginate(app, index, limit);
-    }   
+    public List<EndUser> findEndUsersAndPaginate(Application app, int numPage, int nbEndUsersPerPage) throws GamificationDomainEntityNotFoundException {
+        return applicationDAO.findEndUsersAndPaginate(app, numPage, nbEndUsersPerPage);
+    }
 
     @Override
     public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException {
         applicationDAO.updateApplication(app);
     }
-    
-    
-    
+
+    @Override
+    public boolean checkAccountIsOwnerOfApplication(Account account, Application application) {
+        return account.equals(application.getAcount());
+    }
+
 }

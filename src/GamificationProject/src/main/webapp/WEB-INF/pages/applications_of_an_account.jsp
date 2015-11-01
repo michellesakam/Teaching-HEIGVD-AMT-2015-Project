@@ -1,6 +1,6 @@
 <%-- 
     Document   : Registration
-    Created on : Sept 9, 2015, 11:37:49 AM
+    Created on : Sept 19, 2015, 11:37:49 AM
     Author     : michelle meguep
 --%>
 
@@ -17,6 +17,9 @@
         $.ajax({
             type: "POST",
             data: "action=" + action + "&idApplication=" + id,
+            
+            url: "applicationsAjax",
+            
             beforeSend: function () {
                 buttonClicked.html("En cours...");
                 buttonClicked.attr('class', 'btn btn-warning');
@@ -54,21 +57,19 @@
             </tr>
             <c:forEach var="appli" items="${applications}">
                 <tr>
-                    <td>${appli[0].name}</td>
-                    <td>${appli[0].description}</td>
+                    <td id="Name">${appli[0].name}</td>
+                    <td id="Description">${appli[0].description}</td>
                     <td>${appli[0].apiKey.key}</td>
-                    <td>
-                        <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">
+                    <td>                        
                             <c:choose>
                                 <c:when test="${appli[1] > 0}">
-                                    ${appli[1]}
+                                    <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">${appli[1]}</a>
                                 </c:when>
 
                                 <c:otherwise>
                                     no user
                                 </c:otherwise>
                             </c:choose>
-                        </a>
                     </td>
 
                     <td>                        

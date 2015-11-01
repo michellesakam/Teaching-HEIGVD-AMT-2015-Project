@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 
+ *
  * @author Raphaël Racine
  */
 public class AuthenticationServlet extends HttpServlet {
@@ -56,27 +56,32 @@ public class AuthenticationServlet extends HttpServlet {
 
         targetUrl = request.getContextPath() + targetUrl;
 
-        if ("login".equals(action)) {
-           //@Parfait il faut faut passer uniquement l'email. pas les deux
-            // Corrigé par Raphaël
-            Account a = accountsManager.retrieveAccount(email);
+        if (null != action) {
+            switch (action) {
+                case "login":
+                //@Parfait il faut faut passer uniquement l'email. pas les deux
+                    // Corrigé par Raphaël
+                    Account a = accountsManager.retrieveAccount(email);
+                    if (a != null && a.getPassword().equals(password)) { // The users exists and can connect
+                        request.getSession().setAttribute("principal", a);
+                        response.sendRedirect(request.getContextPath() + "/pages/yourApps");
+                    } else // The users can't connect
+                    {
+                        List<String> errors = new LinkedList<>();
+                        errors.add("Login failed !");
 
-            if (a != null && a.getPassword().equals(password)) { // The users exists and can connect
-                request.getSession().setAttribute("principal", a);
-                response.sendRedirect(request.getContextPath() + "/pages/yourApps");
-            } else // The users can't connect
-            {
-                List<String> errors = new LinkedList<>();
-                errors.add("Login failed !");
-                
-                request.setAttribute("errors", errors);
-                request.getRequestDispatcher("/pages/welcome").forward(request, response);
+                        request.setAttribute("errors", errors);
+                        request.getRequestDispatcher("/pages/welcome").forward(request, response);
+                    }
+                    break;
+                case "logout":
+                    request.getSession().invalidate();
+                    response.sendRedirect(targetUrl);
+                    break;
+                default:
+                    response.sendRedirect(targetUrl);
+                    break;
             }
-        } else if ("logout".equals(action)) {
-            request.getSession().invalidate();
-            response.sendRedirect(targetUrl);
-        } else {
-            response.sendRedirect(targetUrl);
         }
     }
 

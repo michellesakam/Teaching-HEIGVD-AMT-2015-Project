@@ -1,12 +1,12 @@
 package ch.heigvd.amt.gamification.services.passwordvalidation;
 
 /**
- *
+ * 
  * @author Raphaël Racine
  */
 public class BadPasswordException extends Exception {
     
-    private String message;
+    private final String message;
     
     public BadPasswordException(String message) {
         this.message = message;
