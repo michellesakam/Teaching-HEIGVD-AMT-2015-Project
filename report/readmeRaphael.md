@@ -19,7 +19,7 @@ Ces paramètres peuvent être réglés dans le pool MySQL une fois qu'il aura é
 
 Ensuite, il faut ouvrir dans NetBeans le projet qui se trouve dans le répertoire src et qui se nomme GamificationProject.
 
-Il se peut que dans Glassfish il faille ajouter un JNDI dans le répertoire JDBC Resources nommé jdbc/projetamt et qui se connecte à un poll (nommé mysql_projetAMT_rootPool)
+Il se peut que dans Glassfish il faille ajouter un JNDI dans le répertoire JDBC Resources nommé jdbc/projetamt et qui se connecte à un poll (nommé mysql_projetAMT_rootPool par exemple)
 
 Démarrer le serveur glassfish et ensuite compiler le projet avec clean and build, et ensuite exécuter l'application du projet et si tout se passe bien la page de bienvenue s'affiche dans le navigateur.
 
