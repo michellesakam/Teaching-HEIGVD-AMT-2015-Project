@@ -685,6 +685,7 @@ Important: il faut lancer le programme du test juste une foie, car la modificati
 Les outils utilisés sont :
 <li>JMeter --> Tests de performances (taux d'erreur, temps de réponse, graphiques)
 <li>Fluentlenium --> Tests fonctionnels avec navigation automatique sur les pages de l'application
+<li>Google Chrome
 
 ### Procedures
 
@@ -1003,15 +1004,171 @@ Les outils utilisés sont :
 <b>Résultat attendu</b>L'utilisateur doit se déconnecter et aller à la page d'accueil
 
 *******************************
-### Results
+###Resultat
 
-Mettre les résultats des tests Fluent et JMeter
+Voici le resultats des tests. On voit que tous les 21 test s'est passé avec succès.
+
+![](ResultatFluentlenium.PNG)
 
 
 
-## Known Issues
+##Jmeter
+
+JMeter est un projet de logiciel libre permettant d'effectuer des tests de performance d'applications.
+pour commencer il faut démarrer le serveur  et générée le data avec url "/generate"
+
+####Test1
+<b>But:</b> Le but de la Première scénario de test est de mesurer de  performance de la page d'accueil, on test pour vérifier que
+est-ce que on arrive a envoyer les requête sur application et si oui c'est quoi le temps de réponse  et est-ce que il y a les erreur?
+ 
+On vaut mesurer la performance  si il y avait plusieurs utilisateur qui veulent accéder à la page d'accueil en même temps.
+
+
+A cet effet,  il faut préparer le Jmeter:
+<li>1.créer une group d'unités et  définir le nombre d'utilisateurs , durée de montée en charge et nombre d'itérations
+
+![GroupUnites.png](GroupUnites.png)
+
+
+
+<li>2.Ajouter l'échantillon Requête HTTP pour envoyer les requête  HTTP et donner l'URL d'application  
+
+![RequetHTTP.png](RequetHTTP.png)
+
+
+
+
+<li>3.Ajouter les récepteurs pour voir les résultat de test comme :
+Graphique de résultats , Arbre de résultats, Graphique évolution temps de réponses,...
+
+![](AjouterRecepteurs.png)
+
+maintenant tout est prête on peut lancer le test. On voit qu'on arrive à envoyer les requête et on a reçu les réponses.
+
+![](Test1_10user.png)
+
+
+Maintenant on augment le nombre de compte à 1000 et nombre de user à 500 dans la base de donne d'application et on essaie de tester cette foie avec 500 utilisateur avec le nombre itération infinie pour vérofier le temps de réponses d'application sous la charge. On lance le test et voici les résultat:
+
+**Le temps de Réponse***
+![](tempsReponse500user.png)
+
+
+**rapport sommaire***
+![](summeryReport500user.png)
+
+
+<li>Maintenant on répète le test pour 1000 utilisateur:
+
+**Le tempe de Réponse***
+![](tempsReponse1000user.png)
+
+**rapport sommaire***
+![](summaryReport1000user.png)
+
+### Conclusion
+
+Comme illustré dans le "summary report", il n'y a pas d'erreur dans le processus. Dans les résultats, on peut voir que le temps de la réponse augmente de façon significative en augmentant le nombre des utilisateurs. Par exemple, le temps de réponse en cas de 500 utilisateurs est d'environ 3 ms alors qu'il est d'environ 6 ms en cas de 1000 utilisateurs. Par conséquent, nous pouvons conclure que la scalabilité de l'application n'est pas très bon.
+
+
+####Test2
+<b>But:</b>
+Le but de ce test est d'évaluer l'effet de la "query" sur la performance de l'application.
+
+Dans la page d'accueil, il est possible de voir le nombre de comptes, les utilisateurs et les applications qui sont existantes dans la base de données. En fait, «service DAO» fournit toutes ces informations sur la page JSP. Pour compter le nombre de comptes, nous avons appliqué les "queries" suivantes:
+
+query 1 = "SELECT * FROM Account a"
+
+query 2 = "SELECT COUNT(a) FROM Account a"
+
+Puis nous avons évalué l'effet de ces requêtes sur la performance de l'application. avec 10 et 1000 utilisateurs.
+
+### Results query 1
+
+####Pour 10 utilisateur
+
+**Grafique du résultats***
+![](A_Welcome_NombreAccountCrees1000_10Threads_Partie1_SELECT_sans_count.png)
+
+**Temps du réponse***
+![](A.png)
+
+
+
+####Pour 1000 utilisateur
+**Grafique du résultats***
+![](B_Welcome_nombreAccount1000_1000thread_Partie1.PNG)
+
+**Temps du réponse**
+![](B.png)
+
+**Summary Report***
+![](Bsummeryreport.png)
+
+
+
+### Results query 2
+
+####Pour 10 utilisateur
+**Grafique du résultats***
+![](C_Welcome_Account1000_Threads10_Partie2_avec_count.PNG)
+
+
+**Temps du réponse***
+![](C.png)
+
+
+**Summary Report***
+![](Csummaryreport.png)
+
+
+
+####Pour 1000 utilisateur
+**Grafique du résultats***
+![](D.png)
+
+**Temps du réponse***
+![](Dtimedereponse.png)
+
+
+**Summary Report***
+![](D_Welc_Account_1000_Thread_1000_aveccount.PNG)
+
+
+### Conclusion
+
+Comme présenté dans la section des résultats, le temps de réponse en cas de "select *" est environ deux fois plus grande que le cas "SELECT COUNT". Cette conclusion est plus clair lorsque l'application est sous une charge lourde. Par exemple, dans le cas de 1000 utilisateurs, le temps de reponse de "SELECT*" est d'environ 8 ms tandis que le temps de "select count" de réponse est d'environ 4 ms. Par conséquent, il peut être conclu que nous devrions utiliser la méthode optimisée pour améliorer les performances de l'application.
+
+
+####Test3
+<b>But:</b>
+Le but de ce test est de tester les performances de pagination lorsque l'on affiche les utilisateurs finaux d'une application.
+
+En effet il est important de le tester car si la pagination ne se ferait pas directement dans le moteur de la base de données, l'application serait beaucoup moins performantecar il faudrait transfers 10000 utilisateurs finaux vers le serveur Glassfish dans le cas où on aurait paginé la liste en Java.
+
+Le but de ce test est donc de montrer que comme la pagination se fait directement dans la base de données et pas en Java, c'est plus performant.
+
+Comme nous n'avons pas réussi à exécuter ce test avec JMeter, à cause de problèmes de login, nous avons choisi de simuler un seul utilisateur qui se connecte au site (qui contient 5000 utilisateurs finaux dans la même application).
+
+Nous avons donc tester le temps de réponse avec l'outil de développement de Google Chrome et nous avons obtenu le résultat suivant :
+
+![](Test_Pagination_Performances_Avant_Test.PNG)
+
+![](Test_performance_apres.PNG)
+### Conclusion
+On voit que le temps de réponse est très rapide malgré qu'il ait 5000 utilisateurs finaux dans la base de données.
+
+Si on aurait fait la pagination en Java, cela aurait pris beaucoup plus de temps car il aurait fallu transférer 5000 utilisateurs finaux dans le serveur glassfish et ensuite dans l'application pour pouvoir les paginer, alors qu'il suffit que la base de données transfère seulement le contenu nécessaire à afficher dans la page.
+
+
+## Problèmes connus
 
 ## Conclusion
+###Partie 1
+###Partie 2
+###Partie 3
 
-## Appending A: Auto Evaluation
+## Auto Evaluation
+Le fichier d'auto-évaluation se trouve [ici](evaluation/evaluation.xlsx)
+
 

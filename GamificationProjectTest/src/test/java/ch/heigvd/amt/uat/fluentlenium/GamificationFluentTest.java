@@ -117,13 +117,13 @@ public class GamificationFluentTest extends FluentTest {
      public void itShouldNotBePossibleToSignUpIfThePasswordAndConfirmPasswordAreNotIdentical() {
      goTo(baseUrl + "pages/account?edit=false");
 
-     RegistrationPage.typeEmailAddress("b@b.ch");
+     RegistrationPage.typeEmailAddress("aaa@b.ch");
      RegistrationPage.typeFirstname("FirstName");
      RegistrationPage.typeLastname("LastName");
      RegistrationPage.typePassword("11111111");
      RegistrationPage.typeConfirmPassword("222222");
      RegistrationPage.clickSignUp();
-     loginPage.isAt();
+     RegistrationPage.isAt();
      
      }
     
@@ -199,6 +199,13 @@ public class GamificationFluentTest extends FluentTest {
      ApplicationDetailsPage.clickRegister();
      yourAppPage.isAt();
      yourAppPage.isEditedInTheNamePart("LC version 2");
+     //we come back to the original state to prevent any problem in case of running the other test
+     yourAppPage.clickEdit();
+     ApplicationDetailsPage.typeNameApp("Lego Creator");
+     ApplicationRegistrationPage.clickRegister();
+     yourAppPage.isAt();
+     
+     
      }
 
      @Test
@@ -218,7 +225,7 @@ public class GamificationFluentTest extends FluentTest {
      simulateLogin();
      yourAppPage.clickEdit();
      ApplicationDetailsPage.isAt();
-     ApplicationDetailsPage.typeNameApp("I don't want to save thid name");
+     ApplicationDetailsPage.typeNameApp("I don't want to save this name");
      ApplicationDetailsPage.clickcancel();
      yourAppPage.isAt();
      yourAppPage.isNotSaveTheModificationInNamePart("I don't want to save this name");
@@ -284,8 +291,8 @@ public class GamificationFluentTest extends FluentTest {
      public void itShouldBePossibleToAccessYourAppByClickApp() {
      simulateLogin();
      yourAppPage.clickEdit();
-     EditAccountPage.isAt();
-     EditAccountPage.clickApplication();
+     ApplicationDetailsPage.isAt();
+     ApplicationDetailsPage.clickApplication();
      yourAppPage.isAt();
      }
      
