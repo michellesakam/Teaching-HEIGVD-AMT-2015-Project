@@ -117,7 +117,7 @@ public class GamificationFluentTest extends FluentTest {
      public void itShouldNotBePossibleToSignUpIfThePasswordAndConfirmPasswordAreNotIdentical() {
      goTo(baseUrl + "pages/account?edit=false");
 
-     RegistrationPage.typeEmailAddress("b@b.ch");
+     RegistrationPage.typeEmailAddress("aaa@b.ch");
      RegistrationPage.typeFirstname("FirstName");
      RegistrationPage.typeLastname("LastName");
      RegistrationPage.typePassword("11111111");
@@ -216,7 +216,7 @@ public class GamificationFluentTest extends FluentTest {
      ApplicationDetailsPage.isAt();
      ApplicationDetailsPage.typeDescriptionApp("This is a short edit description");
      ApplicationDetailsPage.clickRegister();
-  //   yourAppPage.isAt();
+     yourAppPage.isAt();
      yourAppPage.isEditedInTheDescriptionPart("This is a short edit description");
      }
     
@@ -225,7 +225,7 @@ public class GamificationFluentTest extends FluentTest {
      simulateLogin();
      yourAppPage.clickEdit();
      ApplicationDetailsPage.isAt();
-     ApplicationDetailsPage.typeNameApp("I don't want to save thid name");
+     ApplicationDetailsPage.typeNameApp("I don't want to save this name");
      ApplicationDetailsPage.clickcancel();
      yourAppPage.isAt();
      yourAppPage.isNotSaveTheModificationInNamePart("I don't want to save this name");

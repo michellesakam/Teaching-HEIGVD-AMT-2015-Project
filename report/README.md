@@ -945,9 +945,15 @@ Les outils utilisés sont :
 <b>Résultat attendu</b>L'utilisateur doit se déconnecter et aller à la page d'accueil
 
 *******************************
+###Resultat
+
+Voici le resultats des tests. On voit que tous les 21 test s'est passé avec succès.
+
+![](ResultatFluentlenium.PNG)
 
 
-###Jmeter
+
+##Jmeter
 
 JMeter est un projet de logiciel libre permettant d'effectuer des tests de performance d'applications.
 pour commencer il faut démarrer le serveur  et générée le data avec url "/generate"
