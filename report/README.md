@@ -1,9 +1,5 @@
 # Rapport de projet
 
-<font color=red size=35>RESTE A FAIRE
-Diagramme de classes sans les méthodes
-Commenter classes modèles et formulaires</font>
-
 ## Informations administratives
 
 ### Equipe
