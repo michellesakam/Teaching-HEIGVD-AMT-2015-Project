@@ -1065,13 +1065,13 @@ On vaut mesurer la performance  si il y avait plusieurs utilisateur qui veulent 
 A cet effet,  il faut préparer le Jmeter:
 <li>1.créer une group d'unités et  définir le nombre d'utilisateurs , durée de montée en charge et nombre d'itérations
 
-![](pictures/GroupUnites.png)
+![](pictures/GroupUnites.PNG)
 
 
 
 <li>2.Ajouter l'échantillon Requête HTTP pour envoyer les requête  HTTP et donner l'URL d'application  
 
-![](pictures/RequetHTTP.png)
+![](pictures/RequetHTTP.PNG)
 
 
 
@@ -1079,30 +1079,30 @@ A cet effet,  il faut préparer le Jmeter:
 <li>3.Ajouter les récepteurs pour voir les résultat de test comme :
 Graphique de résultats , Arbre de résultats, Graphique évolution temps de réponses,...
 
-![](pictures/AjouterRecepteurs.png)
+![](pictures/AjouterRecepteurs.PNG)
 
 maintenant tout est prête on peut lancer le test. On voit qu'on arrive à envoyer les requête et on a reçu les réponses.
 
-![](pictures/Test1_10user.png)
+![](pictures/Test1_10user.PNG)
 
 
 Maintenant on augment le nombre de compte à 1000 et nombre de user à 500 dans la base de donne d'application et on essaie de tester cette foie avec 500 utilisateur avec le nombre itération infinie pour vérofier le temps de réponses d'application sous la charge. On lance le test et voici les résultat:
 
 **Le temps de Réponse***
-![](pictures/tempsReponse500user.png)
+![](pictures/tempsReponse500user.PNG)
 
 
 **rapport sommaire***
-![](pictures/summeryReport500user.png)
+![](pictures/summeryReport500user.PNG)
 
 
 <li>Maintenant on répète le test pour 1000 utilisateur:
 
 **Le tempe de Réponse***
-![](pictures/tempsReponse1000user.png)
+![](pictures/tempsReponse1000user.PNG)
 
 **rapport sommaire***
-![](pictures/summaryReport1000user.png)
+![](pictures/summaryReport1000user.PNG)
 
 ### Conclusion
 
@@ -1126,10 +1126,10 @@ Puis nous avons évalué l'effet de ces requêtes sur la performance de l'applic
 ####Pour 10 utilisateur
 
 **Grafique du résultats***
-![](pictures/A_Welcome_NombreAccountCrees1000_10Threads_Partie1_SELECT_sans_count.png)
+![](pictures/A_Welcome_NombreAccountCrees1000_10Threads_Partie1_SELECT_sans_count.PNG)
 
 **Temps du réponse***
-![](pictures/A.png)
+![](pictures/A.PNG)
 
 
 
@@ -1138,10 +1138,10 @@ Puis nous avons évalué l'effet de ces requêtes sur la performance de l'applic
 ![](pictures/B_Welcome_nombreAccount1000_1000thread_Partie1.PNG)
 
 **Temps du réponse**
-![](pictures/B.png)
+![](pictures/B.PNG)
 
 **Summary Report***
-![](pictures/Bsummeryreport.png)
+![](pictures/Bsummeryreport.PNG)
 
 
 
@@ -1153,20 +1153,20 @@ Puis nous avons évalué l'effet de ces requêtes sur la performance de l'applic
 
 
 **Temps du réponse***
-![](pictures/C.png)
+![](pictures/C.PNG)
 
 
 **Summary Report***
-![](pictures/Csummaryreport.png)
+![](pictures/Csummaryreport.PNG)
 
 
 
 ####Pour 1000 utilisateur
 **Grafique du résultats***
-![](pictures/D.png)
+![](pictures/D.PNG)
 
 **Temps du réponse***
-![](pictures/Dtimedereponse.png)
+![](pictures/Dtimedereponse.PNG)
 
 
 **Summary Report***
