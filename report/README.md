@@ -1065,13 +1065,13 @@ On vaut mesurer la performance  si il y avait plusieurs utilisateur qui veulent 
 A cet effet,  il faut préparer le Jmeter:
 <li>1.créer une group d'unités et  définir le nombre d'utilisateurs , durée de montée en charge et nombre d'itérations
 
-![GroupUnites.png](pictures/GroupUnites.png)
+![](pictures/GroupUnites.png)
 
 
 
 <li>2.Ajouter l'échantillon Requête HTTP pour envoyer les requête  HTTP et donner l'URL d'application  
 
-![RequetHTTP.png](pictures/RequetHTTP.png)
+![](pictures/RequetHTTP.png)
 
 
 
