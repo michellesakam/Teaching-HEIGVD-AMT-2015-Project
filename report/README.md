@@ -329,7 +329,129 @@ Cette page permet à un utilisateur d'éditer son compte.Celui-ci peut modifier 
 
 
 ### API Rest
-Les API Rest ne sont pas encore implémentées.
+Voici l'API Rest pour la gamification des applications.
+
+#### Evénements
+<li>Poster un événement sur une application</li>
+
+```
+POST /events/{numeroEndUser}
+
+{
+	"eventName":"Post a comment"
+}
+```
+
+#### Niveaux
+
+<li>Poster un niveau dans une application</li>
+
+```
+POST /levels/{apikeyOfTheApplication}/{levelName}
+
+{
+	"minimumPoints":100
+}
+```
+
+<li>Modifier un niveau dans une application</li>
+
+```
+PUT /levels/{apikeyOfTheApplication}/{levelName}
+
+{
+	"minimumPoints":600
+}
+```
+
+<li>Modifier un niveau dans une application
+
+```
+DELETE /levels/{apikeyOfTheApplication}/{levelName}
+```
+
+####Statistiques Widgets
+
+#####Niveau
+<li>Obtenir le niveau actuel d'un utilisateur</li>
+
+```
+GET /levels/{apikeyOfTheApplication}/{noEndUser}
+
+```
+
+Attendu dans la réponse :
+
+```
+{
+	"currentLevel":6,
+	"currentPoints":45,
+	"minimumPointsForNextLevel":200,
+	"currentLevelName":"Warrior",
+	"nextLevelName":"Dragon"
+}
+
+```
+
+
+#####Activité
+<li>Obtenir l'activité d'un utilisateur</li>
+
+```
+GET /activity/{apikeyOfTheApplication}/{noEndUser}
+
+```
+
+Attendu dans la réponse :
+
+```
+{
+	[
+		{
+			"typeOfEvent":"Positive vote",
+			"numbersOfOccurences":54
+		},
+		{
+			"typeOfEvent":"Post a comment",
+			"numbersOfOccurences":38
+		}
+	]
+	,
+	"totalOfEventsOccured":92
+}
+
+```
+
+
+#####Points
+<li>Obtenir les statistiques sur les points d'un utilisateur</li>
+
+```
+GET /points/{apikeyOfTheApplication}/{noEndUser}
+
+```
+
+Attendu dans la réponse :
+
+```
+{
+	[
+		{
+			"reason":"Winned a cup",
+			"totalPoints":50
+		},
+		{
+			"reason":"100 comments posted",
+			"totalPoints":1000
+		}
+	]
+	,
+	"totalOfPoints":1050
+}
+
+```
+
+
 
 ### Modèles de conception utilisés
 L'application utilise les design pattern suivants pour le moment :
