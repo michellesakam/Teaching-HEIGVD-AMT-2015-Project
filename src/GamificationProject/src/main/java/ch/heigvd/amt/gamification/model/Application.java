@@ -27,6 +27,9 @@ import javax.persistence.OneToOne;
 })
 
 public class Application extends AbstractDomainModelEntity<Long> {
+    
+    @OneToMany(mappedBy = "application")
+    private List<Level> levels;
 
     public Application() {
     }
@@ -105,5 +108,15 @@ public class Application extends AbstractDomainModelEntity<Long> {
     public void setUser(List<EndUser> endUsers) {
         this.endUsers = endUsers;
     }
+
+    public List<Level> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(List<Level> levels) {
+        this.levels = levels;
+    }
+    
+    
     
 }
