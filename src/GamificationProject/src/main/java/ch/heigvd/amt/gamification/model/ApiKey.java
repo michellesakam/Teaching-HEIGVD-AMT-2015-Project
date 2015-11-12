@@ -1,5 +1,5 @@
 
-package ch.heigvd.amt.gamification.model.entities;
+package ch.heigvd.amt.gamification.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

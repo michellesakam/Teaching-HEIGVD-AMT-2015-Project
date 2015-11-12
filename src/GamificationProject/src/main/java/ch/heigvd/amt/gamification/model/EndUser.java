@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.model.entities;
+package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
 import javax.persistence.Entity;

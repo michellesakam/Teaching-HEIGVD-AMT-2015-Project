@@ -1,7 +1,7 @@
 package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.services.passwordvalidation.PasswordPoliticValidator;
-import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.services.dao.AccountDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;

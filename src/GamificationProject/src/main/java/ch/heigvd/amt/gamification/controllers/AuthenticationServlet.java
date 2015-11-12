@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.services.AccountsManagerLocal;
 import java.io.IOException;
 import javax.ejb.EJB;

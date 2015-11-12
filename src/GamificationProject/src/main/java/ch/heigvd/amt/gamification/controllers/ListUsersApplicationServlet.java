@@ -1,7 +1,7 @@
 package ch.heigvd.amt.gamification.controllers;
 
-import ch.heigvd.amt.gamification.model.entities.Application;
-import ch.heigvd.amt.gamification.model.entities.EndUser;
+import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.util.Pagination;

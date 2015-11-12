@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.services.dao;
 
-import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.Account;
 import javax.ejb.Local;
 
 /**

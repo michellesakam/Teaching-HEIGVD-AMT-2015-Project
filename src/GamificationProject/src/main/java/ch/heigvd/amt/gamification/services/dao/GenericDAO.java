@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.services.dao;
 
-import ch.heigvd.amt.gamification.model.entities.AbstractDomainModelEntity;
+import ch.heigvd.amt.gamification.model.AbstractDomainModelEntity;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;

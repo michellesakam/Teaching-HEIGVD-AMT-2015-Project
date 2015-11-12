@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.services.dao;
 
-import ch.heigvd.amt.gamification.model.entities.ApiKey;
+import ch.heigvd.amt.gamification.model.ApiKey;
 import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

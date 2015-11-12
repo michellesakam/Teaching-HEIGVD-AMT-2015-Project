@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.services.dao;
 
-import ch.heigvd.amt.gamification.model.entities.Role;
+import ch.heigvd.amt.gamification.model.Role;
 import javax.ejb.Stateless;
 
 /**

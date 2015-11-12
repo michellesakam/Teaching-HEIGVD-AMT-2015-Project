@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.filters;
 
-import ch.heigvd.amt.gamification.model.entities.Account;
+import ch.heigvd.amt.gamification.model.Account;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

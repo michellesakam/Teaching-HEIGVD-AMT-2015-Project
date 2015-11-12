@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.model.entities;
+package ch.heigvd.amt.gamification.model;
 
 import java.util.List;
 import javax.persistence.CascadeType;
