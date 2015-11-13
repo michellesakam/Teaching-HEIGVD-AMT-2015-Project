@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -15,7 +16,7 @@ import javax.ws.rs.Produces;
 
 @Stateless
 @Path("events")
-public class Events {
+public class EventRessource {
     
     @POST
     @Consumes("application/json")
@@ -25,10 +26,10 @@ public class Events {
     
     @GET
     @Produces("application/json")
-    public EventDTO test() {
+    public Response test() {
         EventDTO event = new EventDTO();
         event.setType("Salut mon pote");
-        return event;
+        return Response.ok(event).build();
     }
     
 }
