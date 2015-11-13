@@ -117,6 +117,11 @@ public interface ApplicationsManagerLocal {
      */
     public boolean checkEndUserUseAnApplication(Application application, EndUser endUser);
     
+    /**
+     * Retrieve an application by apikey
+     * @param apikey
+     * @return null if the applicaion not exists, else the application
+     */
     public Application retriveApplicationByApikey(String apikey);
 
 }
