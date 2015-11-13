@@ -1,13 +1,14 @@
 package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.EventDTO;
+import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
+import ch.heigvd.amt.gamification.services.EventsManagerLocal;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
 
 /**
  *
@@ -18,18 +19,17 @@ import javax.ws.rs.core.Response;
 @Path("events")
 public class EventRessource {
     
+    @EJB
+    private ApplicationsManagerLocal applicationsManager;
+    
+    @EJB
+    private EventsManagerLocal eventsManager;
+    
     @POST
     @Consumes("application/json")
-    public void receiveEvent(EventDTO event) {
-       String str = event.getType();
+    public void postEvent(EventDTO event) {
+        
     }
-    
-    @GET
-    @Produces("application/json")
-    public Response test() {
-        EventDTO event = new EventDTO();
-        event.setType("Salut mon pote");
-        return Response.ok(event).build();
-    }
+
     
 }
