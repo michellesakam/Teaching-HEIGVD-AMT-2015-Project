@@ -74,4 +74,9 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
         return account.equals(application.getAcount());
     }
 
+    @Override
+    public boolean checkEndUserUseAnApplication(Application application, EndUser endUser) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

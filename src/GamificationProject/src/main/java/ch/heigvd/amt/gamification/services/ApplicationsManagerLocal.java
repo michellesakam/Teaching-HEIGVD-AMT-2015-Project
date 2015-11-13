@@ -108,5 +108,13 @@ public interface ApplicationsManagerLocal {
      * @return true if account is the owner of application, otherwise false
      */
     public boolean checkAccountIsOwnerOfApplication(Account account, Application application);
+    
+    /**
+     * Check if an end user is associate to an applicatino
+     * @param application
+     * @param endUser
+     * @return true if the end user is associated, false else
+     */
+    public boolean checkEndUserUseAnApplication(Application application, EndUser endUser);
 
 }
