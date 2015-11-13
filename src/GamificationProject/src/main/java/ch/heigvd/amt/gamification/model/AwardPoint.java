@@ -13,31 +13,11 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class AwardPoint extends Award{
-    @ManyToOne
-    private EndUser endUser;   
-    
-    private String reason;    
+  
+     
     private int score;    
     
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateReception;
-
-    public EndUser getEndUser() {
-        return endUser;
-    }
-
-    public void setEndUser(EndUser endUser) {
-        this.endUser = endUser;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
+ 
     public int getScore() {
         return score;
     }
@@ -46,12 +26,6 @@ public class AwardPoint extends Award{
         this.score = score;
     }
 
-    public Date getDateReception() {
-        return dateReception;
-    }
-
-    public void setDateReception(Date dateReception) {
-        this.dateReception = dateReception;
-    }    
+  
     
 }

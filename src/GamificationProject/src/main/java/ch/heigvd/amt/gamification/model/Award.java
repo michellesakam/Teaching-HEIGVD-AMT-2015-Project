@@ -6,14 +6,31 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author parfait
  */
+@Entity
+@Table(name="Award")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="")
 public abstract class Award  extends AbstractDomainModelEntity<Long>{
     private String raison;
-    private Date date;
+   
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateReception;
+    
+    @ManyToOne
+    private EndUser endUser; 
 
     /**
      * @return the raison
@@ -30,16 +47,31 @@ public abstract class Award  extends AbstractDomainModelEntity<Long>{
     }
 
     /**
-     * @return the date
+     * @return the dateReception
      */
-    public Date getDate() {
-        return date;
+    public Date getDateReception() {
+        return dateReception;
     }
 
     /**
-     * @param date the date to set
+     * @param dateReception the dateReception to set
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateReception(Date dateReception) {
+        this.dateReception = dateReception;
     }
+
+    /**
+     * @return the endUser
+     */
+    public EndUser getEndUser() {
+        return endUser;
+    }
+
+    /**
+     * @param endUser the endUser to set
+     */
+    public void setEndUser(EndUser endUser) {
+        this.endUser = endUser;
+    }
+
 }
