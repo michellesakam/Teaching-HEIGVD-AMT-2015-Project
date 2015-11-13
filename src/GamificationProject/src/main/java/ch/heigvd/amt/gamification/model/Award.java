@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="Award")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="")
+//@DiscriminatorColumn(name="")
 public abstract class Award  extends AbstractDomainModelEntity<Long>{
     private String raison;
    
