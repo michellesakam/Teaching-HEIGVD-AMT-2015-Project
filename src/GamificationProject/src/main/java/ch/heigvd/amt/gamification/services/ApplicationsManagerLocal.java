@@ -116,5 +116,7 @@ public interface ApplicationsManagerLocal {
      * @return true if the end user is associated, false else
      */
     public boolean checkEndUserUseAnApplication(Application application, EndUser endUser);
+    
+    public Application retriveApplicationByApikey(String apikey);
 
 }
