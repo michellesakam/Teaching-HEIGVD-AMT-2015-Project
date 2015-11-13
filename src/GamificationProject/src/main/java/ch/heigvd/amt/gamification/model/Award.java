@@ -5,10 +5,41 @@
  */
 package ch.heigvd.amt.gamification.model;
 
+import java.util.Date;
+
 /**
  *
  * @author parfait
  */
-public class Award extends AbstractDomainModelEntity<Object>{
-    
+public abstract class Award  extends AbstractDomainModelEntity<Long>{
+    private String raison;
+    private Date date;
+
+    /**
+     * @return the raison
+     */
+    public String getRaison() {
+        return raison;
+    }
+
+    /**
+     * @param raison the raison to set
+     */
+    public void setRaison(String raison) {
+        this.raison = raison;
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

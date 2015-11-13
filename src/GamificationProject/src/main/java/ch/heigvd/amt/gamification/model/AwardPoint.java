@@ -52,7 +52,6 @@ public class AwardPoint extends Award{
 
     public void setDateReception(Date dateReception) {
         this.dateReception = dateReception;
-    }
-    
+    }    
     
 }
