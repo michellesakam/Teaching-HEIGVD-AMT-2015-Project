@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
  * @author Raphaël Racine
  */
 @Entity
+
 public class Event extends AbstractDomainModelEntity<Long> {
 
     private String type;

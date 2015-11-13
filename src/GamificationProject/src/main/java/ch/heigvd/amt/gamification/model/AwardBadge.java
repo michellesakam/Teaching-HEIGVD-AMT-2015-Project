@@ -9,6 +9,6 @@ package ch.heigvd.amt.gamification.model;
  *
  * @author parfait
  */
-public class AwardBage extends Award{
+public class AwardBadge extends Award{
     
 }
