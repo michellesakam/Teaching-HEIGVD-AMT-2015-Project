@@ -12,7 +12,7 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-public class Point extends AbstractDomainModelEntity<Long> {
+public class AwardPoint extends Award{
     @ManyToOne
     private EndUser endUser;   
     

@@ -30,7 +30,7 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
     private List<Event> events;
     
     @OneToMany(mappedBy = "endUser")
-    private List<Point> points;
+    private List<AwardPoint> points;
 
     public EndUser() {
     }
@@ -72,11 +72,11 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
         this.events = events;
     }
 
-    public List<Point> getPoints() {
+    public List<AwardPoint> getPoints() {
         return points;
     }
 
-    public void setPoints(List<Point> points) {
+    public void setPoints(List<AwardPoint> points) {
         this.points = points;
     }
 
