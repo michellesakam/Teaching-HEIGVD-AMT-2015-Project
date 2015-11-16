@@ -23,6 +23,7 @@ public class EndUsersManager implements EndUsersManagerLocal {
 
     @Override
     public EndUser retrieveEndUser(String noEndUser) {
+        // TODO:
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
