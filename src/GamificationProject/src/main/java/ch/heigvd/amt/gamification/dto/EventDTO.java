@@ -6,6 +6,24 @@ package ch.heigvd.amt.gamification.dto;
  */
 public class EventDTO {    
     private String type;
+    private String apikey;
+    private String noEndUser;
+
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
+    }
+
+    public void setNoEndUser(String noEndUser) {
+        this.noEndUser = noEndUser;
+    }
+
+    public String getApikey() {
+        return apikey;
+    }
+
+    public String getNoEndUser() {
+        return noEndUser;
+    }
 
     public String getType() {
         return type;
