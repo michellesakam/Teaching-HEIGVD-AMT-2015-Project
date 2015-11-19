@@ -81,7 +81,7 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
 
     @Override
-    public Application retriveApplicationByApikey(String apikey) {
+    public Application retrieveApplicationByApikey(String apikey) {
         // TODO:
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

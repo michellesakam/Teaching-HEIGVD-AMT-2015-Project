@@ -122,6 +122,6 @@ public interface ApplicationsManagerLocal {
      * @param apikey
      * @return null if the applicaion not exists, else the application
      */
-    public Application retriveApplicationByApikey(String apikey);
+    public Application retrieveApplicationByApikey(String apikey);
 
 }

@@ -34,7 +34,7 @@ public class EventRessource {
     @POST
     @Consumes("application/json")
     public void postEvent(EventDTO event) {
-        Application application = applicationsManager.retriveApplicationByApikey(event.getApikey());
+        Application application = applicationsManager.retrieveApplicationByApikey(event.getApikey());
         EndUser endUser = endUserManger.retrieveEndUser(event.getNoEndUser());
 
         if (application == null) {
