@@ -76,8 +76,7 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
 
     @Override
     public boolean checkEndUserUseAnApplication(Application application, EndUser endUser) {
-        // TODO:
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return applicationDAO.checkEndUserUseApp(application, endUser);
     }
 
     @Override

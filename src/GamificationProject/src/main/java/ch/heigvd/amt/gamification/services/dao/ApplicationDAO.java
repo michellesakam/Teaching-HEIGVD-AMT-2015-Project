@@ -105,4 +105,12 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .getSingleResult();
     }
 
+    @Override
+    public boolean checkEndUserUseApp(Application application, EndUser endUser) {
+        return em.createNamedQuery("Application.checkEndUserUseApp")
+                .setParameter("app", application)
+                .setParameter("endUser", endUser)
+                .getResultList().size() > 0;
+    }   
+
 }
