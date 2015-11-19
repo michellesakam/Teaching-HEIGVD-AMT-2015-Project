@@ -11,4 +11,6 @@ import javax.ejb.Local;
 @Local
 public interface EndUserDAOLocal extends IGenericDAO<EndUser, Long> {
     public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay);
+
+    public EndUser findByNo(String noEndUser);
 }

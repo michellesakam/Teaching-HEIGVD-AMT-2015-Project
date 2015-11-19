@@ -1,8 +1,10 @@
 package ch.heigvd.amt.gamification.services.dao;
 
+import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,5 +32,15 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
                 .setParameter("date1", before.getTime())
                 .setParameter("date2", today.getTime())
                 .getSingleResult();
+    }
+
+    @Override
+    public EndUser findByNo(String noEndUser) {
+        List<EndUser> tmp = em.createNamedQuery("EndUser.findByNo")
+                .setParameter("no", noEndUser)
+                .setMaxResults(1)
+                .getResultList();
+
+        return tmp.size() > 0 ? tmp.get(0) : null;
     }
 }

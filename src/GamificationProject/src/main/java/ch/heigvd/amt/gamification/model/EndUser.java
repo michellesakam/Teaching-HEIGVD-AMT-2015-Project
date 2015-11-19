@@ -18,7 +18,9 @@ import javax.persistence.TemporalType;
 
 @NamedQueries({
     @NamedQuery(name = "EndUser.countEndUsersCreatedBetweenTwoDates",
-            query = "SELECT COUNT(e) FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2")
+            query = "SELECT COUNT(e) FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2"),
+    @NamedQuery(name = "EndUser.findByNo",
+            query = "SELECT e FROM EndUser e WHERE e.userID = :no")
 })
 public class EndUser extends AbstractDomainModelEntity<Long> {
 
@@ -27,7 +29,7 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
 
     @OneToMany(mappedBy = "endUser")
     private List<Event> events;
-    
+
     @OneToMany(mappedBy = "endUser")
     private List<AwardPoint> points;
 
