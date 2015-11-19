@@ -97,4 +97,12 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
         update(app);
     }
 
+    @Override
+    public Application findByApiKey(String apikey) {
+        return (Application) em.createNamedQuery("Application.findByApiKey")
+                .setParameter("key", apikey)
+                .setMaxResults(1)
+                .getSingleResult();
+    }
+
 }
