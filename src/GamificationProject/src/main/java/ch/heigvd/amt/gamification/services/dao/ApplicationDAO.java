@@ -10,26 +10,25 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author parfait
- * But : implements ApplicationDOALocal 
+ * @author parfait But : implements ApplicationDOALocal
  */
 @Stateless
 public class ApplicationDAO extends GenericDAO<Application, Long> implements ApplicationDAOLocal {
 
     @PersistenceContext
     EntityManager em;
-    
+
     @EJB
     private ApiKeyDAOLocal apikeyDAO;
-    
- 
+
     @Override
     public void assignApplicationToAccount(Application app, Account acc) {
-        
+
         ApiKey key = apikeyDAO.getNewApiKey();
 
         app.setAcount(acc);
@@ -49,14 +48,14 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     @Override
     public void assignApplicationToEndUser(Application application, EndUser endUser) {
         application.getEndUsers().add(endUser);
-        endUser.setApplication(application);        
-        
+        endUser.setApplication(application);
+
         try {
             update(application);
         } catch (GamificationDomainEntityNotFoundException ex) {
             Logger.getLogger(ApplicationDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
 
     @Override
     public List<Application> applicationsOfAnAccountWithEndUsersNumber(Account account) {
@@ -99,10 +98,14 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public Application findByApiKey(String apikey) {
-        return (Application) em.createNamedQuery("Application.findByApiKey")
-                .setParameter("key", apikey)
-                .setMaxResults(1)
-                .getSingleResult();
+        try {
+            return (Application) em.createNamedQuery("Application.findByApiKey")
+                    .setParameter("key", apikey)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
@@ -111,6 +114,6 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .setParameter("app", application)
                 .setParameter("endUser", endUser)
                 .getResultList().size() > 0;
-    }   
+    }
 
 }
