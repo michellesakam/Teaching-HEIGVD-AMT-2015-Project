@@ -70,6 +70,10 @@ public class SecurityFilter implements Filter {
          */
         if (path.startsWith("/static/")) {
             isTargetUrlProtected = false;
+            
+            // Authorize access to API Rest
+        } else if (path.startsWith("/api")) {
+            isTargetUrlProtected = false;
         } else if ("/generate".equals(path)) {
             isTargetUrlProtected = false;
         } else if ("/auth".equals(path)) {
