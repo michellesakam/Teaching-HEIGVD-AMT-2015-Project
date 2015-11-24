@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,10 +37,10 @@ public class Account extends AbstractDomainModelEntity<Long> {
     private String password;
 
     @ManyToMany //
-    private List<Role> roles;
+    private List<Role> roles = new LinkedList<>();
 
     @OneToMany(mappedBy = "acount")
-    private List<Application> apps;
+    private List<Application> apps = new LinkedList<>();
     
     public Account(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;

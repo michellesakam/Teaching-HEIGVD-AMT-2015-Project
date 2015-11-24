@@ -24,6 +24,7 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="")
 public abstract class Award  extends AbstractDomainModelEntity<Long>{
+    
     private String raison;
    
     @Temporal(TemporalType.TIMESTAMP)

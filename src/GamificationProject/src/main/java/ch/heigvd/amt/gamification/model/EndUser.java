@@ -1,6 +1,7 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -28,10 +29,10 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
     private Application application;
 
     @OneToMany(mappedBy = "endUser")
-    private List<Event> events;
+    private List<Event> events = new LinkedList<>();
 
     @OneToMany(mappedBy = "endUser")
-    private List<AwardPoint> points;
+    private List<AwardPoint> points  = new LinkedList<>();
 
     public EndUser() {
     }

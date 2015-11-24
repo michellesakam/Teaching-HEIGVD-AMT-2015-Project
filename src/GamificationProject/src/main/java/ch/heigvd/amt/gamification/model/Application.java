@@ -1,10 +1,10 @@
 package ch.heigvd.amt.gamification.model;
 
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -32,7 +32,7 @@ import javax.persistence.OneToOne;
 public class Application extends AbstractDomainModelEntity<Long> {
     
     @OneToMany(mappedBy = "application")
-    private List<Level> levels;
+    private List<Level> levels = new LinkedList<>();
 
     public Application() {
     }
@@ -54,7 +54,7 @@ public class Application extends AbstractDomainModelEntity<Long> {
     private boolean isEnable;
     
     @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
-    private List <EndUser> endUsers;   
+    private List <EndUser> endUsers = new LinkedList<>();  
    
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isEnable) {
         this.name = name;

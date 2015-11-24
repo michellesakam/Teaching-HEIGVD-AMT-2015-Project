@@ -1,11 +1,7 @@
 package ch.heigvd.amt.gamification.model;
 
-import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -15,10 +11,8 @@ import javax.persistence.TemporalType;
 @Entity
 @DiscriminatorValue( "score")
 public class AwardPoint extends Award{
-  
-       
-    private int score;    
-    
+         
+    private int score;        
  
     public int getScore() {
         return score;
