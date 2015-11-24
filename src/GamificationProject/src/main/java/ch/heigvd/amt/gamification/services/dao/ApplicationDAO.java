@@ -49,12 +49,6 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
         
         application.getEndUsers().add(endUser);
         endUser.setApplication(application);
-
-        try {
-            update(application);
-        } catch (GamificationDomainEntityNotFoundException ex) {
-            Logger.getLogger(ApplicationDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
     }
 
