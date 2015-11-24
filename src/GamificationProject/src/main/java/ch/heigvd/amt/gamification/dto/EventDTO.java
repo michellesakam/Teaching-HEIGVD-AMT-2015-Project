@@ -1,13 +1,13 @@
 package ch.heigvd.amt.gamification.dto;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
  *
  * @author Raphaël Racine
  */
-public class EventDTO {    
+public class EventDTO { 
     private String type;
     private String apiKey;
     private String endUserNumber;

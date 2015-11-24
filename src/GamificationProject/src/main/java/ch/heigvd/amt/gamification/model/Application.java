@@ -34,8 +34,7 @@ public class Application extends AbstractDomainModelEntity<Long> {
     @OneToMany(mappedBy = "application")
     private List<Level> levels = new LinkedList<>();
 
-    public Application() {
-    }
+    public Application() {}
 
     @Column(nullable = false, unique = true) 
     private String name;
@@ -54,7 +53,7 @@ public class Application extends AbstractDomainModelEntity<Long> {
     private boolean isEnable;
     
     @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
-    private List <EndUser> endUsers = new LinkedList<>();  
+    private List<EndUser> endUsers;
    
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isEnable) {
         this.name = name;

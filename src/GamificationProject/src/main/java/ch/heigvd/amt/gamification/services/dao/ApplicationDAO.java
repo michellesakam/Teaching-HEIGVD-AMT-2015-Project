@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -47,6 +46,7 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public void assignApplicationToEndUser(Application application, EndUser endUser) {
+        
         application.getEndUsers().add(endUser);
         endUser.setApplication(application);
 
@@ -55,6 +55,7 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
         } catch (GamificationDomainEntityNotFoundException ex) {
             Logger.getLogger(ApplicationDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     @Override
@@ -98,14 +99,11 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public Application findByApiKey(String apikey) {
-        try {
-            return (Application) em.createNamedQuery("Application.findByApiKey")
+        List<Application> app = em.createNamedQuery("Application.findByApiKey")
                     .setParameter("key", apikey)
-                    .setMaxResults(1)
-                    .getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
+                    .setMaxResults(1).getResultList();
+        
+        return app.size() > 0 ? app.get(0) : null;
     }
 
     @Override

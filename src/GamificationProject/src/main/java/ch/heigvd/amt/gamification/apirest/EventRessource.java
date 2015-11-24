@@ -6,6 +6,7 @@ import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import ch.heigvd.amt.gamification.services.EventsManagerLocal;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -47,11 +48,11 @@ public class EventRessource {
             if (!applicationsManager.checkEndUserUseAnApplication(application, endUser)) {
                 throw new Error("This user does not use this application!");
             }
-        } else {            
-            endUser = new EndUser();
-            endUser.setRegDate(eventDTO.getTimestamp());
-            endUser.setUserID(eventDTO.getEndUserNumber());
-            applicationsManager.assignApplicationToAnEndUser(application, endUser);
+        } else {
+            EndUser e = new EndUser();
+            e.setRegDate(eventDTO.getTimestamp());
+            e.setUserID(eventDTO.getEndUserNumber());
+            applicationsManager.assignApplicationToAnEndUser(application, e);
         }
 
         //appliquer les règles*/

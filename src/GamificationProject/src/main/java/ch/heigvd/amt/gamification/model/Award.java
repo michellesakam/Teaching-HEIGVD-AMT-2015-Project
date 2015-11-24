@@ -6,7 +6,6 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
