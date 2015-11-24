@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
         resources.add(ch.heigvd.amt.gamification.apirest.JacksonConfigurationProvider.class);
         resources.add(ch.heigvd.amt.gamification.apirest.JsonExceptionMapper.class);
         resources.add(ch.heigvd.amt.gamification.apirest.LevelRessource.class);
+        resources.add(ch.heigvd.amt.gamification.services.EventsProcessor.class);
   }
 
 }
