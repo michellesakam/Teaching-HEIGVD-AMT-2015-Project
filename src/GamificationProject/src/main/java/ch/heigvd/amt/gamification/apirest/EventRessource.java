@@ -5,8 +5,6 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
-import ch.heigvd.amt.gamification.services.EventsManagerLocal;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -24,9 +22,6 @@ public class EventRessource {
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
-
-    @EJB
-    private EventsManagerLocal eventsManager;
 
     @EJB
     private EndUsersManagerLocal endUserManger;

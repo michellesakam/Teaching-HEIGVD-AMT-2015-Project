@@ -1,6 +1,5 @@
 package ch.heigvd.amt.gamification.model;
 
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,6 +53,9 @@ public class Application extends AbstractDomainModelEntity<Long> {
     
     @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
     private List<EndUser> endUsers;
+    
+    @OneToMany(mappedBy="application", cascade = CascadeType.ALL)
+    private List<Rule> rules;
    
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isEnable) {
         this.name = name;
@@ -117,6 +119,14 @@ public class Application extends AbstractDomainModelEntity<Long> {
 
     public void setLevels(List<Level> levels) {
         this.levels = levels;
+    }
+
+    public List<Rule> getRules() {
+        return rules;
+    }
+
+    public void setRules(List<Rule> rules) {
+        this.rules = rules;
     }
     
     

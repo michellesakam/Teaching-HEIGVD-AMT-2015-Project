@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -27,9 +26,6 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
 
     @ManyToOne
     private Application application;
-
-    @OneToMany(mappedBy = "endUser")
-    private List<Event> events;
 
     @OneToMany(mappedBy = "endUser")
     private List<AwardPoint> points;
@@ -64,14 +60,6 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
     }
 
     public List<AwardPoint> getPoints() {
