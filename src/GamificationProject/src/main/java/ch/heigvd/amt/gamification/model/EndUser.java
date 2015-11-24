@@ -81,5 +81,7 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
     public void setPoints(List<AwardPoint> points) {
         this.points = points;
     }
-
+    public void incrementPoints(){
+        points.get(0).increment();
+    }
 }

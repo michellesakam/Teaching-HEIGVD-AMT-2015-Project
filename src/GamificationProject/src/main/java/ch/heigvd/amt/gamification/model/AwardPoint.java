@@ -12,7 +12,11 @@ import javax.persistence.Entity;
 @DiscriminatorValue( "score")
 public class AwardPoint extends Award{
          
-    private int score;        
+    private int score;      
+    
+    public AwardPoint(){
+ 
+    }
  
     public int getScore() {
         return score;
@@ -20,6 +24,9 @@ public class AwardPoint extends Award{
 
     public void setScore(int score) {
         this.score = score;
+    }
+    public void increment(){
+        score++;
     }
   
 }

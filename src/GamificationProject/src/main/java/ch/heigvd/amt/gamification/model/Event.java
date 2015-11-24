@@ -31,5 +31,7 @@ public class Event extends AbstractDomainModelEntity<Long> {
     public void setEndUser(EndUser endUser) {
         this.endUser = endUser;
     }
+    
+    public 
 
 }
