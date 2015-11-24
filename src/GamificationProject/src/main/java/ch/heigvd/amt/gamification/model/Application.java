@@ -32,7 +32,7 @@ import javax.persistence.OneToOne;
 public class Application extends AbstractDomainModelEntity<Long> {
     
     @OneToMany(mappedBy = "application")
-    private List<Level> levels = new LinkedList<>();
+    private List<Level> levels;
 
     public Application() {}
 

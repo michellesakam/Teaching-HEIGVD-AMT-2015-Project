@@ -29,10 +29,10 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
     private Application application;
 
     @OneToMany(mappedBy = "endUser")
-    private List<Event> events = new LinkedList<>();
+    private List<Event> events;
 
     @OneToMany(mappedBy = "endUser")
-    private List<AwardPoint> points  = new LinkedList<>();
+    private List<AwardPoint> points;
 
     public EndUser() {
     }
