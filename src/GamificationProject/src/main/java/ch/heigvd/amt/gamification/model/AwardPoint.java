@@ -25,8 +25,5 @@ public class AwardPoint extends Award{
     public void setScore(int score) {
         this.score = score;
     }
-    public void increment(){
-        score++;
-    }
   
 }

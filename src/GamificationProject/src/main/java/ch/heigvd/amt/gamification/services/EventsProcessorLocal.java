@@ -17,6 +17,4 @@ public interface EventsProcessorLocal {
      * @throws GamificationDomainEntityNotFoundException 
      */
     public void processEvent(EventDTO event) throws GamificationDomainEntityNotFoundException;
-
-    public void createAccountIfNotExists(String endUserNumber);
 }
