@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.LevelDTO;
-import ch.heigvd.amt.gamification.model.Level;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
 import java.util.List;
@@ -13,7 +12,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -21,40 +19,31 @@ import javax.ws.rs.Produces;
  * @author Raphaël Racine
  */
 @Stateless
-@Path("levels")
-public class LevelRessource {
+@Path("badges")
+public class BadgeRessource {
     
-    @EJB
-    private LevelsManagerLocal levelsManager;
-    
-    @GET
+    /*@GET
     @Produces("application/json")
-    public List<LevelDTO> getLevels(String apiKey) {
+    public List<BadgeDTO> getBadges(String apiKey) {
         return null;
-    } 
+    } */
     
-    @POST
+    /*@POST
     @Consumes("application/json")
-    public void postLevel(LevelDTO levelDTO) {
+    public void postBadge(BadgeDTO badgeDTO) {
         // :TODO
-    }
+    }*/
     
-    @PUT
+    /*@PUT
     @Consumes("application/json")
-    @Path("/{levelID}")
-    public void putLevel(@PathParam(value="levelID") Long levelID, LevelDTO levelDTO) {
-
-    }
-    
-    @DELETE
-    @Path("/{levelID}")
-    @Consumes("application/json")
-    public void deleteLevel(@PathParam(value="levelID") Long levelID) {
+    public void putBadge(BadgeDTO badgeDTO) {
         // :TODO
-    }
+    }*/
     
-    public LevelDTO toDTO(Level level) {
-        return null;
-    }
+    /*@DELETE
+    @Consumes("application/json")
+    public void deleteBadge() {
+        // :TODO
+    }*/
     
 }
