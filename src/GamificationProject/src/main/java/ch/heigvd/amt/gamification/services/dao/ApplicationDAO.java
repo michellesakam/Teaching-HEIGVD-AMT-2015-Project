@@ -4,6 +4,7 @@ import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,10 +47,10 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public void assignApplicationToEndUser(Application application, EndUser endUser) {
-        
+
         application.getEndUsers().add(endUser);
         endUser.setApplication(application);
-        
+
     }
 
     @Override
@@ -94,9 +95,9 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     @Override
     public Application findByApiKey(String apikey) {
         List<Application> app = em.createNamedQuery("Application.findByApiKey")
-                    .setParameter("key", apikey)
-                    .setMaxResults(1).getResultList();
-        
+                .setParameter("key", apikey)
+                .setMaxResults(1).getResultList();
+
         return app.size() > 0 ? app.get(0) : null;
     }
 
@@ -106,6 +107,12 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .setParameter("app", application)
                 .setParameter("endUser", endUser)
                 .getResultList().size() > 0;
+    }
+
+    @Override
+    public void assignRuleToAnApplication(Application application, Rule rule) {
+        application.getRules().add(rule);
+        rule.setApplication(application);
     }
 
 }

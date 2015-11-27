@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.services.dao;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -28,4 +29,6 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
     public Application findByApiKey(String apikey);
 
     public boolean checkEndUserUseApp(Application application, EndUser endUser);
+
+    public void assignRuleToAnApplication(Application application, Rule rule);
 }

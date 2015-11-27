@@ -4,6 +4,7 @@ import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordExcepti
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 
 import ch.heigvd.amt.gamification.util.Chance;
 import java.sql.Date;
@@ -117,6 +118,24 @@ public class TestDataManager implements TestDataManagerLocal {
 
             applicationsManager.assignApplicationToAnEndUser(app1, user);
         }
+        
+        // Add some rules to applications for gamification
+        Rule rule = new Rule();
+        rule.setEventType("comment");
+        rule.setActionType("awardPoints");        
+        applicationsManager.assignRuleToAnApplication(app1, rule);
+        
+        rule = new Rule();
+        rule.setEventType("comment");
+        rule.setActionType("awardBadge");        
+        applicationsManager.assignRuleToAnApplication(app1, rule);
+        
+        rule = new Rule();
+        rule.setEventType("addQuestion");
+        rule.setActionType("awardPoints");        
+        applicationsManager.assignRuleToAnApplication(app1, rule);
+        
+        
     }
 
 }

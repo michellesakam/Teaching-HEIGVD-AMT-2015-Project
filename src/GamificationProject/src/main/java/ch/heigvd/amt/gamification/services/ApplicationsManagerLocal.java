@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.services;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.Local;
 import java.util.List;
@@ -123,5 +124,7 @@ public interface ApplicationsManagerLocal {
      * @return null if the applicaion not exists, else the application
      */
     public Application retrieveApplicationByApikey(String apikey);
+    
+    public void assignRuleToAnApplication(Application application, Rule rule);
 
 }
