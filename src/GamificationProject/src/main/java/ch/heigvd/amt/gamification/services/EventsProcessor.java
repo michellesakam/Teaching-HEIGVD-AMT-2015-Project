@@ -3,7 +3,9 @@ package ch.heigvd.amt.gamification.services;
 import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -22,6 +24,9 @@ public class EventsProcessor implements EventsProcessorLocal {
 
     @EJB
     private EndUsersManagerLocal endUserManger;
+    
+    @EJB
+    private RulesManagerLocal rulesManager;
 
     @POST
     @Consumes("application/json")
@@ -44,9 +49,9 @@ public class EventsProcessor implements EventsProcessorLocal {
             endUser.setUserID(event.getEndUserNumber());
             applicationsManager.assignApplicationToAnEndUser(application, endUser);
         }
-
-        //appliquer les règles*/
-        System.out.println("Application des règles");
+        
+        // Find the rules corresponding to the event type and application
+        List<Rule> rules = rulesManager.findByEventTypeAndApplication(application, event.getType());
     }
 
 }
