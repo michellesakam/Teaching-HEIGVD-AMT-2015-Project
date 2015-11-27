@@ -1,10 +1,8 @@
-
 package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
-import ch.heigvd.amt.gamification.services.dao.EndUserDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -17,15 +15,10 @@ import javax.ws.rs.POST;
  * @michelle meguep
  */
 @Stateless
-public class EventsProcessor implements EventsProcessorLocal{
-    
-    @EJB
-    private EndUserDAOLocal userDAO;
-    @EJB
-    private ApplicationsManagerLocal applicationsManager;
+public class EventsProcessor implements EventsProcessorLocal {
 
     @EJB
-    private EventsManagerLocal eventsManager;
+    private ApplicationsManagerLocal applicationsManager;
 
     @EJB
     private EndUsersManagerLocal endUserManger;
@@ -35,28 +28,25 @@ public class EventsProcessor implements EventsProcessorLocal{
 
     @Override
     public void processEvent(EventDTO event) throws GamificationDomainEntityNotFoundException {
-      Application application = applicationsManager.retrieveApplicationByApikey(event.getApiKey());
+
+        Application application
+                = applicationsManager.retrieveApplicationByApikey(event.getApiKey());
 
         if (application == null) {
             throw new NotFoundException("This application does not exist!");
         }
 
-        EndUser endUser = endUserManger.retrieveEndUser(event.getEndUserNumber());
+        EndUser endUser = endUserManger.retrieveEndUser(application, event.getEndUserNumber());
 
-        if (endUser != null) {
-            if (!applicationsManager.checkEndUserUseAnApplication(application, endUser)) {
-                throw new Error("This user does not use this application!");
-            }
-        } else {
-            EndUser e = new EndUser();
-            e.setRegDate(event.getTimestamp());
-            e.setUserID(event.getEndUserNumber());
-            applicationsManager.assignApplicationToAnEndUser(application, e);
+        if (endUser == null) {
+            endUser = new EndUser();
+            endUser.setRegDate(event.getTimestamp());
+            endUser.setUserID(event.getEndUserNumber());
+            applicationsManager.assignApplicationToAnEndUser(application, endUser);
         }
 
         //appliquer les règles*/
         System.out.println("Application des règles");
     }
 
-    
 }

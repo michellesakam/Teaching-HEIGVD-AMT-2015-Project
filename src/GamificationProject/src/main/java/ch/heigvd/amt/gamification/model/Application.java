@@ -54,7 +54,7 @@ public class Application extends AbstractDomainModelEntity<Long> {
     @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
     private List<EndUser> endUsers;
     
-    @OneToMany(mappedBy="application", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
     private List<Rule> rules;
    
     public Application(String name, String description, ApiKey apiKey, Account acount, boolean isEnable) {

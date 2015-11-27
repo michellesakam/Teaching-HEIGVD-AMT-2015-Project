@@ -1,6 +1,7 @@
 package ch.heigvd.amt.gamification.services;
 
 
+import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.dao.EndUserDAOLocal;
 import javax.ejb.EJB;
@@ -22,8 +23,8 @@ public class EndUsersManager implements EndUsersManagerLocal {
     }
 
     @Override
-    public EndUser retrieveEndUser(String noEndUser) {
-        return endUserDAO.findByNo(noEndUser);
+    public EndUser retrieveEndUser(Application application, String noEndUser) {
+        return endUserDAO.findByNumberAndApplication(application, noEndUser);
     }
 
  

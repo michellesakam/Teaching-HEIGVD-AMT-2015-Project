@@ -1,25 +1,28 @@
 
 package ch.heigvd.amt.gamification.model;
 
-import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
 /**
  *
  * @author Samira
  */
 @Entity
 public class Rule extends AbstractDomainModelEntity<Long> {
-       
-    private String typeEvenement;
     
     @ManyToOne
     private Application application;
     
-    private HashMap<String, Object> defaultActions;
+    private String typeEvenement;
+    
+    private String typeAction;
 
-    public Rule() {
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
     }
 
     public String getTypeEvenement() {
@@ -30,22 +33,13 @@ public class Rule extends AbstractDomainModelEntity<Long> {
         this.typeEvenement = typeEvenement;
     }
 
-    public Application getApplication() {
-        return application;
+    public String getTypeAction() {
+        return typeAction;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
+    public void setTypeAction(String typeAction) {
+        this.typeAction = typeAction;
     }
-
-    public HashMap<String, Object> getDefaultActions() {
-        return defaultActions;
-    }
-
-    public void setDefaultActions(HashMap<String, Object> defaultActions) {
-        this.defaultActions = defaultActions;
-    }
-    
     
     
     

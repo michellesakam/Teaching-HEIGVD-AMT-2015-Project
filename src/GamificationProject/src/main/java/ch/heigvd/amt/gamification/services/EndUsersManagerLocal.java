@@ -1,6 +1,7 @@
 package ch.heigvd.amt.gamification.services;
 
 
+import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import javax.ejb.Local;
 
@@ -21,10 +22,11 @@ public interface EndUsersManagerLocal {
     
     /**
      * Retrieve an EndUSer by his number
+     * @pamram application
      * @param noEndUser
      * @return null if enduser doesnt exists, else the found endUSer...
      */
-    public EndUser retrieveEndUser(String noEndUser);
+    public EndUser retrieveEndUser(Application application, String noEndUser);
     
    
 

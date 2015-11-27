@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "EndUser.countEndUsersCreatedBetweenTwoDates",
             query = "SELECT COUNT(e) FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2"),
     @NamedQuery(name = "EndUser.findByNo",
-            query = "SELECT e FROM EndUser e WHERE e.userID = :no")
+            query = "SELECT e FROM EndUser e WHERE e.userID = :no AND e.application = :application")
 })
 public class EndUser extends AbstractDomainModelEntity<Long> {
 

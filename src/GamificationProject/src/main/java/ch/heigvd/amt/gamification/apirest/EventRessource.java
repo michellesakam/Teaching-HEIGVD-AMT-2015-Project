@@ -5,6 +5,10 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
+import ch.heigvd.amt.gamification.services.EventsProcessor;
+import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -19,40 +23,18 @@ import javax.ws.rs.Path;
 @Stateless
 @Path("events")
 public class EventRessource {
-
+    
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
-
-    @EJB
-    private EndUsersManagerLocal endUserManger;
+    private EventsProcessor eventsProcessor;
 
     @POST
     @Consumes("application/json")
     public void postEvent(EventDTO eventDTO) {
-
-        Application application = 
-                applicationsManager.retrieveApplicationByApikey(eventDTO.getApiKey());
-
-        if (application == null) {
-            throw new NotFoundException("This application does not exist!");
+        try {
+            eventsProcessor.processEvent(eventDTO);
+        } catch (GamificationDomainEntityNotFoundException ex) {
+            throw new Error("Application doesnt exists");
         }
-
-        EndUser endUser = endUserManger.retrieveEndUser(eventDTO.getEndUserNumber());
-
-        if (endUser != null) {
-            if (!applicationsManager.checkEndUserUseAnApplication(application, endUser)) {
-                throw new Error("This user does not use this application!");
-            }
-        } else {
-            EndUser e = new EndUser();
-            e.setRegDate(eventDTO.getTimestamp());
-            e.setUserID(eventDTO.getEndUserNumber());
-            applicationsManager.assignApplicationToAnEndUser(application, e);
-        }
-
-        //appliquer les règles*/
-        System.out.println("Application des règles");
-        
     }
 
 }
