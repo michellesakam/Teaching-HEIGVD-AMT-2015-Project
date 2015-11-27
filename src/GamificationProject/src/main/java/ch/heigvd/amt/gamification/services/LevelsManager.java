@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Level;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import ch.heigvd.amt.gamification.services.dao.LevelDAOLocal;
@@ -35,6 +36,11 @@ public class LevelsManager implements LevelsManagerLocal {
     @Override
     public List<Level> findLevelsByApiKey(String apikey) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }   
+    }
+
+    @Override
+    public void assignLevelToApplication(Application application, Level level) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
