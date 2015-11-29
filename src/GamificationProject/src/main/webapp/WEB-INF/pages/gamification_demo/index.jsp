@@ -14,6 +14,14 @@
         <script src="static/js/jquery.min.js"></script>
         <script src="static/js/bootstrap.min.js"></script>
         
+        <!--Including script for angular modules-->
+        <script src="static/js/Chart.js"></script>
+        <script src="static/js/angular.js"></script>
+        <script src="static/js/angular-chart.js"></script>
+        <script src="static/js/angular-ui-router.js"></script>
+        <script src="static/js/gamification_angular_app.js"></script>
+
+        
     </head>
     <body>
         <div class="container">
