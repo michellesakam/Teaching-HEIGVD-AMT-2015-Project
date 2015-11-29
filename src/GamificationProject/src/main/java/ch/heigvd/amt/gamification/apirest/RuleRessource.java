@@ -67,7 +67,7 @@ public class RuleRessource {
                 ActionAwardBadge actionAwardBadge;
                 actionAwardBadge = new ActionAwardBadge();
                 
-                Badge badge = applicationsManager.findBadgeByIdAndApiKey((Long) ruleDTO.getValue(), ruleDTO.getApiKey());
+                Badge badge = applicationsManager.findBadgeByIdAndApiKey(ruleDTO.getBadgeID(), ruleDTO.getApiKey());
                 
                 if(badge == null)
                     throw new NullPointerException("This badge doesnt exists");
@@ -82,7 +82,7 @@ public class RuleRessource {
                 actionAwardPoints = new ActionAwardPoints();
                 actionAwardPoints.setConditionsToApply(ruleDTO.getConditionsToApply());
                 actionAwardPoints.setReason(ruleDTO.getReason());
-                actionAwardPoints.setNbPoints((int) ruleDTO.getValue());
+                actionAwardPoints.setNbPoints(ruleDTO.getNbPoints());
                 action = actionAwardPoints;
                 break;
         }
@@ -120,7 +120,10 @@ public class RuleRessource {
         dto.setRuleID(rule.getId());
         dto.setConditionsToApply(rule.getAction().getConditionsToApply());
         dto.setEventType(rule.getEventType());
-        dto.setValue(rule.getAction().getValue());
+        
+        dto.setBadgeID((Long) rule.getAction().getValue());
+        dto.setNbPoints(Integer.SIZE);
+        
         dto.setAwardType(rule.getAction().getType());
         dto.setApiKey(rule.getApplication().getApiKey().getKey());
 

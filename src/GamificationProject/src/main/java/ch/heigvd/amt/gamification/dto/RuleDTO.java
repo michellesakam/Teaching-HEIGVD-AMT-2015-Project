@@ -17,7 +17,8 @@ public class RuleDTO {
     private String reason;
     
     private String awardType; // awardBadge or awardPoint
-    private Object value; // Badge ID or nbPoints
+    private Integer nbPoints; // If awardPoint
+    private Long badgeID; // If awardBadge
 
     public Long getRuleID() {
         return ruleID;
@@ -51,14 +52,6 @@ public class RuleDTO {
         this.awardType = awardType;
     }
 
-    public Object getValue() {
-        return value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
-    }
-
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
     }
@@ -74,8 +67,22 @@ public class RuleDTO {
     public void setReason(String reason) {
         this.reason = reason;
     }
-    
-    
-    
+
+    public Integer getNbPoints() {
+        return nbPoints;
+    }
+
+    public void setNbPoints(Integer nbPoints) {
+        this.nbPoints = nbPoints;
+    }
+
+    public Long getBadgeID() {
+        return badgeID;
+    }
+
+    public void setBadgeID(Long badgeID) {
+        this.badgeID = badgeID;
+    }
+        
     
 }
