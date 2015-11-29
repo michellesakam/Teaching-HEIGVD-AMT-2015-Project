@@ -8,9 +8,7 @@ import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundE
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
 
 /**
  *
@@ -27,9 +25,6 @@ public class EventsProcessor implements EventsProcessorLocal {
     
     @EJB
     private RulesManagerLocal rulesManager;
-
-    @POST
-    @Consumes("application/json")
 
     @Override
     public void processEvent(EventDTO event) throws GamificationDomainEntityNotFoundException {
