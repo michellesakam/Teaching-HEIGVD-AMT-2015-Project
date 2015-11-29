@@ -20,9 +20,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ApplicationDAO extends GenericDAO<Application, Long> implements ApplicationDAOLocal {
 
-    @PersistenceContext
-    EntityManager em;
-
     @EJB
     private ApiKeyDAOLocal apikeyDAO;
 

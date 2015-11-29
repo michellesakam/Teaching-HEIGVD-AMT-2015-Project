@@ -35,7 +35,7 @@ public class LevelsManager implements LevelsManagerLocal {
 
     @Override
     public List<Level> findLevelsByApiKey(String apikey) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return levelDAO.findLevelsByApiKey(apikey);
     }
 
     @Override

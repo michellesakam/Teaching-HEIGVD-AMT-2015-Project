@@ -4,18 +4,13 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Raphaël Racine
  */
 @Stateless
-public class RuleDAO implements RuleDAOLocal {
-
-    @PersistenceContext
-    private EntityManager em;
+public class RuleDAO extends GenericDAO<Rule, Long> implements RuleDAOLocal {
     
     @Override
     public List<Rule> findByEventTypeAndApplication(Application application, String eventType) {

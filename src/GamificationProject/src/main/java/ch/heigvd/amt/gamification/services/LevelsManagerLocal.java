@@ -12,9 +12,11 @@ import javax.ejb.Local;
  */
 @Local
 public interface LevelsManagerLocal {
+    
     public void createLevel(Level level);
     public void editLevel(Level level) throws GamificationDomainEntityNotFoundException;
     public void deleteLevel(Level level) throws GamificationDomainEntityNotFoundException;
     public List<Level> findLevelsByApiKey(String apikey);
     public void assignLevelToApplication(Application application, Level level);
+    
 }

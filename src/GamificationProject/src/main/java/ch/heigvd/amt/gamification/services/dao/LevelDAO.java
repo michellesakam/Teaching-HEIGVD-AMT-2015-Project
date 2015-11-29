@@ -18,8 +18,12 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 public class LevelDAO extends GenericDAO<Level, Long> implements LevelDAOLocal {
-    
-    @PersistenceContext
-    EntityManager em;
+
+    @Override
+    public List<Level> findLevelsByApiKey(String apikey) {
+        return em.createNamedQuery("Level.findByApiKey")
+                .setParameter("apikey", apikey)
+                .getResultList();
+    }
     
 }

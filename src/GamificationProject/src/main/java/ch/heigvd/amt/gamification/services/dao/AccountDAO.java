@@ -19,9 +19,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class AccountDAO extends GenericDAO<Account, Long> implements AccountDAOLocal {
 
-    @PersistenceContext
-    EntityManager em;
-
     @Override
     public Account findByEmail(String email) {
         List<Account> tmp = em.createNamedQuery("Account.findByEmail")
