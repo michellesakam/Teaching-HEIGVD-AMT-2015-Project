@@ -30,7 +30,7 @@ import javax.persistence.OneToOne;
 
 public class Application extends AbstractDomainModelEntity<Long> {
     
-    @OneToMany(mappedBy = "application")
+    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
     private List<Level> levels;
 
     public Application() {}

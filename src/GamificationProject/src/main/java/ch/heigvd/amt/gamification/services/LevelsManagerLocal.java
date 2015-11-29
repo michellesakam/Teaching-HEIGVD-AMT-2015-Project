@@ -13,10 +13,37 @@ import javax.ejb.Local;
 @Local
 public interface LevelsManagerLocal {
     
+    /**
+     * Create a level
+     * @param level 
+     */
     public void createLevel(Level level);
+    
+    /**
+     * Edit a level
+     * @param level
+     * @throws GamificationDomainEntityNotFoundException 
+     */
     public void editLevel(Level level) throws GamificationDomainEntityNotFoundException;
+    
+    /**
+     * Delete a level
+     * @param level
+     * @throws GamificationDomainEntityNotFoundException 
+     */
     public void deleteLevel(Level level) throws GamificationDomainEntityNotFoundException;
+    
+    /**
+     * @param apikey
+     * @return All levels of an application which have this apikey
+     */
     public List<Level> findLevelsByApiKey(String apikey);
+    
+    /**
+     * 
+     * @param application Have to be managed
+     * @param level Doesn't have to be managed (cascade)
+     */
     public void assignLevelToApplication(Application application, Level level);
     
 }

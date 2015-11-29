@@ -40,7 +40,8 @@ public class LevelsManager implements LevelsManagerLocal {
 
     @Override
     public void assignLevelToApplication(Application application, Level level) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        level.setApplication(application);
+        application.getLevels().add(level);
     }
     
 }
