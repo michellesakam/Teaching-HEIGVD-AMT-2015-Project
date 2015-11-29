@@ -14,12 +14,6 @@ import javax.ejb.Local;
 public interface LevelsManagerLocal {
     
     /**
-     * Create a level
-     * @param level 
-     */
-    public void createLevel(Level level);
-    
-    /**
      * Edit a level
      * @param level
      * @throws GamificationDomainEntityNotFoundException 

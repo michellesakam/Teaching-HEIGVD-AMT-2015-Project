@@ -80,12 +80,7 @@ public class LevelRessource {
         try {
             Level level = levelsManager.findById(levelID);
 
-            if (level == null) {
-                throw new NullPointerException("This level doesn't exists");
-            }
-
             if (level.getApplication() == application) {
-
                 level.setName(levelDTO.getName());
                 level.setMinimumPoints(levelDTO.getMinimumPoints());
             } else {
@@ -110,10 +105,6 @@ public class LevelRessource {
 
         try {
             Level level = levelsManager.findById(levelID);
-
-            if (level == null) {
-                throw new NullPointerException("This level doesn't exists");
-            }
 
             if (level.getApplication() == application) {
                 levelsManager.deleteLevel(level);

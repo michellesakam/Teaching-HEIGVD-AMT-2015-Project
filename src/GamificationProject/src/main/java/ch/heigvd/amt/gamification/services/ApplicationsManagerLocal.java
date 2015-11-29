@@ -2,6 +2,7 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
@@ -126,5 +127,7 @@ public interface ApplicationsManagerLocal {
     public Application retrieveApplicationByApikey(String apikey);
     
     public void assignRuleToAnApplication(Application application, Rule rule);
+    
+    public void assignBadgeToAnApplication(Application application, Badge badge);
 
 }

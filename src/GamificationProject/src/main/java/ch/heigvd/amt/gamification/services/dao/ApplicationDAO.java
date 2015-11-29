@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.services.dao;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
@@ -108,8 +109,16 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public void assignRuleToAnApplication(Application application, Rule rule) {
-        application.getRules().add(rule);
         rule.setApplication(application);
+        application.getRules().add(rule);
     }
+
+    @Override
+    public void assignBadgeToAnApplication(Application application, Badge badge) {
+        badge.setApplication(application);
+        application.getBadges().add(badge);
+    }
+    
+    
 
 }

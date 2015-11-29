@@ -17,11 +17,6 @@ public class LevelsManager implements LevelsManagerLocal {
     
     @EJB
     private LevelDAOLocal levelDAO;
-    
-    @Override
-    public void createLevel(Level level) {
-        levelDAO.create(level);
-    }
 
     @Override
     public void editLevel(Level level) throws GamificationDomainEntityNotFoundException {

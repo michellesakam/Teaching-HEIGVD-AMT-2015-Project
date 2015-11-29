@@ -46,7 +46,10 @@ public class Application extends AbstractDomainModelEntity<Long> {
     private ApiKey apiKey;
     
     @ManyToOne
-    private Account acount;    
+    private Account acount; 
+    
+    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
+    private List<Badge> badges;
 
     
     private boolean isEnable;
@@ -128,6 +131,15 @@ public class Application extends AbstractDomainModelEntity<Long> {
     public void setRules(List<Rule> rules) {
         this.rules = rules;
     }
+
+    public List<Badge> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
+    }
+    
     
     
     
