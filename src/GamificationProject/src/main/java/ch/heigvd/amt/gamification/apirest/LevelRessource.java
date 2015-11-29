@@ -35,12 +35,16 @@ public class LevelRessource {
     @GET
     @Produces("application/json")
     public List<LevelDTO> getLevels(String apiKey) {
+        
         List<LevelDTO> dto = new ArrayList<>();
         List<Level> levels = levelsManager.findLevelsByApiKey(apiKey);
+        
         for (Level level : levels) {
             dto.add(toDTO(level));
         }
+        
         return dto;
+        
     }
 
     @POST
@@ -58,7 +62,7 @@ public class LevelRessource {
         level.setMinimumPoints(levelDTO.getMinimumPoints());
 
         levelsManager.assignLevelToApplication(application, level);
-        // :TODO
+        
     }
 
     @PUT
@@ -76,12 +80,15 @@ public class LevelRessource {
     }
 
     public LevelDTO toDTO(Level level) {
+        
         LevelDTO dto = new LevelDTO();
         dto.setName(level.getName());
         dto.setApikey(level.getApplication().getApiKey().getKey());
         dto.setMinimumPoints(level.getMinimumPoints());
+        dto.setId(level.getId());
 
         return dto;
+        
     }
 
 }

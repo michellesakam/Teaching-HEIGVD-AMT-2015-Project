@@ -6,6 +6,7 @@ package ch.heigvd.amt.gamification.dto;
  */
 public class LevelDTO {
     
+    private Long id;
     private String name;
     private String apikey;
     private int minimumPoints;
@@ -35,7 +36,13 @@ public class LevelDTO {
     public void setMinimumPoints(int minimumPoints) {
         this.minimumPoints = minimumPoints;
     }
-    
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }       
     
 }
