@@ -20,7 +20,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author Raphaël Racine, Samira 
+ * @author Raphaël Racine, Samira
  */
 @Stateless
 @Path("levels")
@@ -28,7 +28,7 @@ public class LevelRessource {
 
     @EJB
     private LevelsManagerLocal levelsManager;
-    
+
     @EJB
     private ApplicationsManagerLocal applicationsManager;
 
@@ -46,16 +46,17 @@ public class LevelRessource {
     @POST
     @Consumes("application/json")
     public void postLevel(LevelDTO levelDTO) {
-        
+
         Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApikey());
-        
-        if(application == null)
+
+        if (application == null) {
             throw new NullPointerException("This application doesn't exists");
-        
-        Level level =new Level();
+        }
+
+        Level level = new Level();
         level.setName(levelDTO.getName());
-        level.setMinimumPoints(levelDTO.getMinimumPoints());        
-        
+        level.setMinimumPoints(levelDTO.getMinimumPoints());
+
         levelsManager.assignLevelToApplication(application, level);
         // :TODO
     }
@@ -75,12 +76,12 @@ public class LevelRessource {
     }
 
     public LevelDTO toDTO(Level level) {
-         LevelDTO dto = new LevelDTO();
-    dto.setName(level.getName());
-    dto.setApikey(level.getApplication().getApiKey().getKey());
-    dto.setMinimumPoints(level.getMinimumPoints());
-    
-    return dto;
-  }
+        LevelDTO dto = new LevelDTO();
+        dto.setName(level.getName());
+        dto.setApikey(level.getApplication().getApiKey().getKey());
+        dto.setMinimumPoints(level.getMinimumPoints());
+
+        return dto;
+    }
 
 }
