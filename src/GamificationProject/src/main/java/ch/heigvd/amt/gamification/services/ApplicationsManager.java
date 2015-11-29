@@ -96,4 +96,9 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
         applicationDAO.assignBadgeToAnApplication(application, badge);
     }  
 
+    @Override
+    public Badge findBadgeByIdAndApiKey(Long id, String apiKey) {
+        return applicationDAO.findBadgeByIdAndApiKey(id, apiKey);
+    }
+
 }

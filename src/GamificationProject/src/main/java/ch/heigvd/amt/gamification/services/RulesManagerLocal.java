@@ -15,4 +15,5 @@ import javax.ejb.Local;
 public interface RulesManagerLocal {
     public List<Rule> findByEventTypeAndApplication(Application application, String eventType);
     public void processRuleForAnEvent(EventDTO eventDTO, Rule r, EndUser endUser);
+    public List<Rule> findByApiKey(String apiKey);
 }

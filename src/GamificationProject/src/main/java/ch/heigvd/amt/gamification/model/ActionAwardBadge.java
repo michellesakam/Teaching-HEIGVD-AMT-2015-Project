@@ -22,5 +22,15 @@ public class ActionAwardBadge extends Action {
     public void setBadge(Badge badge) {
         this.badge = badge;
     }
+
+    @Override
+    public String getType() {
+        return "AwardBadge";
+    }
+
+    @Override
+    public Object getValue() {
+        return badge.getId();
+    }
     
 }

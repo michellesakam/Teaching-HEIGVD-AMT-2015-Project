@@ -35,6 +35,11 @@ public class RulesManager implements RulesManagerLocal {
     }
 
     @Override
+    public List<Rule> findByApiKey(String apiKey) {
+        return ruleDAO.findByApiKey(apiKey);
+    }
+    
+    @Override
     public void processRuleForAnEvent(EventDTO eventDTO, Rule r, EndUser endUser) {
         
         Action action = r.getAction();

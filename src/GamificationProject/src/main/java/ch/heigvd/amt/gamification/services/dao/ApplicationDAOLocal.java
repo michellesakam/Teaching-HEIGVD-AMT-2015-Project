@@ -34,4 +34,6 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
     public void assignRuleToAnApplication(Application application, Rule rule);
 
     public void assignBadgeToAnApplication(Application application, Badge badge);
+
+    public Badge findBadgeByIdAndApiKey(Long id, String apiKey);
 }

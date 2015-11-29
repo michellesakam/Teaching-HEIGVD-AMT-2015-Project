@@ -27,5 +27,8 @@ public abstract class Action extends AbstractDomainModelEntity<Long> {
     public void setConditionsToApply(HashMap conditionsToApply) {
         this.conditionsToApply = conditionsToApply;
     }    
+
+    public abstract Object getValue();
+    public abstract String getType();
     
 }

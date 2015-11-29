@@ -130,4 +130,6 @@ public interface ApplicationsManagerLocal {
     
     public void assignBadgeToAnApplication(Application application, Badge badge);
 
+    public Badge findBadgeByIdAndApiKey(Long id, String apiKey);
+
 }

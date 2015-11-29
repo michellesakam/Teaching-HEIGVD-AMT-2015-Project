@@ -19,6 +19,16 @@ public class ActionAwardPoints extends Action {
 
     public void setNbPoints(int nbPoints) {
         this.nbPoints = nbPoints;
-    }   
+    } 
+    
+    @Override
+    public String getType() {
+        return "AwardPoints";
+    }
+
+    @Override
+    public Object getValue() {
+        return nbPoints;
+    }
     
 }

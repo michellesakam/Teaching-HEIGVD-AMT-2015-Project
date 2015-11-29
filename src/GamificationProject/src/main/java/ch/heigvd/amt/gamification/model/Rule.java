@@ -14,7 +14,9 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Rule.findByEventTypeAndApplication", 
-            query = "SELECT r FROM Rule r WHERE r.application = :application AND r.eventType = :eventType")
+            query = "SELECT r FROM Rule r WHERE r.application = :application AND r.eventType = :eventType"),
+    @NamedQuery(name = "Rule.findByApiKey", 
+            query = "SELECT r FROM Rule r WHERE r.application.apiKey.key = :apiKey")
 })
 public class Rule extends AbstractDomainModelEntity<Long> {
     
