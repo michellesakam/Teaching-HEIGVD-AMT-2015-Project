@@ -135,6 +135,8 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setActionType("awardPoints");        
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
+        app1.getApiKey().setKey("ABC-123");
+        
         
     }
 
