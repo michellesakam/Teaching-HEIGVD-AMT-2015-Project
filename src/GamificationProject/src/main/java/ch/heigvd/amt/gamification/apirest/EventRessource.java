@@ -1,7 +1,7 @@
 package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.EventDTO;
-import ch.heigvd.amt.gamification.services.EventsProcessor;
+import ch.heigvd.amt.gamification.services.EventsProcessorLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -18,7 +18,7 @@ import javax.ws.rs.Path;
 public class EventRessource {
     
     @EJB
-    private EventsProcessor eventsProcessor;
+    private EventsProcessorLocal eventsProcessor;
 
     @POST
     @Consumes("application/json")

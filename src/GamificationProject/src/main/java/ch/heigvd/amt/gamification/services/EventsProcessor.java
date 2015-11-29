@@ -48,8 +48,9 @@ public class EventsProcessor implements EventsProcessorLocal {
         // Find the rules corresponding to the event type and application
         List<Rule> rules = rulesManager.findByEventTypeAndApplication(application, event.getType());
         
-        for(Rule r : rules)
-            System.out.println("Action : " + r.getActionType() + " EventType" + r.getEventType());
+        for(Rule r : rules) {
+            rulesManager.processRuleForAnEvent(event, r, endUser);
+        }
     }
 
 }

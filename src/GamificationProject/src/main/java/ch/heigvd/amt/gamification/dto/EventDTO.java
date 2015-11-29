@@ -11,7 +11,7 @@ public class EventDTO {
     private String type;
     private String apiKey;
     private String endUserNumber;
-    private HashMap<String, Object> additionnalRuleActions;
+    private HashMap<String, Object> properties;
     private Date timestamp;
     
     public void setApiKey(String apiKey) {
@@ -38,12 +38,12 @@ public class EventDTO {
         this.type = type;
     }    
 
-    public HashMap<String, Object> getAdditionnalRuleActions() {
-        return additionnalRuleActions;
+    public HashMap<String, Object> getProperties() {
+        return properties;
     }
 
-    public void setAdditionnalRuleActions(HashMap<String, Object> additionnalRuleActions) {
-        this.additionnalRuleActions = additionnalRuleActions;
+    public void setProperties(HashMap<String, Object> properties) {
+        this.properties = properties;
     }
 
     public Date getTimestamp() {
@@ -55,7 +55,7 @@ public class EventDTO {
     }
     
     public Object getProperty(String key) {
-        return additionnalRuleActions.get(key);
+        return properties.get(key);
     }   
     
 }

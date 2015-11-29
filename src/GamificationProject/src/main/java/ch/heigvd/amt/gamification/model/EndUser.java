@@ -27,9 +27,6 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
     @ManyToOne
     private Application application;
 
-    @OneToMany(mappedBy = "endUser")
-    private List<AwardPoint> points;
-
     public EndUser() {
     }
 
@@ -60,13 +57,5 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
-    }
-
-    public List<AwardPoint> getPoints() {
-        return points;
-    }
-
-    public void setPoints(List<AwardPoint> points) {
-        this.points = points;
     }
 }

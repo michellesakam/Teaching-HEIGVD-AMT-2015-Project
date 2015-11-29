@@ -1,10 +1,8 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -12,9 +10,6 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Badge extends AbstractDomainModelEntity<Long> {
-    
-    @OneToMany(mappedBy = "badge")
-    private List<AwardBadge> awardBadges;
     
     @ManyToOne
     private Application application;
@@ -27,14 +22,6 @@ public class Badge extends AbstractDomainModelEntity<Long> {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<AwardBadge> getAwardBadges() {
-        return awardBadges;
-    }
-
-    public void setAwardBadges(List<AwardBadge> awardBadges) {
-        this.awardBadges = awardBadges;
     }
 
     public Application getApplication() {

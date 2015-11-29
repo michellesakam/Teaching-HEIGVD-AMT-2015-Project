@@ -2,6 +2,8 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import ch.heigvd.amt.gamification.model.Account;
+import ch.heigvd.amt.gamification.model.ActionAwardBadge;
+import ch.heigvd.amt.gamification.model.ActionAwardPoints;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
@@ -123,20 +125,43 @@ public class TestDataManager implements TestDataManagerLocal {
             applicationsManager.assignApplicationToAnEndUser(app1, user);
         }
         
+        // Create some badges in app1
+        Badge badge = new Badge();
+        badge.setName("badge1");
+        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        
+        badge = new Badge();
+        badge.setName("badge2");
+        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        
+        badge = new Badge();
+        badge.setName("badge3");
+        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        
         // Add some rules to applications for gamification
         Rule rule = new Rule();
+        ActionAwardPoints actionAwardPoints = new ActionAwardPoints();
+        actionAwardPoints.setNbPoints(2);
+        actionAwardPoints.setReason("Posted a comment");
         rule.setEventType("comment");
-        rule.setActionType("awardPoints");        
+        rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("comment");
-        rule.setActionType("awardBadge");        
+        ActionAwardBadge actionAwardBadge = new ActionAwardBadge();
+        actionAwardBadge.setBadge(badge);
+        actionAwardBadge.setReason("Posted a comment");
+        actionAwardBadge.getConditionsToApply().put("nbComments", 100);
+        rule.setAction(actionAwardBadge);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("addQuestion");
-        rule.setActionType("awardPoints");        
+        actionAwardPoints = new ActionAwardPoints();
+        actionAwardPoints.setNbPoints(5);
+        actionAwardPoints.setReason("Added a question");
+        rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
         app1.getApiKey().setKey("ABC-123");
@@ -160,21 +185,7 @@ public class TestDataManager implements TestDataManagerLocal {
         level = new Level();
         level.setName("General");
         level.setMinimumPoints(500);
-        levelsManager.assignLevelToApplication(app1, level);
-        
-        // Create some badges in app1
-        Badge badge = new Badge();
-        badge.setName("badge1");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
-        
-        badge = new Badge();
-        badge.setName("badge2");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
-        
-        badge = new Badge();
-        badge.setName("badge3");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
-        
+        levelsManager.assignLevelToApplication(app1, level);        
         
     }
 
