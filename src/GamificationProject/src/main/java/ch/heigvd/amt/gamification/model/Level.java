@@ -15,6 +15,13 @@ import javax.persistence.Table;
             query = "SELECT l FROM Level l WHERE l.application.apiKey.key = :apikey")
 })
 
+        
+@NamedQueries({
+    @NamedQuery(name = "findByLevelId", 
+            query = "SELECT l FROM Level l WHERE l.id = :id")
+})
+
+
 @Entity
 @Table(name = "Levels") // Changing the name of tale because Level is a key work of mysql
 public class Level extends AbstractDomainModelEntity<Long> {

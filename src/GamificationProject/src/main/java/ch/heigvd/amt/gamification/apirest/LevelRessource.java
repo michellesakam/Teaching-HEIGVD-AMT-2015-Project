@@ -69,6 +69,11 @@ public class LevelRessource {
     @Consumes("application/json")
     @Path("/{levelID}")
     public void putLevel(@PathParam(value = "levelID") Long levelID, LevelDTO levelDTO) {
+        Level level= levelsManager.findLevelByLevelID(levelID);
+        if(level == null)
+            throw new NullPointerException("This level doesn't exists");
+        level.setName(levelDTO.getName());
+        level.setMinimumPoints(levelDTO.getMinimumPoints());
 
     }
 
@@ -76,7 +81,11 @@ public class LevelRessource {
     @Path("/{levelID}")
     @Consumes("application/json")
     public void deleteLevel(@PathParam(value = "levelID") Long levelID) {
-        // :TODO
+         Level level= levelsManager.findLevelByLevelID(levelID);
+          if(level == null)
+            throw new NullPointerException("This level doesn't exists");
+          
+          level=null;
     }
 
     public LevelDTO toDTO(Level level) {

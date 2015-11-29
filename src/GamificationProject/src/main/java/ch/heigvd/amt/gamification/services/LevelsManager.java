@@ -43,5 +43,10 @@ public class LevelsManager implements LevelsManagerLocal {
         level.setApplication(application);
         application.getLevels().add(level);
     }
+
+    @Override
+    public Level findLevelByLevelID(Long levelID) {
+      return levelDAO.findLevelByLevelID(levelID); 
+    }
     
 }
