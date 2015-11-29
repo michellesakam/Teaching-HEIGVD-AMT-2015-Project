@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.services;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.services.dao.BadgeDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -25,6 +26,16 @@ public class BadgesManager implements BadgesManagerLocal {
     public void deleteBadge(Badge badge) throws GamificationDomainEntityNotFoundException {
         badgeDAO.delete(badge);
     }
+
+    @Override
+    public List<Badge> findBadgesByApiKey(String apiKey) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+     @Override
+    public Badge findById(Long id) throws GamificationDomainEntityNotFoundException {
+        return badgeDAO.findById(id);
+    }   
     
     
 }
