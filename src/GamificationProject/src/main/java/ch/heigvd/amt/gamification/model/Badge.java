@@ -1,19 +1,23 @@
 package ch.heigvd.amt.gamification.model;
 
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Raphaël Racine
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Badge.findByApiKey", 
+            query = "SELECT b FROM Badge b WHERE b.application.apiKey.key = :apiKey"),
+})
 public class Badge extends AbstractDomainModelEntity<Long> {
     
     @ManyToOne
-    private Application application;
-    
+    private Application application;    
     private String name;
 
     public String getName() {
@@ -30,10 +34,7 @@ public class Badge extends AbstractDomainModelEntity<Long> {
 
     public void setApplication(Application application) {
         this.application = application;
-    }  
-    
-    
-    
+    }     
     
     
 }

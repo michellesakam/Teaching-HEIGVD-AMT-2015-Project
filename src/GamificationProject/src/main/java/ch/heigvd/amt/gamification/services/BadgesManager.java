@@ -28,8 +28,8 @@ public class BadgesManager implements BadgesManagerLocal {
     }
 
     @Override
-    public List<Badge> findBadgesByApiKey(String apiKey) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Badge> findByApiKey(String apiKey) {
+        return badgeDAO.findByApiKey(apiKey);
     }
     
      @Override

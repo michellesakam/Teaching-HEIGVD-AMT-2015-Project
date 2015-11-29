@@ -37,7 +37,7 @@ public class BadgeRessource {
     @Produces("application/json")
     public List<BadgeDTO> getBadges(String apiKey) {
         List<BadgeDTO> dto = new ArrayList<>();
-        List<Badge> badges = badgesManager.findBadgesByApiKey(apiKey);
+        List<Badge> badges = badgesManager.findByApiKey(apiKey);
 
         for (Badge badge : badges) {
             dto.add(toDTO(badge));
