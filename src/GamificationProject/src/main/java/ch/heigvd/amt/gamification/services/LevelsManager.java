@@ -45,8 +45,8 @@ public class LevelsManager implements LevelsManagerLocal {
     }
 
     @Override
-    public Level findLevelByLevelID(Long levelID) {
-      return levelDAO.findLevelByLevelID(levelID); 
-    }
+    public Level findById(Long id) throws GamificationDomainEntityNotFoundException {
+        return levelDAO.findById(id);
+    }   
     
 }

@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +24,12 @@ public class WidgetsGamificationDemoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.getRequestDispatcher("/WEB-INF/pages/gamification_demo/index.jsp").forward(request, response);
+        String view = request.getParameter("view");
+        
+        if(view == null)
+            view = "index";
+        
+        request.getRequestDispatcher("/WEB-INF/pages/gamification_demo/" + view + ".jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

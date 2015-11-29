@@ -46,4 +46,6 @@ public interface LevelsManagerLocal {
      */
     public void assignLevelToApplication(Application application, Level level);
     
+    public Level findById(Long id) throws GamificationDomainEntityNotFoundException;
+    
 }

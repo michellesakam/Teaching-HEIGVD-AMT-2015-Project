@@ -74,7 +74,7 @@ public class SecurityFilter implements Filter {
             // Authorize access to API Rest
         } else if (path.startsWith("/api")) {
             isTargetUrlProtected = false;
-        } else if ("/demoWidgets".equals(path)) {
+        } else if (path.startsWith("/demoWidgets")) {
             isTargetUrlProtected = false;
         } else if ("/generate".equals(path)) {
             isTargetUrlProtected = false;
