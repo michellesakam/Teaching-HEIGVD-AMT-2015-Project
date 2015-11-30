@@ -1,5 +1,5 @@
 
-package ch.heigvd.amt.gamification.services;
+package ch.heigvd.amt.gamification.services.processors;
 
 import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;

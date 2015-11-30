@@ -4,7 +4,7 @@ import ch.heigvd.amt.gamification.dto.RuleDTO;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
-import ch.heigvd.amt.gamification.services.RulesProcessorLocal;
+import ch.heigvd.amt.gamification.services.processors.RulesProcessorLocal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;

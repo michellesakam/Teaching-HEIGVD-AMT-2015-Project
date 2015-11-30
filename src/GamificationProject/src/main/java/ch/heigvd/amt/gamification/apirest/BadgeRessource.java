@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.apirest;
 
-import ch.heigvd.amt.gamification.services.BadgesProcessorLocal;
+import ch.heigvd.amt.gamification.services.processors.BadgesProcessorLocal;
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;

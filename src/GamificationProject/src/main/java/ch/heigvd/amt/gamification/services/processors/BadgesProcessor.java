@@ -1,9 +1,11 @@
-package ch.heigvd.amt.gamification.services;
+package ch.heigvd.amt.gamification.services.processors;
 
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;

@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.apirest;
 
-import ch.heigvd.amt.gamification.services.LevelsProcessorLocal;
+import ch.heigvd.amt.gamification.services.processors.LevelsProcessorLocal;
 import ch.heigvd.amt.gamification.dto.LevelDTO;
 import ch.heigvd.amt.gamification.model.Level;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;

@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.services;
+package ch.heigvd.amt.gamification.services.processors;
 
 import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.model.Application;
@@ -6,8 +6,11 @@ import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
+import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
+import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;

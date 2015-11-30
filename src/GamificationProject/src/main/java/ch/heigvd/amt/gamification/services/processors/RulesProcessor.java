@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.services;
+package ch.heigvd.amt.gamification.services.processors;
 
 import ch.heigvd.amt.gamification.dto.RuleDTO;
 import ch.heigvd.amt.gamification.model.Action;
@@ -7,6 +7,7 @@ import ch.heigvd.amt.gamification.model.ActionAwardPoints;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.Rule;
+import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
