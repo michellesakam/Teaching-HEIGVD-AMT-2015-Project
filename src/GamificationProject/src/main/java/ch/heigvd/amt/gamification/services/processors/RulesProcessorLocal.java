@@ -8,6 +8,5 @@ import javax.ejb.Local;
  * @author Raphaël Racine
  */
 @Local
-public interface RulesProcessorLocal {
-    public void processPostRule(RuleDTO ruleDTO);
+public interface RulesProcessorLocal extends IGamificationDTOProcessor<RuleDTO, Long> {
 }

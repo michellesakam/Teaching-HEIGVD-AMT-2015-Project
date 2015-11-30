@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
  * @author Raphaël Racine
  */
 @Stateless
-public class BadgesProcessor extends GamificationDTOProcessor implements BadgesProcessorLocal {
+public class BadgesProcessor extends GamificationDTOProcessor<BadgeDTO, Long> implements BadgesProcessorLocal {
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
@@ -23,25 +23,22 @@ public class BadgesProcessor extends GamificationDTOProcessor implements BadgesP
     private BadgesManagerLocal badgesManager;
 
     @Override
-    public void processPostBadge(BadgeDTO badgeDTO) {
+    public void postDTO(BadgeDTO dto) {
+        Application application = super.tryToRetrieveApplication(dto.getApiKey());
 
-        Application application = super.tryToRetrieveApplication(badgeDTO.getApiKey());
-        
         Badge badge = new Badge();
-        badge.setName(badgeDTO.getName());
+        badge.setName(dto.getName());
         applicationsManager.assignBadgeToAnApplication(application, badge);
-
     }
 
     @Override
-    public void processPutBadge(Long badgeID, BadgeDTO badgeDTO) {
-
-        Application application = super.tryToRetrieveApplication(badgeDTO.getApiKey());
+    public void putDTO(Long id, BadgeDTO dto) {
+        Application application = super.tryToRetrieveApplication(dto.getApiKey());
 
         try {
-            Badge badge = badgesManager.findById(badgeID);
+            Badge badge = badgesManager.findById(id);
             if (badge.getApplication() == application) {
-                badge.setName(badgeDTO.getName());
+                badge.setName(dto.getName());
             } else {
                 throw new Error("This application doens't have badge with specified badgeID");
             }
@@ -49,16 +46,14 @@ public class BadgesProcessor extends GamificationDTOProcessor implements BadgesP
         } catch (GamificationDomainEntityNotFoundException ex) {
             throw new NullPointerException("This badge doesn't exists");
         }
-
     }
 
     @Override
-    public void processDeleteBadge(Long badgeID, String apiKey) {
-
+    public void deleteDTO(Long id, String apiKey) {
         Application application = super.tryToRetrieveApplication(apiKey);
 
         try {
-            Badge badge = badgesManager.findById(badgeID);
+            Badge badge = badgesManager.findById(id);
             if (badge.getApplication() == application) {
                 badgesManager.deleteBadge(badge);
             } else {
@@ -68,7 +63,6 @@ public class BadgesProcessor extends GamificationDTOProcessor implements BadgesP
         } catch (GamificationDomainEntityNotFoundException ex) {
             throw new NullPointerException("This badge doesn't exists");
         }
-
     }
 
 }

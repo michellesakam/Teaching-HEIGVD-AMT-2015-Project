@@ -8,11 +8,5 @@ import javax.ejb.Local;
  * @author Raphaël Racine
  */
 @Local
-public interface LevelsProcessorLocal {
-
-    public void processPostLevel(LevelDTO levelDTO);
-
-    public void processPutLevel(Long levelID, LevelDTO levelDTO);
-
-    public void processDeleteLevel(Long levelID, String apiKey);
+public interface LevelsProcessorLocal extends IGamificationDTOProcessor<LevelDTO, Long> {
 }

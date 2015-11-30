@@ -48,7 +48,7 @@ public class RuleRessource {
     @POST
     @Consumes("application/json")
     public void postRule(RuleDTO ruleDTO) {
-        rulesProcessor.processPostRule(ruleDTO);
+        rulesProcessor.postDTO(ruleDTO);
     }
 
     @PUT

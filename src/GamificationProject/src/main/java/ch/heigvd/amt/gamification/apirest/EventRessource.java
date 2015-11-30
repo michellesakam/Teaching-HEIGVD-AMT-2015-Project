@@ -16,18 +16,14 @@ import javax.ws.rs.Path;
 @Stateless
 @Path("events")
 public class EventRessource {
-    
+
     @EJB
     private EventsProcessorLocal eventsProcessor;
 
     @POST
     @Consumes("application/json")
     public void postEvent(EventDTO eventDTO) {
-        try {
-            eventsProcessor.processEvent(eventDTO);
-        } catch (GamificationDomainEntityNotFoundException ex) {
-            throw new Error("Application doesnt exists");
-        }
+        eventsProcessor.postDTO(eventDTO);
     }
 
 }

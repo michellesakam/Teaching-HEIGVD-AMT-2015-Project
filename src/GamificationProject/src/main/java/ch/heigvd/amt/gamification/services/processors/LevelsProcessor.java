@@ -13,32 +13,32 @@ import javax.ejb.Stateless;
  * @author Raphaël Racine
  */
 @Stateless
-public class LevelsProcessor extends GamificationDTOProcessor implements LevelsProcessorLocal {
+public class LevelsProcessor extends GamificationDTOProcessor<LevelDTO, Long> implements LevelsProcessorLocal {
 
     @EJB
     private LevelsManagerLocal levelsManager;
 
     @Override
-    public void processPostLevel(LevelDTO levelDTO) {
-        Application application = super.tryToRetrieveApplication(levelDTO.getApiKey());
+    public void postDTO(LevelDTO dto) {
+        Application application = super.tryToRetrieveApplication(dto.getApiKey());
 
         Level level = new Level();
-        level.setName(levelDTO.getName());
-        level.setMinimumPoints(levelDTO.getMinimumPoints());
+        level.setName(dto.getName());
+        level.setMinimumPoints(dto.getMinimumPoints());
 
         levelsManager.assignLevelToApplication(application, level);
     }
 
     @Override
-    public void processPutLevel(Long levelID, LevelDTO levelDTO) {
-        Application application = super.tryToRetrieveApplication(levelDTO.getApiKey());
+    public void putDTO(Long id, LevelDTO dto) {
+        Application application = super.tryToRetrieveApplication(dto.getApiKey());
 
         try {
-            Level level = levelsManager.findById(levelID);
+            Level level = levelsManager.findById(id);
 
             if (level.getApplication() == application) {
-                level.setName(levelDTO.getName());
-                level.setMinimumPoints(levelDTO.getMinimumPoints());
+                level.setName(dto.getName());
+                level.setMinimumPoints(dto.getMinimumPoints());
             } else {
                 throw new Error("This application doens't have level with specified levelID");
             }
@@ -48,11 +48,12 @@ public class LevelsProcessor extends GamificationDTOProcessor implements LevelsP
     }
 
     @Override
-    public void processDeleteLevel(Long levelID, String apiKey) {
+    public void deleteDTO(Long id, String apiKey) {
+        
         Application application = super.tryToRetrieveApplication(apiKey);
 
         try {
-            Level level = levelsManager.findById(levelID);
+            Level level = levelsManager.findById(id);
 
             if (level.getApplication() == application) {
                 levelsManager.deleteLevel(level);
@@ -62,6 +63,7 @@ public class LevelsProcessor extends GamificationDTOProcessor implements LevelsP
         } catch (GamificationDomainEntityNotFoundException ex) {
             throw new NullPointerException("This level doesn't exists");
         }
+        
     }
 
 }

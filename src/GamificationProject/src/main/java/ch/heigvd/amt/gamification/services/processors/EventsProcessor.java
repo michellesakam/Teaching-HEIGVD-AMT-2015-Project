@@ -7,7 +7,6 @@ import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
-import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -17,7 +16,8 @@ import javax.ejb.Stateless;
  * @michelle meguep
  */
 @Stateless
-public class EventsProcessor extends GamificationDTOProcessor implements EventsProcessorLocal {
+public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
+        implements EventsProcessorLocal {
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
@@ -29,25 +29,34 @@ public class EventsProcessor extends GamificationDTOProcessor implements EventsP
     private RulesManagerLocal rulesManager;
 
     @Override
-    public void processEvent(EventDTO event) throws GamificationDomainEntityNotFoundException {
+    public void postDTO(EventDTO dto) {
+        Application application = super.tryToRetrieveApplication(dto.getApiKey());
 
-        Application application = super.tryToRetrieveApplication(event.getApiKey());
-
-        EndUser endUser = endUserManger.retrieveEndUser(application, event.getEndUserNumber());
+        EndUser endUser = endUserManger.retrieveEndUser(application, dto.getEndUserNumber());
 
         if (endUser == null) {
             endUser = new EndUser();
-            endUser.setRegDate(event.getTimestamp());
-            endUser.setUserID(event.getEndUserNumber());
+            endUser.setRegDate(dto.getTimestamp());
+            endUser.setUserID(dto.getEndUserNumber());
             applicationsManager.assignApplicationToAnEndUser(application, endUser);
         }
 
         // Find the rules corresponding to the event type and application
-        List<Rule> rules = rulesManager.findByEventTypeAndApplication(application, event.getType());
+        List<Rule> rules = rulesManager.findByEventTypeAndApplication(application, dto.getType());
 
         for (Rule r : rules) {
-            rulesManager.processRuleForAnEvent(event, r, endUser);
+            rulesManager.processRuleForAnEvent(dto, r, endUser);
         }
+    }
+
+    @Override
+    public void putDTO(Long id, EventDTO dto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteDTO(Long id, String apiKey) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -49,21 +49,21 @@ public class LevelRessource {
     @POST
     @Consumes("application/json")
     public void postLevel(LevelDTO levelDTO) {
-        levelsProcessor.processPostLevel(levelDTO);
+        levelsProcessor.postDTO(levelDTO);
     }
 
     @PUT
     @Consumes("application/json")
     @Path("/{levelID}")
     public void putLevel(@PathParam(value = "levelID") Long levelID, LevelDTO levelDTO) {
-        levelsProcessor.processPutLevel(levelID, levelDTO);
+        levelsProcessor.putDTO(levelID, levelDTO);
     }
 
     @DELETE
     @Path("/{levelID}")
     @Consumes("application/json")
     public void deleteLevel(@PathParam(value = "levelID") Long levelID, String apiKey) {
-        levelsProcessor.processDeleteLevel(levelID, apiKey);
+        levelsProcessor.deleteDTO(levelID, apiKey);
     }
 
     public LevelDTO toDTO(Level level) {

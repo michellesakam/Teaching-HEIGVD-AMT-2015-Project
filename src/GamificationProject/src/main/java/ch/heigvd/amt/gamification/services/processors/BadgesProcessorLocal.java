@@ -8,8 +8,5 @@ import javax.ejb.Local;
  * @author Raphaël Racine
  */
 @Local
-public interface BadgesProcessorLocal {
-    public void processPostBadge(BadgeDTO badgeDTO);
-    public void processPutBadge(Long badgeID, BadgeDTO badgeDTO);
-    public void processDeleteBadge(Long badgeID, String apiKey);
+public interface BadgesProcessorLocal extends IGamificationDTOProcessor<BadgeDTO, Long> {
 }
