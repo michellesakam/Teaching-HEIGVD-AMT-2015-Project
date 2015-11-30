@@ -1,14 +1,10 @@
 package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.RuleDTO;
-import ch.heigvd.amt.gamification.model.Action;
-import ch.heigvd.amt.gamification.model.ActionAwardBadge;
-import ch.heigvd.amt.gamification.model.ActionAwardPoints;
-import ch.heigvd.amt.gamification.model.Application;
-import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
+import ch.heigvd.amt.gamification.services.RulesProcessorLocal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -34,7 +30,7 @@ public class RuleRessource {
     private RulesManagerLocal rulesManager;
     
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
+    private RulesProcessorLocal rulesProcessor;
     
     @GET
     @Produces("application/json")
@@ -52,53 +48,7 @@ public class RuleRessource {
     @POST
     @Consumes("application/json")
     public void postRule(RuleDTO ruleDTO) {
-
-        Application application = applicationsManager.retrieveApplicationByApikey(ruleDTO.getApiKey());
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
-
-        Rule rule = new Rule();
-        Action action = null;
-        
-        switch(ruleDTO.getAwardType()) {
-            case "AwardBadge":
-                ActionAwardBadge actionAwardBadge;
-                actionAwardBadge = new ActionAwardBadge();
-                
-                Badge badge = applicationsManager.findBadgeByIdAndApiKey(ruleDTO.getBadgeID(), ruleDTO.getApiKey());
-                
-                if(badge == null)
-                    throw new NullPointerException("This badge doesnt exists");
-                
-                actionAwardBadge.setBadge(badge);
-                actionAwardBadge.setReason(ruleDTO.getReason());
-                actionAwardBadge.setConditionsToApply(ruleDTO.getConditionsToApply());                
-                action = actionAwardBadge;
-                break;
-            case "AwardPoints":
-                ActionAwardPoints actionAwardPoints;
-                actionAwardPoints = new ActionAwardPoints();
-                actionAwardPoints.setConditionsToApply(ruleDTO.getConditionsToApply());
-                actionAwardPoints.setReason(ruleDTO.getReason());
-                actionAwardPoints.setNbPoints(ruleDTO.getNbPoints());
-                action = actionAwardPoints;
-                break;
-        }
-        
-        if(action != null) {
-            action.setConditionsToApply(ruleDTO.getConditionsToApply());
-            action.setReason(ruleDTO.getReason());
-        }
-        else
-            throw new Error("The action specified for this rule is not valid");
-        
-        rule.setAction(action);
-        
-        rule.setEventType(ruleDTO.getEventType());
-                
-        applicationsManager.assignRuleToAnApplication(application, rule);
+        rulesProcessor.processPostRule(ruleDTO);
     }
 
     @PUT
