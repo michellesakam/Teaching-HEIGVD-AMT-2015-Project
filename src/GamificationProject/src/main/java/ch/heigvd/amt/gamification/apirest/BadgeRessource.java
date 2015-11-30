@@ -51,12 +51,14 @@ public class BadgeRessource {
 
     @PUT
     @Consumes("application/json")
+    @Path("{badgeID}")
     public void putBadge(@PathParam(value = "badgeID") Long badgeID, BadgeDTO badgeDTO) {
         badgesProcessor.putDTO(badgeID, badgeDTO);
     }
 
     @DELETE
     @Consumes("application/json")
+    @Path("{badgeID}")
     public void deleteBadge(@PathParam(value = "badgeID") Long badgeID, String apiKey) {
         badgesProcessor.deleteDTO(badgeID, apiKey);
     }

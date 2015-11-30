@@ -2,7 +2,6 @@ package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.RuleDTO;
 import ch.heigvd.amt.gamification.model.Rule;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.processors.RulesProcessorLocal;
 import java.util.ArrayList;
@@ -10,12 +9,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -49,18 +45,6 @@ public class RuleRessource {
     @Consumes("application/json")
     public void postRule(RuleDTO ruleDTO) {
         rulesProcessor.postDTO(ruleDTO);
-    }
-
-    @PUT
-    @Consumes("application/json")
-    public void putRule(@PathParam(value = "ruleID") Long ruleID, RuleDTO ruleDTO) {
-        // TODO:
-    }
-
-    @DELETE
-    @Consumes("application/json")
-    public void deleteRule(@PathParam(value = "ruleID") Long ruleID, String apiKey) {
-        // TODO:
     }
 
     public RuleDTO toDTO(Rule rule) {
