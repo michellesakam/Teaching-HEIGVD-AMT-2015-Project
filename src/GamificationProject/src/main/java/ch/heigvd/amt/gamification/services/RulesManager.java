@@ -25,10 +25,10 @@ public class RulesManager implements RulesManagerLocal {
 
     @EJB
     private RuleDAOLocal ruleDAO;
-    
+
     @EJB
     private AwardDAOLocal awardDAO;
-    
+
     @Override
     public List<Rule> findByEventTypeAndApplication(Application application, String eventType) {
         return ruleDAO.findByEventTypeAndApplication(application, eventType);
@@ -38,47 +38,48 @@ public class RulesManager implements RulesManagerLocal {
     public List<Rule> findByApiKey(String apiKey) {
         return ruleDAO.findByApiKey(apiKey);
     }
-    
+
     @Override
     public void processRuleForAnEvent(EventDTO eventDTO, Rule r, EndUser endUser) {
-        
+
         Action action = r.getAction();
-        
+
         // Check if the rule can be apply
         Map<String, Object> conditionsToApply = r.getAction().getConditionsToApply();
-        
-        for(String key : conditionsToApply.keySet()) {
-            
-            if(eventDTO.getProperty(key) == null)
+
+        for (String key : conditionsToApply.keySet()) {
+
+            if (eventDTO.getProperty(key) == null) {
                 return;
-            
-            if(!(eventDTO.getProperty(key).equals(conditionsToApply.get(key))))
+            }
+
+            if (!(eventDTO.getProperty(key).equals(conditionsToApply.get(key)))) {
                 return;
+            }
         }
-        
-        if(action.getClass() == ActionAwardBadge.class) {
-            
+
+        if (action.getClass() == ActionAwardBadge.class) {
+
             ActionAwardBadge actionAwardBadge = (ActionAwardBadge) action;
-            
+
             AwardBadge awardBadge = new AwardBadge();
             awardBadge.setBadge(actionAwardBadge.getBadge());
             awardBadge.setDateReception(eventDTO.getTimestamp());
             awardBadge.setEndUser(endUser);
             awardBadge.setRaison(action.getReason());
-                        
+
             awardDAO.create(awardBadge);
+        } else if (action.getClass() == ActionAwardPoints.class) {
+            ActionAwardPoints actionAwardPoints = (ActionAwardPoints) action;
+
+            AwardPoint awardPoint = new AwardPoint();
+            awardPoint.setDateReception(eventDTO.getTimestamp());
+            awardPoint.setEndUser(endUser);
+            awardPoint.setRaison(action.getReason());
+            awardPoint.setScore(actionAwardPoints.getNbPoints());
+
+            awardDAO.create(awardPoint);
         }
-        else if(action.getClass() == ActionAwardPoints.class) {
-               ActionAwardPoints actionAwardPoints = (ActionAwardPoints) action; 
-               
-               AwardPoint awardPoint = new AwardPoint();
-               awardPoint.setDateReception(eventDTO.getTimestamp());
-               awardPoint.setEndUser(endUser);
-               awardPoint.setRaison(action.getReason());
-               awardPoint.setScore(actionAwardPoints.getNbPoints());
-               
-               awardDAO.create(awardPoint);
-        }        
     }
-    
+
 }
