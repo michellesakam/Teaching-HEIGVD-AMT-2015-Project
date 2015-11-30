@@ -57,9 +57,11 @@ public class RuleRessource {
         dto.setEventType(rule.getEventType());
         
         dto.setBadgeID((Long) rule.getAction().getValue());
-        dto.setNbPoints(Integer.SIZE);
+        dto.setNbPoints((Long) rule.getAction().getValue());
         
         dto.setAwardType(rule.getAction().getType());
+        
+        dto.setReason(rule.getAction().getReason());
 
         return dto;
     }

@@ -15,7 +15,7 @@ public class RuleDTO implements IGamificationDTO {
     private String reason;
     
     private String awardType; // awardBadge or awardPoint
-    private Integer nbPoints; // If awardPoint
+    private Long nbPoints; // If awardPoint
     private Long badgeID; // If awardBadge
 
     public Long getRuleID() {
@@ -58,11 +58,11 @@ public class RuleDTO implements IGamificationDTO {
         this.reason = reason;
     }
 
-    public Integer getNbPoints() {
+    public Long getNbPoints() {
         return nbPoints;
     }
 
-    public void setNbPoints(Integer nbPoints) {
+    public void setNbPoints(Long nbPoints) {
         this.nbPoints = nbPoints;
     }
 

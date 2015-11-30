@@ -11,13 +11,13 @@ import javax.persistence.Entity;
 @DiscriminatorValue("nbPoints")
 public class ActionAwardPoints extends Action {    
     
-    private int nbPoints;
+    private long nbPoints;
 
-    public int getNbPoints() {
+    public long getNbPoints() {
         return nbPoints;
     }
 
-    public void setNbPoints(int nbPoints) {
+    public void setNbPoints(long nbPoints) {
         this.nbPoints = nbPoints;
     } 
     
