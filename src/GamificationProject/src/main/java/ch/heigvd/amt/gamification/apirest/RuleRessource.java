@@ -56,8 +56,7 @@ public class RuleRessource {
         dto.setConditionsToApply(rule.getAction().getConditionsToApply());
         dto.setEventType(rule.getEventType());
         
-        dto.setBadgeID((Long) rule.getAction().getValue());
-        dto.setNbPoints((Long) rule.getAction().getValue());
+        dto.setAwardValue(rule.getAction().getAwardValue());
         
         dto.setAwardType(rule.getAction().getType());
         

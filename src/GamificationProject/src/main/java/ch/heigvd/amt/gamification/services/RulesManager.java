@@ -76,7 +76,7 @@ public class RulesManager implements RulesManagerLocal {
             awardPoint.setDateReception(eventDTO.getTimestamp());
             awardPoint.setEndUser(endUser);
             awardPoint.setRaison(action.getReason());
-            awardPoint.setScore(actionAwardPoints.getNbPoints());
+            awardPoint.setScore((int) actionAwardPoints.getNbPoints());
 
             awardDAO.create(awardPoint);
         }

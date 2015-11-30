@@ -5,7 +5,7 @@ import java.util.HashMap;
  *
  * @author Raphaël Racine
  */
-public class RuleDTO implements IGamificationDTO {
+public class RuleDTO<T> implements IGamificationDTO {
 
     private Long ruleID;
     
@@ -15,8 +15,7 @@ public class RuleDTO implements IGamificationDTO {
     private String reason;
     
     private String awardType; // awardBadge or awardPoint
-    private Long nbPoints; // If awardPoint
-    private Long badgeID; // If awardBadge
+    private T awardValue;
 
     public Long getRuleID() {
         return ruleID;
@@ -58,21 +57,12 @@ public class RuleDTO implements IGamificationDTO {
         this.reason = reason;
     }
 
-    public Long getNbPoints() {
-        return nbPoints;
+    public T getAwardValue() {
+        return awardValue;
     }
 
-    public void setNbPoints(Long nbPoints) {
-        this.nbPoints = nbPoints;
-    }
-
-    public Long getBadgeID() {
-        return badgeID;
-    }
-
-    public void setBadgeID(Long badgeID) {
-        this.badgeID = badgeID;
-    }
-        
+    public void setAwardValue(T awardValue) {
+        this.awardValue = awardValue;
+    }            
     
 }

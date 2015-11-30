@@ -12,17 +12,17 @@ import javax.persistence.Entity;
 @DiscriminatorValue( "score")
 public class AwardPoint extends Award{
          
-    private long score;      
+    private int score;      
     
     public AwardPoint(){
  
     }
  
-    public long getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(long score) {
+    public void setScore(int score) {
         this.score = score;
     }
   

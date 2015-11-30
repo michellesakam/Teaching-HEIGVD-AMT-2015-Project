@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 @DiscriminatorValue("badge")
-public class ActionAwardBadge extends Action {    
+public class ActionAwardBadge extends Action<Long> {    
     
     @ManyToOne
     private Badge badge;
@@ -29,7 +29,7 @@ public class ActionAwardBadge extends Action {
     }
 
     @Override
-    public Object getValue() {
+    public Long getAwardValue() {
         return badge.getId();
     }
     

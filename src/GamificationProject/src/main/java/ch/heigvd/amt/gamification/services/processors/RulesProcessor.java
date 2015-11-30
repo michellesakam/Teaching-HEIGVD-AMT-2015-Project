@@ -35,7 +35,7 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
                 ActionAwardBadge actionAwardBadge;
                 actionAwardBadge = new ActionAwardBadge();
 
-                Badge badge = applicationsManager.findBadgeByIdAndApiKey(dto.getBadgeID(), apiKey);
+                Badge badge = applicationsManager.findBadgeByIdAndApiKey((Long) dto.getAwardValue(), apiKey);
 
                 if (badge == null)
                     throw new NullPointerException("This badge doesnt exists");
@@ -52,7 +52,7 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
                 actionAwardPoints = new ActionAwardPoints();
                 actionAwardPoints.setConditionsToApply(dto.getConditionsToApply());
                 actionAwardPoints.setReason(dto.getReason());
-                actionAwardPoints.setNbPoints(dto.getNbPoints());
+                actionAwardPoints.setNbPoints((int) dto.getAwardValue());
                 action = actionAwardPoints;
                 break;
                 
