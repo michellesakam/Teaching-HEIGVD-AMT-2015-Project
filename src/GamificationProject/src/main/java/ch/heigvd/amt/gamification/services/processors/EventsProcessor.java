@@ -29,8 +29,8 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
     private RulesManagerLocal rulesManager;
 
     @Override
-    public void postDTO(EventDTO dto) {
-        Application application = super.tryToRetrieveApplication(dto.getApiKey());
+    public void postDTO(String apiKey, EventDTO dto) {
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         EndUser endUser = endUserManger.retrieveEndUser(application, dto.getEndUserNumber());
 
@@ -50,7 +50,7 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
     }
 
     @Override
-    public void putDTO(Long id, EventDTO dto) {
+    public void putDTO(String apiKey, Long id, EventDTO dto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

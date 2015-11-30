@@ -23,8 +23,8 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
     private ApplicationsManagerLocal applicationsManager;
 
     @Override
-    public void postDTO(RuleDTO dto) {
-        Application application = super.tryToRetrieveApplication(dto.getApiKey());
+    public void postDTO(String apiKey, RuleDTO dto) {
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         Rule rule = new Rule();
         Action action = null;
@@ -35,7 +35,7 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
                 ActionAwardBadge actionAwardBadge;
                 actionAwardBadge = new ActionAwardBadge();
 
-                Badge badge = applicationsManager.findBadgeByIdAndApiKey(dto.getBadgeID(), dto.getApiKey());
+                Badge badge = applicationsManager.findBadgeByIdAndApiKey(dto.getBadgeID(), apiKey);
 
                 if (badge == null)
                     throw new NullPointerException("This badge doesnt exists");
@@ -73,7 +73,7 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
     }
 
     @Override
-    public void putDTO(Long id, RuleDTO dto) {
+    public void putDTO(String apiKey, Long id, RuleDTO dto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

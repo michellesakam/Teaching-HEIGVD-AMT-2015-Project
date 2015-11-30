@@ -5,7 +5,7 @@ import java.util.HashMap;
  *
  * @author Raphaël Racine
  */
-public class RuleDTO extends GamificationDTO {
+public class RuleDTO implements IGamificationDTO {
 
     private Long ruleID;
     

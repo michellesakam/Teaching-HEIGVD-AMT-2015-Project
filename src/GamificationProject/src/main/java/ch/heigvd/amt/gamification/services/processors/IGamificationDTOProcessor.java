@@ -1,6 +1,6 @@
 package ch.heigvd.amt.gamification.services.processors;
 
-import ch.heigvd.amt.gamification.dto.GamificationDTO;
+import ch.heigvd.amt.gamification.dto.IGamificationDTO;
 import javax.ejb.Local;
 
 /**
@@ -10,8 +10,8 @@ import javax.ejb.Local;
  * @param <K>
  */
 @Local
-public interface IGamificationDTOProcessor<T extends GamificationDTO, K> {    
-    public void postDTO(T dto);
-    public void putDTO(K id, T dto);
+public interface IGamificationDTOProcessor<T extends IGamificationDTO, K> {    
+    public void postDTO(String apiKey, T dto);
+    public void putDTO(String apiKey, K id, T dto);
     public void deleteDTO(K id, String apiKey);    
 }

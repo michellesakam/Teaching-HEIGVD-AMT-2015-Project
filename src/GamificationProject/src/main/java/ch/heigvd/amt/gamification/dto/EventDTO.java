@@ -7,7 +7,7 @@ import java.util.HashMap;
  *
  * @author Raphaël Racine
  */
-public class EventDTO extends GamificationDTO { 
+public class EventDTO implements IGamificationDTO { 
     private String type;
     private String endUserNumber;
     private HashMap<String, Object> properties;

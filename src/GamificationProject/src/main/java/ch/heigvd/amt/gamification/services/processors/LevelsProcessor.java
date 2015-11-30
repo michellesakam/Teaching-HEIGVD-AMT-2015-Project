@@ -19,8 +19,8 @@ public class LevelsProcessor extends GamificationDTOProcessor<LevelDTO, Long> im
     private LevelsManagerLocal levelsManager;
 
     @Override
-    public void postDTO(LevelDTO dto) {
-        Application application = super.tryToRetrieveApplication(dto.getApiKey());
+    public void postDTO(String apiKey, LevelDTO dto) {
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         Level level = new Level();
         level.setName(dto.getName());
@@ -30,8 +30,8 @@ public class LevelsProcessor extends GamificationDTOProcessor<LevelDTO, Long> im
     }
 
     @Override
-    public void putDTO(Long id, LevelDTO dto) {
-        Application application = super.tryToRetrieveApplication(dto.getApiKey());
+    public void putDTO(String apiKey, Long id, LevelDTO dto) {
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         try {
             Level level = levelsManager.findById(id);

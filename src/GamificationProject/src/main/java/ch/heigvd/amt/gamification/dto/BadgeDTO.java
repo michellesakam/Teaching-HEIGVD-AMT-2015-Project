@@ -4,7 +4,7 @@ package ch.heigvd.amt.gamification.dto;
  *
  * @author Samira
  */
-public class BadgeDTO extends GamificationDTO {
+public class BadgeDTO implements IGamificationDTO {
     
     private Long id;
     private String name;

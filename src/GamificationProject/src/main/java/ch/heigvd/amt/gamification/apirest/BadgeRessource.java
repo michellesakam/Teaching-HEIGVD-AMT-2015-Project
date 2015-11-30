@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -33,7 +34,7 @@ public class BadgeRessource {
 
     @GET
     @Produces("application/json")
-    public List<BadgeDTO> getBadges(String apiKey) {
+    public List<BadgeDTO> getBadges(@HeaderParam("Authorization") String apiKey) {
         List<BadgeDTO> dto = new ArrayList<>();
         List<Badge> badges = badgesManager.findByApiKey(apiKey);
 
@@ -45,28 +46,27 @@ public class BadgeRessource {
 
     @POST
     @Consumes("application/json")
-    public void postBadge(BadgeDTO badgeDTO) {
-        badgesProcessor.postDTO(badgeDTO);
+    public void postBadge(@HeaderParam("Authorization") String apiKey, BadgeDTO badgeDTO) {
+        badgesProcessor.postDTO(apiKey, badgeDTO);
     }
 
     @PUT
     @Consumes("application/json")
     @Path("{badgeID}")
-    public void putBadge(@PathParam(value = "badgeID") Long badgeID, BadgeDTO badgeDTO) {
-        badgesProcessor.putDTO(badgeID, badgeDTO);
+    public void putBadge(@HeaderParam("Authorization") String apiKey, @PathParam(value = "badgeID") Long badgeID, BadgeDTO badgeDTO) {
+        badgesProcessor.putDTO(apiKey, badgeID, badgeDTO);
     }
 
     @DELETE
     @Consumes("application/json")
     @Path("{badgeID}")
-    public void deleteBadge(@PathParam(value = "badgeID") Long badgeID, String apiKey) {
+    public void deleteBadge(@HeaderParam("Authorization") String apiKey, @PathParam(value = "badgeID") Long badgeID) {
         badgesProcessor.deleteDTO(badgeID, apiKey);
     }
 
     public BadgeDTO toDTO(Badge badge) {
         BadgeDTO dto = new BadgeDTO();
         dto.setName(badge.getName());
-        dto.setApiKey(badge.getApplication().getApiKey().getKey());
         dto.setId(badge.getId());
 
         return dto;

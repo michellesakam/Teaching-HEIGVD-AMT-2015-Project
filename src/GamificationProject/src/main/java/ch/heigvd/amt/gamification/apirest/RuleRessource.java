@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -30,7 +31,7 @@ public class RuleRessource {
     
     @GET
     @Produces("application/json")
-    public List<RuleDTO> getRules(String apiKey) {
+    public List<RuleDTO> getRules(@HeaderParam("Authorization") String apiKey) {
         List<RuleDTO> dto = new ArrayList<>();
         List<Rule> rules = rulesManager.findByApiKey(apiKey);
 
@@ -43,8 +44,8 @@ public class RuleRessource {
 
     @POST
     @Consumes("application/json")
-    public void postRule(RuleDTO ruleDTO) {
-        rulesProcessor.postDTO(ruleDTO);
+    public void postRule(@HeaderParam("Authorization") String apiKey, RuleDTO ruleDTO) {
+        rulesProcessor.postDTO(apiKey, ruleDTO);
     }
 
     public RuleDTO toDTO(Rule rule) {
@@ -59,7 +60,6 @@ public class RuleRessource {
         dto.setNbPoints(Integer.SIZE);
         
         dto.setAwardType(rule.getAction().getType());
-        dto.setApiKey(rule.getApplication().getApiKey().getKey());
 
         return dto;
     }

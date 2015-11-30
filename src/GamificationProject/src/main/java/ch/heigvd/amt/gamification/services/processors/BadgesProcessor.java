@@ -23,8 +23,8 @@ public class BadgesProcessor extends GamificationDTOProcessor<BadgeDTO, Long> im
     private BadgesManagerLocal badgesManager;
 
     @Override
-    public void postDTO(BadgeDTO dto) {
-        Application application = super.tryToRetrieveApplication(dto.getApiKey());
+    public void postDTO(String apiKey, BadgeDTO dto) {
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         Badge badge = new Badge();
         badge.setName(dto.getName());
@@ -32,8 +32,8 @@ public class BadgesProcessor extends GamificationDTOProcessor<BadgeDTO, Long> im
     }
 
     @Override
-    public void putDTO(Long id, BadgeDTO dto) {
-        Application application = super.tryToRetrieveApplication(dto.getApiKey());
+    public void putDTO(String apiKey, Long id, BadgeDTO dto) {
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         try {
             Badge badge = badgesManager.findById(id);

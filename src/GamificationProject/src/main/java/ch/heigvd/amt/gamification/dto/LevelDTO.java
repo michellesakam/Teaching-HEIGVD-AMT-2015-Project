@@ -4,7 +4,7 @@ package ch.heigvd.amt.gamification.dto;
  *
  * @author Raphaël Racine
  */
-public class LevelDTO extends GamificationDTO {
+public class LevelDTO implements IGamificationDTO {
     
     private Long id;
     private String name;
