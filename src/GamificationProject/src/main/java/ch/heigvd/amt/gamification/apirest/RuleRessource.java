@@ -54,15 +54,13 @@ public class RuleRessource {
         
         dto.setRuleID(rule.getId());
         dto.setConditionsToApply(rule.getAction().getConditionsToApply());
-        dto.setEventType(rule.getEventType());
-        
-        dto.setAwardValue(rule.getAction().getAwardValue());
-        
-        dto.setAwardType(rule.getAction().getType());
-        
+        dto.setEventType(rule.getEventType());        
+        dto.setAwardValue(rule.getAction().getAwardValue());        
+        dto.setAwardType(rule.getAction().getType());        
         dto.setReason(rule.getAction().getReason());
 
         return dto;
+        
     }
 
 }
