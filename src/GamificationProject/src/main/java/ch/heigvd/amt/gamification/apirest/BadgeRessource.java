@@ -1,11 +1,9 @@
 package ch.heigvd.amt.gamification.apirest;
 
+import ch.heigvd.amt.gamification.services.BadgesProcessorLocal;
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
-import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
-import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -29,9 +27,6 @@ public class BadgeRessource {
 
     @EJB
     private BadgesManagerLocal badgesManager;
-
-    @EJB
-    private ApplicationsManagerLocal applicationsManager;
     
     @EJB
     private BadgesProcessorLocal badgesProcessor;

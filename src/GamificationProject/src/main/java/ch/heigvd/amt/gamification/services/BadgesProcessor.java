@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.apirest;
+package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
 import ch.heigvd.amt.gamification.model.Application;
