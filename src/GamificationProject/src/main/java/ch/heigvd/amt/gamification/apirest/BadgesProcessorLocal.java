@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.services;
+package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
 import javax.ejb.Local;

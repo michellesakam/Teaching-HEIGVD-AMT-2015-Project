@@ -5,7 +5,6 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
-import ch.heigvd.amt.gamification.services.BadgesProcessorLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
