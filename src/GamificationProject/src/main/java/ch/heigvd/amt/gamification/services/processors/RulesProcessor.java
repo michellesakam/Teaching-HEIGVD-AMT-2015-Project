@@ -16,18 +16,14 @@ import javax.ejb.Stateless;
  * @author Raphaël Racine
  */
 @Stateless
-public class RulesProcessor implements RulesProcessorLocal {
+public class RulesProcessor extends GamificationDTOProcessor implements RulesProcessorLocal {
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
 
     @Override
     public void processPostRule(RuleDTO ruleDTO) {
-        Application application = applicationsManager.retrieveApplicationByApikey(ruleDTO.getApiKey());
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
+        Application application = super.tryToRetrieveApplication(ruleDTO.getApiKey());
 
         Rule rule = new Rule();
         Action action = null;

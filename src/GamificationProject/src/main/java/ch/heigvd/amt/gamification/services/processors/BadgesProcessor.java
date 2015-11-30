@@ -4,8 +4,6 @@ import ch.heigvd.amt.gamification.dto.BadgeDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
@@ -16,7 +14,7 @@ import javax.ejb.Stateless;
  * @author Raphaël Racine
  */
 @Stateless
-public class BadgesProcessor implements BadgesProcessorLocal {
+public class BadgesProcessor extends GamificationDTOProcessor implements BadgesProcessorLocal {
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
@@ -27,12 +25,8 @@ public class BadgesProcessor implements BadgesProcessorLocal {
     @Override
     public void processPostBadge(BadgeDTO badgeDTO) {
 
-        Application application = applicationsManager.retrieveApplicationByApikey(badgeDTO.getApiKey());
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
-
+        Application application = super.tryToRetrieveApplication(badgeDTO.getApiKey());
+        
         Badge badge = new Badge();
         badge.setName(badgeDTO.getName());
         applicationsManager.assignBadgeToAnApplication(application, badge);
@@ -42,11 +36,7 @@ public class BadgesProcessor implements BadgesProcessorLocal {
     @Override
     public void processPutBadge(Long badgeID, BadgeDTO badgeDTO) {
 
-        Application application = applicationsManager.retrieveApplicationByApikey(badgeDTO.getApiKey());
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
+        Application application = super.tryToRetrieveApplication(badgeDTO.getApiKey());
 
         try {
             Badge badge = badgesManager.findById(badgeID);
@@ -65,11 +55,7 @@ public class BadgesProcessor implements BadgesProcessorLocal {
     @Override
     public void processDeleteBadge(Long badgeID, String apiKey) {
 
-        Application application = applicationsManager.retrieveApplicationByApikey(apiKey);
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
+        Application application = super.tryToRetrieveApplication(apiKey);
 
         try {
             Badge badge = badgesManager.findById(badgeID);

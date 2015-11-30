@@ -5,45 +5,33 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
-import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
-import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
-import ch.heigvd.amt.gamification.services.RulesManagerLocal;
-import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.NotFoundException;
 
 /**
  *
  * @michelle meguep
  */
 @Stateless
-public class EventsProcessor implements EventsProcessorLocal {
+public class EventsProcessor extends GamificationDTOProcessor implements EventsProcessorLocal {
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
 
     @EJB
     private EndUsersManagerLocal endUserManger;
-    
+
     @EJB
     private RulesManagerLocal rulesManager;
 
     @Override
     public void processEvent(EventDTO event) throws GamificationDomainEntityNotFoundException {
 
-        Application application
-                = applicationsManager.retrieveApplicationByApikey(event.getApiKey());
-
-        if (application == null) {
-            throw new NotFoundException("This application does not exist!");
-        }
+        Application application = super.tryToRetrieveApplication(event.getApiKey());
 
         EndUser endUser = endUserManger.retrieveEndUser(application, event.getEndUserNumber());
 
@@ -53,11 +41,11 @@ public class EventsProcessor implements EventsProcessorLocal {
             endUser.setUserID(event.getEndUserNumber());
             applicationsManager.assignApplicationToAnEndUser(application, endUser);
         }
-        
+
         // Find the rules corresponding to the event type and application
         List<Rule> rules = rulesManager.findByEventTypeAndApplication(application, event.getType());
-        
-        for(Rule r : rules) {
+
+        for (Rule r : rules) {
             rulesManager.processRuleForAnEvent(event, r, endUser);
         }
     }
