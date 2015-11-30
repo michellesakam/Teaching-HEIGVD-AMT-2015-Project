@@ -30,22 +30,24 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
         Action action = null;
 
         switch (dto.getAwardType()) {
+            
             case "AwardBadge":
                 ActionAwardBadge actionAwardBadge;
                 actionAwardBadge = new ActionAwardBadge();
 
                 Badge badge = applicationsManager.findBadgeByIdAndApiKey(dto.getBadgeID(), dto.getApiKey());
 
-                if (badge == null) {
+                if (badge == null)
                     throw new NullPointerException("This badge doesnt exists");
-                }
 
                 actionAwardBadge.setBadge(badge);
                 actionAwardBadge.setReason(dto.getReason());
                 actionAwardBadge.setConditionsToApply(dto.getConditionsToApply());
                 action = actionAwardBadge;
                 break;
+                
             case "AwardPoints":
+                
                 ActionAwardPoints actionAwardPoints;
                 actionAwardPoints = new ActionAwardPoints();
                 actionAwardPoints.setConditionsToApply(dto.getConditionsToApply());
@@ -53,6 +55,7 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
                 actionAwardPoints.setNbPoints(dto.getNbPoints());
                 action = actionAwardPoints;
                 break;
+                
         }
 
         if (action != null) {

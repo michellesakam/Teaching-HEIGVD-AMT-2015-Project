@@ -46,22 +46,22 @@ public class BadgeRessource {
     @POST
     @Consumes("application/json")
     public void postBadge(BadgeDTO badgeDTO) {
-        badgesProcessor.processPostBadge(badgeDTO);
+        badgesProcessor.postDTO(badgeDTO);
     }
 
     @PUT
     @Consumes("application/json")
     public void putBadge(@PathParam(value = "badgeID") Long badgeID, BadgeDTO badgeDTO) {
-        badgesProcessor.processPutBadge(badgeID, badgeDTO);
+        badgesProcessor.putDTO(badgeID, badgeDTO);
     }
 
     @DELETE
     @Consumes("application/json")
     public void deleteBadge(@PathParam(value = "badgeID") Long badgeID, String apiKey) {
+        badgesProcessor.deleteDTO(badgeID, apiKey);
     }
 
     public BadgeDTO toDTO(Badge badge) {
-
         BadgeDTO dto = new BadgeDTO();
         dto.setName(badge.getName());
         dto.setApiKey(badge.getApplication().getApiKey().getKey());
