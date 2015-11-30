@@ -4,7 +4,7 @@ package ch.heigvd.amt.gamification.dto;
  *
  * @author Raphaël Racine
  */
-public abstract class DTOWithApiKey {
+public abstract class GamificationDTO {
     
     private String apiKey;
 

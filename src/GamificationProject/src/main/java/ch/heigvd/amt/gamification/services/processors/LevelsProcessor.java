@@ -4,8 +4,6 @@ import ch.heigvd.amt.gamification.dto.LevelDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Level;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
 import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
@@ -26,7 +24,7 @@ public class LevelsProcessor implements LevelsProcessorLocal {
 
     @Override
     public void processPostLevel(LevelDTO levelDTO) {
-        Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApikey());
+        Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApiKey());
 
         if (application == null) {
             throw new NullPointerException("This application doesn't exists");
@@ -41,7 +39,7 @@ public class LevelsProcessor implements LevelsProcessorLocal {
 
     @Override
     public void processPutLevel(Long levelID, LevelDTO levelDTO) {
-        Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApikey());
+        Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApiKey());
 
         if (application == null) {
             throw new NullPointerException("This application doesn't exists");

@@ -5,11 +5,9 @@ import java.util.HashMap;
  *
  * @author Raphaël Racine
  */
-public class RuleDTO {
+public class RuleDTO extends GamificationDTO {
 
     private Long ruleID;
-    
-    private String apiKey;
     
     private HashMap conditionsToApply;
     private String eventType;
@@ -50,14 +48,6 @@ public class RuleDTO {
 
     public void setAwardType(String awardType) {
         this.awardType = awardType;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-    
-    public String getApiKey() {
-        return apiKey;
     }
 
     public String getReason() {

@@ -3,7 +3,6 @@ package ch.heigvd.amt.gamification.apirest;
 import ch.heigvd.amt.gamification.services.processors.LevelsProcessorLocal;
 import ch.heigvd.amt.gamification.dto.LevelDTO;
 import ch.heigvd.amt.gamification.model.Level;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +70,7 @@ public class LevelRessource {
 
         LevelDTO dto = new LevelDTO();
         dto.setName(level.getName());
-        dto.setApikey(level.getApplication().getApiKey().getKey());
+        dto.setApiKey(level.getApplication().getApiKey().getKey());
         dto.setMinimumPoints(level.getMinimumPoints());
         dto.setId(level.getId());
 
