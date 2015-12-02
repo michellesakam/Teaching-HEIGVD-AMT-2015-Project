@@ -3,14 +3,12 @@ package ch.heigvd.amt.gamification.services.dao;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ApiKey;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -18,9 +16,6 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ApplicationDAO extends GenericDAO<Application, Long> implements ApplicationDAOLocal {
-
-    @PersistenceContext
-    EntityManager em;
 
     @EJB
     private ApiKeyDAOLocal apikeyDAO;
@@ -46,10 +41,10 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
 
     @Override
     public void assignApplicationToEndUser(Application application, EndUser endUser) {
-        
+
         application.getEndUsers().add(endUser);
         endUser.setApplication(application);
-        
+
     }
 
     @Override
@@ -94,9 +89,9 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     @Override
     public Application findByApiKey(String apikey) {
         List<Application> app = em.createNamedQuery("Application.findByApiKey")
-                    .setParameter("key", apikey)
-                    .setMaxResults(1).getResultList();
-        
+                .setParameter("key", apikey)
+                .setMaxResults(1).getResultList();
+
         return app.size() > 0 ? app.get(0) : null;
     }
 
@@ -106,6 +101,28 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
                 .setParameter("app", application)
                 .setParameter("endUser", endUser)
                 .getResultList().size() > 0;
+    }
+
+    @Override
+    public void assignRuleToAnApplication(Application application, Rule rule) {
+        rule.setApplication(application);
+        application.getRules().add(rule);
+    }
+
+    @Override
+    public void assignBadgeToAnApplication(Application application, Badge badge) {
+        badge.setApplication(application);
+        application.getBadges().add(badge);
+    }
+
+    @Override
+    public Badge findBadgeByIdAndApiKey(Long id, String apiKey) {
+        List<Badge> badges = em.createNamedQuery("Badge.findBadgeByIdAndApiKey")
+                .setParameter("id", id)
+                .setParameter("apiKey", apiKey)
+                .setMaxResults(1).getResultList();
+
+        return badges.size() > 0 ? badges.get(0) : null;
     }
 
 }

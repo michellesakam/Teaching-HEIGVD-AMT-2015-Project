@@ -2,7 +2,9 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
+import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.dao.ApplicationDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.List;
@@ -83,7 +85,20 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     public Application retrieveApplicationByApikey(String apikey) {
         return applicationDAO.findByApiKey(apikey);
     }
-    
-    
+
+    @Override
+    public void assignRuleToAnApplication(Application application, Rule rule) {
+        applicationDAO.assignRuleToAnApplication(application, rule);
+    }
+
+    @Override
+    public void assignBadgeToAnApplication(Application application, Badge badge) {
+        applicationDAO.assignBadgeToAnApplication(application, badge);
+    }  
+
+    @Override
+    public Badge findBadgeByIdAndApiKey(Long id, String apiKey) {
+        return applicationDAO.findBadgeByIdAndApiKey(id, apiKey);
+    }
 
 }

@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -21,18 +20,12 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "EndUser.countEndUsersCreatedBetweenTwoDates",
             query = "SELECT COUNT(e) FROM EndUser e WHERE e.regDate BETWEEN :date1 AND :date2"),
     @NamedQuery(name = "EndUser.findByNo",
-            query = "SELECT e FROM EndUser e WHERE e.userID = :no")
+            query = "SELECT e FROM EndUser e WHERE e.userID = :no AND e.application = :application")
 })
 public class EndUser extends AbstractDomainModelEntity<Long> {
 
     @ManyToOne
     private Application application;
-
-    @OneToMany(mappedBy = "endUser")
-    private List<Event> events;
-
-    @OneToMany(mappedBy = "endUser")
-    private List<AwardPoint> points;
 
     public EndUser() {
     }
@@ -64,21 +57,5 @@ public class EndUser extends AbstractDomainModelEntity<Long> {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
-    public List<AwardPoint> getPoints() {
-        return points;
-    }
-
-    public void setPoints(List<AwardPoint> points) {
-        this.points = points;
     }
 }
