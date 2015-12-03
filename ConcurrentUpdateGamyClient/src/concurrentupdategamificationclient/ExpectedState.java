@@ -2,7 +2,7 @@
 package concurrentupdategamificationclient;
 
 import ch.heigvd.amt.gamification.client.dto.EventDTO;
-import ch.heigvd.amt.gamification.client.dto.LevelDTO;
+import ch.heigvd.amt.gamification.client.dto.StatsEndUserDTO;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -10,10 +10,10 @@ import java.util.Map;
  * @author michelle meguep
  */
 public class ExpectedState {
-    private final Map<Long, AccountDTO> accounts = new HashMap<>();
+    private final Map<Long, StatsEndUserDTO > statsEndUserDTO = new HashMap<>();
   
-  public synchronized void logTransactionIntoAccount(TransactionDTO transaction) {
-    AccountDTO account = accounts.get(transaction.getAccountId());
+  public synchronized void logEventIntoAccount(EventDTO event) {
+    String statsEndUser = event.getEndUserNumber();
     if (account == null) {
       account = new AccountDTO();
       account.setId(transaction.getAccountId());
