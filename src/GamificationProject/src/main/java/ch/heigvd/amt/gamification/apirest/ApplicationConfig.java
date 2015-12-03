@@ -26,13 +26,14 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(ch.heigvd.amt.gamification.apirest.ApplicationRessource.class);
         resources.add(ch.heigvd.amt.gamification.apirest.BadgeRessource.class);
         resources.add(ch.heigvd.amt.gamification.apirest.EventRessource.class);
         resources.add(ch.heigvd.amt.gamification.apirest.JacksonConfigurationProvider.class);
         resources.add(ch.heigvd.amt.gamification.apirest.JsonExceptionMapper.class);
         resources.add(ch.heigvd.amt.gamification.apirest.LevelRessource.class);
         resources.add(ch.heigvd.amt.gamification.apirest.RuleRessource.class);
-        resources.add(ch.heigvd.amt.gamification.apirest.StatsEndUserRessource.class);
+        resources.add(ch.heigvd.amt.gamification.apirest.StatsEndUserRessource.class);        
     }
 
 }
