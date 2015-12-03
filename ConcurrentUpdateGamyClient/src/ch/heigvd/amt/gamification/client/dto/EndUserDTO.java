@@ -2,18 +2,45 @@ package ch.heigvd.amt.gamification.client.dto;
 
 /**
  *
- * @author michelle
+ * @author michelle meguep
  */
-public class ApplicationEndUsersDTO {
+public class EndUserDTO {
     
-    private long nbEndUsers;
+    private String endUserNumber;
+    private String apikey;
+    private int nbBadges;
+    private int nbPoints;
 
-    public long getNbEndUsers() {
-        return nbEndUsers;
+    public String getEndUserNumber() {
+        return endUserNumber;
     }
 
-    public void setNbEndUsers(long nbEndUsers) {
-        this.nbEndUsers = nbEndUsers;
+    public void setEndUserNumber(String endUserNumber) {
+        this.endUserNumber = endUserNumber;
+    }
+
+    public String getApikey() {
+        return apikey;
+    }
+
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
+    }
+
+    public int getNbBadges() {
+        return nbBadges;
+    }
+
+    public void setNbBadges(int nbBadges) {
+        this.nbBadges = nbBadges;
+    }
+
+    public int getNbPoints() {
+        return nbPoints;
+    }
+
+    public void setNbPoints(int nbPoints) {
+        this.nbPoints = nbPoints;
     }
     
     

@@ -1,4 +1,4 @@
-package ch.heigvd.amt.gamification.dto;
+package ch.heigvd.amt.gamification.client.dto;
 
 import java.util.LinkedList;
 import java.util.List;

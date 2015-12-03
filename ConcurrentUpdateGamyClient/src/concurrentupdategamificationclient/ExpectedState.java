@@ -1,38 +1,46 @@
-
 package concurrentupdategamificationclient;
 
-import ch.heigvd.amt.gamification.client.dto.EventDTO;
-import ch.heigvd.amt.gamification.client.dto.ApplicationEndUsersDTO;
+import ch.heigvd.amt.gamification.client.dto.*;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  *
  * @author michelle meguep
  */
 public class ExpectedState {
-    private final Map<Long, End > statsEndUserDTO = new HashMap<>();
-  
-  public synchronized void logEventIntoAccount(EventDTO event) {
-    String statsEndUser = event.getEndUserNumber();
-    if (account == null) {
-      account = new AccountDTO();
-      account.setId(transaction.getAccountId());
-      account.setNumberOfTransactions(0);
-      account.setBalance(0);
-      accounts.put(account.getId(), account);
+
+    private static final Map<String, EndUserDTO> endUsers = new HashMap<>();
+    private static final Map<String, ApplicationEndUsersDTO> applications = new HashMap<>();
+
+    public synchronized void logEventIntoApplication(EventDTO event) {
+        ApplicationEndUsersDTO application = applications.get(event.getApiKey());
+        if (application == null) {
+            application = new ApplicationEndUsersDTO();
+            application.setNbEndUsers(1);
+            applications.put(event.getApiKey(), application);
+        } else {
+            application.setNbEndUsers(application.getNbEndUsers() + 1);
+        }
+        EndUserDTO enduser = endUsers.get(event.getEndUserNumber());
+            if (enduser == null) {
+                enduser = new EndUserDTO();
+                enduser.setEndUserNumber(event.getEndUserNumber());
+                enduser.setApikey(event.getApiKey());
+                enduser.setNbPoints(1);
+                endUsers.put(event.getEndUserNumber(), enduser);
+            } else {
+                enduser.setNbPoints(enduser.getNbPoints() + 2);
+                if (enduser.getNbPoints() == 100) {
+                    enduser.setNbBadges(enduser.getNbBadges() + 1);
+                }
+                
+            }
+        application.setEndUsers(enduser);
     }
-    account.setBalance(account.getBalance() + transaction.getAmount());
-    account.setNumberOfTransactions(account.getNumberOfTransactions() + 1);
-  }
 
-  public Map<Long, AccountDTO> getAccounts() {
-    return accounts;
-  }
+    public Map<String, ApplicationEndUsersDTO> getApplicationsEndUsers() {
+        return applications;
+    }
 
-
-  @Override
-  public String toString() {
-    return "ExpectedState{" + "accounts=" + accounts + '}';
-  }
-    
 }
