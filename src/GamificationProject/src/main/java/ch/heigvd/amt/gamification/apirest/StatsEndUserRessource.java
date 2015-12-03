@@ -1,24 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.apirest;
 
-
-import ch.heigvd.amt.gamification.dao.EndUserDAOLocal;
-import ch.heigvd.amt.gamification.dto.LevelDTO;
-import ch.heigvd.amt.gamification.dto.StatsEndUserDTO;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
-import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
-import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 /**
  *
@@ -27,29 +14,29 @@ import javax.ws.rs.Path;
 @Stateless
 @Path("statsEndUser")
 public class StatsEndUserRessource {
-    
-    @EJB
-    private ApplicationsManagerLocal applicationsManager;
-    
-    @EJB
-    private EndUsersManagerLocal endUserManager;
-    
-    @POST
-    @Consumes("application/json")
-    public void postEndUserStats(StatsEndUserDTO statsEndUserDTO) {
-        
+
+    @GET
+    @Produces("application/json")
+    @Path("/widgetBadges/{endUserNumber}")
+    public void getEndUserBadgesStats(@HeaderParam("Authorization") String apiKey,
+            @PathParam(value = "endUserNumber") String endUserNumber) {
+        // TODO        
     }
-    
-    @PUT
-    @Consumes("application/json")
-    public void putEndUserStats(StatsEndUserDTO statsEndUserDTO) {
-        // :TODO
+
+    @GET
+    @Produces("application/json")
+    @Path("/widgetPoints/{endUserNumber}")
+    public void getEndUserPointsStats(@HeaderParam("Authorization") String apiKey,
+            @PathParam(value = "endUserNumber") String endUserNumber) {
+        // TODO        
     }
-    
-    @DELETE
-    @Consumes("application/json")
-    public void deleteEndUserStats(StatsEndUserDTO statsEndUserDTO) {
-        // :TODO
+
+    @GET
+    @Produces("application/json")
+    @Path("/widgetLevels/{endUserNumber}")
+    public void getEndUserLevelsStats(@HeaderParam("Authorization") String apiKey,
+            @PathParam(value = "endUserNumber") String endUserNumber) {
+        // TODO        
     }
-    
+
 }
