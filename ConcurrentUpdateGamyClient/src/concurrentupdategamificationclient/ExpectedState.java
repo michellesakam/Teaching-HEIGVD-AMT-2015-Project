@@ -2,7 +2,7 @@
 package concurrentupdategamificationclient;
 
 import ch.heigvd.amt.gamification.client.dto.EventDTO;
-import ch.heigvd.amt.gamification.client.dto.StatsEndUserDTO;
+import ch.heigvd.amt.gamification.client.dto.ApplicationEndUsersDTO;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -10,7 +10,7 @@ import java.util.Map;
  * @author michelle meguep
  */
 public class ExpectedState {
-    private final Map<Long, StatsEndUserDTO > statsEndUserDTO = new HashMap<>();
+    private final Map<Long, End > statsEndUserDTO = new HashMap<>();
   
   public synchronized void logEventIntoAccount(EventDTO event) {
     String statsEndUser = event.getEndUserNumber();
