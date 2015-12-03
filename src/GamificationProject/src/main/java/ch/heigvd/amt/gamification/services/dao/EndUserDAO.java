@@ -17,9 +17,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOLocal {
 
-    @PersistenceContext
-    EntityManager em;
-
     @Override
     public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay) {
 

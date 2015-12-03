@@ -2,12 +2,21 @@ package ch.heigvd.amt.gamification.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
  * @author Raphaël Racine
  */
+@NamedQueries({
+    @NamedQuery(name = "Level.findByApiKey", 
+            query = "SELECT l FROM Level l WHERE l.application.apiKey.key = :apikey")
+})
+
 @Entity
+@Table(name = "Levels") // Changing the name of tale because Level is a key work of mysql
 public class Level extends AbstractDomainModelEntity<Long> {
     
     @ManyToOne

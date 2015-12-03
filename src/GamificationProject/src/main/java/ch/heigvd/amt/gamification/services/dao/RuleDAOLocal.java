@@ -10,6 +10,7 @@ import javax.ejb.Local;
  * @author Raphaël Racine
  */
 @Local
-public interface RuleDAOLocal {
+public interface RuleDAOLocal extends IGenericDAO<Rule, Long> {
     public List<Rule> findByEventTypeAndApplication(Application application, String eventType);
+    public List<Rule> findByApiKey(String apiKey);
 }

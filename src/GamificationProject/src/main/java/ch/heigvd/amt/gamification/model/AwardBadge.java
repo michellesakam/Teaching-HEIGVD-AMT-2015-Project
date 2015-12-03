@@ -2,6 +2,7 @@ package ch.heigvd.amt.gamification.model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -10,7 +11,9 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue( "badge")
 public class AwardBadge extends Award{  
-    // contient le lien vers l'image qui contient le badge
+
+
+    @ManyToOne
     private Badge badge; 
 
     /**

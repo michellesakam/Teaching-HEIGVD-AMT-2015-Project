@@ -1,10 +1,12 @@
 
 package ch.heigvd.amt.gamification.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 /**
  *
  * @author Samira
@@ -12,16 +14,19 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Rule.findByEventTypeAndApplication", 
-            query = "SELECT r FROM Rule r WHERE r.application = :application AND r.eventType = :eventType")
+            query = "SELECT r FROM Rule r WHERE r.application = :application AND r.eventType = :eventType"),
+    @NamedQuery(name = "Rule.findByApiKey", 
+            query = "SELECT r FROM Rule r WHERE r.application.apiKey.key = :apiKey")
 })
 public class Rule extends AbstractDomainModelEntity<Long> {
     
     @ManyToOne
     private Application application;
     
-    private String eventType;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Action action;
     
-    private String actionType;
+    private String eventType;
 
     public Application getApplication() {
         return application;
@@ -37,16 +42,14 @@ public class Rule extends AbstractDomainModelEntity<Long> {
 
     public void setEventType(String eventType) {
         this.eventType = eventType;
+    }   
+
+    public Action getAction() {
+        return action;
     }
 
-    public String getActionType() {
-        return actionType;
-    }
-
-    public void setActionType(String actionType) {
-        this.actionType = actionType;
-    }
-    
-    
+    public void setAction(Action action) {
+        this.action = action;
+    }    
     
 }

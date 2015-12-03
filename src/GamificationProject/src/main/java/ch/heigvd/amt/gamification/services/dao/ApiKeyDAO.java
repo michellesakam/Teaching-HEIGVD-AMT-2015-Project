@@ -13,9 +13,6 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ApiKeyDAO extends GenericDAO<ApiKey, Long> implements ApiKeyDAOLocal {
-
-    @PersistenceContext
-    private EntityManager em;
     
     @Override
     public ApiKey getNewApiKey() {

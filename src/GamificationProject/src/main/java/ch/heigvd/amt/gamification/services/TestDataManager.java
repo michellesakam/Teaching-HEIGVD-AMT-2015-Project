@@ -2,13 +2,16 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import ch.heigvd.amt.gamification.model.Account;
+import ch.heigvd.amt.gamification.model.ActionAwardBadge;
+import ch.heigvd.amt.gamification.model.ActionAwardPoints;
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
+import ch.heigvd.amt.gamification.model.Level;
 
 import ch.heigvd.amt.gamification.util.Chance;
 import java.sql.Date;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -27,6 +30,9 @@ public class TestDataManager implements TestDataManagerLocal {
     @EJB
     private ApplicationsManagerLocal applicationsManager;
 
+    @EJB
+    private LevelsManagerLocal levelsManager;
+    
     @Override
     public void generateTestData() {
 
@@ -46,7 +52,7 @@ public class TestDataManager implements TestDataManagerLocal {
             try {
                 accountsManager.createAccount(a);
             } catch (BadPasswordException ex) {
-                Logger.getLogger(TestDataManager.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TestDataManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
         }
 
@@ -58,14 +64,14 @@ public class TestDataManager implements TestDataManagerLocal {
         try {
             accountsManager.createAccount(constantAccount);
         } catch (BadPasswordException ex) {
-            Logger.getLogger(TestDataManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDataManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         /* Create a first application */
         Application app1 = new Application();
         app1.setIsEnable(true);
-        app1.setName("Lego Creator");
-        app1.setDescription("Construisez vos legos");
+        app1.setName("Battlefield 3");
+        app1.setDescription("Devenez le meilleur soldat !");
 
         applicationsManager.assignApplicationToAccount(app1, constantAccount);
 
@@ -84,7 +90,7 @@ public class TestDataManager implements TestDataManagerLocal {
         try {
             accountsManager.createAccount(createur2);
         } catch (BadPasswordException ex) {
-            Logger.getLogger(TestDataManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDataManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         Application app3 = new Application();
@@ -119,22 +125,67 @@ public class TestDataManager implements TestDataManagerLocal {
             applicationsManager.assignApplicationToAnEndUser(app1, user);
         }
         
+        // Create some badges in app1
+        Badge badge = new Badge();
+        badge.setName("badge1");
+        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        
+        badge = new Badge();
+        badge.setName("badge2");
+        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        
+        badge = new Badge();
+        badge.setName("badge3");
+        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        
         // Add some rules to applications for gamification
         Rule rule = new Rule();
+        ActionAwardPoints actionAwardPoints = new ActionAwardPoints();
+        actionAwardPoints.setNbPoints(2);
+        actionAwardPoints.setReason("Posted a comment");
         rule.setEventType("comment");
-        rule.setActionType("awardPoints");        
+        rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("comment");
-        rule.setActionType("awardBadge");        
+        ActionAwardBadge actionAwardBadge = new ActionAwardBadge();
+        actionAwardBadge.setBadge(badge);
+        actionAwardBadge.setReason("Posted a comment");
+        actionAwardBadge.getConditionsToApply().put("nbComments", 100);
+        rule.setAction(actionAwardBadge);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("addQuestion");
-        rule.setActionType("awardPoints");        
+        actionAwardPoints = new ActionAwardPoints();
+        actionAwardPoints.setNbPoints(5);
+        actionAwardPoints.setReason("Added a question");
+        rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
+        app1.getApiKey().setKey("ABC-123");
+        
+        // Create some levels in app1
+        Level level = new Level();
+        level.setName("Soldat");
+        level.setMinimumPoints(0);
+        levelsManager.assignLevelToApplication(app1, level);
+        
+        level = new Level();
+        level.setName("Sergent");
+        level.setMinimumPoints(20);
+        levelsManager.assignLevelToApplication(app1, level);
+        
+        level = new Level();
+        level.setName("Lieutnant");
+        level.setMinimumPoints(200);
+        levelsManager.assignLevelToApplication(app1, level);
+        
+        level = new Level();
+        level.setName("General");
+        level.setMinimumPoints(500);
+        levelsManager.assignLevelToApplication(app1, level);        
         
     }
 
