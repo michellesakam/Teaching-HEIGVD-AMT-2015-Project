@@ -1,11 +1,9 @@
 package ch.heigvd.amt.gamification.apirest;
 
+import ch.heigvd.amt.gamification.services.processors.LevelsProcessorLocal;
 import ch.heigvd.amt.gamification.dto.LevelDTO;
-import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Level;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
-import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -13,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -29,13 +28,13 @@ public class LevelRessource {
 
     @EJB
     private LevelsManagerLocal levelsManager;
-
+    
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
+    private LevelsProcessorLocal levelsProcessor;
 
     @GET
     @Produces("application/json")
-    public List<LevelDTO> getLevels(String apiKey) {
+    public List<LevelDTO> getLevels(@HeaderParam("Authorization") String apiKey) {
 
         List<LevelDTO> dto = new ArrayList<>();
         List<Level> levels = levelsManager.findLevelsByApiKey(apiKey);
@@ -50,78 +49,28 @@ public class LevelRessource {
 
     @POST
     @Consumes("application/json")
-    public void postLevel(LevelDTO levelDTO) {
-
-        Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApikey());
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
-
-        Level level = new Level();
-        level.setName(levelDTO.getName());
-        level.setMinimumPoints(levelDTO.getMinimumPoints());
-
-        levelsManager.assignLevelToApplication(application, level);
-
+    public void postLevel(@HeaderParam("Authorization") String apiKey, LevelDTO levelDTO) {
+        levelsProcessor.postDTO(apiKey, levelDTO);
     }
 
     @PUT
     @Consumes("application/json")
     @Path("/{levelID}")
-    public void putLevel(@PathParam(value = "levelID") Long levelID, LevelDTO levelDTO) {
-
-        Application application = applicationsManager.retrieveApplicationByApikey(levelDTO.getApikey());
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
-
-        try {
-            Level level = levelsManager.findById(levelID);
-
-            if (level.getApplication() == application) {
-                level.setName(levelDTO.getName());
-                level.setMinimumPoints(levelDTO.getMinimumPoints());
-            } else {
-                throw new Error("This application doens't have level with specified levelID");
-            }
-        } catch (GamificationDomainEntityNotFoundException ex) {
-            throw new NullPointerException("This level doesn't exists");
-        }
-
+    public void putLevel(@HeaderParam("Authorization") String apiKey, @PathParam(value = "levelID") Long levelID, LevelDTO levelDTO) {
+        levelsProcessor.putDTO(apiKey, levelID, levelDTO);
     }
 
     @DELETE
     @Path("/{levelID}")
     @Consumes("application/json")
-    public void deleteLevel(@PathParam(value = "levelID") Long levelID, String apiKey) {
-
-        Application application = applicationsManager.retrieveApplicationByApikey(apiKey);
-
-        if (application == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
-
-        try {
-            Level level = levelsManager.findById(levelID);
-
-            if (level.getApplication() == application) {
-                levelsManager.deleteLevel(level);
-            } else {
-                throw new Error("This application doens't have level with specified levelID");
-            }
-        } catch (GamificationDomainEntityNotFoundException ex) {
-            throw new NullPointerException("This level doesn't exists");
-        }
-
+    public void deleteLevel(@HeaderParam("Authorization") String apiKey, @PathParam(value = "levelID") Long levelID) {
+        levelsProcessor.deleteDTO(levelID, apiKey);
     }
 
     public LevelDTO toDTO(Level level) {
 
         LevelDTO dto = new LevelDTO();
         dto.setName(level.getName());
-        dto.setApikey(level.getApplication().getApiKey().getKey());
         dto.setMinimumPoints(level.getMinimumPoints());
         dto.setId(level.getId());
 

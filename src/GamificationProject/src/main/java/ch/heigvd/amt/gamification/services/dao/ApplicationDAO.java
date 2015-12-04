@@ -7,12 +7,8 @@ import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -118,7 +114,15 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
         badge.setApplication(application);
         application.getBadges().add(badge);
     }
-    
-    
+
+    @Override
+    public Badge findBadgeByIdAndApiKey(Long id, String apiKey) {
+        List<Badge> badges = em.createNamedQuery("Badge.findBadgeByIdAndApiKey")
+                .setParameter("id", id)
+                .setParameter("apiKey", apiKey)
+                .setMaxResults(1).getResultList();
+
+        return badges.size() > 0 ? badges.get(0) : null;
+    }
 
 }

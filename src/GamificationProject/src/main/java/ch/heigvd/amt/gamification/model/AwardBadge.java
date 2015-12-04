@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.model;
 
 import javax.persistence.DiscriminatorValue;
@@ -16,6 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity
 @DiscriminatorValue( "badge")
 public class AwardBadge extends Award{  
+
 
     @ManyToOne
     private Badge badge; 
