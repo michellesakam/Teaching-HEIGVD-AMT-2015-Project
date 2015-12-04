@@ -1,5 +1,8 @@
 package ch.heigvd.amt.gamification.client.dto;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author michelle meguep
@@ -10,6 +13,7 @@ public class EndUserDTO {
     private String apikey;
     private int nbBadges;
     private int nbPoints;
+    private List<BadgeDTO> badges = new LinkedList<>();
 
     public String getEndUserNumber() {
         return endUserNumber;
@@ -43,6 +47,8 @@ public class EndUserDTO {
         this.nbPoints = nbPoints;
     }
     
-    
+    public List<BadgeDTO> getBadges(){
+        return badges;
+    }
     
 }

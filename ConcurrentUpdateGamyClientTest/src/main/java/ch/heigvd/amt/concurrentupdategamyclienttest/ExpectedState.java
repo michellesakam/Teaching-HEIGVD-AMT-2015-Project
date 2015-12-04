@@ -2,6 +2,7 @@ package ch.heigvd.amt.concurrentupdategamyclienttest;
 
 import ch.heigvd.amt.gamification.client.dto.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,7 +32,10 @@ public class ExpectedState {
                 endUsers.put(event.getEndUserNumber(), enduser);
             } else {
                 enduser.setNbPoints(enduser.getNbPoints() + 2);
-                if (enduser.getNbPoints() == 100) {
+                if (event.getProperties().get("nbComments").equals(100)) {
+                    BadgeDTO b = new BadgeDTO();
+                    b.setName("badge3");
+                    enduser.getBadges().add(b);
                     enduser.setNbBadges(enduser.getNbBadges() + 1);
                 }
                 
@@ -39,8 +43,8 @@ public class ExpectedState {
         application.setEndUsers(enduser);
     }
 
-    public Map<String, ApplicationEndUsersDTO> getApplicationsEndUsers() {
-        return applications;
+    public List<EndUserDTO> getApplicationEndUsers(String apikey) {
+        return applications.get(apikey).getEndUsers();
     }
 
 }
