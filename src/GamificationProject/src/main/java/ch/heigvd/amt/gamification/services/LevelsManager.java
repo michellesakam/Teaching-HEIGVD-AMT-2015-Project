@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class LevelsManager implements LevelsManagerLocal {
-    
+
     @EJB
     private LevelDAOLocal levelDAO;
 
@@ -42,6 +42,16 @@ public class LevelsManager implements LevelsManagerLocal {
     @Override
     public Level findById(Long id) throws GamificationDomainEntityNotFoundException {
         return levelDAO.findById(id);
-    }   
-    
+    }
+
+    @Override
+    public Level findCurrentLevel(Application app, long nbPointsEndUser) {
+        return levelDAO.findCurrentLevel(app, nbPointsEndUser);
+    }
+
+    @Override
+    public Level findNextLevel(Application app, long nbPointsEndUser) {
+        return levelDAO.findNextLevel(app, nbPointsEndUser);
+    }
+
 }

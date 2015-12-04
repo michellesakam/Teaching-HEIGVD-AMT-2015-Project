@@ -14,4 +14,6 @@ public interface EndUserDAOLocal extends IGenericDAO<EndUser, Long> {
     public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay);
 
     public EndUser findByNumberAndApplication(Application application, String noEndUser);
+
+    public long getNumberOfPoints(Application app, EndUser e);
 }

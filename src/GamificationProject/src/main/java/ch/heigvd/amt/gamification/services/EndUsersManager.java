@@ -27,5 +27,12 @@ public class EndUsersManager implements EndUsersManagerLocal {
         return endUserDAO.findByNumberAndApplication(application, noEndUser);
     }
 
+    @Override
+    public long getNumberOfPoints(Application app, EndUser e) {
+        return endUserDAO.getNumberOfPoints(app, e);
+    }
+    
+    
+
  
 }

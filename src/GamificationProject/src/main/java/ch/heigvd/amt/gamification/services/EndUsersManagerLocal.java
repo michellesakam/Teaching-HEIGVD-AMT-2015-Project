@@ -27,6 +27,8 @@ public interface EndUsersManagerLocal {
      * @return null if enduser doesnt exists, else the found endUSer...
      */
     public EndUser retrieveEndUser(Application application, String noEndUser);
+
+    public long getNumberOfPoints(Application app, EndUser e);
     
    
 

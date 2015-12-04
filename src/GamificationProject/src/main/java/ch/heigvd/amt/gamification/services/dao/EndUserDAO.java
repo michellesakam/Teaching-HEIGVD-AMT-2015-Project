@@ -1,14 +1,12 @@
 package ch.heigvd.amt.gamification.services.dao;
 
-import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -43,4 +41,19 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
 
         return tmp.size() > 0 ? tmp.get(0) : null;
     }
+
+    @Override
+    public long getNumberOfPoints(Application app, EndUser e) {
+        try {
+            return (long) em.createNamedQuery("AwardPoint.getNumberOfPoints")
+                    .setParameter("application", app)
+                    .setParameter("endUser", e)
+                    .getSingleResult();
+        }
+        catch(Exception ex) {
+            return 0;
+        }
+    }
+    
+    
 }
