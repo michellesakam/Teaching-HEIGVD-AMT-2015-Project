@@ -44,7 +44,6 @@ public class StatsEndUserRessource {
     @Path("/badges/{endUserNumber}")
     public void getEndUserBadgesNb(@HeaderParam("Authorization") String apiKey,
             @PathParam(value = "endUserNumber") String endUserNumber) {
-        // TODO    
         
     }
     @GET
