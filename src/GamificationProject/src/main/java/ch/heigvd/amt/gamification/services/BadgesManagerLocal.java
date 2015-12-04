@@ -21,4 +21,5 @@ public interface BadgesManagerLocal {
     public void deleteBadge(Badge badge) throws GamificationDomainEntityNotFoundException;
 
     public List<Badge> findBadgesByApiKey(String apiKey);
+    public Badge findById(Long id) throws GamificationDomainEntityNotFoundException;
 }

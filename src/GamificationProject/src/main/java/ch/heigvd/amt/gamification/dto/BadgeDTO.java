@@ -33,7 +33,8 @@ public class BadgeDTO {
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
     }
-    
+
+   
     
     
 }
