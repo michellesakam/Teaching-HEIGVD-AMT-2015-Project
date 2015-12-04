@@ -27,7 +27,7 @@
         <div class="container">
             <div ng-app="gamification_app">
                 <div ng-controller="MainController">
-                    <div ui-view></div>       
+                    <div ui-view=""></div>       
                 </div>
             </div>
         </div>

@@ -27,6 +27,8 @@
     });
     
     module.controller('MainController', function($scope, $state) {
+        alert("mainController invoked");
+        $scope.formData = {};
     });
     
     module.controller('WidgetLevelsController', function($scope, $http) {
