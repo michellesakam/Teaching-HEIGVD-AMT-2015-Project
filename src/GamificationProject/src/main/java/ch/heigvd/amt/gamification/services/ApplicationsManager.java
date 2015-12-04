@@ -83,7 +83,12 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
 
     @Override
     public Application retrieveApplicationByApikey(String apikey) {
-        return applicationDAO.findByApiKey(apikey);
+        Application app = applicationDAO.findByApiKey(apikey);
+        
+        if(app == null)
+            throw new NullPointerException("This application doesn't exists !");
+        
+        return app;
     }
 
     @Override

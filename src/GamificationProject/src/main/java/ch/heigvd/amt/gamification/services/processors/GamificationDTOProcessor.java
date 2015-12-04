@@ -16,15 +16,8 @@ public abstract class GamificationDTOProcessor<T extends IGamificationDTO, K> im
     @EJB
     private ApplicationsManagerLocal applicationsManager;
     
-    protected Application tryToRetrieveApplication(String apiKey) {
-        
-        Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
-        
-        if(app == null)
-            throw new NullPointerException("This application doesn't exists");
-        
-        return app;
-        
+    protected Application tryToRetrieveApplication(String apiKey) {        
+        return applicationsManager.retrieveApplicationByApikey(apiKey);        
     }
     
 }

@@ -56,10 +56,6 @@ public class StatsEndUserRessource {
 
         Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
 
-        if (app == null) {
-            throw new NullPointerException("This application doesn't exists");
-        }
-
         EndUser e = endUsersManager.retrieveEndUser(app, endUserNumber);
 
         if (e == null) {
