@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -24,9 +25,11 @@ import org.glassfish.jersey.jackson.JacksonFeature;
  */
 public class ConcurrentUpdateGamificationClient {
 
-   private final long numberOfAccounts = 20;
-  private final long numberOfTransactionsPerAccount = 20;
+  private final long numberOfApplication = 1;
+  private final long numberOfEndUsers = 5;
+  private final long numberOfEventsPerEndUser = 20;
   private final int numberOfConcurrentThreads = 1;
+  private static final String APIKEYFORTEST = "ABC-123";
 
   private static final Logger LOG = Logger.getLogger(ConcurrentUpdateGamificationClient.class.getName());
   private int numberOfResponses = 0;
@@ -41,53 +44,68 @@ public class ConcurrentUpdateGamificationClient {
   public ConcurrentUpdateGamificationClient() {
     client = ClientBuilder.newClient().register(JacksonFeature.class);
   }
-  
-  private List<EndUserDTO> getEndsUsersNumberFromServer() {
+      
+  private Response PostEvents(String apikey,String type,String endUserNumber, int nbcomment){
+      Date date = new Date();
+      EventDTO event = new EventDTO();
+      event.setType(type);
+      event.setApiKey(apikey);
+      event.setEndUserNumber(endUserNumber);
+      event.setTimestamp(date);
+      event.getProperties().put("nbComments",nbcomment );
+      final WebTarget target = client.target("http://localhost:8080/ConcurrentTransactionsServer/api").path("events");
+      target.request().header("Authorization", apikey);
+      return target.request().post(Entity.json(event));
+  }
+
+  private List<EndUserDTO> getEndsUsersListFromServer(String apikey) {
     final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("applicationsEndUsers");
-    target.request().header("Authorization","ABC-123" );
+    target.request().header("Authorization",apikey );
     GenericType<List<EndUserDTO>> endusers = null;
     return target.request().get(endusers);
     
   }
-  private long getNbBadgesOfEndUser(String endUserNumber){
-    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("statsEndUser/widgetBadges/{" + endUserNumber +"}");
-    target.request().header("Authorization","ABC-123" );
+  
+  private long getBadgesNbOfAnEndUser(String apikey,String endUserNumber){
+    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("statsEndUser/badges/{" + endUserNumber +"}");
+    target.request().header("Authorization",apikey );
       return 0;
   }
-  private void PostEvents(){
-      Date date = new Date();
-      EventDTO event = new EventDTO();
-      event.setType("comment");
-      event.setApiKey("ABC-123");
-      event.setEndUserNumber("cassa123");
-      event.setTimestamp(date);
-      event.getProperties().put("nbComments", 1);
-      final WebTarget target = client.target("http://localhost:8080/ConcurrentTransactionsServer/api").path("events");
-      target.request().header("Authorization", "ABC-123");
-      target.request().post(Entity.json(event));
+  
+  private long getPointsNbOfAnEndUser(String apikey,String endUserNumber){
+    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("statsEndUser/points/{" + endUserNumber +"}");
+    target.request().header("Authorization",apikey);
+      return 0;
   }
 
   private void test() {
-    
-   PostEvents();
+
     
     ExecutorService executor = Executors.newFixedThreadPool(numberOfConcurrentThreads);
-    final WebTarget target = client.target("http://localhost:8080/ConcurrentTransactionsServer/api").path("transactions");
+    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("events");
 
-    for (int account = 1; account <= numberOfAccounts; account++) {
-      for (int transaction = 0; transaction < numberOfTransactionsPerAccount; transaction++) {
-      LOG.log(Level.INFO, "Generating {0} transactions for account {1}", new Object[]{numberOfTransactionsPerAccount, "account" + "/" + numberOfAccounts});
-        final String counter = account + ", " + transaction;
-        final int accountId = account;
+    for (int enduser = 1; enduser <= numberOfEndUsers; enduser++) {
+      for (int event = 0; event < numberOfEventsPerEndUser; event++) {
+      LOG.log(Level.INFO, "Generating {0} events for enduser {1}", new Object[]{numberOfEventsPerEndUser, "enduser" + "/" + numberOfEndUsers});
         Runnable task = new Runnable() {
           @Override
-          public void run() {
-            TransactionDTO transaction = new TransactionDTO(accountId, 1);
-            Response response = target.request().post(Entity.json(transaction));
+          public void run() {             
+            	Random r = new Random();
+		int nbComments = r.nextInt((102 - 98) + 1) + 98;
+                String endusernumber =  "enduser"+nbComments;
+                
+                EventDTO eventdto = new EventDTO();
+                eventdto.setApiKey(APIKEYFORTEST);
+                eventdto.setEndUserNumber(endusernumber);
+                eventdto.setTimestamp(new Date());
+                eventdto.setType("comment");
+                eventdto.getProperties().put("nbComments",nbComments );
+                
+                Response response = PostEvents(APIKEYFORTEST,"comment",endusernumber,nbComments);
             if (response.getStatus() < 200 || response.getStatus() >= 300) {
-              LOG.log(Level.INFO, "The server was not able to process the transaction: {0}", new Object[]{response.getStatus() + " " + response.getStatusInfo()});
+              LOG.log(Level.INFO, "The server was not able to process the event: {0}", new Object[]{response.getStatus() + " " + response.getStatusInfo()});
             } else {
-              expectedState.logTransactionIntoAccount(transaction);
+              expectedState.logEventIntoApplication(eventdto);
             }
           }
         };
@@ -105,7 +123,7 @@ public class ConcurrentUpdateGamificationClient {
       LOG.info("Errors: " + errors.toString());
 
     } catch (InterruptedException ex) {
-      Logger.getLogger(TestClient.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ConcurrentUpdateGamificationClient.class.getName()).log(Level.SEVERE, null, ex);
     }
     LOG.info("Done.");
 
@@ -115,25 +133,13 @@ public class ConcurrentUpdateGamificationClient {
 
     List<String> errors = new ArrayList<>();
     
-    List<AccountDTO> actualState = getAccountsListFromServer();
-    LOG.log(Level.INFO, "Expected number of accounts: {0}", expectedState.getAccounts().size());
-    LOG.log(Level.INFO, "Actual number of accounts: {0}", actualState.size());
-    if (expectedState.getAccounts().size() != actualState.size()) {
-      errors.add("The number of accounts on the server is not the one expected: " + actualState.size() + " vs " + expectedState.getAccounts().size());
+    List<EndUserDTO> actualState = getEndsUsersListFromServer(APIKEYFORTEST);
+    LOG.log(Level.INFO, "Expected number of endUsers: {0}", expectedState.getApplicationEndUsers(APIKEYFORTEST).size());
+    LOG.log(Level.INFO, "Actual number of endUsers: {0}", actualState.size());
+    if (expectedState.getApplicationEndUsers(APIKEYFORTEST).size() != actualState.size()) {
+      errors.add("The number of endUsers on the server is not the one expected: " + actualState.size() + " vs " + expectedState.getApplicationEndUsers(APIKEYFORTEST).size());
     }
-    
-    for (AccountDTO actualAccount : actualState) {
-      AccountDTO expectedAccount = expectedState.getAccounts().get(actualAccount.getId());
-      LOG.log(Level.INFO, "Expected vs actual number of transactions for account {0}: {1}/{2}", new Object[]{actualAccount.getId(), expectedAccount.getNumberOfTransactions(), actualAccount.getNumberOfTransactions()});
-      LOG.log(Level.INFO, "Expected vs actual balance for account {0}: {1}/{2}", new Object[]{actualAccount.getId(), expectedAccount.getBalance(), actualAccount.getNumberOfTransactions()});
-      if (expectedAccount.getNumberOfTransactions() != actualAccount.getNumberOfTransactions()) {
-        errors.add("The number of transactions for account " + actualAccount.getId() + " is not the one expected: " + actualAccount.getNumberOfTransactions() + " vs " + expectedAccount.getNumberOfTransactions());
-      }
-      if (expectedAccount.getBalance()!= actualAccount.getBalance()) {
-        errors.add("The balance for account " + actualAccount.getId() + " is not the one expected: " + actualAccount.getBalance()+ " vs " + expectedAccount.getBalance());
-      }
-    }
-    
+ 
     return errors;
 
   }
@@ -144,7 +150,7 @@ public class ConcurrentUpdateGamificationClient {
   public static void main(String[] args) {
     System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tH:%1$tM:%1$tS %4$s %5$s%6$s%n");
     
-    TestClient client = new TestClient();
+    ConcurrentUpdateGamificationClient client = new ConcurrentUpdateGamificationClient();
     client.test();
   }
 

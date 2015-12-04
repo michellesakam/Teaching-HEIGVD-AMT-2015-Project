@@ -49,7 +49,7 @@ public class StatsEndUserRessource {
     }
     @GET
     @Produces("application/json")
-    @Path("/badges/{endUserNumber}")
+    @Path("/points/{endUserNumber}")
     public void getEndUserPointsNb(@HeaderParam("Authorization") String apiKey,
             @PathParam(value = "endUserNumber") String endUserNumber) {
         // TODO    
