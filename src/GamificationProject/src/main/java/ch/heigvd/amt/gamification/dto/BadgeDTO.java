@@ -23,6 +23,6 @@ public class BadgeDTO implements IGamificationDTO {
 
     public void setName(String name) {
         this.name = name;
-    }   
+    }
     
 }
