@@ -1,9 +1,11 @@
 package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.dto.ApplicationEndUsersDTO;
+import ch.heigvd.amt.gamification.dto.EndUserDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.services.ApplicationsManager;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -28,7 +30,7 @@ public class ApplicationRessource {
 
     @GET
     @Produces("application/json")
-    public ApplicationEndUsersDTO getApplicationDTO(@HeaderParam("Authorization") String apiKey) {
+    public List<EndUserDTO> getApplicationDTO(@HeaderParam("Authorization") String apiKey) {
 
         ApplicationEndUsersDTO dto = new ApplicationEndUsersDTO();
         Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
@@ -38,7 +40,7 @@ public class ApplicationRessource {
         }
 
         dto.setNbEndUsers(applicationsManager.nbEndUsersOfApplication(app));
-        return dto;
+        return dto.getEndUsers();
     }
 
 }
