@@ -48,8 +48,6 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
                 }
 
                 actionAwardBadge.setBadge(badge);
-                actionAwardBadge.setReason(dto.getReason());
-                actionAwardBadge.setConditionsToApply(dto.getConditionsToApply());
                 action = actionAwardBadge;
                 break;
 
@@ -57,20 +55,14 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
 
                 ActionAwardPoints actionAwardPoints;
                 actionAwardPoints = new ActionAwardPoints();
-                actionAwardPoints.setConditionsToApply(dto.getConditionsToApply());
-                actionAwardPoints.setReason(dto.getReason());
                 actionAwardPoints.setNbPoints((int) dto.getAwardValue());
                 action = actionAwardPoints;
                 break;
 
         }
 
-        if (action != null) {
-            action.setConditionsToApply(dto.getConditionsToApply());
-            action.setReason(dto.getReason());
-        } else {
-            throw new Error("The action specified for this rule is not valid");
-        }
+        rule.setConditionsToApply(dto.getConditionsToApply());
+        rule.setReason(dto.getReason());
 
         rule.setAction(action);
 

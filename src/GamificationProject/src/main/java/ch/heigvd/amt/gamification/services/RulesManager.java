@@ -44,7 +44,7 @@ public class RulesManager implements RulesManagerLocal {
 
         Action action = r.getAction();
 
-        Map<String, Object> conditionsToApply = r.getAction().getConditionsToApply();
+        Map<String, Object> conditionsToApply = r.getConditionsToApply();
 
         for (String key : conditionsToApply.keySet()) {
 
@@ -65,7 +65,7 @@ public class RulesManager implements RulesManagerLocal {
             awardBadge.setBadge(actionAwardBadge.getBadge());
             awardBadge.setDateReception(eventDTO.getTimestamp());
             awardBadge.setEndUser(endUser);
-            awardBadge.setRaison(action.getReason());
+            awardBadge.setRaison(r.getReason());
 
             awardDAO.create(awardBadge);
         } else if (action.getClass() == ActionAwardPoints.class) {
@@ -74,7 +74,7 @@ public class RulesManager implements RulesManagerLocal {
             AwardPoint awardPoint = new AwardPoint();
             awardPoint.setDateReception(eventDTO.getTimestamp());
             awardPoint.setEndUser(endUser);
-            awardPoint.setRaison(action.getReason());
+            awardPoint.setRaison(r.getReason());
             awardPoint.setScore((int) actionAwardPoints.getNbPoints());
 
             awardDAO.create(awardPoint);

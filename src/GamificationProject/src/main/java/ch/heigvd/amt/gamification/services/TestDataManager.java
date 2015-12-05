@@ -145,7 +145,7 @@ public class TestDataManager implements TestDataManagerLocal {
         Rule rule = new Rule();
         ActionAwardPoints actionAwardPoints = new ActionAwardPoints();
         actionAwardPoints.setNbPoints(2);
-        actionAwardPoints.setReason("Posted a comment");
+        rule.setReason("Posted a comment");
         rule.setEventType("comment");
         rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
@@ -154,8 +154,8 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setEventType("comment");
         ActionAwardBadge actionAwardBadge = new ActionAwardBadge();
         actionAwardBadge.setBadge(badge3);
-        actionAwardBadge.setReason("Posted 100 comments");
-        actionAwardBadge.getConditionsToApply().put("nbComments", 100);
+        rule.setReason("Posted 100 comments");
+        rule.getConditionsToApply().put("nbComments", 100);
         rule.setAction(actionAwardBadge);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
@@ -163,7 +163,7 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setEventType("addQuestion");
         actionAwardPoints = new ActionAwardPoints();
         actionAwardPoints.setNbPoints(5);
-        actionAwardPoints.setReason("Added a question");
+        rule.setReason("Added a question");
         rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
@@ -171,8 +171,8 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setEventType("addQuestion");
         actionAwardBadge = new ActionAwardBadge();
         actionAwardBadge.setBadge(badgeWarrior);
-        actionAwardBadge.setReason("Posted 100 questions");
-        actionAwardBadge.getConditionsToApply().put("nbQuestions", 100);
+        rule.setReason("Posted 100 questions");
+        rule.getConditionsToApply().put("nbQuestions", 100);
         rule.setAction(actionAwardBadge);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
