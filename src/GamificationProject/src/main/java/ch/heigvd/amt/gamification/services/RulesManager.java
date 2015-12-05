@@ -63,19 +63,19 @@ public class RulesManager implements RulesManagerLocal {
 
             AwardBadge awardBadge = new AwardBadge();
             awardBadge.setBadge(actionAwardBadge.getBadge());
-            awardBadge.setDateReception(eventDTO.getTimestamp());
+            awardBadge.setReceptionDate(eventDTO.getTimestamp());
             awardBadge.setEndUser(endUser);
-            awardBadge.setRaison(r.getReason());
+            awardBadge.setReason(r.getReason());
 
             awardDAO.create(awardBadge);
         } else if (action.getClass() == ActionAwardPoints.class) {
             ActionAwardPoints actionAwardPoints = (ActionAwardPoints) action;
 
             AwardPoint awardPoint = new AwardPoint();
-            awardPoint.setDateReception(eventDTO.getTimestamp());
+            awardPoint.setReceptionDate(eventDTO.getTimestamp());
             awardPoint.setEndUser(endUser);
-            awardPoint.setRaison(r.getReason());
-            awardPoint.setScore((int) actionAwardPoints.getNbPoints());
+            awardPoint.setReason(r.getReason());
+            awardPoint.setNbPoints((int) actionAwardPoints.getNbPoints());
 
             awardDAO.create(awardPoint);
         }

@@ -25,18 +25,18 @@ import javax.persistence.NamedQuery;
 })
 public class AwardPoint extends Award {
 
-    private int score;
+    private int nbPoints;
 
     public AwardPoint() {
 
     }
 
-    public int getScore() {
-        return score;
+    public int getNbPoints() {
+        return nbPoints;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setNbPoints(int nbPoints) {
+        this.nbPoints = nbPoints;
     }
 
 }

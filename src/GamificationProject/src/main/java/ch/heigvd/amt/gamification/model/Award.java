@@ -16,28 +16,28 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Award  extends AbstractDomainModelEntity<Long>{
     
-    private String raison;
+    private String reason;
    
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateReception;
+    private Date receptionDate;
     
     @ManyToOne
     private EndUser endUser; 
 
-    public String getRaison() {
-        return raison;
+    public String getReason() {
+        return reason;
     }
 
-    public void setRaison(String raison) {
-        this.raison = raison;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
-    public Date getDateReception() {
-        return dateReception;
+    public Date getReceptionDate() {
+        return receptionDate;
     }
 
-    public void setDateReception(Date dateReception) {
-        this.dateReception = dateReception;
+    public void setReceptionDate(Date receptionDate) {
+        this.receptionDate = receptionDate;
     }
 
     public EndUser getEndUser() {
