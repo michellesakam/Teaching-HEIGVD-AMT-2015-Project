@@ -143,16 +143,74 @@ On doit spécifier :
 <li>Propriétés de l'événement : Ces propriétés seront analysées par les règes qui s'applique à ce type d'événement. Dans le cas où ces propriétés "matchent" correctement dans une règle, alors la règle s'applique. Il est à noter que si la règle s'applique systèmatiquement (donc qu'elle n'a pas de conditions) alors les propriétés sont de l'événement sont ignorée et la règle s'applique quand même).
 
 ## Badges
+```
+GET /api/badges
+Authorization: "Une API KEY (celle de l'application concernée)"
+```
+Permet d'obtenir tous les badges de l'application spécifiée.
 
-<font color=red>A FAIRE</font>
+```
+POST /api/badges
+Authorization: "Une API KEY (celle de l'application concernée)"
+
+{
+	name: "Warrior"
+}
+```
+Permet d'ajouter un badge dans une application.
+
+```
+PUT /api/badges/{id}
+Authorization: "Une API KEY (celle de l'application concernée)"
+
+{
+	name: "President of questions"
+}
+```
+
+Permet de modifier un badge dans une application (en spécifiant son id dans l'url)
+
+```
+DELETE /api/badges/{id}
+Authorization: "Une API KEY (celle de l'application concernée)"
+```
+Permet d'effacer un badge dans une application (en spécifiant son id dans l'url)
 
 ## Niveaux
+```
+GET /api/levels
+Authorization: "Une API KEY (celle de l'application concernée)"
+```
+Permet d'obtenir tous les niveaux de l'application spécifiée.
 
-<font color=red>A FAIRE</font>
+```
+POST /api/levels
+Authorization: "Une API KEY (celle de l'application concernée)"
 
-## Points
+{
+	name: "Soldat",
+	minimumOfPoints: 0
+}
+```
+Permet d'ajouter un niveau dans une application
 
-<font color=red>A FAIRE</font>
+```
+PUT /api/levels/{id}
+Authorization: "Une API KEY (celle de l'application concernée)"
+
+{
+	name: "Sergent",
+	minimumOfPoints: 450
+}
+```
+
+Permet de modifier un niveau dans une application (en spécifiant son id dans l'url)
+
+```
+DELETE /api/levels/{id}
+Authorization: "Une API KEY (celle de l'application concernée)"
+```
+Permet d'effacer un niveau dans une application (en spécifiant son id dans l'url)
 
 ## Règles
 
