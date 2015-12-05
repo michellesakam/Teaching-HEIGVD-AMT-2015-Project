@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.services;
 
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
+import java.util.Map;
 import javax.ejb.Local;
 
 /**
@@ -29,6 +30,8 @@ public interface EndUsersManagerLocal {
     public EndUser retrieveEndUser(Application application, String noEndUser);
 
     public long getNumberOfPoints(Application app, EndUser e);
+
+    public Map<Integer, Long> getPointsPerMonths(EndUser e, Application app, int year);
     
    
 

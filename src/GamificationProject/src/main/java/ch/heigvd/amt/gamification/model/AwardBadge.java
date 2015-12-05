@@ -15,7 +15,7 @@ import javax.persistence.NamedQuery;
 
 @NamedQueries({
     @NamedQuery(name = "AwardBadge.findByEndUserAndApplication", 
-            query = "SELECT ab FROM AwardBadge ab WHERE ab.endUser = :endUser AND ab.endUser.application = :application "),
+            query = "SELECT ab FROM AwardBadge ab WHERE ab.endUser = :endUser AND ab.endUser.application = :application ")
 })
 public class AwardBadge extends Award{  
 

@@ -1,10 +1,13 @@
 package ch.heigvd.amt.gamification.services.dao;
 
 import ch.heigvd.amt.gamification.model.Application;
+import ch.heigvd.amt.gamification.model.AwardPoint;
 import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 
@@ -54,6 +57,21 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
             return 0;
         }
     }
-    
+
+    @Override
+    public Map<Integer, Long> getPointsPerMonths(EndUser e, Application app, int year) {
+        List<Object[]> list = em.createNamedQuery("AwardPoint.getPointsPerMonthInAYear")
+                .setParameter("application", app)
+                .setParameter("endUser", e)
+                .setParameter("year", year)
+                .getResultList();
+        
+        Map<Integer, Long> pointsPerMonths = new HashMap<>();
+        
+        for(Object[] o : list)
+            pointsPerMonths.put((int) o[0], (long) o[1]);
+        
+        return pointsPerMonths;
+    }   
     
 }

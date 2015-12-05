@@ -1,5 +1,6 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ActionAwardBadge;
@@ -9,9 +10,11 @@ import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.model.Level;
+import ch.heigvd.amt.gamification.services.processors.EventsProcessorLocal;
 
 import ch.heigvd.amt.gamification.util.Chance;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,6 +35,9 @@ public class TestDataManager implements TestDataManagerLocal {
 
     @EJB
     private LevelsManagerLocal levelsManager;
+    
+    @EJB
+    private EventsProcessorLocal eventsProcessor;
     
     @Override
     public void generateTestData() {
@@ -116,14 +122,6 @@ public class TestDataManager implements TestDataManagerLocal {
         applicationsManager.assignApplicationToAnEndUser(app1, user1);
         applicationsManager.assignApplicationToAnEndUser(app1, user2);
         applicationsManager.assignApplicationToAnEndUser(app3, user3);
-
-        for (int i = 0; i < 3; ++i) {
-            EndUser user = new EndUser();
-            user.setRegDate(new Date(System.currentTimeMillis()));
-            user.setUserID("GaGAee23" + i);
-
-            applicationsManager.assignApplicationToAnEndUser(app1, user);
-        }
         
         // Create some badges in app1
         Badge badge = new Badge();
@@ -185,7 +183,20 @@ public class TestDataManager implements TestDataManagerLocal {
         level = new Level();
         level.setName("General");
         level.setMinimumPoints(500);
-        levelsManager.assignLevelToApplication(app1, level);        
+        levelsManager.assignLevelToApplication(app1, level);    
+        
+        // We apply some event to enduser1
+        EventDTO event = new EventDTO();
+        
+        for(int i = 0; i < 10; i++) {
+            event.setEndUserNumber(user1.getUserID());
+            
+            Calendar c = Calendar.getInstance();
+            c.set(Calendar.MONTH, (int) (Math.random() * 11));            
+            event.setTimestamp(c.getTime());
+            event.setType("addQuestion");
+            eventsProcessor.postDTO(app1.getApiKey().getKey(), event);
+        }
         
     }
 

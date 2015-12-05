@@ -9,7 +9,11 @@ import ch.heigvd.amt.gamification.model.Level;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import ch.heigvd.amt.gamification.services.LevelsManagerLocal;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -57,7 +61,10 @@ public class StatsEndUserRessource {
         if(e == null)
             throw new NullPointerException("This endUser isn't in this application");
         
-        // TODO : Search per months in current year        
+        Map<Integer, Long> pointsPerMonth
+                = endUsersManager.getPointsPerMonths(e, app, Calendar.getInstance().get(Calendar.YEAR));        
+        
+        dto.setPointsPerPeriod(pointsPerMonth);
         dto.setTotalPoints(endUsersManager.getNumberOfPoints(app, e));
         
         return dto;
