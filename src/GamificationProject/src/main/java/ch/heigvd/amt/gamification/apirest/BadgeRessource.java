@@ -30,25 +30,26 @@ public class BadgeRessource {
 
     @EJB
     private BadgesManagerLocal badgesManager;
-    
+
     @EJB
     private BadgesProcessorLocal badgesProcessor;
 
     @EJB
     private ApplicationsManagerLocal applicationsManager;
-    
+
     @GET
     @Produces("application/json")
     public List<BadgeDTO> getBadges(@HeaderParam("Authorization") String apiKey) {
-        
+
         Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
-        
+
         List<BadgeDTO> dto = new ArrayList<>();
         List<Badge> badges = badgesManager.findByApplication(app);
 
         for (Badge badge : badges) {
             dto.add(toDTO(badge));
         }
+
         return dto;
     }
 
