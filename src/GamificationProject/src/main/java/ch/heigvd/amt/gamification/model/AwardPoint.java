@@ -15,7 +15,8 @@ import javax.persistence.NamedQuery;
 
 @NamedQueries({
     @NamedQuery(name = "AwardPoint.getNumberOfPoints", 
-            query = "SELECT SUM(aw.score) FROM AwardPoint aw WHERE aw.endUser = :endUser AND aw.endUser.application = :application")
+            query = "SELECT SUM(aw.score) FROM AwardPoint aw "
+                    + "WHERE aw.endUser = :endUser AND aw.endUser.application = :application")
 })
 public class AwardPoint extends Award{
          

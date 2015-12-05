@@ -34,7 +34,7 @@
 
         $http({
             method: 'GET',
-            url: '/GamificationProject/api/statsEndUser/widgetLevels/' + $scope.formData.endUserNumber,
+            url: '/GamificationProject/api/statsEndUser/levels/' + $scope.formData.endUserNumber,
             headers: {
                 Authorization: $scope.formData.apiKey
             }

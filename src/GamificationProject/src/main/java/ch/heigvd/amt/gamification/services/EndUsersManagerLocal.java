@@ -22,7 +22,7 @@ public interface EndUsersManagerLocal {
     
     /**
      * Retrieve an EndUSer by his number
-     * @pamram application
+     * @param application
      * @param noEndUser
      * @return null if enduser doesnt exists, else the found endUSer...
      */

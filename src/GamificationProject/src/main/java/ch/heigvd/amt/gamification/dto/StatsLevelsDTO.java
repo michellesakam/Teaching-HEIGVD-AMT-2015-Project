@@ -4,7 +4,7 @@ package ch.heigvd.amt.gamification.dto;
  *
  * @author Samira
  */
-public class WidgetLevelDTO {
+public class StatsLevelsDTO {
     private String nextLevelName;
     private String currentLevelName;
     private long currentPoints;
