@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,9 +33,6 @@ public class Account extends AbstractDomainModelEntity<Long> {
     // User must have valide password 
     @Column(nullable = false)
     private String password;
-
-    @ManyToMany //
-    private List<Role> roles;
 
     @OneToMany(mappedBy = "acount")
     private List<Application> apps;
@@ -82,16 +78,6 @@ public class Account extends AbstractDomainModelEntity<Long> {
   
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-  
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 
     public List<Application> getApps() {

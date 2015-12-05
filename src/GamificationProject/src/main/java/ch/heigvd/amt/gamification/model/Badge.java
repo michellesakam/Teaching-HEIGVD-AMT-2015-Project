@@ -12,10 +12,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Badge.findByApiKey", 
-            query = "SELECT b FROM Badge b WHERE b.application.apiKey.key = :apiKey"),
-    @NamedQuery(name = "Badge.findBadgeByIdAndApiKey",
-            query = "SELECT b FROM Badge b WHERE b.application.apiKey.key = :apiKey AND b.id = :id")
+    @NamedQuery(name = "Badge.findByApplication", 
+            query = "SELECT b FROM Badge b WHERE b.application = :application")
 })
 public class Badge extends AbstractDomainModelEntity<Long> {
     

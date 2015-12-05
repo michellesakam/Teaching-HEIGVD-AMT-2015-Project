@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
@@ -29,44 +24,26 @@ public abstract class Award  extends AbstractDomainModelEntity<Long>{
     @ManyToOne
     private EndUser endUser; 
 
-    /**
-     * @return the raison
-     */
     public String getRaison() {
         return raison;
     }
 
-    /**
-     * @param raison the raison to set
-     */
     public void setRaison(String raison) {
         this.raison = raison;
     }
 
-    /**
-     * @return the dateReception
-     */
     public Date getDateReception() {
         return dateReception;
     }
 
-    /**
-     * @param dateReception the dateReception to set
-     */
     public void setDateReception(Date dateReception) {
         this.dateReception = dateReception;
     }
 
-    /**
-     * @return the endUser
-     */
     public EndUser getEndUser() {
         return endUser;
     }
 
-    /**
-     * @param endUser the endUser to set
-     */
     public void setEndUser(EndUser endUser) {
         this.endUser = endUser;
     }

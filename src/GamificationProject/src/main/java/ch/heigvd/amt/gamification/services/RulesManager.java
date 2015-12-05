@@ -44,7 +44,6 @@ public class RulesManager implements RulesManagerLocal {
 
         Action action = r.getAction();
 
-        // Check if the rule can be apply
         Map<String, Object> conditionsToApply = r.getAction().getConditionsToApply();
 
         for (String key : conditionsToApply.keySet()) {

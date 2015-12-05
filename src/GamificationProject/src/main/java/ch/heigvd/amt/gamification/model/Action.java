@@ -4,9 +4,11 @@ import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Table(name = "awards")
 public abstract class Action<T> extends AbstractDomainModelEntity<Long> {
     
     private String reason;    

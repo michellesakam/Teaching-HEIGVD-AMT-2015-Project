@@ -40,10 +40,27 @@ public interface LevelsManagerLocal {
      */
     public void assignLevelToApplication(Application application, Level level);
     
+    /**
+     * Retrieve a level by his id
+     * @param id
+     * @return The level which have specified id
+     * @throws GamificationDomainEntityNotFoundException 
+     */
     public Level findById(Long id) throws GamificationDomainEntityNotFoundException;
 
-    public Level findCurrentLevel(Application app, long nbPointsEndUser);
+    /**
+     * @param app The concerned application (managed)
+     * @param nbPoints The number of points
+     * @return The current level according the number of points
+     */
+    public Level findCurrentLevel(Application app, long nbPoints);
 
-    public Level findNextLevel(Application app, long nbPointsEndUser);
+    /**
+     * 
+     * @param app The concerned application (managed)
+     * @param nbPoints The number of points
+     * @return The next level according the number of points
+     */
+    public Level findNextLevel(Application app, long nbPoints);
     
 }

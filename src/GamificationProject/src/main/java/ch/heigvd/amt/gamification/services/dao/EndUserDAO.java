@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.services.dao;
 
 import ch.heigvd.amt.gamification.model.Application;
-import ch.heigvd.amt.gamification.model.AwardPoint;
 import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -9,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -22,7 +20,6 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
     public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay) {
 
         Calendar today = new GregorianCalendar();
-        today.getTime();
 
         Calendar before = new GregorianCalendar();
         before.add(Calendar.DAY_OF_YEAR, -numberOfDay);

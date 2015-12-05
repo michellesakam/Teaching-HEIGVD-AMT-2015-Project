@@ -2,7 +2,9 @@ package ch.heigvd.amt.gamification.apirest;
 
 import ch.heigvd.amt.gamification.services.processors.BadgesProcessorLocal;
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
+import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
+import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +34,17 @@ public class BadgeRessource {
     @EJB
     private BadgesProcessorLocal badgesProcessor;
 
+    @EJB
+    private ApplicationsManagerLocal applicationsManager;
+    
     @GET
     @Produces("application/json")
     public List<BadgeDTO> getBadges(@HeaderParam("Authorization") String apiKey) {
+        
+        Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
+        
         List<BadgeDTO> dto = new ArrayList<>();
-        List<Badge> badges = badgesManager.findByApiKey(apiKey);
+        List<Badge> badges = badgesManager.findByApplication(app);
 
         for (Badge badge : badges) {
             dto.add(toDTO(badge));

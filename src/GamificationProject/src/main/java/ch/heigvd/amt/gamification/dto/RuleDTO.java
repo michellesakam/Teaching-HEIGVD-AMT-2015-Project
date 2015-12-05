@@ -4,6 +4,7 @@ import java.util.HashMap;
 /**
  *
  * @author Raphaël Racine
+ * @param <T>
  */
 public class RuleDTO<T> implements IGamificationDTO {
 

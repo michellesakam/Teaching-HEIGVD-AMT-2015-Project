@@ -14,9 +14,9 @@ import javax.ejb.Stateless;
 public class BadgeDAO extends GenericDAO<Badge, Long> implements BadgeDAOLocal {
 
     @Override
-    public List<Badge> findByApiKey(String apiKey) {
-        return em.createNamedQuery("Badge.findByApiKey")
-                .setParameter("apiKey", apiKey)
+    public List<Badge> findByApplication(Application application) {
+        return em.createNamedQuery("Badge.findByApplication")
+                .setParameter("application", application)
                 .getResultList();
     }
 

@@ -21,7 +21,7 @@ import javax.ejb.Local;
 public interface BadgesManagerLocal {
     public void editBadge(Badge badge) throws GamificationDomainEntityNotFoundException;
     public void deleteBadge(Badge badge) throws GamificationDomainEntityNotFoundException;
-    public List<Badge> findByApiKey(String apiKey);
+    public List<Badge> findByApplication(Application application);
     public Badge findById(Long id) throws GamificationDomainEntityNotFoundException;
     public List<Badge> findByEndUser(EndUser endUser, Application application);
 }

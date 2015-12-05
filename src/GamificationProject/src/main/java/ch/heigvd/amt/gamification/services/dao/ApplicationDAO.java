@@ -115,14 +115,4 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
         application.getBadges().add(badge);
     }
 
-    @Override
-    public Badge findBadgeByIdAndApiKey(Long id, String apiKey) {
-        List<Badge> badges = em.createNamedQuery("Badge.findBadgeByIdAndApiKey")
-                .setParameter("id", id)
-                .setParameter("apiKey", apiKey)
-                .setMaxResults(1).getResultList();
-
-        return badges.size() > 0 ? badges.get(0) : null;
-    }
-
 }
