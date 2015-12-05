@@ -10,17 +10,16 @@ import javax.persistence.NamedQuery;
  * @author michelle meguep
  */
 @Entity
-@DiscriminatorValue("score")
-
+@DiscriminatorValue("nbPoints")
 @NamedQueries({
     @NamedQuery(name = "AwardPoint.getNumberOfPoints",
             query = "SELECT SUM(aw.nbPoints) FROM AwardPoint aw "
             + "WHERE aw.endUser = :endUser AND aw.endUser.application = :application"),
     @NamedQuery(name = "AwardPoint.getPointsPerMonthInAYear",
-            query = "SELECT FUNCTION('MONTH', aw.dateReception), SUM(aw.nbPoints) FROM AwardPoint aw "
-                    + "WHERE FUNCTION('YEAR', aw.dateReception) = :year AND aw.endUser = :endUser "
+            query = "SELECT FUNCTION('MONTH', aw.receptionDate), SUM(aw.nbPoints) FROM AwardPoint aw "
+                    + "WHERE FUNCTION('YEAR', aw.receptionDate) = :year AND aw.endUser = :endUser "
                     + "AND aw.endUser.application = :application"
-                    + " GROUP BY FUNCTION('MONTH', aw.dateReception)")
+                    + " GROUP BY FUNCTION('MONTH', aw.receptionDate)")
 
 })
 public class AwardPoint extends Award {

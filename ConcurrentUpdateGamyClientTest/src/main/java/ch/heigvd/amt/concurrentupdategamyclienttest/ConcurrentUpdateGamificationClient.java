@@ -2,6 +2,7 @@ package ch.heigvd.amt.concurrentupdategamyclienttest;
 
 import ch.heigvd.amt.gamification.client.dto.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,10 +25,9 @@ import org.glassfish.jersey.jackson.JacksonFeature;
  */
 public class ConcurrentUpdateGamificationClient {
 
-    private final long numberOfApplication = 1;
-    private final long numberOfEndUsers = 30;
-    private final long numberOfEventsPerEndUser = 30;
-    private final int numberOfConcurrentThreads = 30;
+    private final long numberOfEndUsers = 20;
+    private final long numberOfEventsPerEndUser = 15;
+    private final int numberOfConcurrentThreads = 1;
     private static final String APIKEYFORTEST = "ABC-123";
 
     private static final Logger LOG = Logger.getLogger(ConcurrentUpdateGamificationClient.class.getName());
@@ -45,11 +45,15 @@ public class ConcurrentUpdateGamificationClient {
     }
 
     private Response PostEvents(String apikey, String type, String endUserNumber, int nbcomment) {
-        Date date = new Date();
+        
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.MONTH, (int) (Math.random() * 12));
+        c.set(Calendar.DAY_OF_MONTH, (int) (Math.random() * 28));
+        
         EventDTO event = new EventDTO();
         event.setType(type);
         event.setEndUserNumber(endUserNumber);
-        event.setTimestamp(date);
+        event.setTimestamp(c.getTime());
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("nbComments", nbcomment);
         event.setProperties(properties);

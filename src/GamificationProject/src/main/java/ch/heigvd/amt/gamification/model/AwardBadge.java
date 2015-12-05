@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
  * @author parfait
  */
 @Entity
-@DiscriminatorValue( "badge")
+@DiscriminatorValue("badge")
 
 @NamedQueries({
     @NamedQuery(name = "AwardBadge.findByEndUserAndApplication", 
