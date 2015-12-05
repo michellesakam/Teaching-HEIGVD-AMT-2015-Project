@@ -4,12 +4,16 @@ Ceci est le rapport de la partie 2 du projet
 # Introduction
 <font color=red>A FAIRE</font>
 
-## Auteurs
+# Auteurs
 <li>Raphaël Racine
 <li>Parfait Plaisir de Pâques Noussibi
 <li>Vanessa Michelle Meguep
 <li>Samira Kouchali
 
+# Specifications
+<font color=red>A FAIRE</font>
+
+# Modèles
 ## Nouvelles Entités créées
 <font color=red>A FAIRE</font>
 
@@ -20,6 +24,8 @@ Ceci est le rapport de la partie 2 du projet
 <font color=red>A FAIRE</font>
 
 # API REST
+
+## Préambule
 
 <font color=red>A FAIRE</font>
 
