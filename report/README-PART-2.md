@@ -123,6 +123,8 @@ Voici donc les différentes ressources de notre API Rest.
 ## Evénements
 ```
 POST /api/events
+Authorization: "Une API KEY (celle de l'application concernée)"
+
 {
 	"eventType": "Add question",
 	"timestamp": "2015-01-31T18:00:00.000Z",
@@ -132,6 +134,13 @@ POST /api/events
 	}
 }
 ```
+Permet d'envoyer d'envoyer un événement dans l'application.
+
+On doit spécifier :
+<li>Type d'événement : Il s'agit du type de l'événement qui permet à notre serveur de pouvoir appliquer toutes les règles qui ont ce type d'événement.
+<li>Date de l'événement : On doit spécifier la date à laquelle arrive l'événement (il faut que le format soit identique à celui de l'exemple) afin que dans le cas où une des règles s'applique et qu'elle donne une récompse à l'utilisateur spécifié, la date de réception de la récompense soit enregistrée.
+<li>Numéro de l'utilisateur : Le numéro de l'utilisateur doit être spécifié afin de savoir à qui il faut donner un badge ou des points
+<li>Propriétés de l'événement : Ces propriétés seront analysées par les règes qui s'applique à ce type d'événement. Dans le cas où ces propriétés "matchent" correctement dans une règle, alors la règle s'applique. Il est à noter que si la règle s'applique systèmatiquement (donc qu'elle n'a pas de conditions) alors les propriétés sont de l'événement sont ignorée et la règle s'applique quand même).
 
 ## Badges
 
