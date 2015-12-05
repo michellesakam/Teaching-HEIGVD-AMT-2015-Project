@@ -1,20 +1,16 @@
 package ch.heigvd.amt.gamification.services;
 
-import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.services.passwordvalidation.BadPasswordException;
 import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.ActionAwardBadge;
 import ch.heigvd.amt.gamification.model.ActionAwardPoints;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
-import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.model.Level;
 import ch.heigvd.amt.gamification.services.processors.EventsProcessorLocal;
 
 import ch.heigvd.amt.gamification.util.Chance;
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -106,23 +102,6 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setDescription("Surfez sur Internet !");
 
         applicationsManager.assignApplicationToAccount(app3, createur2);
-
-        /* Associate EndUsers to an application */
-        EndUser user1 = new EndUser();
-        user1.setRegDate(new Date(System.currentTimeMillis()));
-        user1.setUserID("UK1928J28k");
-
-        EndUser user2 = new EndUser();
-        user2.setRegDate(new Date(2015, 1, 25));
-        user2.setUserID("PKZ927J28k");
-
-        EndUser user3 = new EndUser();
-        user3.setRegDate(new Date(System.currentTimeMillis()));
-        user3.setUserID("FJFKDJFFSD5f");
-
-        applicationsManager.assignApplicationToAnEndUser(app1, user1);
-        applicationsManager.assignApplicationToAnEndUser(app1, user2);
-        applicationsManager.assignApplicationToAnEndUser(app3, user3);
         
         // Create some badges in app1
         Badge badge1 = new Badge();
@@ -195,21 +174,7 @@ public class TestDataManager implements TestDataManagerLocal {
         level = new Level();
         level.setName("General");
         level.setMinimumPoints(500);
-        levelsManager.assignLevelToApplication(app1, level);    
-        
-        // We apply some event to enduser1
-        EventDTO event = new EventDTO();
-        
-        for(int i = 1; i < 200; i++) {
-            event.setEndUserNumber(user1.getUserID());
-            
-            Calendar c = Calendar.getInstance();
-            c.set(Calendar.MONTH, (int) (Math.random() * 11));            
-            event.setTimestamp(c.getTime());
-            event.getProperties().put("nbQuestions", i);
-            event.setType("addQuestion");
-            eventsProcessor.postDTO(app1.getApiKey().getKey(), event);
-        }
+        levelsManager.assignLevelToApplication(app1, level);
         
     }
 
