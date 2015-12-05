@@ -76,15 +76,15 @@
         }).then(function (stats) {
             $scope.statsPoint = {
                 totalPoints: stats.data.totalPoints,
-                totalInYear: stats.data.totalPeriods,                
-                awards: stats.data.pointsPerPeriod               
+                totalInYear: stats.data.totalPeriods,
+                awards: stats.data.pointsPerPeriod
             };
 
             $scope.data = [
                 function () {
                     var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-                    for(var key in $scope.statsPoint.awards)
+                    for (var key in $scope.statsPoint.awards)
                         data[key - 1] = $scope.statsPoint.awards[key];
 
                     return data;
@@ -96,6 +96,17 @@
     });
 
     module.controller('WidgetBadgesController', function ($scope, $http) {
+
+        $http({
+            method: 'GET',
+            url: '/GamificationProject/api/statsEndUser/badges/' + $scope.formData.endUserNumber,
+            headers: {
+                Authorization: $scope.formData.apiKey
+            }
+        }).then(function (stats) {
+            $scope.badges = stats.data.badges;
+        }, function (err) {
+        });
 
     });
 

@@ -80,6 +80,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app1.setDescription("Devenez le meilleur soldat !");
 
         applicationsManager.assignApplicationToAccount(app1, constantAccount);
+        app1.getApiKey().setKey("ABC-123");
 
         Application app2 = new Application();
         app2.setIsEnable(false);
@@ -124,17 +125,21 @@ public class TestDataManager implements TestDataManagerLocal {
         applicationsManager.assignApplicationToAnEndUser(app3, user3);
         
         // Create some badges in app1
-        Badge badge = new Badge();
-        badge.setName("badge1");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        Badge badge1 = new Badge();
+        badge1.setName("badge1");
+        applicationsManager.assignBadgeToAnApplication(app1, badge1);
         
-        badge = new Badge();
-        badge.setName("badge2");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        Badge badge2 = new Badge();
+        badge2.setName("badge2");
+        applicationsManager.assignBadgeToAnApplication(app1, badge2);
         
-        badge = new Badge();
-        badge.setName("badge3");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        Badge badge3 = new Badge();
+        badge3.setName("badge3");
+        applicationsManager.assignBadgeToAnApplication(app1, badge3);
+        
+        Badge badgeWarrior = new Badge();
+        badgeWarrior.setName("Warrior");
+        applicationsManager.assignBadgeToAnApplication(app1, badgeWarrior);
         
         // Add some rules to applications for gamification
         Rule rule = new Rule();
@@ -148,8 +153,8 @@ public class TestDataManager implements TestDataManagerLocal {
         rule = new Rule();
         rule.setEventType("comment");
         ActionAwardBadge actionAwardBadge = new ActionAwardBadge();
-        actionAwardBadge.setBadge(badge);
-        actionAwardBadge.setReason("Posted a comment");
+        actionAwardBadge.setBadge(badge3);
+        actionAwardBadge.setReason("Posted 100 comments");
         actionAwardBadge.getConditionsToApply().put("nbComments", 100);
         rule.setAction(actionAwardBadge);
         applicationsManager.assignRuleToAnApplication(app1, rule);
@@ -162,7 +167,14 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
-        app1.getApiKey().setKey("ABC-123");
+        rule = new Rule();
+        rule.setEventType("addQuestion");
+        actionAwardBadge = new ActionAwardBadge();
+        actionAwardBadge.setBadge(badgeWarrior);
+        actionAwardBadge.setReason("Posted 100 questions");
+        actionAwardBadge.getConditionsToApply().put("nbQuestions", 100);
+        rule.setAction(actionAwardBadge);
+        applicationsManager.assignRuleToAnApplication(app1, rule);
         
         // Create some levels in app1
         Level level = new Level();
@@ -188,12 +200,13 @@ public class TestDataManager implements TestDataManagerLocal {
         // We apply some event to enduser1
         EventDTO event = new EventDTO();
         
-        for(int i = 0; i < 10; i++) {
+        for(int i = 1; i < 200; i++) {
             event.setEndUserNumber(user1.getUserID());
             
             Calendar c = Calendar.getInstance();
             c.set(Calendar.MONTH, (int) (Math.random() * 11));            
             event.setTimestamp(c.getTime());
+            event.getProperties().put("nbQuestions", i);
             event.setType("addQuestion");
             eventsProcessor.postDTO(app1.getApiKey().getKey(), event);
         }

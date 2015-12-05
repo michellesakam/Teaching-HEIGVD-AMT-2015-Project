@@ -6,6 +6,7 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,6 +31,9 @@ public class ApplicationRessource {
     @EJB
     private ApplicationsManagerLocal applicationsManager;
 
+    @EJB
+    private BadgesManagerLocal badgesManager;
+    
     @GET
     @Produces("application/json")
     public List<EndUserDTO> getApplicationDTO(@HeaderParam("Authorization") String apiKey) {
@@ -50,12 +54,12 @@ public class ApplicationRessource {
             for(EndUser e : endUsers) {
                 EndUserDTO endUserDTO = new EndUserDTO();
                 
+                List<Badge> badges = badgesManager.findByEndUser(e, app);
+                
                 endUserDTO.setApikey(apiKey);
                 endUserDTO.setEndUserNumber(e.getUserID());
-                endUserDTO.setNbBadges(30); // TODO service to count badges
-                endUserDTO.setNbPoints(200);
-                               
-                List<Badge> badges = new LinkedList(); // TODO services
+                endUserDTO.setNbPoints(200); // TODO service                               
+                
                 
                 for(Badge b : badges) {
                     BadgeDTO badgeDTO = new BadgeDTO();

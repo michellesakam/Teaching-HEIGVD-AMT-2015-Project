@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class EventDTO implements IGamificationDTO { 
     private String type;
     private String endUserNumber;
-    private HashMap<String, Object> properties;
+    private HashMap<String, Object> properties = new HashMap<>();
     private Date timestamp;
     
     GregorianCalendar calendar;
