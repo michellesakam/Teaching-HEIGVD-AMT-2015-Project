@@ -19,14 +19,17 @@ public class ApplicationEndUsersDTO {
     public void setNbEndUsers(long nbEndUsers) {
         this.nbEndUsers = nbEndUsers;
     }
+
     
-    public void setEndUsers(EndUserDTO enduser){
-        if(!endusers.contains(enduser))
-        endusers.add(enduser);
-    }
     
-    public List<EndUserDTO> getEndUsers(){
+    public List<EndUserDTO> getEndusers() {
         return endusers;
     }
+
+    public void setEndusers(List<EndUserDTO> endusers) {
+        this.endusers = endusers;
+    }
+    
+    
 
 }

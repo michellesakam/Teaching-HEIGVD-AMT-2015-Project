@@ -5,6 +5,8 @@ import ch.heigvd.amt.gamification.client.dto.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -27,7 +29,7 @@ public class ConcurrentUpdateGamificationClient {
 
   private final long numberOfApplication = 1;
   private final long numberOfEndUsers = 5;
-  private final long numberOfEventsPerEndUser = 20;
+  private final long numberOfEventsPerEndUser = 2;
   private final int numberOfConcurrentThreads = 1;
   private static final String APIKEYFORTEST = "ABC-123";
 
@@ -52,7 +54,9 @@ public class ConcurrentUpdateGamificationClient {
       event.setApiKey(apikey);
       event.setEndUserNumber(endUserNumber);
       event.setTimestamp(date);
-      event.getProperties().put("nbComments",nbcomment );
+      HashMap<String, Object> properties = new HashMap<>();
+      properties.put("nbComments", nbcomment);
+      event.setProperties(properties);
       final WebTarget target = client.target("http://localhost:8080/ConcurrentTransactionsServer/api").path("events");
       target.request().header("Authorization", apikey);
       return target.request().post(Entity.json(event));
@@ -61,7 +65,7 @@ public class ConcurrentUpdateGamificationClient {
   private List<EndUserDTO> getEndsUsersListFromServer(String apikey) {
     final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("applicationsEndUsers");
     target.request().header("Authorization",apikey );
-    GenericType<List<EndUserDTO>> endusers = null;
+    GenericType<List<EndUserDTO>> endusers = new GenericType<List<EndUserDTO>>(){};
     return target.request().get(endusers);
     
   }
@@ -99,7 +103,11 @@ public class ConcurrentUpdateGamificationClient {
                 eventdto.setEndUserNumber(endusernumber);
                 eventdto.setTimestamp(new Date());
                 eventdto.setType("comment");
-                eventdto.getProperties().put("nbComments",nbComments );
+                HashMap<String, Object> properties = new HashMap<>();
+                
+                properties.put("nbComments",nbComments);
+           
+                eventdto.setProperties(properties);
                 
                 Response response = PostEvents(APIKEYFORTEST,"comment",endusernumber,nbComments);
             if (response.getStatus() < 200 || response.getStatus() >= 300) {

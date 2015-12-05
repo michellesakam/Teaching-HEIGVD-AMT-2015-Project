@@ -6,7 +6,9 @@
 package ch.heigvd.amt.gamification.services;
 
 
+import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
+import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.List;
 import javax.ejb.Local;
@@ -21,4 +23,5 @@ public interface BadgesManagerLocal {
     public void deleteBadge(Badge badge) throws GamificationDomainEntityNotFoundException;
     public List<Badge> findByApiKey(String apiKey);
     public Badge findById(Long id) throws GamificationDomainEntityNotFoundException;
+    public List<Badge> findByEndUser(EndUser endUser, Application application);
 }
