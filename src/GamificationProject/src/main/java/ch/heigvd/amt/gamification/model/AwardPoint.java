@@ -14,10 +14,10 @@ import javax.persistence.NamedQuery;
 
 @NamedQueries({
     @NamedQuery(name = "AwardPoint.getNumberOfPoints",
-            query = "SELECT SUM(aw.score) FROM AwardPoint aw "
+            query = "SELECT SUM(aw.nbPoints) FROM AwardPoint aw "
             + "WHERE aw.endUser = :endUser AND aw.endUser.application = :application"),
     @NamedQuery(name = "AwardPoint.getPointsPerMonthInAYear",
-            query = "SELECT FUNCTION('MONTH', aw.dateReception), SUM(aw.score) FROM AwardPoint aw "
+            query = "SELECT FUNCTION('MONTH', aw.dateReception), SUM(aw.nbPoints) FROM AwardPoint aw "
                     + "WHERE FUNCTION('YEAR', aw.dateReception) = :year AND aw.endUser = :endUser "
                     + "AND aw.endUser.application = :application"
                     + " GROUP BY FUNCTION('MONTH', aw.dateReception)")

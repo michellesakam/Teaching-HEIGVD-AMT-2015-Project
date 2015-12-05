@@ -2,7 +2,9 @@
 Ceci est le rapport de la partie 2 du projet
 
 # Introduction
-<font color=red>A FAIRE</font>
+Ce rapport concerne la partie 2 du projet de Gamification.
+
+Il concerne la Gamification en elle-même, c'est à dire attribuer des points ou des badges (pour le moment) à des utilisateurs d'une application gamifiée, suite à la réception d'événements, par exemple poser une question ou poster un commentair, ou encore tirer sur un ennemi dans un jeu de guerre par exemple.
 
 # Auteurs
 <li>Raphaël Racine
@@ -214,7 +216,36 @@ Permet d'effacer un niveau dans une application (en spécifiant son id dans l'ur
 
 ## Règles
 
-<font color=red>A FAIRE</font>
+```
+GET /api/rules
+Authorization: "Une API KEY (celle de l'application concernée)"
+```
+Permet d'obtenir la liste des règles de l'application concernée.
+
+```
+POST /api/rules
+Authorization: "Une API KEY (celle de l'application concernée)"
+
+{
+	"conditionsToApply": {
+		"nbQuestions": 100
+	},
+	"eventType": "Add question",
+	"reason" : "100 questions posted",
+	"awardType" : "AwardBadge",
+	"awardValue" : 3	
+}
+```
+Permet d'ajouter une nouvelle règle dans une application donnée.
+
+On doit spécifier :
+<li>Les conditions pour que la règle s'applique : La règle sera appliquée uniquement si les conditions "matchent" avec un événement qui aimerait appliquer cette règle (bien entendu le type de l'événement doit être le même)
+<li>Type d'événement : C'est le type d'événement au quel on veut appliquer cette règle. Il est à noter qu'il peut y avoir plusieurs règles avec le même type d'événement.
+<li>Raison : C'est la raison pour laquelle la règle s'applique (il est important de la spécifié car si cette règle est appliquée dans un événement, il faut se rappeler la raison pour laquelle elle s'applique afin que si on distribue une récompense, on sache pour quelle raison cette récompense a été remportée)
+<li>Le type de récompense : Il s'agit ici de spécifier le type de récompense à distribuer (AwardBadge si on veut donner un badge ou bien AwardPoints si on veut donner ou retirer des points)
+-Valeur de la récompense : Si le type de récompense est AwardBadge, il faut spécifier ici l'id du badge à distribuer. Si le type de récompense est AwardBadge, il faut spécifier ici le nombre de points à donner ou à retirer.
+
+Malheureusement, par manque de temps, nous n'avons pas eu le temps d'implémenter la suppression et l'édition d'une règle.
 
 # Controleurs
 Voici une description des nouveaux contrôleurs.
@@ -241,9 +272,16 @@ Malheureusement, nous n'avons pas eu le temps de gérer les transactions
 concernant la configuration des badges, niveaux et points.
 
 # DTO
+<font color=red>A FAIRE</font>
 
 # Tests
 <b><font color=red>Vanessa parler de cette partie</font></b>
+
+## Programme client (Java)
+<font color=red>A FAIRE</font>
+
+## Comment exécuter les tests
+<font color=red>A FAIRE</font>
 
 # Problèmes connus
 <font color=red>A FAIRE</font>
