@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author Raphaël Racine
+ * @author michelle meguep
  */
 public class EndUserDTO {
     
