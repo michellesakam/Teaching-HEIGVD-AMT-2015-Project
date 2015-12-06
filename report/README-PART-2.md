@@ -258,20 +258,25 @@ Voici une description des nouveaux services.
 <font color=red>A FAIRE</font>
 
 # Vues (Widgets)
-Nous avons décider d'utiliser anularjs pour afficher les widgets. Dans un premier temps nous nous sommes contenter de mettre sur pieds
-tous les éléments qu'il faut pour afficher un graphe dans angularjs avec la librairie chart: 
-<li> chart: qui permet de désinner les graph.
+Nous avons décider d'utiliser angularjs pour afficher les widgets. Dans un premier temps nous nous sommes contentés de mettre sur pieds
+tous les éléments qu'il faut pour afficher un graphe dans angularjs avec la librairie chart, et naviger avec ui-router. 
+<li> chart: qui permet de désiner les graphs.
 <li> ui-router: qui permet d'effectuer le routage côté serveur. 
 <li> angular.js
 <li> angular-chart.js
 <li> ...
 Par la suite, nous avons mis des données codées en dure pour tester le bon fonctionnement, et enfin  nous avons implémenté les scripts
-avec http de angularjs pour aller cherche les données. 
+avec http de angularjs pour aller chercher les données. 
 comment ça marche ?
   Une fois l'application lancée, il faut comment utiliser /generate pour renerer les utilisateurs.
-  en suite, il faut exécuter le script de teste pour effectuer les requêtes sur l'api rest 
+  en suite, il faut exécuter le script de teste pour effectuer les requêtes sur l'api rest. 
+  en suite, il faut aller dans /demoWidgets. Sur cette page, on peut choisir l'utilsateur donc nous voulons afficher les paramettres.
+  par exemple si le apiKey ou le endUser n'est pas juste, vous serez redirigé vers la page précédente, histoire de toujours mettre les
+  données juste. Lorsque l'apiKey et le endUser corresponde effectivement à des donnée juste, on peut naviger dans trois page avec
+  ui-routeur: badges, Levels, Points.
+  une fois que le apiKey et le endUser sont correct, on peut aller chercher les donner et dessiner l'histogramme.
 
-Voici une description des nouvelles vues.
+> Voici une description des nouvelles vues.
 
 <font color=red>A FAIRE</font>
 
@@ -286,7 +291,7 @@ Voici la manière dont nous avons gérer les transactions par rapport aux
 ## Captures test pour bon fonctionnement
 
 ## Remarque
-Malheureusement, nous n'avons pas eu le temps de gérer les transactions
+Malheureusement, nous n'treavons pas eu le temps de gérer les transactions
 concernant la configuration des badges, niveaux et points. Nous avons donc uniquement mis en place la gestion des transactions uniquement pour la réception des événements.
 
 # DTO
