@@ -80,5 +80,10 @@ public class RulesManager implements RulesManagerLocal {
             awardDAO.create(awardPoint);
         }
     }
+    
+    @Override
+    public void assignRuleToAnApplication(Application application, Rule rule) {
+        ruleDAO.assignRuleToAnApplication(application, rule);
+    }
 
 }

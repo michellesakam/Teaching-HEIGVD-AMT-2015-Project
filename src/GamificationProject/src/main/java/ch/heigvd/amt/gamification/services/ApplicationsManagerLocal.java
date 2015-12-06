@@ -117,9 +117,5 @@ public interface ApplicationsManagerLocal {
      * @return null if the applicaion not exists, else the application
      */
     public Application retrieveApplicationByApikey(String apikey);
-    
-    public void assignRuleToAnApplication(Application application, Rule rule);
-    
-    public void assignBadgeToAnApplication(Application application, Badge badge);
 
 }

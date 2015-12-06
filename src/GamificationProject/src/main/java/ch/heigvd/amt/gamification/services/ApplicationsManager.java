@@ -86,14 +86,4 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
         return app;
     }
 
-    @Override
-    public void assignRuleToAnApplication(Application application, Rule rule) {
-        applicationDAO.assignRuleToAnApplication(application, rule);
-    }
-
-    @Override
-    public void assignBadgeToAnApplication(Application application, Badge badge) {
-        applicationDAO.assignBadgeToAnApplication(application, badge);
-    }
-
 }

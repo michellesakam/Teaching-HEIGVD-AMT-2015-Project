@@ -3,7 +3,6 @@ package ch.heigvd.amt.gamification.services.processors;
 import ch.heigvd.amt.gamification.dto.BadgeDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
-import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
@@ -17,9 +16,6 @@ import javax.ejb.Stateless;
 public class BadgesProcessor extends GamificationDTOProcessor<BadgeDTO, Long> implements BadgesProcessorLocal {
 
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
-
-    @EJB
     private BadgesManagerLocal badgesManager;
 
     @Override
@@ -28,7 +24,7 @@ public class BadgesProcessor extends GamificationDTOProcessor<BadgeDTO, Long> im
 
         Badge badge = new Badge();
         badge.setName(dto.getName());
-        applicationsManager.assignBadgeToAnApplication(application, badge);
+        badgesManager.assignBadgeToAnApplication(application, badge);
     }
 
     @Override

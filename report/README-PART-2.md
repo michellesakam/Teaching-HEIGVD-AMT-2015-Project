@@ -248,16 +248,9 @@ On doit spécifier :
 Malheureusement, par manque de temps, nous n'avons pas eu le temps d'implémenter la suppression et l'édition d'une règle.
 
 # Services
-Nous avons dû ajouté les services suivant pour le fonctionnement de la Gamification :
+Pour faire fonctionner notre projet de Gamification, nous avons donc mettre en oeuvre les services suivants :
 
-<li><b></b>
-<li><b></b>
-<li><b></b>
-<li><b></b>
-<li><b></b>
-<li><b></b>
-<li><b></b>
-<li><b></b>
+
 
 # Vues (Widgets)
 Nous avons décider d'utiliser angularjs pour afficher les widgets. Dans un premier temps nous nous sommes contentés de mettre sur pieds

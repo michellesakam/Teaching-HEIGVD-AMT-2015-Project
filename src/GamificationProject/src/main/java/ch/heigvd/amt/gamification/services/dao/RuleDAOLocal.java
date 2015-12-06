@@ -13,4 +13,5 @@ import javax.ejb.Local;
 public interface RuleDAOLocal extends IGenericDAO<Rule, Long> {
     public List<Rule> findByEventTypeAndApplication(Application application, String eventType);
     public List<Rule> findByApiKey(String apiKey);
+    public void assignRuleToAnApplication(Application application, Rule rule);
 }

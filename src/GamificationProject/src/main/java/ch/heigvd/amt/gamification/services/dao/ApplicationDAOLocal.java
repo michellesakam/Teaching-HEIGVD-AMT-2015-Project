@@ -28,8 +28,4 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
     public void updateApplication(Application app) throws GamificationDomainEntityNotFoundException;
 
     public Application findByApiKey(String apikey);
-
-    public void assignRuleToAnApplication(Application application, Rule rule);
-
-    public void assignBadgeToAnApplication(Application application, Badge badge);
 }
