@@ -266,10 +266,15 @@ Voici une description des nouvelles vues.
 Voici la manière dont nous avons gérer les transactions par rapport aux
 événements.
 
-<font color=red>A FAIRE</font>
+## Problème constaté
 
+## Résolution
+
+## Captures test pour bon fonctionnement
+
+## Remarque
 Malheureusement, nous n'avons pas eu le temps de gérer les transactions
-concernant la configuration des badges, niveaux et points.
+concernant la configuration des badges, niveaux et points. Nous avons donc uniquement mis en place la gestion des transactions uniquement pour la réception des événements.
 
 # DTO
 <font color=red>A FAIRE</font>
