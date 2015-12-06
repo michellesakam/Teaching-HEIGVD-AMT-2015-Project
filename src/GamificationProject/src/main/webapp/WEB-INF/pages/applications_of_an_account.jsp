@@ -17,9 +17,7 @@
         $.ajax({
             type: "POST",
             data: "action=" + action + "&idApplication=" + id,
-            
             url: "applicationsAjax",
-            
             beforeSend: function () {
                 buttonClicked.html("En cours...");
                 buttonClicked.attr('class', 'btn btn-warning');
@@ -37,62 +35,62 @@
     }
 </script>
 
-    <%@include file="includes/header.jsp" %>
-    <%@include file="includes/startSideBarWrapper.jsp" %>
-    <%@include file="includes/login.jsp" %>
+<%@include file="includes/header.jsp" %>
+<%@include file="includes/startSideBarWrapper.jsp" %>
+<%@include file="includes/login.jsp" %>
 
-        <h1 align = "center">Your apps...</h1>
-        <form method="GET" action="pages/application?edit=false">
-            <h2 align = "center"><button id="bregisternewapp" class="btn btn-primary" type="submit">Register New App</button></h2>
-        </form>
+<h1 align = "center">Your apps...</h1>
+<form method="GET" action="pages/application?edit=false">
+    <h2 align = "center"><button id="bregisternewapp" class="btn btn-primary" type="submit">Register New App</button></h2>
+</form>
 
-        <table class="table">
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>ApiKey</th>
-                <th>#End users</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <c:forEach var="appli" items="${applications}">
-                <tr>
-                    <td id="Name">${appli[0].name}</td>
-                    <td id="Description">${appli[0].description}</td>
-                    <td>${appli[0].apiKey.key}</td>
-                    <td>                        
-                            <c:choose>
-                                <c:when test="${appli[1] > 0}">
-                                    <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">${appli[1]}</a>
-                                </c:when>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>ApiKey</th>
+        <th>#End users</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <c:forEach var="appli" items="${applications}">
+        <tr>
+            <td id="Name">${appli[0].name}</td>
+            <td id="Description">${appli[0].description}</td>
+            <td>${appli[0].apiKey.key}</td>
+            <td>                        
+                <c:choose>
+                    <c:when test="${appli[1] > 0}">
+                        <a id="linkEndUsers${appli[0].id}" href="pages/listUsersApp?idApplication=${appli[0].id}">${appli[1]}</a>
+                    </c:when>
 
-                                <c:otherwise>
-                                    no user
-                                </c:otherwise>
-                            </c:choose>
-                    </td>
+                    <c:otherwise>
+                        no user
+                    </c:otherwise>
+                </c:choose>
+            </td>
 
-                    <td>                        
-                        <form method="GET" action="pages/application">
-                            <input type="hidden" name="edit" value="true">
-                            <input type="hidden" name="idApplication" value=${appli[0].id}>
-                            <button id="edit${appli[0].id}" class="btn btn-default" type="submit">Edit</button>
-                        </form>                    
-                    </td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${appli[0].isEnable == true}">
-                                <button id="btnEnable${appli[0].id}" class="btn btn-success" onclick="enableOrDisableApplication(${appli[0].id}, false)">Enabled</button>
-                            </c:when>
+            <td>                        
+                <form method="GET" action="pages/application">
+                    <input type="hidden" name="edit" value="true">
+                    <input type="hidden" name="idApplication" value=${appli[0].id}>
+                    <button id="edit${appli[0].id}" class="btn btn-default" type="submit">Edit</button>
+                </form>                    
+            </td>
+            <td>
+                <c:choose>
+                    <c:when test="${appli[0].isEnable == true}">
+                        <button id="btnEnable${appli[0].id}" class="btn btn-success" onclick="enableOrDisableApplication(${appli[0].id}, false)">Enabled</button>
+                    </c:when>
 
-                            <c:otherwise>
-                                <button id="btnEnable${appli[0].id}" class="btn btn-danger" onclick="enableOrDisableApplication(${appli[0].id}, true)">Disabled</button>
-                            </c:otherwise>
-                        </c:choose>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+                    <c:otherwise>
+                        <button id="btnEnable${appli[0].id}" class="btn btn-danger" onclick="enableOrDisableApplication(${appli[0].id}, true)">Disabled</button>
+                    </c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
 
-        <%@include file="includes/endSideBarWrapper.jsp" %>
-        <%@include file="includes/footer.jsp"%>
+<%@include file="includes/endSideBarWrapper.jsp" %>
+<%@include file="includes/footer.jsp"%>

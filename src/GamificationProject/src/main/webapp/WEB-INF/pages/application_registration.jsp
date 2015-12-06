@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
     function enableOrDisableApplication() {
-        if($('#isEnable').attr("value") === "true") {
+        if ($('#isEnable').attr("value") === "true") {
             $('#isEnable').attr("value", "false");
             $('#btnIsEnable').attr("class", "btn btn-danger");
             $('#btnIsEnable').html("Disabled");
@@ -25,9 +25,9 @@
 <h1 align="center">${title}</h1>
 
 <form method="POST" class="form-horizontal" name="registerForm">
-    
+
     <input type="hidden" value="${edit != null ? "true" : "false"}" name="edit">
-    
+
     <div class="form-group">
         <label class="col-md-3 control-label" for="Name" required>Name</label>
         <div class="col-md-4">
@@ -60,9 +60,9 @@
                 <c:when test="${edit != null}">
                     <c:if test="${nbEndUsers != 0}">
                         <a href="pages/listUsersApp?idApplication=${application.id}">
-                    </c:if>
-                    ${nbEndUsers}
-                    <c:if test="${nbEndUsers != 0}">
+                        </c:if>
+                        ${nbEndUsers}
+                        <c:if test="${nbEndUsers != 0}">
                         </a>
                     </c:if>
                 </c:when>

@@ -4,7 +4,7 @@
 
     <ul>
         <div ng-repeat="badge in badges">
-            <li>{{ badge.name }}</li>
+            <li>{{ badge.name}}</li>
         </div>
     </ul>
 
