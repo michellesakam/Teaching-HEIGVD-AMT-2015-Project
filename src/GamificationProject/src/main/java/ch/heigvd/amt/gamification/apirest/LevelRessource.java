@@ -28,7 +28,7 @@ public class LevelRessource {
 
     @EJB
     private LevelsManagerLocal levelsManager;
-    
+
     @EJB
     private LevelsProcessorLocal levelsProcessor;
 

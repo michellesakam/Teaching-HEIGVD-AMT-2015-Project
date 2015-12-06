@@ -7,34 +7,35 @@ import javax.ws.rs.ext.Provider;
 
 /**
  * This class is used to send proper HTTP status codes when certain exceptions
- * happen. We don't want Glassfish to respond with a 200 status code and an
- * HTML page saying that an error has happened.
- * 
+ * happen. We don't want Glassfish to respond with a 200 status code and an HTML
+ * page saying that an error has happened.
+ *
  * @author Olivier Liechti
  */
 @Provider
 public class JsonExceptionMapper implements ExceptionMapper<NotFoundException> {
 
-  private class Body {
-    private final String message;
+    private class Body {
 
-    public Body(String message) {
-      this.message = message;
+        private final String message;
+
+        public Body(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
     }
-    
-    public String getMessage() {
-      return message;
+
+    @Override
+    public Response toResponse(NotFoundException e) {
+        return Response
+                .status(404)
+                .entity(new Body(e.getMessage()))
+                .type("application/json")
+                .build();
     }
-  
-  }
-  
-  @Override
-  public Response toResponse(NotFoundException e) {
-    return Response
-      .status(404)
-      .entity(new Body(e.getMessage()))
-      .type("application/json")
-      .build();
-  }
-  
+
 }

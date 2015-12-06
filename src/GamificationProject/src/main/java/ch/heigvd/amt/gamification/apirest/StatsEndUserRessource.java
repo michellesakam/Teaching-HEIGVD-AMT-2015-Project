@@ -39,7 +39,7 @@ public class StatsEndUserRessource {
 
     @EJB
     private LevelsManagerLocal levelsManager;
-    
+
     @EJB
     private BadgesManagerLocal badgesManager;
 
@@ -62,7 +62,7 @@ public class StatsEndUserRessource {
 
         for (Badge b : badges) {
             BadgeDTO badgeDTO = new BadgeDTO();
-            badgeDTO.setId(b.getId());            
+            badgeDTO.setId(b.getId());
             badgeDTO.setName(b.getName());
             dto.getBadges().add(badgeDTO);
         }

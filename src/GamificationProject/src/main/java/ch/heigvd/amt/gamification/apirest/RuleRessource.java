@@ -25,10 +25,10 @@ public class RuleRessource {
 
     @EJB
     private RulesManagerLocal rulesManager;
-    
+
     @EJB
     private RulesProcessorLocal rulesProcessor;
-    
+
     @GET
     @Produces("application/json")
     public List<RuleDTO> getRules(@HeaderParam("Authorization") String apiKey) {
@@ -38,7 +38,7 @@ public class RuleRessource {
         for (Rule rule : rules) {
             dto.add(toDTO(rule));
         }
-        
+
         return dto;
     }
 
@@ -51,16 +51,16 @@ public class RuleRessource {
     public RuleDTO toDTO(Rule rule) {
 
         RuleDTO dto = new RuleDTO();
-        
+
         dto.setRuleID(rule.getId());
         dto.setConditionsToApply(rule.getConditionsToApply());
-        dto.setEventType(rule.getEventType());        
-        dto.setAwardValue(rule.getAction().getAwardValue());        
-        dto.setAwardType(rule.getAction().getType());        
+        dto.setEventType(rule.getEventType());
+        dto.setAwardValue(rule.getAction().getAwardValue());
+        dto.setAwardType(rule.getAction().getType());
         dto.setReason(rule.getReason());
 
         return dto;
-        
+
     }
 
 }
