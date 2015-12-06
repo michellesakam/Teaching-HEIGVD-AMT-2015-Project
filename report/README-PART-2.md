@@ -382,13 +382,19 @@ Ces trois DTO (StatsLevelsDTO, StatsPointsDTO, StatsBadgesDTO) permettent d'obte
 
 
 # Tests
-<b><font color=red>Vanessa parler de cette partie</font></b>
 
-## Programme client (Java)
-<font color=red>A FAIRE</font>
+Afin de valider notre implémentation pour cette deuxième partie du projet, nous avons crée un programme de test. Celui-ci a pour but de vérifier que :
+-Le nombre de endUser créés pour une application donnée est correct 
+-Pour un endUser donné, le nombre de badges et de points qui lui sont attribués sont corrects.
 
-## Comment exécuter les tests
-<font color=red>A FAIRE</font>
+Nous nous sommes limités à ces tests que nous qualifierons de base faute de temps. Nous aurions pu faire des tests pour vérifier les règles mises en place par exemple. Ceux-ci seront implémentés dans la prochaine phase du project.
+
+Pour réalisés donc les tests qui ont été enumérés ci-dessus, nous avons procédé de la manière suivante :
+
+Lorsque les événements sont produits, l'application de test stocke tous les endUsers dans une liste que nous avons mis en place et achemine les requêtes vers le serveur de Gamification.
+
+Une méthode de validation permet de faire des appels vers la base de donnée de l'application Gamification afin de comparer les résultats avec ceux stockés dans la liste que nous avons mis en place.
+On peut ainsi au travers de cette comparaison et en augmentant le nombre de threads et de endUsers vérifier que notre application gère bien la création des endUsers et l'aatribution des points et des badges.
 
 # Problèmes connus
 <li>Il est difficile actuellement de configurer les règles d'une application car nous avons remarqué (vers la fin de la partie 2) qu'on aurait pu utiliser la Reflection pour pouvoir spécifier l'action a appliquer si la règle s'applique lorsque le serveur recoit un événement. Au vu du fait que nous ne l'avons pas fait par manque de temps, nous devons utiliser des instances of à certains endroits, ce qui est mauvais.
