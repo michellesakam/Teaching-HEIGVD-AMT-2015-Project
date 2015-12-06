@@ -15,6 +15,7 @@ public class ExpectedState {
     private static final Map<String, ApplicationEndUsersDTO> applications = new HashMap<>();
 
     public synchronized void logEventIntoApplication(EventDTO event, String apiKey) {
+        
         ApplicationEndUsersDTO application = applications.get(apiKey);
         if (application == null) {
             application = new ApplicationEndUsersDTO();
@@ -40,7 +41,7 @@ public class ExpectedState {
             enduser.setNbBadges(enduser.getNbBadges() + 1);
         }
 
-        application.setEndUsers(enduser);
+        application.getEndUsers().add(enduser);
     }
 
     public List<EndUserDTO> getApplicationEndUsers(String apikey) {

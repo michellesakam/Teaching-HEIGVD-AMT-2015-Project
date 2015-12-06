@@ -25,97 +25,6 @@ import org.glassfish.jersey.jackson.JacksonFeature;
  */
 public class ConcurrentUpdateGamificationClient {
 
-<<<<<<< HEAD
-  private final long numberOfApplication = 1;
-  private final long numberOfEndUsers = 5;
-  private final long numberOfEventsPerEndUser = 2;
-  private final int numberOfConcurrentThreads = 1;
-  private static final String APIKEYFORTEST = "ABC-123";
-
-  private static final Logger LOG = Logger.getLogger(ConcurrentUpdateGamificationClient.class.getName());
-  private int numberOfResponses = 0;
-
-  Client client;
-  final ExpectedState expectedState = new ExpectedState();
-
-  private synchronized void incCounter() {
-    numberOfResponses++;
-  }
-
-  public ConcurrentUpdateGamificationClient() {
-    client = ClientBuilder.newClient().register(JacksonFeature.class);
-  }
-      
-  private Response PostEvents(String apikey,String type,String endUserNumber, int nbcomment){
-      Date date = new Date();
-      EventDTO event = new EventDTO();
-      event.setType(type);
-      event.setApiKey(apikey);
-      event.setEndUserNumber(endUserNumber);
-      event.setTimestamp(date);
-      HashMap<String, Object> properties = new HashMap<>();
-      properties.put("nbComments", nbcomment);
-      event.setProperties(properties);
-      final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("events");
-      target.request().header("Authorization", apikey);
-      return target.request().post(Entity.json(event));
-  }
-
-  private List<EndUserDTO> getEndsUsersListFromServer(String apikey) {
-    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("applicationsEndUsers");
-    target.request().header("Authorization",apikey );
-    GenericType<List<EndUserDTO>> endusers = new GenericType<List<EndUserDTO>>(){};
-    return target.request().get(endusers);
-    
-  }
-  
-  private long getBadgesNbOfAnEndUser(String apikey,String endUserNumber){
-    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("statsEndUser/badges/{" + endUserNumber +"}");
-    target.request().header("Authorization",apikey );
-      return 0;
-  }
-  
-  private long getPointsNbOfAnEndUser(String apikey,String endUserNumber){
-    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("statsEndUser/points/{" + endUserNumber +"}");
-    target.request().header("Authorization",apikey);
-      return 0;
-  }
-
-  private void test() {
-
-    
-    ExecutorService executor = Executors.newFixedThreadPool(numberOfConcurrentThreads);
-    final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("events");
-
-    for (int enduser = 1; enduser <= numberOfEndUsers; enduser++) {
-      for (int event = 0; event < numberOfEventsPerEndUser; event++) {
-      LOG.log(Level.INFO, "Generating {0} events for enduser {1}", new Object[]{numberOfEventsPerEndUser, "enduser" + "/" + numberOfEndUsers});
-        Runnable task = new Runnable() {
-          @Override
-          public void run() {             
-            	Random r = new Random();
-		int nbComments = r.nextInt((102 - 98) + 1) + 98;
-                String endusernumber =  "enduser"+nbComments;
-                
-                EventDTO eventdto = new EventDTO();
-                eventdto.setApiKey(APIKEYFORTEST);
-                eventdto.setEndUserNumber(endusernumber);
-                eventdto.setTimestamp(new Date());
-                eventdto.setType("comment");
-                HashMap<String, Object> properties = new HashMap<>();
-                
-                properties.put("nbComments",nbComments);
-           
-                eventdto.setProperties(properties);
-                
-                Response response = PostEvents(APIKEYFORTEST,"comment",endusernumber,nbComments);
-            if (response.getStatus() < 200 || response.getStatus() >= 300) {
-              LOG.log(Level.INFO, "The server was not able to process the event: {0}", new Object[]{response.getStatus() + " " + response.getStatusInfo()});
-            } else {
-              expectedState.logEventIntoApplication(eventdto);
-            }
-          }
-=======
     private final long numberOfEndUsers = 20;
     private final long numberOfEventsPerEndUser = 15;
     private final int numberOfConcurrentThreads = 1;
@@ -156,7 +65,6 @@ public class ConcurrentUpdateGamificationClient {
     private List<EndUserDTO> getEndsUsersListFromServer(String apikey) {
         final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("applicationsEndUsers");
         GenericType<List<EndUserDTO>> endusers = new GenericType<List<EndUserDTO>>() {
->>>>>>> 56ab01f878e6b4b8ca33de2db11fdccc83cae462
         };
         return target.request().header("Authorization", apikey).get(endusers);
 

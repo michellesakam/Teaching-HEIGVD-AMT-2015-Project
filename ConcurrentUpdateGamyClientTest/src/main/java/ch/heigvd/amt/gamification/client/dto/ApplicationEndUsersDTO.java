@@ -10,7 +10,7 @@ import java.util.List;
 public class ApplicationEndUsersDTO {
     
     private long nbEndUsers;
-    private List<EndUserDTO> endusers = new LinkedList<>();
+    private List<EndUserDTO> endUsers = new LinkedList<>();
 
     public long getNbEndUsers() {
         return nbEndUsers;
@@ -18,18 +18,14 @@ public class ApplicationEndUsersDTO {
 
     public void setNbEndUsers(long nbEndUsers) {
         this.nbEndUsers = nbEndUsers;
+    }   
+    
+    public List<EndUserDTO> getEndUsers() {
+        return endUsers;
     }
 
-    
-    
-    public List<EndUserDTO> getEndusers() {
-        return endusers;
-    }
-
-    public void setEndusers(List<EndUserDTO> endusers) {
-        this.endusers = endusers;
-    }
-    
-    
+    public void setEndUsers(List<EndUserDTO> endUsers) {
+        this.endUsers = endUsers;
+    }    
 
 }
