@@ -247,11 +247,6 @@ On doit spécifier :
 
 Malheureusement, par manque de temps, nous n'avons pas eu le temps d'implémenter la suppression et l'édition d'une règle.
 
-# Controleurs
-Voici une description des nouveaux contrôleurs.
-
-<font color=red>A FAIRE</font>
-
 # Services
 Voici une description des nouveaux services.
 
@@ -260,25 +255,38 @@ Voici une description des nouveaux services.
 # Vues (Widgets)
 Nous avons décider d'utiliser angularjs pour afficher les widgets. Dans un premier temps nous nous sommes contentés de mettre sur pieds
 tous les éléments qu'il faut pour afficher un graphe dans angularjs avec la librairie chart, et naviger avec ui-router. 
-<li> chart: qui permet de désiner les graphs.
-<li> ui-router: qui permet d'effectuer le routage côté serveur. 
+<li> chart: qui permet de dessiner les graphs.
+<li> ui-router: qui permet d'effectuer le routage côté client. 
 <li> angular.js
 <li> angular-chart.js
 <li> ...
+
 Par la suite, nous avons mis des données codées en dure pour tester le bon fonctionnement, et enfin  nous avons implémenté les scripts
-avec http de angularjs pour aller chercher les données. 
-comment ça marche ?
-  Une fois l'application lancée, il faut comment utiliser /generate pour renerer les utilisateurs.
-  en suite, il faut exécuter le script de teste pour effectuer les requêtes sur l'api rest. 
-  en suite, il faut aller dans /demoWidgets. Sur cette page, on peut choisir l'utilsateur donc nous voulons afficher les paramettres.
-  par exemple si le apiKey ou le endUser n'est pas juste, vous serez redirigé vers la page précédente, histoire de toujours mettre les
-  données juste. Lorsque l'apiKey et le endUser corresponde effectivement à des donnée juste, on peut naviger dans trois page avec
-  ui-routeur: badges, Levels, Points.
-  une fois que le apiKey et le endUser sont correct, on peut aller chercher les donner et dessiner l'histogramme.
+avec http de angularjs pour aller chercher les données (requêtes AJAX). 
 
-> Voici une description des nouvelles vues.
+## Comment ça marche ?
+Une fois l'application lancée, il faut comment utiliser /generate pour générer une application possèdant l'API Key ABC-123.
 
-<font color=red>A FAIRE</font>
+Ensuite, il faut exécuter le script de tests (ou utiliser l'api rest pour poster des événements, en suivant la syntaxe décrite plus haut). 
+
+Ensuite, il faut aller dans /demoWidgets. Sur cette page, on peut choisir l'utilsateur dont nous voulons afficher les statistiques et entrer l'API Key de l'application correspondante.
+
+Lorsque l'apiKey et le endUser correspondent effectivement à des donnée juste, on peut naviguer entre 3 widgets avec ui-router : Badges, Levels, Points.
+
+## Aperçu des 3 widgets
+
+### Initialisation
+
+
+### Badges
+
+
+### Niveaux
+
+
+### Points
+
+
 
 # Transactions
 Voici la manière dont nous avons gérer les transactions par rapport aux
@@ -291,7 +299,7 @@ Voici la manière dont nous avons gérer les transactions par rapport aux
 ## Captures test pour bon fonctionnement
 
 ## Remarque
-Malheureusement, nous n'treavons pas eu le temps de gérer les transactions
+Malheureusement, nous n'avons pas eu le temps de gérer les transactions
 concernant la configuration des badges, niveaux et points. Nous avons donc uniquement mis en place la gestion des transactions uniquement pour la réception des événements.
 
 # DTO
