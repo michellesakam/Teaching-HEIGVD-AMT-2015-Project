@@ -57,7 +57,7 @@ public class ConcurrentUpdateGamificationClient {
       HashMap<String, Object> properties = new HashMap<>();
       properties.put("nbComments", nbcomment);
       event.setProperties(properties);
-      final WebTarget target = client.target("http://localhost:8080/ConcurrentTransactionsServer/api").path("events");
+      final WebTarget target = client.target("http://localhost:8080/GamificationProject/api").path("events");
       target.request().header("Authorization", apikey);
       return target.request().post(Entity.json(event));
   }
