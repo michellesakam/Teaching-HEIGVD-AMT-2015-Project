@@ -34,7 +34,7 @@
 
         $http({
             method: 'GET',
-            url: '/GamificationProject/api/statsEndUser/widgetLevels/' + $scope.formData.endUserNumber,
+            url: '/GamificationProject/api/statsEndUser/levels/' + $scope.formData.endUserNumber,
             headers: {
                 Authorization: $scope.formData.apiKey
             }
@@ -67,35 +67,46 @@
             "December"
         ];
 
-        // Fake data
-        $scope.statsPoint = {
-            totalPoints: 1503,
-            totalInYear: 102,
-            awards: [
-                {month: 8, points: 56},
-                {month: 3, points: 85},
-                {month: 11, points: 102},
-                {month: 4, points: 205},
-                {month: 9, points: 85}
-            ]
-        };
+        $http({
+            method: 'GET',
+            url: '/GamificationProject/api/statsEndUser/points/' + $scope.formData.endUserNumber,
+            headers: {
+                Authorization: $scope.formData.apiKey
+            }
+        }).then(function (stats) {
+            $scope.statsPoint = {
+                totalPoints: stats.data.totalPoints,
+                totalInYear: stats.data.totalPeriods,
+                awards: stats.data.pointsPerPeriod
+            };
 
-        $scope.data = [
-            function () {
-                var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            $scope.data = [
+                function () {
+                    var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-                $scope.statsPoint.awards.forEach(function (e) {
-                    data[e.month - 1] += e.points;
-                });
+                    for (var key in $scope.statsPoint.awards)
+                        data[key - 1] = $scope.statsPoint.awards[key];
 
-                return data;
-            }()
-        ];
-
+                    return data;
+                }()
+            ];
+        }, function (err) {
+        });
 
     });
 
     module.controller('WidgetBadgesController', function ($scope, $http) {
+
+        $http({
+            method: 'GET',
+            url: '/GamificationProject/api/statsEndUser/badges/' + $scope.formData.endUserNumber,
+            headers: {
+                Authorization: $scope.formData.apiKey
+            }
+        }).then(function (stats) {
+            $scope.badges = stats.data.badges;
+        }, function (err) {
+        });
 
     });
 

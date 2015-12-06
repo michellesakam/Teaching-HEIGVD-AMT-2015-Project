@@ -16,7 +16,7 @@ import javax.ws.rs.ext.Provider;
 public class JsonExceptionMapper implements ExceptionMapper<NotFoundException> {
 
   private class Body {
-    private String message;
+    private final String message;
 
     public Body(String message) {
       this.message = message;

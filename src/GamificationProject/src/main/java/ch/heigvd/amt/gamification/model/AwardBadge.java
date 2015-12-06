@@ -11,11 +11,11 @@ import javax.persistence.NamedQuery;
  * @author parfait
  */
 @Entity
-@DiscriminatorValue( "badge")
+@DiscriminatorValue("badge")
 
 @NamedQueries({
     @NamedQuery(name = "AwardBadge.findByEndUserAndApplication", 
-            query = "SELECT ab FROM AwardBadge ab WHERE ab.endUser = :endUser AND ab.endUser.application = :application "),
+            query = "SELECT ab.badge FROM AwardBadge ab WHERE ab.endUser = :endUser AND ab.endUser.application = :application ")
 })
 public class AwardBadge extends Award{  
 
@@ -23,16 +23,10 @@ public class AwardBadge extends Award{
     @ManyToOne
     private Badge badge; 
 
-    /**
-     * @return the badge
-     */
     public Badge getBadge() {
         return badge;
     }
-
-    /**
-     * @param badge the badge to set
-     */
+    
     public void setBadge(Badge badge) {
         this.badge = badge;
     }

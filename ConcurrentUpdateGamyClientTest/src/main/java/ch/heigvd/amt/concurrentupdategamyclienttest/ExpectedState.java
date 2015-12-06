@@ -14,32 +14,32 @@ public class ExpectedState {
     private static final Map<String, EndUserDTO> endUsers = new HashMap<>();
     private static final Map<String, ApplicationEndUsersDTO> applications = new HashMap<>();
 
-    public synchronized void logEventIntoApplication(EventDTO event) {
-        ApplicationEndUsersDTO application = applications.get(event.getApiKey());
+    public synchronized void logEventIntoApplication(EventDTO event, String apiKey) {
+        ApplicationEndUsersDTO application = applications.get(apiKey);
         if (application == null) {
             application = new ApplicationEndUsersDTO();
             application.setNbEndUsers(1);
-            applications.put(event.getApiKey(), application);
+            applications.put(apiKey, application);
         } else {
             application.setNbEndUsers(application.getNbEndUsers() + 1);
         }
         EndUserDTO enduser = endUsers.get(event.getEndUserNumber());
-            if (enduser == null) {
-                enduser = new EndUserDTO();
-                enduser.setEndUserNumber(event.getEndUserNumber());
-                enduser.setApikey(event.getApiKey());
-                enduser.setNbPoints(1);
-                endUsers.put(event.getEndUserNumber(), enduser);
-            } else {
-                enduser.setNbPoints(enduser.getNbPoints() + 2);
-                if (event.getProperties().get("nbComments").equals(100)) {
-                    BadgeDTO b = new BadgeDTO();
-                    b.setName("badge3");
-                    enduser.getBadges().add(b);
-                    enduser.setNbBadges(enduser.getNbBadges() + 1);
-                }
-                
-            }
+
+        if (enduser == null) {
+            enduser = new EndUserDTO();
+            enduser.setEndUserNumber(event.getEndUserNumber());
+            enduser.setApikey(apiKey);
+            endUsers.put(event.getEndUserNumber(), enduser);
+        }
+
+        enduser.setNbPoints(enduser.getNbPoints() + 2);
+        if (event.getProperties().get("nbComments").equals(100)) {
+            BadgeDTO b = new BadgeDTO();
+            b.setName("badge3");
+            enduser.getBadges().add(b);
+            enduser.setNbBadges(enduser.getNbBadges() + 1);
+        }
+
         application.setEndUsers(enduser);
     }
 

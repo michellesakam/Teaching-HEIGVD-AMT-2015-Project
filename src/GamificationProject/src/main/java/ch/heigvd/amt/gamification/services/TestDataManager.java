@@ -6,12 +6,11 @@ import ch.heigvd.amt.gamification.model.ActionAwardBadge;
 import ch.heigvd.amt.gamification.model.ActionAwardPoints;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
-import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.model.Level;
+import ch.heigvd.amt.gamification.services.processors.EventsProcessorLocal;
 
 import ch.heigvd.amt.gamification.util.Chance;
-import java.sql.Date;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,6 +31,9 @@ public class TestDataManager implements TestDataManagerLocal {
 
     @EJB
     private LevelsManagerLocal levelsManager;
+    
+    @EJB
+    private EventsProcessorLocal eventsProcessor;
     
     @Override
     public void generateTestData() {
@@ -74,6 +76,7 @@ public class TestDataManager implements TestDataManagerLocal {
         app1.setDescription("Devenez le meilleur soldat !");
 
         applicationsManager.assignApplicationToAccount(app1, constantAccount);
+        app1.getApiKey().setKey("ABC-123");
 
         Application app2 = new Application();
         app2.setIsEnable(false);
@@ -99,50 +102,29 @@ public class TestDataManager implements TestDataManagerLocal {
         app3.setDescription("Surfez sur Internet !");
 
         applicationsManager.assignApplicationToAccount(app3, createur2);
-
-        /* Associate EndUsers to an application */
-        EndUser user1 = new EndUser();
-        user1.setRegDate(new Date(System.currentTimeMillis()));
-        user1.setUserID("UK1928J28k");
-
-        EndUser user2 = new EndUser();
-        user2.setRegDate(new Date(2015, 1, 25));
-        user2.setUserID("PKZ927J28k");
-
-        EndUser user3 = new EndUser();
-        user3.setRegDate(new Date(System.currentTimeMillis()));
-        user3.setUserID("FJFKDJFFSD5f");
-
-        applicationsManager.assignApplicationToAnEndUser(app1, user1);
-        applicationsManager.assignApplicationToAnEndUser(app1, user2);
-        applicationsManager.assignApplicationToAnEndUser(app3, user3);
-
-        for (int i = 0; i < 3; ++i) {
-            EndUser user = new EndUser();
-            user.setRegDate(new Date(System.currentTimeMillis()));
-            user.setUserID("GaGAee23" + i);
-
-            applicationsManager.assignApplicationToAnEndUser(app1, user);
-        }
         
         // Create some badges in app1
-        Badge badge = new Badge();
-        badge.setName("badge1");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        Badge badge1 = new Badge();
+        badge1.setName("badge1");
+        applicationsManager.assignBadgeToAnApplication(app1, badge1);
         
-        badge = new Badge();
-        badge.setName("badge2");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        Badge badge2 = new Badge();
+        badge2.setName("badge2");
+        applicationsManager.assignBadgeToAnApplication(app1, badge2);
         
-        badge = new Badge();
-        badge.setName("badge3");
-        applicationsManager.assignBadgeToAnApplication(app1, badge);
+        Badge badge3 = new Badge();
+        badge3.setName("badge3");
+        applicationsManager.assignBadgeToAnApplication(app1, badge3);
+        
+        Badge badgeWarrior = new Badge();
+        badgeWarrior.setName("Warrior");
+        applicationsManager.assignBadgeToAnApplication(app1, badgeWarrior);
         
         // Add some rules to applications for gamification
         Rule rule = new Rule();
         ActionAwardPoints actionAwardPoints = new ActionAwardPoints();
         actionAwardPoints.setNbPoints(2);
-        actionAwardPoints.setReason("Posted a comment");
+        rule.setReason("Posted a comment");
         rule.setEventType("comment");
         rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
@@ -150,9 +132,9 @@ public class TestDataManager implements TestDataManagerLocal {
         rule = new Rule();
         rule.setEventType("comment");
         ActionAwardBadge actionAwardBadge = new ActionAwardBadge();
-        actionAwardBadge.setBadge(badge);
-        actionAwardBadge.setReason("Posted a comment");
-        actionAwardBadge.getConditionsToApply().put("nbComments", 100);
+        actionAwardBadge.setBadge(badge3);
+        rule.setReason("Posted 100 comments");
+        rule.getConditionsToApply().put("nbComments", 100);
         rule.setAction(actionAwardBadge);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
@@ -160,11 +142,18 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setEventType("addQuestion");
         actionAwardPoints = new ActionAwardPoints();
         actionAwardPoints.setNbPoints(5);
-        actionAwardPoints.setReason("Added a question");
+        rule.setReason("Added a question");
         rule.setAction(actionAwardPoints);
         applicationsManager.assignRuleToAnApplication(app1, rule);
         
-        app1.getApiKey().setKey("ABC-123");
+        rule = new Rule();
+        rule.setEventType("addQuestion");
+        actionAwardBadge = new ActionAwardBadge();
+        actionAwardBadge.setBadge(badgeWarrior);
+        rule.setReason("Posted 100 questions");
+        rule.getConditionsToApply().put("nbQuestions", 100);
+        rule.setAction(actionAwardBadge);
+        applicationsManager.assignRuleToAnApplication(app1, rule);
         
         // Create some levels in app1
         Level level = new Level();
@@ -185,7 +174,7 @@ public class TestDataManager implements TestDataManagerLocal {
         level = new Level();
         level.setName("General");
         level.setMinimumPoints(500);
-        levelsManager.assignLevelToApplication(app1, level);        
+        levelsManager.assignLevelToApplication(app1, level);
         
     }
 

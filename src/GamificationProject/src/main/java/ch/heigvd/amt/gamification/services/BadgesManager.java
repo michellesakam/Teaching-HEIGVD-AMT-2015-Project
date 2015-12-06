@@ -30,8 +30,8 @@ public class BadgesManager implements BadgesManagerLocal {
     }
 
     @Override
-    public List<Badge> findByApiKey(String apiKey) {
-        return badgeDAO.findByApiKey(apiKey);
+    public List<Badge> findByApplication(Application application) {
+        return badgeDAO.findByApplication(application);
     }
     
      @Override

@@ -8,6 +8,8 @@ import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
+import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
+import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -22,6 +24,9 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
     @EJB
     private ApplicationsManagerLocal applicationsManager;
 
+    @EJB
+    private BadgesManagerLocal badgesManager;
+
     @Override
     public void postDTO(String apiKey, RuleDTO dto) {
         Application application = super.tryToRetrieveApplication(apiKey);
@@ -30,40 +35,34 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
         Action action = null;
 
         switch (dto.getAwardType()) {
-            
+
             case "AwardBadge":
                 ActionAwardBadge actionAwardBadge;
                 actionAwardBadge = new ActionAwardBadge();
 
-                Badge badge = applicationsManager.findBadgeByIdAndApiKey((Long) dto.getAwardValue(), apiKey);
-
-                if (badge == null)
-                    throw new NullPointerException("This badge doesnt exists");
+                Badge badge;
+                try {
+                    badge = badgesManager.findById((Long) dto.getAwardValue());
+                } catch (GamificationDomainEntityNotFoundException ex) {
+                    throw new Error("This badge doesnt exists");
+                }
 
                 actionAwardBadge.setBadge(badge);
-                actionAwardBadge.setReason(dto.getReason());
-                actionAwardBadge.setConditionsToApply(dto.getConditionsToApply());
                 action = actionAwardBadge;
                 break;
-                
+
             case "AwardPoints":
-                
+
                 ActionAwardPoints actionAwardPoints;
                 actionAwardPoints = new ActionAwardPoints();
-                actionAwardPoints.setConditionsToApply(dto.getConditionsToApply());
-                actionAwardPoints.setReason(dto.getReason());
                 actionAwardPoints.setNbPoints((int) dto.getAwardValue());
                 action = actionAwardPoints;
                 break;
-                
+
         }
 
-        if (action != null) {
-            action.setConditionsToApply(dto.getConditionsToApply());
-            action.setReason(dto.getReason());
-        } else {
-            throw new Error("The action specified for this rule is not valid");
-        }
+        rule.setConditionsToApply(dto.getConditionsToApply());
+        rule.setReason(dto.getReason());
 
         rule.setAction(action);
 

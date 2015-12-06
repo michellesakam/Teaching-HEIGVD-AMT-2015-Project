@@ -9,28 +9,33 @@ import javax.persistence.NamedQuery;
  *
  * @author michelle meguep
  */
-
 @Entity
-@DiscriminatorValue( "score")
-
+@DiscriminatorValue("nbPoints")
 @NamedQueries({
-    @NamedQuery(name = "AwardPoint.getNumberOfPoints", 
-            query = "SELECT SUM(aw.score) FROM AwardPoint aw WHERE aw.endUser = :endUser AND aw.endUser.application = :application")
+    @NamedQuery(name = "AwardPoint.getNumberOfPoints",
+            query = "SELECT SUM(aw.nbPoints) FROM AwardPoint aw "
+            + "WHERE aw.endUser = :endUser AND aw.endUser.application = :application"),
+    @NamedQuery(name = "AwardPoint.getPointsPerMonthInAYear",
+            query = "SELECT FUNCTION('MONTH', aw.receptionDate), SUM(aw.nbPoints) FROM AwardPoint aw "
+                    + "WHERE FUNCTION('YEAR', aw.receptionDate) = :year AND aw.endUser = :endUser "
+                    + "AND aw.endUser.application = :application"
+                    + " GROUP BY FUNCTION('MONTH', aw.receptionDate)")
+
 })
-public class AwardPoint extends Award{
-         
-    private int score;      
-    
-    public AwardPoint(){
- 
-    }
- 
-    public int getScore() {
-        return score;
+public class AwardPoint extends Award {
+
+    private int nbPoints;
+
+    public AwardPoint() {
+
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public int getNbPoints() {
+        return nbPoints;
     }
-  
+
+    public void setNbPoints(int nbPoints) {
+        this.nbPoints = nbPoints;
+    }
+
 }

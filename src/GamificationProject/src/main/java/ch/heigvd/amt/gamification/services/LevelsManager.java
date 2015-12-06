@@ -45,13 +45,13 @@ public class LevelsManager implements LevelsManagerLocal {
     }
 
     @Override
-    public Level findCurrentLevel(Application app, long nbPointsEndUser) {
-        return levelDAO.findCurrentLevel(app, nbPointsEndUser);
+    public Level findCurrentLevel(Application app, long nbPoints) {
+        return levelDAO.findCurrentLevel(app, nbPoints);
     }
 
     @Override
-    public Level findNextLevel(Application app, long nbPointsEndUser) {
-        return levelDAO.findNextLevel(app, nbPointsEndUser);
+    public Level findNextLevel(Application app, long nbPoints) {
+        return levelDAO.findNextLevel(app, nbPoints);
     }
 
 }

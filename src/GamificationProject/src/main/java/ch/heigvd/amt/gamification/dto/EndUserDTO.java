@@ -11,8 +11,7 @@ public class EndUserDTO {
     
     private String endUserNumber;
     private String apikey;
-    private int nbBadges;
-    private int nbPoints;
+    private long nbPoints;
     private List<BadgeDTO> badges = new LinkedList<>();
 
     public String getEndUserNumber() {
@@ -32,18 +31,14 @@ public class EndUserDTO {
     }
 
     public int getNbBadges() {
-        return nbBadges;
+        return badges.size();
     }
 
-    public void setNbBadges(int nbBadges) {
-        this.nbBadges = nbBadges;
-    }
-
-    public int getNbPoints() {
+    public long getNbPoints() {
         return nbPoints;
     }
 
-    public void setNbPoints(int nbPoints) {
+    public void setNbPoints(long nbPoints) {
         this.nbPoints = nbPoints;
     }
     
