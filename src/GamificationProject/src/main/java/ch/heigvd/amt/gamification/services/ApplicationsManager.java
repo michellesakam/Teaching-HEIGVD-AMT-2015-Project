@@ -77,11 +77,6 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
 
     @Override
-    public boolean checkEndUserUseAnApplication(Application application, EndUser endUser) {
-        return applicationDAO.checkEndUserUseApp(application, endUser);
-    }
-
-    @Override
     public Application retrieveApplicationByApikey(String apikey) {
         Application app = applicationDAO.findByApiKey(apikey);
         

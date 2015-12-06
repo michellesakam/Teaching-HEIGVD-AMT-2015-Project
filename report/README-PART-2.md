@@ -248,9 +248,16 @@ On doit spécifier :
 Malheureusement, par manque de temps, nous n'avons pas eu le temps d'implémenter la suppression et l'édition d'une règle.
 
 # Services
-Voici une description des nouveaux services.
+Nous avons dû ajouté les services suivant pour le fonctionnement de la Gamification :
 
-<font color=red>A FAIRE</font>
+<li><b></b>
+<li><b></b>
+<li><b></b>
+<li><b></b>
+<li><b></b>
+<li><b></b>
+<li><b></b>
+<li><b></b>
 
 # Vues (Widgets)
 Nous avons décider d'utiliser angularjs pour afficher les widgets. Dans un premier temps nous nous sommes contentés de mettre sur pieds

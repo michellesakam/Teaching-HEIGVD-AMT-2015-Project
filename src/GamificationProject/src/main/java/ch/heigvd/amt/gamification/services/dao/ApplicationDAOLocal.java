@@ -29,8 +29,6 @@ public interface ApplicationDAOLocal extends IGenericDAO<Application, Long> {
 
     public Application findByApiKey(String apikey);
 
-    public boolean checkEndUserUseApp(Application application, EndUser endUser);
-
     public void assignRuleToAnApplication(Application application, Rule rule);
 
     public void assignBadgeToAnApplication(Application application, Badge badge);

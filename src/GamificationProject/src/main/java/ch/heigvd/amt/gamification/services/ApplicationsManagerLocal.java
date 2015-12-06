@@ -112,14 +112,6 @@ public interface ApplicationsManagerLocal {
     public boolean checkAccountIsOwnerOfApplication(Account account, Application application);
     
     /**
-     * Check if an end user is associate to an applicatino
-     * @param application
-     * @param endUser
-     * @return true if the end user is associated, false else
-     */
-    public boolean checkEndUserUseAnApplication(Application application, EndUser endUser);
-    
-    /**
      * Retrieve an application by apikey
      * @param apikey
      * @return null if the applicaion not exists, else the application

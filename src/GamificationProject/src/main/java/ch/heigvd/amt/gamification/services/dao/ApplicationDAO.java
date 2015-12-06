@@ -97,14 +97,6 @@ public class ApplicationDAO extends GenericDAO<Application, Long> implements App
     }
 
     @Override
-    public boolean checkEndUserUseApp(Application application, EndUser endUser) {
-        return em.createNamedQuery("Application.checkEndUserUseApp")
-                .setParameter("app", application)
-                .setParameter("endUser", endUser)
-                .getResultList().size() > 0;
-    }
-
-    @Override
     public void assignRuleToAnApplication(Application application, Rule rule) {
         rule.setApplication(application);
         application.getRules().add(rule);
