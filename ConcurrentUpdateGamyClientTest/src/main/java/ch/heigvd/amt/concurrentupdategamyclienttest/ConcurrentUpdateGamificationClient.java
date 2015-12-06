@@ -45,11 +45,11 @@ public class ConcurrentUpdateGamificationClient {
     }
 
     private Response PostEvents(String apikey, String type, String endUserNumber, int nbcomment) {
-        
+
         Calendar c = Calendar.getInstance();
         c.set(Calendar.MONTH, (int) (Math.random() * 12));
         c.set(Calendar.DAY_OF_MONTH, (int) (Math.random() * 28));
-        
+
         EventDTO event = new EventDTO();
         event.setType(type);
         event.setEndUserNumber(endUserNumber);
@@ -147,6 +147,29 @@ public class ConcurrentUpdateGamificationClient {
         LOG.log(Level.INFO, "Actual number of endUsers: {0}", actualState.size());
         if (expectedState.getApplicationEndUsers(APIKEYFORTEST).size() != actualState.size()) {
             errors.add("The number of endUsers on the server is not the one expected: " + actualState.size() + " vs " + expectedState.getApplicationEndUsers(APIKEYFORTEST).size());
+        }
+
+        for (EndUserDTO e : actualState) {
+
+            int expectedBadges = expectedState.getEndUser(e.getEndUserNumber()).getNbBadges();
+            int actualBadges = e.getNbBadges();
+
+            long expectedPoints = expectedState.getEndUser(e.getEndUserNumber()).getNbPoints();
+            long actualPoints = e.getNbPoints();
+
+            LOG.log(Level.INFO, "Expected number of badges : {0}", expectedBadges);
+            LOG.log(Level.INFO, "Actual number of badges : {0}", actualBadges);
+
+            LOG.log(Level.INFO, "Expected number of points : {0}", expectedPoints);
+            LOG.log(Level.INFO, "Actual number of points : {0}", actualPoints);
+
+            if (expectedBadges != actualBadges) {
+                errors.add("The number of badges on the server is not the one expected: " + actualBadges + " vs " + expectedBadges);
+            }
+
+            if (expectedPoints != actualPoints) {
+                errors.add("The number of points on the server is not the one expected: " + actualPoints + " vs " + expectedPoints);
+            }
         }
 
         return errors;
