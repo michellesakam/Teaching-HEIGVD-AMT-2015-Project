@@ -32,6 +32,8 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
     public void postDTO(String apiKey, EventDTO dto) {
         Application application = super.tryToRetrieveApplication(apiKey);
 
+        // In this line, the application is locked in pessimist mod to avoid problems
+        // In creation of the endUser by many threads.
         EndUser endUser = endUserManger.retrieveEndUser(application, dto.getEndUserNumber());
 
         if (endUser == null) {

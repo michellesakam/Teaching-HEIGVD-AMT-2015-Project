@@ -9,6 +9,7 @@ import ch.heigvd.amt.gamification.model.Rule;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.LockModeType;
 
 /**
  *

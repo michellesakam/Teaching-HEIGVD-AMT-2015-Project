@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
+import javax.persistence.LockModeType;
 
 /**
  *
@@ -33,6 +34,8 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
 
     @Override
     public EndUser findByNumberAndApplication(Application application, String noEndUser) {
+        em.lock(application, LockModeType.PESSIMISTIC_WRITE);
+        
         List<EndUser> tmp = em.createNamedQuery("EndUser.findByNo")
                 .setParameter("no", noEndUser)
                 .setParameter("application", application)
