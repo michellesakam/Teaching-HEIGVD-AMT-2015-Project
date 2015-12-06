@@ -16,6 +16,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -34,46 +35,78 @@ public class ApplicationRessource {
 
     @EJB
     private BadgesManagerLocal badgesManager;
-    
+
     @EJB
     private EndUsersManagerLocal endUsersManager;
-    
+
     @GET
     @Produces("application/json")
-    public List<EndUserDTO> getApplicationDTO(@HeaderParam("Authorization") String apiKey) {
+    public List<EndUserDTO> getEndUsers(@HeaderParam("Authorization") String apiKey) {
 
-        Application app = applicationsManager.retrieveApplicationByApikey(apiKey);                
+        Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
         long nbEndUsers = applicationsManager.nbEndUsersOfApplication(app);
-        
+
         List<EndUserDTO> endUsersDTO = new LinkedList<>();
-        
+
         try {
             List<EndUser> endUsers = applicationsManager.findEndUsersAndPaginate(app, 0, (int) nbEndUsers);
-            
-            for(EndUser e : endUsers) {
+
+            for (EndUser e : endUsers) {
                 EndUserDTO endUserDTO = new EndUserDTO();
-                
+
                 List<Badge> badges = badgesManager.findByEndUser(e, app);
-                
+
                 endUserDTO.setApikey(apiKey);
                 endUserDTO.setEndUserNumber(e.getUserID());
-                endUserDTO.setNbPoints(endUsersManager.getNumberOfPoints(app, e));              
-                
-                for(Badge b : badges) {
+                endUserDTO.setNbPoints(endUsersManager.getNumberOfPoints(app, e));
+
+                for (Badge b : badges) {
                     BadgeDTO badgeDTO = new BadgeDTO();
                     badgeDTO.setId(b.getId());
                     badgeDTO.setName(b.getName());
                     endUserDTO.getBadges().add(badgeDTO);
                 }
-                
+
                 endUsersDTO.add(endUserDTO);
             }
-            
+
         } catch (GamificationDomainEntityNotFoundException ex) {
             throw new Error(ex.getMessage());
         }
 
         return endUsersDTO;
+    }
+
+    @GET
+    @Path("{endUserNumber}")
+    @Produces("application/json")
+    public EndUserDTO getAnEndUser(@HeaderParam("Authorization") String apiKey,
+            @PathParam(value = "endUserNumber") String endUserNumber) {
+
+        Application app = applicationsManager.retrieveApplicationByApikey(apiKey);
+
+        EndUser e = endUsersManager.retrieveEndUser(app, endUserNumber);
+
+        if (e == null) {
+            throw new NullPointerException("This user doesn't exists in this application");
+        }
+
+        EndUserDTO endUserDTO = new EndUserDTO();
+
+        List<Badge> badges = badgesManager.findByEndUser(e, app);
+
+        endUserDTO.setApikey(apiKey);
+        endUserDTO.setEndUserNumber(e.getUserID());
+        endUserDTO.setNbPoints(endUsersManager.getNumberOfPoints(app, e));
+
+        for (Badge b : badges) {
+            BadgeDTO badgeDTO = new BadgeDTO();
+            badgeDTO.setId(b.getId());
+            badgeDTO.setName(b.getName());
+            endUserDTO.getBadges().add(badgeDTO);
+        }
+
+        return endUserDTO;
     }
 
 }
