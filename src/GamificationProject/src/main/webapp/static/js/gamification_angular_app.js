@@ -33,8 +33,6 @@
     
     module.controller('WidgetLevelsController', function($scope, $http) {
         
-        alert($scope.apiKey);
-        
         // Fake data : replace with ajax request
         $scope.statsLevel = {
             currentLevelName: "Soldat",
