@@ -258,6 +258,19 @@ Voici une description des nouveaux services.
 <font color=red>A FAIRE</font>
 
 # Vues (Widgets)
+Nous avons décider d'utiliser anularjs pour afficher les widgets. Dans un premier temps nous nous sommes contenter de mettre sur pieds
+tous les éléments qu'il faut pour afficher un graphe dans angularjs avec la librairie chart: 
+<li> chart: qui permet de désinner les graph.
+<li> ui-router: qui permet d'effectuer le routage côté serveur. 
+<li> angular.js
+<li> angular-chart.js
+<li> ...
+Par la suite, nous avons mis des données codées en dure pour tester le bon fonctionnement, et enfin  nous avons implémenté les scripts
+avec http de angularjs pour aller cherche les données. 
+comment ça marche ?
+  Une fois l'application lancée, il faut comment utiliser /generate pour renerer les utilisateurs.
+  en suite, il faut exécuter le script de teste pour effectuer les requêtes sur l'api rest 
+
 Voici une description des nouvelles vues.
 
 <font color=red>A FAIRE</font>
