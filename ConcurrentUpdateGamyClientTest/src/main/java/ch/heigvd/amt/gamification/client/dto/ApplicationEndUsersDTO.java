@@ -9,24 +9,18 @@ import java.util.List;
  */
 public class ApplicationEndUsersDTO {
     
-    private long nbEndUsers;
-    private List<EndUserDTO> endusers = new LinkedList<>();
+    private List<EndUserDTO> endUsers = new LinkedList<>();
 
     public long getNbEndUsers() {
-        return nbEndUsers;
+        return endUsers.size();
+    } 
+    
+    public List<EndUserDTO> getEndUsers() {
+        return endUsers;
     }
 
-    public void setNbEndUsers(long nbEndUsers) {
-        this.nbEndUsers = nbEndUsers;
-    }
-    
-    public void setEndUsers(EndUserDTO enduser){
-        if(!endusers.contains(enduser))
-        endusers.add(enduser);
-    }
-    
-    public List<EndUserDTO> getEndUsers(){
-        return endusers;
-    }
+    public void setEndUsers(List<EndUserDTO> endUsers) {
+        this.endUsers = endUsers;
+    }    
 
 }

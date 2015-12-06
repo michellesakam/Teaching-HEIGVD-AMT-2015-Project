@@ -83,7 +83,12 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
 
     @Override
     public Application retrieveApplicationByApikey(String apikey) {
-        return applicationDAO.findByApiKey(apikey);
+        Application app = applicationDAO.findByApiKey(apikey);
+        
+        if(app == null)
+            throw new NullPointerException("This application doesn't exists !");
+        
+        return app;
     }
 
     @Override
@@ -94,11 +99,6 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     @Override
     public void assignBadgeToAnApplication(Application application, Badge badge) {
         applicationDAO.assignBadgeToAnApplication(application, badge);
-    }  
-
-    @Override
-    public Badge findBadgeByIdAndApiKey(Long id, String apiKey) {
-        return applicationDAO.findBadgeByIdAndApiKey(id, apiKey);
     }
 
 }

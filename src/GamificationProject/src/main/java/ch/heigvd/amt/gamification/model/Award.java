@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.amt.gamification.model;
 
 import java.util.Date;
@@ -21,52 +16,34 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Award  extends AbstractDomainModelEntity<Long>{
     
-    private String raison;
+    private String reason;
    
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateReception;
+    private Date receptionDate;
     
     @ManyToOne
     private EndUser endUser; 
 
-    /**
-     * @return the raison
-     */
-    public String getRaison() {
-        return raison;
+    public String getReason() {
+        return reason;
     }
 
-    /**
-     * @param raison the raison to set
-     */
-    public void setRaison(String raison) {
-        this.raison = raison;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
-    /**
-     * @return the dateReception
-     */
-    public Date getDateReception() {
-        return dateReception;
+    public Date getReceptionDate() {
+        return receptionDate;
     }
 
-    /**
-     * @param dateReception the dateReception to set
-     */
-    public void setDateReception(Date dateReception) {
-        this.dateReception = dateReception;
+    public void setReceptionDate(Date receptionDate) {
+        this.receptionDate = receptionDate;
     }
 
-    /**
-     * @return the endUser
-     */
     public EndUser getEndUser() {
         return endUser;
     }
 
-    /**
-     * @param endUser the endUser to set
-     */
     public void setEndUser(EndUser endUser) {
         this.endUser = endUser;
     }

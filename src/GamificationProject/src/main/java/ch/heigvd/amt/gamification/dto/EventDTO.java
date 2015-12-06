@@ -1,7 +1,6 @@
 package ch.heigvd.amt.gamification.dto;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 /**
@@ -9,12 +8,11 @@ import java.util.HashMap;
  * @author Raphaël Racine
  */
 public class EventDTO implements IGamificationDTO { 
+    
     private String type;
     private String endUserNumber;
-    private HashMap<String, Object> properties;
+    private HashMap<String, Object> properties = new HashMap<>();
     private Date timestamp;
-    
-    GregorianCalendar calendar;
 
     public void setEndUserNumber(String endUserNumber) {
         this.endUserNumber = endUserNumber;

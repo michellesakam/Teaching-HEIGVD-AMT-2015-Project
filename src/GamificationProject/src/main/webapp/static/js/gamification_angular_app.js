@@ -25,26 +25,37 @@
                 });
 
     });
-    
-    module.controller('MainController', function($scope, $state) {
-        alert("mainController invoked");
+
+    module.controller('MainController', function ($scope) {
         $scope.formData = {};
     });
-    
-    module.controller('WidgetLevelsController', function($scope, $http) {
-        
-        // Fake data : replace with ajax request
-        $scope.statsLevel = {
-            currentLevelName: "Soldat",
-            currentPoints: 132,
-            nextLevelName: "Sergent",
-            nextLevelPoints: 500
-        };
-        
+
+
+    module.controller('WidgetLevelsController', function ($scope, $http, $state) {
+
+        $http({
+            method: 'GET',
+            url: '/GamificationProject/api/statsEndUser/levels/' + $scope.formData.endUserNumber,
+            headers: {
+                Authorization: $scope.formData.apiKey
+            }
+        }).then(function (stats) {
+            $scope.statsLevel = {
+                currentLevelName: stats.data.currentLevelName,
+                currentPoints: stats.data.currentPoints,
+                nextLevelName: stats.data.nextLevelName,
+                pointsForNextLevel: stats.data.pointsForNextLevel
+            };
+        }, function (err) {
+            alert("Can not retrieve stats for this endUser and this application.");
+            $state.go('start');
+        });
+
+
     });
-    
-    module.controller('WidgetPointsController', function($scope, $http) {        
-        
+
+    module.controller('WidgetPointsController', function ($scope, $http, $state) {
+
         $scope.labels = [
             "January",
             "February",
@@ -57,41 +68,54 @@
             "September",
             "October",
             "November",
-            "December"            
+            "December"
         ];
-        
-        // Fake data
-        $scope.statsPoint = {
-            
-            totalPoints: 1503,
-            totalInYear: 102,
-            
-            awards: [
-                {month:8, points:56},
-                {month:3, points:85},
-                {month:11, points:102},
-                {month:4, points:205},
-                {month:9, points:85}
-            ]
-        };
-        
-        $scope.data = [
-            function() {
-                var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                
-                $scope.statsPoint.awards.forEach(function(e) {
-                    data[e.month - 1] += e.points;
-                });
-                
-                return data;
-            }()
-        ];
-        
-        
+
+        $http({
+            method: 'GET',
+            url: '/GamificationProject/api/statsEndUser/points/' + $scope.formData.endUserNumber,
+            headers: {
+                Authorization: $scope.formData.apiKey
+            }
+        }).then(function (stats) {
+            $scope.statsPoint = {
+                totalPoints: stats.data.totalPoints,
+                totalInYear: stats.data.totalPeriods,
+                awards: stats.data.pointsPerPeriod
+            };
+
+            $scope.data = [
+                function () {
+                    var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+                    for (var key in $scope.statsPoint.awards)
+                        data[key - 1] = $scope.statsPoint.awards[key];
+
+                    return data;
+                }()
+            ];
+        }, function (err) {
+            alert("Can not retrieve stats for this endUser and this application.");
+            $state.go('start');
+        });
+
     });
-    
-    module.controller('WidgetBadgesController', function($scope, $http) {
-        
+
+    module.controller('WidgetBadgesController', function ($scope, $http, $state) {
+
+        $http({
+            method: 'GET',
+            url: '/GamificationProject/api/statsEndUser/badges/' + $scope.formData.endUserNumber,
+            headers: {
+                Authorization: $scope.formData.apiKey
+            }
+        }).then(function (stats) {
+            $scope.badges = stats.data.badges;
+        }, function (err) {
+            alert("Can not retrieve stats for this endUser and this application.");
+            $state.go('start');
+        });
+
     });
 
 })();

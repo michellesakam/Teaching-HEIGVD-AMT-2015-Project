@@ -8,6 +8,5 @@
     <label>End User Number : </label>
     <input type="text" ng-model="formData.endUserNumber" />                
 
-    api key: {{ formData.apiKey }}
     <button class="btn btn-primary" ui-sref="widgetBadges">Show Widgets</button>
 </div>

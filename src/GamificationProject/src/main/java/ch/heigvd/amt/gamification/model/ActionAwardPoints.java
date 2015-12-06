@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * @author Raphaël Racine
  */
 @Entity
-@DiscriminatorValue("nbPoints")
+@DiscriminatorValue("points")
 public class ActionAwardPoints extends Action<Integer> {    
     
     private int nbPoints;

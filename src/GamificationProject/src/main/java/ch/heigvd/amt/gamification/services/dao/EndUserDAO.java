@@ -1,14 +1,13 @@
 package ch.heigvd.amt.gamification.services.dao;
 
-import ch.heigvd.amt.gamification.model.Account;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -21,7 +20,6 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
     public long numberOfEndUsersCreatedDuringLastNbDays(int numberOfDay) {
 
         Calendar today = new GregorianCalendar();
-        today.getTime();
 
         Calendar before = new GregorianCalendar();
         before.add(Calendar.DAY_OF_YEAR, -numberOfDay);
@@ -43,4 +41,34 @@ public class EndUserDAO extends GenericDAO<EndUser, Long> implements EndUserDAOL
 
         return tmp.size() > 0 ? tmp.get(0) : null;
     }
+
+    @Override
+    public long getNumberOfPoints(Application app, EndUser e) {
+        try {
+            return (long) em.createNamedQuery("AwardPoint.getNumberOfPoints")
+                    .setParameter("application", app)
+                    .setParameter("endUser", e)
+                    .getSingleResult();
+        }
+        catch(Exception ex) {
+            return 0;
+        }
+    }
+
+    @Override
+    public Map<Integer, Long> getPointsPerMonths(EndUser e, Application app, int year) {
+        List<Object[]> list = em.createNamedQuery("AwardPoint.getPointsPerMonthInAYear")
+                .setParameter("application", app)
+                .setParameter("endUser", e)
+                .setParameter("year", year)
+                .getResultList();
+        
+        Map<Integer, Long> pointsPerMonths = new HashMap<>();
+        
+        for(Object[] o : list)
+            pointsPerMonths.put((int) o[0], (long) o[1]);
+        
+        return pointsPerMonths;
+    }   
+    
 }

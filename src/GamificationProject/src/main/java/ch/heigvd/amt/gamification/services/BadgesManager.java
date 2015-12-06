@@ -1,6 +1,8 @@
 package ch.heigvd.amt.gamification.services;
 
+import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.Badge;
+import ch.heigvd.amt.gamification.model.EndUser;
 import ch.heigvd.amt.gamification.services.dao.BadgeDAOLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import java.util.List;
@@ -28,14 +30,19 @@ public class BadgesManager implements BadgesManagerLocal {
     }
 
     @Override
-    public List<Badge> findByApiKey(String apiKey) {
-        return badgeDAO.findByApiKey(apiKey);
+    public List<Badge> findByApplication(Application application) {
+        return badgeDAO.findByApplication(application);
     }
     
      @Override
     public Badge findById(Long id) throws GamificationDomainEntityNotFoundException {
         return badgeDAO.findById(id);
     }   
+    
+    @Override
+    public List<Badge> findByEndUser(EndUser endUser, Application application) {
+        return badgeDAO.findByEndUser(endUser, application);
+    }
     
     
 }

@@ -23,6 +23,7 @@ public class EventRessource {
     @POST
     @Consumes("application/json")
     public void postEvent(@HeaderParam("Authorization") String apiKey, EventDTO eventDTO) {
+        System.out.println("Received apikey : " + apiKey);
         eventsProcessor.postDTO(apiKey, eventDTO);
     }
 

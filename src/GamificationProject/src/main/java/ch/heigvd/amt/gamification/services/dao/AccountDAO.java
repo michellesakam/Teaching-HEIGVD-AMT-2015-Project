@@ -3,8 +3,6 @@ package ch.heigvd.amt.gamification.services.dao;
 import ch.heigvd.amt.gamification.model.Account;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * This SLSB implements the DAO design pattern. This class implements the data

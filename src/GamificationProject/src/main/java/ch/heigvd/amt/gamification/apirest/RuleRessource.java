@@ -53,11 +53,11 @@ public class RuleRessource {
         RuleDTO dto = new RuleDTO();
         
         dto.setRuleID(rule.getId());
-        dto.setConditionsToApply(rule.getAction().getConditionsToApply());
+        dto.setConditionsToApply(rule.getConditionsToApply());
         dto.setEventType(rule.getEventType());        
         dto.setAwardValue(rule.getAction().getAwardValue());        
         dto.setAwardType(rule.getAction().getType());        
-        dto.setReason(rule.getAction().getReason());
+        dto.setReason(rule.getReason());
 
         return dto;
         

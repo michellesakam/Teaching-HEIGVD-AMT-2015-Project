@@ -1,4 +1,3 @@
-
 package ch.heigvd.amt.gamification.client.dto;
 
 import java.util.Date;
@@ -6,25 +5,17 @@ import java.util.HashMap;
 
 /**
  *
- * @author michelle meguep
+ * @author Raphaël Racine
  */
 public class EventDTO { 
-    private String type;
-    private String apiKey;
-    private String endUserNumber;
-    private HashMap<String, Object> properties;
-    private Date timestamp;
     
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
+    private String type;
+    private String endUserNumber;
+    private HashMap<String, Object> properties = new HashMap<>();
+    private Date timestamp;
 
     public void setEndUserNumber(String endUserNumber) {
         this.endUserNumber = endUserNumber;
-    }
-
-    public String getApiKey() {
-        return apiKey;
     }
 
     public String getEndUserNumber() {
