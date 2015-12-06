@@ -27,7 +27,7 @@
     });
 
     module.controller('MainController', function ($scope) {
-        $scope.formData = {};
+        $scope.formData = {}; // Important to don't remove that
     });
 
     module.controller('WidgetLevelsController', function ($scope, $http, $state) {
