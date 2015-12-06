@@ -26,11 +26,11 @@
 
     });
 
-    module.controller('MainController', function ($scope, $state) {
+    module.controller('MainController', function ($scope) {
         $scope.formData = {};
     });
 
-    module.controller('WidgetLevelsController', function ($scope, $http) {
+    module.controller('WidgetLevelsController', function ($scope, $http, $state) {
 
         $http({
             method: 'GET',
@@ -46,11 +46,13 @@
                 pointsForNextLevel: stats.data.pointsForNextLevel
             };
         }, function (err) {
+            alert("Can not retrieve stats for this endUser and this application.");
+            $state.go('start');
         });
 
     });
 
-    module.controller('WidgetPointsController', function ($scope, $http) {
+    module.controller('WidgetPointsController', function ($scope, $http, $state) {
 
         $scope.labels = [
             "January",
@@ -91,11 +93,13 @@
                 }()
             ];
         }, function (err) {
+            alert("Can not retrieve stats for this endUser and this application.");
+            $state.go('start');
         });
 
     });
 
-    module.controller('WidgetBadgesController', function ($scope, $http) {
+    module.controller('WidgetBadgesController', function ($scope, $http, $state) {
 
         $http({
             method: 'GET',
@@ -106,6 +110,8 @@
         }).then(function (stats) {
             $scope.badges = stats.data.badges;
         }, function (err) {
+            alert("Can not retrieve stats for this endUser and this application.");
+            $state.go('start');
         });
 
     });
