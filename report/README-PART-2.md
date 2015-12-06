@@ -342,7 +342,34 @@ Malheureusement, nous n'avons pas eu le temps de gérer les transactions
 concernant la configuration des badges, niveaux et points. Nous avons donc uniquement mis en place la gestion des transactions uniquement pour la réception des événements.
 
 # DTO
-<font color=red>A FAIRE</font>
+Voici les différents DTO que nous utilisons dans notre application afin de ne pas transmettre les entités dans leur intégralité :
+
+<li><b>BadgeDTO</b>
+
+Cette DTO permet de représenter un badge, elle possède simplement le nom du badge et son id.
+
+<li><b>EndUserDTO</b>
+
+Cette DTO permet de représenter un endUser, elle possède le numéro du endUser, l'apikey de l'application on il se trouve, le nombre de points qu'il a et l'ensemble des badges qu'il possède (BadgeDTO). Cette DTO est utilisée pour valider les tests qui sont fait dans le projet ConcurrentUpdageGamyClient.
+
+<li><b>EventDTO</b>
+
+Cette DTO est utilisée pour recevoir des événements des applications gamifiées.
+
+Elle est caractérisée par le type d'événement, le numéro du EndUser concerné, une hashmap qui contient les propriétés de l'événement, et un timestamp qui est la date de réception de l'événement.
+
+<li><b>LevelDTO</b>
+
+Cette DTO permet de représenter un level, elle possède simplement le nom du niveau, le nombre minimum de points pour l'atteindre ainsi que son id.
+
+<li><b>RuleDTO</b>
+
+Cette DTO représente une règle pour une application. Elle possède notamment son id, les conditions pour appliquer la règle, sous forme d'une HashMap, le type d'événement concerné, la raison pour laquelle on applique la règle, le type de récompense (AwardBadge ou AwardPoints), et la valeur de la récompense (l'id du badge si la récompse est un badge, sinon le nombre de points à enlever ou a distribuer).
+
+<li><b>StatsXXXDTO</b>
+
+Ces trois DTO (StatsLevelsDTO, StatsPointsDTO, StatsBadgesDTO) permettent d'obtenir les statistiques sur les EndUser d'une application par rapport à leur récompenses (badges et points).
+
 
 # Tests
 <b><font color=red>Vanessa parler de cette partie</font></b>
