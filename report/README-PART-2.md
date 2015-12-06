@@ -267,10 +267,29 @@ Voici la manière dont nous avons gérer les transactions par rapport aux
 événements.
 
 ## Problème constaté
+Au début on a testé l’application avec un seul thread et on a constaté qu’il n’y a pas problème et tous passent bien et on n'a pas d'erreur.
+
+### Résultat du test avec un thread
+![](pictures/1_thread_sans_transactions.PNG)
+
+
+Puis on a testé avec 15 threads simultanés avec 30 d'utilisateurs et on remarque qu’il y a les conflits entre les résultats. L’application a créé 46 utilisateurs dans la base de donnée qui est faux ! 
+Ça signifie que par exemple deux thread entre la méthode et les deux ne trouvent pas l’utilisateur donc les deux vont créer la même utilisateur deux fois dans la base de donnée.
+
+### Résultat du test avec 15 thread simultanés sans transaction
+![](pictures/15_threads_sans_transactions.PNG)
+
+
+
 
 ## Résolution
 
-## Captures test pour bon fonctionnement
+Pour résoudre ce problème de concourant, étant donné qu’on a beaucoup écriture dans la base de donnée, on choisit la stratégie de pessimiste.
+ Donc On verrouille application quand un évènement arrive et on vérifie que si utilisateur n’existe pas on va le créer, donc si d’autre évènement arrive en même temps, il doit attends qu’application déverrouiller et après si l’utilisateur n’existe pas il en créé. Grace à cette verrouillage on empêche de créer utilisateur plusieurs fois dans base de donne et donc tous les résultats sont corrects.  Ça vaut dire on a 30 utilisateur dans la base de donnée.
+
+### Résultat du test avec 20 thread simultanés avec transaction pessimiste
+![](pictures/20thread_20events_30endUsers_avec_transaction_OK.PNG)
+
 
 ## Remarque
 Malheureusement, nous n'avons pas eu le temps de gérer les transactions
