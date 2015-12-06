@@ -262,7 +262,9 @@ tous les éléments qu'il faut pour afficher un graphe dans angularjs avec la li
 <li> ...
 
 Par la suite, nous avons mis des données codées en dure pour tester le bon fonctionnement, et enfin  nous avons implémenté les scripts
-avec http de angularjs pour aller chercher les données (requêtes AJAX). 
+avec http de angularjs pour aller chercher les données (requêtes AJAX).
+
+Comme nous utilisons ui-router, nous avons ajouté dans notre serveur un contrôleur nommé <b>WidgetsGamificationDemoController.java</b> qui est mappé sur l'URL : /demoWidgets?view=uneVue --> Si le paramètre view n'est pas spécifié, la page gamification_demo/index.jsp est envoyée, sinon on envoi la page JSP qui a le nom du paramètre view (donc si on met view=start, on aura la vue de start.jsp...).
 
 ## Comment ça marche ?
 Une fois l'application lancée, il faut comment utiliser /generate pour générer une application possèdant l'API Key ABC-123.
