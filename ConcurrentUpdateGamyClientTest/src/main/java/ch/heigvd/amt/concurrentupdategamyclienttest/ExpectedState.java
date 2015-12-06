@@ -45,5 +45,9 @@ public class ExpectedState {
     public List<EndUserDTO> getApplicationEndUsers(String apikey) {
         return applications.get(apikey).getEndUsers();
     }
+    
+    public EndUserDTO getEndUser(String endUserNumber) {
+        return endUsers.get(endUserNumber);
+    }
 
 }
