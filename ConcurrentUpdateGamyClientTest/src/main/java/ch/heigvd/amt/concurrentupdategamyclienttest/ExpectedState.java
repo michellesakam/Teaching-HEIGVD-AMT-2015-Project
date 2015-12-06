@@ -19,11 +19,9 @@ public class ExpectedState {
         ApplicationEndUsersDTO application = applications.get(apiKey);
         if (application == null) {
             application = new ApplicationEndUsersDTO();
-            application.setNbEndUsers(1);
             applications.put(apiKey, application);
-        } else {
-            application.setNbEndUsers(application.getNbEndUsers() + 1);
         }
+
         EndUserDTO enduser = endUsers.get(event.getEndUserNumber());
 
         if (enduser == null) {
@@ -31,6 +29,7 @@ public class ExpectedState {
             enduser.setEndUserNumber(event.getEndUserNumber());
             enduser.setApikey(apiKey);
             endUsers.put(event.getEndUserNumber(), enduser);
+            application.getEndUsers().add(enduser);
         }
 
         enduser.setNbPoints(enduser.getNbPoints() + 2);
@@ -38,10 +37,9 @@ public class ExpectedState {
             BadgeDTO b = new BadgeDTO();
             b.setName("badge3");
             enduser.getBadges().add(b);
-            enduser.setNbBadges(enduser.getNbBadges() + 1);
         }
 
-        application.getEndUsers().add(enduser);
+
     }
 
     public List<EndUserDTO> getApplicationEndUsers(String apikey) {

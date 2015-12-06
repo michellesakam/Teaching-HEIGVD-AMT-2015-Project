@@ -9,16 +9,11 @@ import java.util.List;
  */
 public class ApplicationEndUsersDTO {
     
-    private long nbEndUsers;
     private List<EndUserDTO> endUsers = new LinkedList<>();
 
     public long getNbEndUsers() {
-        return nbEndUsers;
-    }
-
-    public void setNbEndUsers(long nbEndUsers) {
-        this.nbEndUsers = nbEndUsers;
-    }   
+        return endUsers.size();
+    } 
     
     public List<EndUserDTO> getEndUsers() {
         return endUsers;
