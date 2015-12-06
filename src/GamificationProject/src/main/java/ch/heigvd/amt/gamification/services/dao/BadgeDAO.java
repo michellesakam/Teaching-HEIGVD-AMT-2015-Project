@@ -27,7 +27,11 @@ public class BadgeDAO extends GenericDAO<Badge, Long> implements BadgeDAOLocal {
                 .setParameter("endUser", endUser)
                 .getResultList();
     }
-    
-    
-    
+
+    @Override
+    public void assignBadgeToAnApplication(Application application, Badge badge) {
+        badge.setApplication(application);
+        application.getBadges().add(badge);
+    }
+
 }

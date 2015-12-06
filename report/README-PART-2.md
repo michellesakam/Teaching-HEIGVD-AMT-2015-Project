@@ -12,9 +12,6 @@ Il concerne la Gamification en elle-même, c'est à dire attribuer des points ou
 <li>Vanessa Michelle Meguep
 <li>Samira Kouchali
 
-# Specifications
-<font color=red>A FAIRE</font>
-
 # Modèles
 ## Nouvelles Entités créées
 Voici les différentes entités que nous avons créées pour la gamification.
@@ -247,20 +244,69 @@ On doit spécifier :
 
 Malheureusement, par manque de temps, nous n'avons pas eu le temps d'implémenter la suppression et l'édition d'une règle.
 
-# Controleurs
-Voici une description des nouveaux contrôleurs.
-
-<font color=red>A FAIRE</font>
-
 # Services
-Voici une description des nouveaux services.
+Pour faire fonctionner notre projet de Gamification, nous avons donc mettre en oeuvre les services suivants :
 
-<font color=red>A FAIRE</font>
+## Package services
+Ces services sont des managers permettant de faire des opérations sur plusieurs points de la Gamification :
+
+<li>BadgesManager : Permet de faire des opérations sur les badges
+<li>LevelsManager : Permet de faire des opérations sur les levels
+<li>RulesManager : Permet de faire des opérations sur des règles
+
+Le mieux est de consulter les commentaires des interfaces pour voir ce qu'ils offrent comme possibilités.
+
+## Package services processors
+Ces services permettent de processer des opérations venant de l'api rest.
+
+Ils travaillent principalement avec les DTO de l'application (voir chapitre DTO)
+
+<li>EventsProcessor : Permet de processer les événements à partir de l'API Rest
+<li>BadgesProcessor : Permet de processer les badges à partir de l'API Rest
+<li>LevelsProcessor : Permet de processer les levels à partir de l'API Rest
+<li>RulesProcessor : Permet de processer les règles à partir de l'API Rest
+
+Le mieux est de consulter les commentaires des interfaces pour voir ce qu'ils offrent comme possibilités.
+
+Tous ces services implémentent l'interface <b>IGamificationDTOProcessor</b> afin de rendre le code un peu plus générique.
 
 # Vues (Widgets)
-Voici une description des nouvelles vues.
+Nous avons décider d'utiliser angularjs pour afficher les widgets. Dans un premier temps nous nous sommes contentés de mettre sur pieds
+tous les éléments qu'il faut pour afficher un graphe dans angularjs avec la librairie chart, et naviger avec ui-router. 
+<li> chart: qui permet de dessiner les graphs.
+<li> ui-router: qui permet d'effectuer le routage côté client. 
+<li> angular.js
+<li> angular-chart.js
+<li> ...
 
-<font color=red>A FAIRE</font>
+Par la suite, nous avons mis des données codées en dure pour tester le bon fonctionnement, et enfin  nous avons implémenté les scripts
+avec http de angularjs pour aller chercher les données (requêtes AJAX).
+
+Comme nous utilisons ui-router, nous avons ajouté dans notre serveur un contrôleur nommé <b>WidgetsGamificationDemoController.java</b> qui est mappé sur l'URL : /demoWidgets?view=uneVue --> Si le paramètre view n'est pas spécifié, la page gamification_demo/index.jsp est envoyée, sinon on envoi la page JSP qui a le nom du paramètre view (donc si on met view=start, on aura la vue de start.jsp...).
+
+## Comment ça marche ?
+Une fois l'application lancée, il faut comment utiliser /generate pour générer une application possèdant l'API Key ABC-123.
+
+Ensuite, il faut exécuter le script de tests (ou utiliser l'api rest pour poster des événements, en suivant la syntaxe décrite plus haut). 
+
+Ensuite, il faut aller dans /demoWidgets. Sur cette page, on peut choisir l'utilsateur dont nous voulons afficher les statistiques et entrer l'API Key de l'application correspondante.
+
+Lorsque l'apiKey et le endUser correspondent effectivement à des donnée juste, on peut naviguer entre 3 widgets avec ui-router : Badges, Levels, Points.
+
+## Aperçu des 3 widgets
+
+### Initialisation
+
+
+### Badges
+
+
+### Niveaux
+
+
+### Points
+
+
 
 # Transactions
 Voici la manière dont nous avons gérer les transactions par rapport aux
@@ -308,10 +354,15 @@ concernant la configuration des badges, niveaux et points. Nous avons donc uniqu
 <font color=red>A FAIRE</font>
 
 # Problèmes connus
-<font color=red>A FAIRE</font>
+<li>Il est difficile actuellement de configurer les règles d'une application car nous avons remarqué (vers la fin de la partie 2) qu'on aurait pu utiliser la Reflection pour pouvoir spécifier l'action a appliquer si la règle s'applique lorsque le serveur recoit un événement. Au vu du fait que nous ne l'avons pas fait par manque de temps, nous devons utiliser des instances of à certains endroits, ce qui est mauvais.
+<li>La gestion des transactions concernent uniquement la réception des événements, et pas la configuration des applications (badges, levels et points)
 
 # Conclusion
-<font color=red>A FAIRE</font>
+Nous avons rencontré quelques difficultés au niveau de l'applications des règles car au début nous avons eu pas mal de peine à se mettre d'accord sur le fonctionnement et ceci nous a fait perdre un peu de temps, ce qui nous a empêché de se concentrer sur la Reflection par exemple pour les règles.
+
+Sinon, nous sommes satisfait de notre résultat même si le code présentent quelques lacunes au niveaux des règles.
+
+Aussi, nous n'avons pas crée de classe Reputaion car nous avons décidé de simplifier le problème, mais il est évident que dans une vraie application nous l'aurions fait, pour des raisons d'extensibilité. Il est à noter que le proffesseur Monsieur Olivier Liechti nous a dit qu'il n'était pas obligatoire d'implémenter exactement le modèle qu'il présentait dans les slides.
 
 
 

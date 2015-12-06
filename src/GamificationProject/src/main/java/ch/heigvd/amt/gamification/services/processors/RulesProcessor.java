@@ -9,6 +9,7 @@ import ch.heigvd.amt.gamification.model.Badge;
 import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.BadgesManagerLocal;
+import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import ch.heigvd.amt.gamification.services.dao.GamificationDomainEntityNotFoundException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,10 +23,10 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
         implements RulesProcessorLocal {
 
     @EJB
-    private ApplicationsManagerLocal applicationsManager;
-
-    @EJB
     private BadgesManagerLocal badgesManager;
+    
+    @EJB
+    private RulesManagerLocal rulesManager;
 
     @Override
     public void postDTO(String apiKey, RuleDTO dto) {
@@ -68,7 +69,7 @@ public class RulesProcessor extends GamificationDTOProcessor<RuleDTO, Long>
 
         rule.setEventType(dto.getEventType());
 
-        applicationsManager.assignRuleToAnApplication(application, rule);
+        rulesManager.assignRuleToAnApplication(application, rule);
     }
 
     @Override

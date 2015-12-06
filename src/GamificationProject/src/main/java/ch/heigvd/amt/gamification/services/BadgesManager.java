@@ -44,5 +44,10 @@ public class BadgesManager implements BadgesManagerLocal {
         return badgeDAO.findByEndUser(endUser, application);
     }
     
+    @Override
+    public void assignBadgeToAnApplication(Application application, Badge badge) {
+        badgeDAO.assignBadgeToAnApplication(application, badge);
+    }
+    
     
 }

@@ -27,8 +27,9 @@
     });
 
     module.controller('MainController', function ($scope) {
-        $scope.formData = {};
+        $scope.formData = {}; // Important to don't remove that
     });
+
 
     module.controller('WidgetLevelsController', function ($scope, $http, $state) {
 
@@ -49,6 +50,7 @@
             alert("Can not retrieve stats for this endUser and this application.");
             $state.go('start');
         });
+
 
     });
 

@@ -33,7 +33,10 @@ public class TestDataManager implements TestDataManagerLocal {
     private LevelsManagerLocal levelsManager;
     
     @EJB
-    private EventsProcessorLocal eventsProcessor;
+    private BadgesManagerLocal badgesManager;
+    
+    @EJB
+    private RulesManagerLocal rulesManager;
     
     @Override
     public void generateTestData() {
@@ -106,19 +109,19 @@ public class TestDataManager implements TestDataManagerLocal {
         // Create some badges in app1
         Badge badge1 = new Badge();
         badge1.setName("badge1");
-        applicationsManager.assignBadgeToAnApplication(app1, badge1);
+        badgesManager.assignBadgeToAnApplication(app1, badge1);
         
         Badge badge2 = new Badge();
         badge2.setName("badge2");
-        applicationsManager.assignBadgeToAnApplication(app1, badge2);
+        badgesManager.assignBadgeToAnApplication(app1, badge2);
         
         Badge badge3 = new Badge();
         badge3.setName("badge3");
-        applicationsManager.assignBadgeToAnApplication(app1, badge3);
+        badgesManager.assignBadgeToAnApplication(app1, badge3);
         
         Badge badgeWarrior = new Badge();
         badgeWarrior.setName("Warrior");
-        applicationsManager.assignBadgeToAnApplication(app1, badgeWarrior);
+        badgesManager.assignBadgeToAnApplication(app1, badgeWarrior);
         
         // Add some rules to applications for gamification
         Rule rule = new Rule();
@@ -127,7 +130,7 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setReason("Posted a comment");
         rule.setEventType("comment");
         rule.setAction(actionAwardPoints);
-        applicationsManager.assignRuleToAnApplication(app1, rule);
+        rulesManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("comment");
@@ -136,7 +139,7 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setReason("Posted 100 comments");
         rule.getConditionsToApply().put("nbComments", 100);
         rule.setAction(actionAwardBadge);
-        applicationsManager.assignRuleToAnApplication(app1, rule);
+        rulesManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("addQuestion");
@@ -144,7 +147,7 @@ public class TestDataManager implements TestDataManagerLocal {
         actionAwardPoints.setNbPoints(5);
         rule.setReason("Added a question");
         rule.setAction(actionAwardPoints);
-        applicationsManager.assignRuleToAnApplication(app1, rule);
+        rulesManager.assignRuleToAnApplication(app1, rule);
         
         rule = new Rule();
         rule.setEventType("addQuestion");
@@ -153,7 +156,7 @@ public class TestDataManager implements TestDataManagerLocal {
         rule.setReason("Posted 100 questions");
         rule.getConditionsToApply().put("nbQuestions", 100);
         rule.setAction(actionAwardBadge);
-        applicationsManager.assignRuleToAnApplication(app1, rule);
+        rulesManager.assignRuleToAnApplication(app1, rule);
         
         // Create some levels in app1
         Level level = new Level();

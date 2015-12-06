@@ -77,11 +77,6 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
     }
 
     @Override
-    public boolean checkEndUserUseAnApplication(Application application, EndUser endUser) {
-        return applicationDAO.checkEndUserUseApp(application, endUser);
-    }
-
-    @Override
     public Application retrieveApplicationByApikey(String apikey) {
         Application app = applicationDAO.findByApiKey(apikey);
         
@@ -89,16 +84,6 @@ public class ApplicationsManager implements ApplicationsManagerLocal {
             throw new NullPointerException("This application doesn't exists !");
         
         return app;
-    }
-
-    @Override
-    public void assignRuleToAnApplication(Application application, Rule rule) {
-        applicationDAO.assignRuleToAnApplication(application, rule);
-    }
-
-    @Override
-    public void assignBadgeToAnApplication(Application application, Badge badge) {
-        applicationDAO.assignBadgeToAnApplication(application, badge);
     }
 
 }

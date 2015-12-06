@@ -25,6 +25,12 @@ public class RuleDAO extends GenericDAO<Rule, Long> implements RuleDAOLocal {
         return em.createNamedQuery("Rule.findByApiKey")
                 .setParameter("apiKey", apiKey)
                 .getResultList();
-    }    
+    }  
+    
+    @Override
+    public void assignRuleToAnApplication(Application application, Rule rule) {
+        rule.setApplication(application);
+        application.getRules().add(rule);
+    }
 
 }
