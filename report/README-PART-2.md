@@ -296,16 +296,26 @@ Lorsque l'apiKey et le endUser correspondent effectivement à des donnée juste,
 ## Aperçu des 3 widgets
 
 ### Initialisation
+![]("pictures/widgetStart.PNG")
 
+On tape ici une ApiKey et un numéro de EndUser pour connaître ses statistiques dans cette application.
 
 ### Badges
+![]("pictures/widgetBadges.PNG")
+
+On voit que ce EndUser a gagné le badge nommé "badge3".
 
 
 ### Niveaux
+![]("pictures/widgetLevels.PNG")
+
+On voit que ce EndUser a le niveau actuel Sergent et qu'il a au total 40 points. On voit que s'il atteint 200 points, il deviendra Lieutnant.
 
 
 ### Points
+![]("pictures/widgetPoints.PNG")
 
+On voit que ce EndUser a gagné au total 38 points durant l'année, et qu'il en a en tout 40.
 
 
 # Transactions
@@ -383,6 +393,7 @@ Ces trois DTO (StatsLevelsDTO, StatsPointsDTO, StatsBadgesDTO) permettent d'obte
 # Problèmes connus
 <li>Il est difficile actuellement de configurer les règles d'une application car nous avons remarqué (vers la fin de la partie 2) qu'on aurait pu utiliser la Reflection pour pouvoir spécifier l'action a appliquer si la règle s'applique lorsque le serveur recoit un événement. Au vu du fait que nous ne l'avons pas fait par manque de temps, nous devons utiliser des instances of à certains endroits, ce qui est mauvais.
 <li>La gestion des transactions concernent uniquement la réception des événements, et pas la configuration des applications (badges, levels et points)
+<li>On aurait pu améliorer quelques statistiques sur les Widgets
 
 # Conclusion
 Nous avons rencontré quelques difficultés au niveau de l'applications des règles car au début nous avons eu pas mal de peine à se mettre d'accord sur le fonctionnement et ceci nous a fait perdre un peu de temps, ce qui nous a empêché de se concentrer sur la Reflection par exemple pour les règles.
