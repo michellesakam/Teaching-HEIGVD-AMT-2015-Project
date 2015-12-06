@@ -296,24 +296,24 @@ Lorsque l'apiKey et le endUser correspondent effectivement à des donnée juste,
 ## Aperçu des 3 widgets
 
 ### Initialisation
-![]("pictures/widgetStart.PNG")
+![](pictures/widgetStart.PNG)
 
 On tape ici une ApiKey et un numéro de EndUser pour connaître ses statistiques dans cette application.
 
 ### Badges
-![]("pictures/widgetBadges.PNG")
+![](pictures/widgetBadges.PNG)
 
 On voit que ce EndUser a gagné le badge nommé "badge3".
 
 
 ### Niveaux
-![]("pictures/widgetLevels.PNG")
+![](pictures/widgetLevels.PNG)
 
 On voit que ce EndUser a le niveau actuel Sergent et qu'il a au total 40 points. On voit que s'il atteint 200 points, il deviendra Lieutnant.
 
 
 ### Points
-![]("pictures/widgetPoints.PNG")
+![](pictures/widgetPoints.PNG)
 
 On voit que ce EndUser a gagné au total 38 points durant l'année, et qu'il en a en tout 40.
 
