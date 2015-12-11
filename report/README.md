@@ -9,3 +9,4 @@
 ## Lien vers les différentes parties du projet
 <li>[Partie 1](README-PART-1.md)
 <li>[Partie 2](README-PART-2.md)
+<LI>[Partie 3](README-PART-3.md)
