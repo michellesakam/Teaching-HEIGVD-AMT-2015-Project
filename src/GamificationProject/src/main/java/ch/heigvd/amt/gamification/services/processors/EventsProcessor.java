@@ -8,6 +8,9 @@ import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -29,7 +32,9 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
     private RulesManagerLocal rulesManager;
 
     @Override
+    @Asynchronous
     public void postDTO(String apiKey, EventDTO dto) {
+        
         Application application = super.tryToRetrieveApplication(apiKey);
 
         // In this line, the application is locked in pessimist mod to avoid problems

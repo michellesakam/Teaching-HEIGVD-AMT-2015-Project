@@ -25,8 +25,8 @@ import org.glassfish.jersey.jackson.JacksonFeature;
  */
 public class ConcurrentUpdateGamificationClient {
 
-    private final long numberOfEndUsers = 30;
-    private final long numberOfEventsPerEndUser = 20;
+    private final long numberOfEndUsers = 50;
+    private final long numberOfEventsPerEndUser = 30;
     private final int numberOfConcurrentThreads = 20;
     private static final String APIKEYFORTEST = "ABC-123";
 
