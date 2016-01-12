@@ -19,10 +19,10 @@ public interface RulesManagerLocal {
     /**
      * Process a rule for an event
      * @param eventDTO The eventDTO which contains the informations about the event
-     * @param r The rule to apply on the event
+     * @param app
      * @param endUser The endUser concerned
      */
-    public void processRuleForAnEvent(EventDTO eventDTO, Rule r, EndUser endUser);
+    public void processRuleForAnEvent(EventDTO eventDTO, Application app, EndUser endUser);
 
     /**
      * 
@@ -38,4 +38,6 @@ public interface RulesManagerLocal {
      * @param rule The rule
      */
     public void assignRuleToAnApplication(Application application, Rule rule);
+
+    public List<Rule> findAll();
 }

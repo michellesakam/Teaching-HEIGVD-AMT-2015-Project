@@ -3,13 +3,9 @@ package ch.heigvd.amt.gamification.services.processors;
 import ch.heigvd.amt.gamification.dto.EventDTO;
 import ch.heigvd.amt.gamification.model.Application;
 import ch.heigvd.amt.gamification.model.EndUser;
-import ch.heigvd.amt.gamification.model.Rule;
 import ch.heigvd.amt.gamification.services.ApplicationsManagerLocal;
 import ch.heigvd.amt.gamification.services.EndUsersManagerLocal;
 import ch.heigvd.amt.gamification.services.RulesManagerLocal;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -34,7 +30,7 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
     @Override
     @Asynchronous
     public void postDTO(String apiKey, EventDTO dto) {
-        
+
         Application application = super.tryToRetrieveApplication(apiKey);
 
         // In this line, the application is locked in pessimist mod to avoid problems
@@ -48,12 +44,8 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
             applicationsManager.assignApplicationToAnEndUser(application, endUser);
         }
 
-        // Find the rules corresponding to the event type and application
-        List<Rule> rules = rulesManager.findByEventTypeAndApplication(application, dto.getType());
+        rulesManager.processRuleForAnEvent(dto, application, endUser);
 
-        for (Rule r : rules) {
-            rulesManager.processRuleForAnEvent(dto, r, endUser);
-        }
     }
 
     @Override

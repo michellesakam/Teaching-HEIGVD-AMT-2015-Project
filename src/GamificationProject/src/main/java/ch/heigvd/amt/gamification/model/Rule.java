@@ -3,6 +3,7 @@ package ch.heigvd.amt.gamification.model;
 import java.util.HashMap;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,7 +25,7 @@ public class Rule extends AbstractDomainModelEntity<Long> {
     @ManyToOne
     private Application application;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Action action;
 
     private String eventType;
