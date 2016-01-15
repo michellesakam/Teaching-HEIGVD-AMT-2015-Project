@@ -28,6 +28,7 @@ public class EventsProcessor extends GamificationDTOProcessor<EventDTO, Long>
     private RulesManagerLocal rulesManager;
 
     @Override
+    @Asynchronous
     public void postDTO(String apiKey, EventDTO dto) {
 
         Application application = super.tryToRetrieveApplication(apiKey);
