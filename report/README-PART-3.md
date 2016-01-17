@@ -53,7 +53,7 @@ On voit clairement que le thread.sleep s'est effectué avant de renvoyer la rép
 
 Résultat du test en mode <b>asynchrone</b>
 
-![](pictures/picturesPartie3/Async5user.PNG)
+![](pictures/picturesPartie3/Async5User.PNG)
 
 En mode asynchrone, cest tout le contraire, le serveur répond avant même d'avoir effectué le thread.sleep (qui a été fixé à 10 secondes), il est évident que le fonctionnement de l'annontation @Asynchrone fonctionne puisque si il ne fonctionnait pas le serveur aurait répondu au minimum 10 seconde après une requête, ce qui n'est pas le cas ici.
 
