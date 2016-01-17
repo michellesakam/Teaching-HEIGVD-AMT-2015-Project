@@ -47,13 +47,13 @@ Pour vérifier que cette annotation fonctionne correctement, nous avons simulé 
 
 Résultat du test en mode <b>synchrone</b>
 
-![](/pictures/picturesPartie3/Sync5user.PNG)
+![](pictures/picturesPartie3/Sync5user.PNG)
 
 On voit clairement que le thread.sleep s'est effectué avant de renvoyer la réponse au client car le temps de réponse est de 10 secondes ici (10'000 millisecondes...)
 
 Résultat du test en mode <b>asynchrone</b>
 
-![](/pictures/picturesPartie3/Async5user.PNG)
+![](pictures/picturesPartie3/Async5user.PNG)
 
 En mode asynchrone, cest tout le contraire, le serveur répond avant même d'avoir effectué le thread.sleep (qui a été fixé à 10 secondes), il est évident que le fonctionnement de l'annontation @Asynchrone fonctionne puisque si il ne fonctionnait pas le serveur aurait répondu au minimum 10 seconde après une requête, ce qui n'est pas le cas ici.
 
@@ -68,22 +68,22 @@ Voici les tests que nous avons effectuée sans avoir pour le moment apporté d'a
 Ici, le mode synchrone est activé (donc pas d'annotation @Asynchronous) (le serveur ne répond pas tout de suite)
 
 #### Test 1 - 100 utilisateurs avec un Thread Pool de 5
-![](/pictures/picturesPartie3/VersionSansCache/Sync/Pool5.PNG)
+![](pictures/picturesPartie3/VersionSansCache/Sync/Pool5.PNG)
 
 #### Test 2 - 100 utilisateurs avec un Thread Pool de 10
-![](/pictures/picturesPartie3/VersionSansCache/Sync/Pool10.PNG)
+![](pictures/picturesPartie3/VersionSansCache/Sync/Pool10.PNG)
 
 #### Test 3 - 100 utilisateurs avec un Thread Pool de 50
-![](/pictures/picturesPartie3/VersionSansCache/Sync/Pool50.PNG)
+![](pictures/picturesPartie3/VersionSansCache/Sync/Pool50.PNG)
 
 ### Mode Asynchrone
 Ici, le mode asynchrone est activé (le serveur répond tout de suite)
 
 #### Test 4 - 100 utilisateurs avec un Thread Pool de 5
-![](/pictures/picturesPartie3/VersionSansCache/Async/Pool5.PNG)
+![](pictures/picturesPartie3/VersionSansCache/Async/Pool5.PNG)
 
 #### Test 5 - 100 utilisateurs avec un Thread Pool de 10
-![](/pictures/picturesPartie3/VersionSansCache/Async/Pool10.PNG)
+![](pictures/picturesPartie3/VersionSansCache/Async/Pool10.PNG)
 
 ### Commentaires tests
 <font color=red>A COMPLETER</font>
@@ -102,22 +102,22 @@ Voici les tests que nous avons effectuée après avoir mis en place le système 
 Ici, le mode synchrone est activé (donc pas d'annotation @Asynchronous) (le serveur ne répond pas tout de suite)
 
 ####### Test 1 - 100 utilisateurs avec un Thread Pool de 5
-![](/pictures/picturesPartie3/VersionAvecCache/Sync/Pool5.PNG)
+![](pictures/picturesPartie3/VersionAvecCache/Sync/Pool5.PNG)
 
 ####### Test 2 - 100 utilisateurs avec un Thread Pool de 10
-![](/pictures/picturesPartie3/VersionAvecCache/Sync/Pool10.PNG)
+![](pictures/picturesPartie3/VersionAvecCache/Sync/Pool10.PNG)
 
 ####### Test 3 - 100 utilisateurs avec un Thread Pool de 50
-![](/pictures/picturesPartie3/VersionAvecCache/Sync/Pool50.PNG)
+![](pictures/picturesPartie3/VersionAvecCache/Sync/Pool50.PNG)
 
 ##### Mode Asynchrone
 Ici, le mode asynchrone est activé (le serveur répond tout de suite)
 
 ###### Test 4 - 100 utilisateurs avec un Thread Pool de 5
-![](/pictures/picturesPartie3/VersionAvecCache/Async/Pool5.PNG)
+![](pictures/picturesPartie3/VersionAvecCache/Async/Pool5.PNG)
 
 ###### Test 5 - 100 utilisateurs avec un Thread Pool de 10
-![](/pictures/picturesPartie3/VersionAvecCache/Async/Pool10.PNG)
+![](pictures/picturesPartie3/VersionAvecCache/Async/Pool10.PNG)
 
 ##### Commentaires tests
 <font color=red>A COMPLETER</font>
